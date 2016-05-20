@@ -27,6 +27,8 @@ Cette document s'organise principalement autour de deux axes :
  
  * [Un axe architectural](#architecture-des-api)
  * [Un axe métier](#ressources-m-tier)
+ 
+Chaque type d'API définiera le format qu'il gère pour chaque ressource métier.
 
 La documentation est en cours de construction, donc s'il vous manque des informations ou que certaines choses ne sont 
 pas clairs, n'hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. 
@@ -65,17 +67,73 @@ Les différentes ressources métier se retrouvent dans les différentes catégor
 Cependant, à la différences d'API REST "classique" le format de représentation de ces entités sera très différent 
 d'une catégorie d'API à l'autre.
 
+Dans cette partie, nous définissons la signification métier de chaque ressource. Pour une description concrète de 
+ces ressources, reportez-vous aux API spécifiques les concerant.
+
 ## Company
+
+Une `Company` représente une entreprise présente sur la plateforme Performance Immo.
+
+Elle peut prendre 3 formes :
+
+* CallCenter
+* ClientAccountHolding
+* ClientAccount
+
+### CallCenter
+
+Un `CallCenter` représente un centre d'appel, qui ouvre des tickets. Chaque entité `Company` autre que `CallCenter 
+doit possèder une référence vers un `CallCenter`.
+
+### ClientAccountHolding
+
+Un `ClientAccountHolding`représente une entreprise qui possède des filiales, représentées par des `ClientAccount`.
+
+Il doit référencer un `CallCenter`.
+
+### ClientAccount
+
+Un `ClientAccount` représente la structure qui gère un patrimoine immobilier.
+
+Il doit référencer un `CallCenter`et peut référencer un `ClientAccountHolding`.
+
+Il est componser de une ou plusieurs `Agency`, qui elles représentent un groupement (géographique ou autre) permettant 
+la ségrégation d'informations sur Performance Immo. Par exemple, pour restreindre l'accès 
+à certains `Ticket` ou à un certain `Patrimony`. 
 
 ## ProviderContact
 
-## Tickets
+Un `ProviderContact` est un contact qui a possiblement à intervenir sur un incident.
+
+## Ticket
+
+Un `Ticket` est une déclaration d'incident. Il permet de suivre l'évolution du traitement de cet incident, 
+de sa découverte jusqu'à sa résolution.
+ 
+Il contient plusieurs informations, statistiques sur le déroulement de la résolution de l'incident, 
+représenté notament par un journal d'évènement. 
 
 ## Patrimony
 
-## Lots
+`Patrimony` représente le patrimoine géré par les gestionnaires d'un `ClientAccount`.
+
+`Patrimony` est relié à une ou plusieurs `Agency` d'un `ClientAccount`
+
+## Lot
+
+`Lot` représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, ...)/
+
+`Lot` est relié à un `Patrimony`.
 
 ## User
+
+`User` représente un utilisateur de la plateforme Performance Immo.
+
+Il existe plusieurs types de `User` :
+
+* CallCenterUser - cadre de centre d'appel. Il est relié à un `CallCenter`. Il peut gérer tout ce qui est lié à ce `CallCenter` (`ClientAccount`, `Ticket`, etc...)
+* ClientAccountManager - cadre de compte Client. Il est relié à un `ClientAccount`. Il peut gérer tout ce qui est lié à ce `ClientAccount` (`Ticket`, `Patrimony`, etc...)
+* Executive - Cadre d'agence. Il est relié à une ou plusieurs `Agency` et à un `ClientAccount`. Il peut gérer tout ce qui est lié avec ses agences (`Ticket`, `Patrimony`, etc...)
 
 # Authentication
 
