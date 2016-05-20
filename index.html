@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Performance Immo API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,6 +86,8 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
@@ -121,11 +121,68 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Bienvenue dans la documentation des APIs de Performance Immo ! </p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>Performance immo a fait le choix technique d&#39;utiliser des API basées sur le protocole HTTP pour communiquer avec 
+ses différents partenaires.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>Cette document s&#39;organise principalement autour de deux axes :</p>
+
+<ul>
+<li><a href="#architecture-des-api">Un axe architectural</a></li>
+<li><a href="#ressources-m-tier">Un axe métier</a></li>
+</ul>
+
+<p>La documentation est en cours de construction, donc s&#39;il vous manque des informations ou que certaines choses ne sont 
+pas clairs, n&#39;hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. </p>
+
+<p>Si vous trouvez dans la documentation des manques ou des erreurs, nous vous remercions d&#39;avance de nous les communiquer 
+pour que nous puissions les corriger le plus rapidement possible.</p>
+
+<h2 id="host-des-api">Host des API</h2>
+
+<p>Le <strong><code class="prettyprint">host</code></strong> (ou base url) des API est spécifique à chaque client de Performance Immo.</p>
+
+<p>Pour connaitre votre host spécifique, addressez-vous à votre contact technique (sur votre fil slack de préférence).</p>
+
+<p>Toutes les API de Performance Immo sont uniquement accessible via <strong><code class="prettyprint">https</code></strong>, garantissant un niveau minimum de sécurité 
+et de confidentialité.</p>
+
+<p>Dans toute la suite du document, nous ne préciserons que les path spécifiques à chaque action, sans rappeler 
+à chaque fois le protocole ou le host <strong><code class="prettyprint">https://monapi.com</code></strong>. 
+Pensez-bien de votre côté à toujours rajouter ces informations dans vos requêtes.</p>
+
+<p>Chaque requête http; autre que <code class="prettyprint">GET</code>; requiert l&#39;envoi de json. N&#39;oubliez pas de spécifier le header 
+<strong><code class="prettyprint">Content-Type: application/json</code></strong> dans chacune de vos requêtes.</p>
+
+<h1 id="architecture-des-api">Architecture des API</h1>
+
+<p>Ces API sont divisées en 3 catégories :</p>
+
+<ul>
+<li><a href="#apis-v-nementielle-d-39-criture">API évènementielle d&#39;écriture</a></li>
+<li><a href="#apis-de-lecture">API REST de lecture</a></li>
+<li>API de notifications (en construction)</li>
+</ul>
+
+<h1 id="ressources-m-tier">Ressources métier</h1>
+
+<p>Les différentes ressources métier se retrouvent dans les différentes catégories d&#39;API décrites ci-dessus.</p>
+
+<p>Cependant, à la différences d&#39;API REST &ldquo;classique&rdquo; le format de représentation de ces entités sera très différent 
+d&#39;une catégorie d&#39;API à l&#39;autre.</p>
+
+<h2 id="company">Company</h2>
+
+<h2 id="providercontact">ProviderContact</h2>
+
+<h2 id="tickets">Tickets</h2>
+
+<h2 id="patrimony">Patrimony</h2>
+
+<h2 id="lots">Lots</h2>
+
+<h2 id="user">User</h2>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -159,7 +216,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+<h1 id="apis-de-lecture">APIs de lecture</h1>
 
 <h2 id="get-all-kittens">Get All Kittens</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
@@ -276,6 +333,25 @@ Remember — a happy kitten is an authenticated kitten!
 <td>The ID of the kitten to retrieve</td>
 </tr>
 </tbody></table>
+
+<h1 id="apis-v-nementielle-d-39-criture">APIs évènementielle d&#39;écriture</h1>
+
+<h2 id="pr-sentation">Présentation</h2>
+
+<p>Ainsi nous fournissons plusieurs API pour que nos partenaires puissent nous envoyer les informations nécessaire au fonctionnement de la plateforme avec leurs données clientes.</p>
+
+<p>Aujourd&#39;hui il existe 3 principales entités qui correspondent à 3 API :</p>
+
+<p>Pour renseigner les Companies (les comptes clients et leur agences) /api/vEvent/companies
+    Pour renseigner les contacts de fournisseur de service /api/vEvent/providerContacts
+    Pour renseigner les Tickets (ou dossiers) relatifs à un suivi de problème sur un patrimoine /api/vEvent/tickets</p>
+
+<p>Précédemment, nous vous avons aprlé d&#39;API évènementielle. Qu&#39;est-ce que cela implique ?</p>
+
+<p>Au lieu de nous transmettre l&#39;état des différentes entités (company, providerContact, ticket, &hellip;), nous vous fournissons une interface mettant à disposition une liste d&#39;évènements (ex: TicketOpened), associées à une entité donnée, vous permettant de nous envoyer un incrément de cet état.
+Pour expliquer cela autrement, la communication des données concernant une entité passe par la description d&#39;une cause (un évènement) à un changement, plutôt que juste le changement lui-même.</p>
+
+<p>Nous vous fournissons, plus bas dans ce document, la liste des évènements (ainsi que le format de données pour chacun d&#39;entre eux) pour chaque entités.</p>
 
           <h1 id="errors">Errors</h1>
 
