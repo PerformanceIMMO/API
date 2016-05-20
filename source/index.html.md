@@ -23,7 +23,7 @@ Bienvenue dans la documentation des APIs de Performance Immo !
 Performance immo a fait le choix technique d'utiliser des API basées sur le protocole HTTP pour communiquer avec 
 ses différents partenaires.
 
-Cette document s'organise principalement autour de deux axes :
+Cette documentation s'organise principalement autour de deux axes :
  
  * [Un axe architectural](#architecture-des-api)
  * [Un axe métier](#ressources-m-tier)
@@ -33,7 +33,7 @@ Chaque type d'API définiera le format qu'il gère pour chaque ressource métier
 La documentation est en cours de construction, donc s'il vous manque des informations ou que certaines choses ne sont 
 pas clairs, n'hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. 
 
-Si vous trouvez dans la documentation des manques ou des erreurs, nous vous remercions d'avance de nous les communiquer 
+Si vous trouvez des manques ou des erreurs, nous vous remercions d'avance de nous les communiquer 
 pour que nous puissions les corriger le plus rapidement possible.
 
 ## Host des API
@@ -111,6 +111,9 @@ la ségrégation d'informations sur Performance Immo. Par exemple, pour restrein
 
 Un `ProviderContact` est un contact qui a possiblement à intervenir sur un incident.
 
+Si vous souhaitez bénéficier des informations fournisseurs sur la plateforme, de statistiques, vous devez les référencer 
+via les API d'écriture.
+
 ## Ticket
 
 Un `Ticket` est une déclaration d'incident. Il permet de suivre l'évolution du traitement de cet incident, 
@@ -130,6 +133,14 @@ représenté notament par un journal d'évènement.
 `Lot` représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, ...)/
 
 `Lot` est relié à un `Patrimony`.
+
+## Operator
+
+`Operator` resprésente un acteur agissant sur le `Ticket`. Par exemple un opérateur répondant au téléphone 
+et saisissant uen ouverture de `Ticket`.
+
+Si vous souhaitez bénéficier des informations `Operator` sur la plateforme, de statistiques, vous devez les référencer 
+via les API d'écriture.
 
 ## User
 
@@ -296,3 +307,18 @@ d'une cause (un évènement) à un changement, plutôt que juste le changement l
 
 Nous vous fournissons, plus bas dans ce document, la liste des évènements 
 (ainsi que le format de données pour chacun d'entre eux) pour chaque entités.
+
+## Company
+
+## ProviderContact
+
+## Operator
+
+## Ticket
+
+## Patrimony
+
+## Lot
+ 
+## User 
+
