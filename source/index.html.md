@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Performance Immo API Reference
 
 language_tabs:
   - shell
@@ -18,11 +18,64 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Bienvenue dans la documentation des APIs de Performance Immo ! 
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Performance immo a fait le choix technique d'utiliser des API basées sur le protocole HTTP pour communiquer avec 
+ses différents partenaires.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Cette document s'organise principalement autour de deux axes :
+ 
+ * [Un axe architectural](#architecture-des-api)
+ * [Un axe métier](#ressources-m-tier)
+
+La documentation est en cours de construction, donc s'il vous manque des informations ou que certaines choses ne sont 
+pas clairs, n'hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. 
+
+Si vous trouvez dans la documentation des manques ou des erreurs, nous vous remercions d'avance de nous les communiquer 
+pour que nous puissions les corriger le plus rapidement possible.
+
+## Host des API
+
+Le **`host`** (ou base url) des API est spécifique à chaque client de Performance Immo.
+
+Pour connaitre votre host spécifique, addressez-vous à votre contact technique (sur votre fil slack de préférence).
+
+Toutes les API de Performance Immo sont uniquement accessible via **`https`**, garantissant un niveau minimum de sécurité 
+et de confidentialité.
+
+Dans toute la suite du document, nous ne préciserons que les path spécifiques à chaque action, sans rappeler 
+à chaque fois le protocole ou le host **`https://monapi.com`**. 
+Pensez-bien de votre côté à toujours rajouter ces informations dans vos requêtes.
+
+Chaque requête http; autre que `GET`; requiert l'envoi de json. N'oubliez pas de spécifier le header 
+**`Content-Type: application/json`** dans chacune de vos requêtes.
+
+# Architecture des API
+
+Ces API sont divisées en 3 catégories :
+
+* [API évènementielle d'écriture](#apis-v-nementielle-d-39-criture)
+* [API REST de lecture](#apis-de-lecture)
+* API de notifications (en construction)
+
+# Ressources métier
+
+Les différentes ressources métier se retrouvent dans les différentes catégories d'API décrites ci-dessus.
+
+Cependant, à la différences d'API REST "classique" le format de représentation de ces entités sera très différent 
+d'une catégorie d'API à l'autre.
+
+## Company
+
+## ProviderContact
+
+## Tickets
+
+## Patrimony
+
+## Lots
+
+## User
 
 # Authentication
 
@@ -58,7 +111,7 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# APIs de lecture
 
 ## Get All Kittens
 
@@ -166,3 +219,21 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
 
+# APIs évènementielle d'écriture
+
+## Présentation
+
+Ainsi nous fournissons plusieurs API pour que nos partenaires puissent nous envoyer les informations nécessaire au fonctionnement de la plateforme avec leurs données clientes.
+
+Aujourd'hui il existe 3 principales entités qui correspondent à 3 API :
+
+    Pour renseigner les Companies (les comptes clients et leur agences) /api/vEvent/companies
+    Pour renseigner les contacts de fournisseur de service /api/vEvent/providerContacts
+    Pour renseigner les Tickets (ou dossiers) relatifs à un suivi de problème sur un patrimoine /api/vEvent/tickets
+
+Précédemment, nous vous avons aprlé d'API évènementielle. Qu'est-ce que cela implique ?
+
+Au lieu de nous transmettre l'état des différentes entités (company, providerContact, ticket, ...), nous vous fournissons une interface mettant à disposition une liste d'évènements (ex: TicketOpened), associées à une entité donnée, vous permettant de nous envoyer un incrément de cet état.
+Pour expliquer cela autrement, la communication des données concernant une entité passe par la description d'une cause (un évènement) à un changement, plutôt que juste le changement lui-même.
+
+Nous vous fournissons, plus bas dans ce document, la liste des évènements (ainsi que le format de données pour chacun d'entre eux) pour chaque entités.
