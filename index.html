@@ -133,6 +133,8 @@ ses différents partenaires.</p>
 <li><a href="#ressources-m-tier">Un axe métier</a></li>
 </ul>
 
+<p>Chaque type d&#39;API définiera le format qu&#39;il gère pour chaque ressource métier.</p>
+
 <p>La documentation est en cours de construction, donc s&#39;il vous manque des informations ou que certaines choses ne sont 
 pas clairs, n&#39;hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. </p>
 
@@ -172,17 +174,77 @@ Pensez-bien de votre côté à toujours rajouter ces informations dans vos requ�
 <p>Cependant, à la différences d&#39;API REST &ldquo;classique&rdquo; le format de représentation de ces entités sera très différent 
 d&#39;une catégorie d&#39;API à l&#39;autre.</p>
 
+<p>Dans cette partie, nous définissons la signification métier de chaque ressource. Pour une description concrète de 
+ces ressources, reportez-vous aux API spécifiques les concerant.</p>
+
 <h2 id="company">Company</h2>
+
+<p>Une <code class="prettyprint">Company</code> représente une entreprise présente sur la plateforme Performance Immo.</p>
+
+<p>Elle peut prendre 3 formes :</p>
+
+<ul>
+<li>CallCenter</li>
+<li>ClientAccountHolding</li>
+<li>ClientAccount</li>
+</ul>
+
+<h3 id="callcenter">CallCenter</h3>
+
+<p>Un <code class="prettyprint">CallCenter</code> représente un centre d&#39;appel, qui ouvre des tickets. Chaque entité <code class="prettyprint">Company</code> autre que <code class="prettyprint">CallCenter 
+doit possèder une référence vers un</code>CallCenter`.</p>
+
+<h3 id="clientaccountholding">ClientAccountHolding</h3>
+
+<p>Un <code class="prettyprint">ClientAccountHolding</code>représente une entreprise qui possède des filiales, représentées par des <code class="prettyprint">ClientAccount</code>.</p>
+
+<p>Il doit référencer un <code class="prettyprint">CallCenter</code>.</p>
+
+<h3 id="clientaccount">ClientAccount</h3>
+
+<p>Un <code class="prettyprint">ClientAccount</code> représente la structure qui gère un patrimoine immobilier.</p>
+
+<p>Il doit référencer un <code class="prettyprint">CallCenter</code>et peut référencer un <code class="prettyprint">ClientAccountHolding</code>.</p>
+
+<p>Il est componser de une ou plusieurs <code class="prettyprint">Agency</code>, qui elles représentent un groupement (géographique ou autre) permettant 
+la ségrégation d&#39;informations sur Performance Immo. Par exemple, pour restreindre l&#39;accès 
+à certains <code class="prettyprint">Ticket</code> ou à un certain <code class="prettyprint">Patrimony</code>. </p>
 
 <h2 id="providercontact">ProviderContact</h2>
 
-<h2 id="tickets">Tickets</h2>
+<p>Un <code class="prettyprint">ProviderContact</code> est un contact qui a possiblement à intervenir sur un incident.</p>
+
+<h2 id="ticket">Ticket</h2>
+
+<p>Un <code class="prettyprint">Ticket</code> est une déclaration d&#39;incident. Il permet de suivre l&#39;évolution du traitement de cet incident, 
+de sa découverte jusqu&#39;à sa résolution.</p>
+
+<p>Il contient plusieurs informations, statistiques sur le déroulement de la résolution de l&#39;incident, 
+représenté notament par un journal d&#39;évènement. </p>
 
 <h2 id="patrimony">Patrimony</h2>
 
-<h2 id="lots">Lots</h2>
+<p><code class="prettyprint">Patrimony</code> représente le patrimoine géré par les gestionnaires d&#39;un <code class="prettyprint">ClientAccount</code>.</p>
+
+<p><code class="prettyprint">Patrimony</code> est relié à une ou plusieurs <code class="prettyprint">Agency</code> d&#39;un <code class="prettyprint">ClientAccount</code></p>
+
+<h2 id="lot">Lot</h2>
+
+<p><code class="prettyprint">Lot</code> représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, &hellip;)/</p>
+
+<p><code class="prettyprint">Lot</code> est relié à un <code class="prettyprint">Patrimony</code>.</p>
 
 <h2 id="user">User</h2>
+
+<p><code class="prettyprint">User</code> représente un utilisateur de la plateforme Performance Immo.</p>
+
+<p>Il existe plusieurs types de <code class="prettyprint">User</code> :</p>
+
+<ul>
+<li>CallCenterUser - cadre de centre d&#39;appel. Il est relié à un <code class="prettyprint">CallCenter</code>. Il peut gérer tout ce qui est lié à ce <code class="prettyprint">CallCenter</code> (<code class="prettyprint">ClientAccount</code>, <code class="prettyprint">Ticket</code>, etc&hellip;)</li>
+<li>ClientAccountManager - cadre de compte Client. Il est relié à un <code class="prettyprint">ClientAccount</code>. Il peut gérer tout ce qui est lié à ce <code class="prettyprint">ClientAccount</code> (<code class="prettyprint">Ticket</code>, <code class="prettyprint">Patrimony</code>, etc&hellip;)</li>
+<li>Executive - Cadre d&#39;agence. Il est relié à une ou plusieurs <code class="prettyprint">Agency</code> et à un <code class="prettyprint">ClientAccount</code>. Il peut gérer tout ce qui est lié avec ses agences (<code class="prettyprint">Ticket</code>, <code class="prettyprint">Patrimony</code>, etc&hellip;)</li>
+</ul>
 
 <h1 id="authentication">Authentication</h1>
 
