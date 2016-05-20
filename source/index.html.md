@@ -52,6 +52,12 @@ Pensez-bien de votre côté à toujours rajouter ces informations dans vos requ�
 Chaque requête http; autre que `GET`; requiert l'envoi de json. N'oubliez pas de spécifier le header 
 **`Content-Type: application/json`** dans chacune de vos requêtes.
 
+## Encoding
+
+Le seul enconding accepté pour utiliser les API est `utf-8`.
+
+Faites bien attention à transmettre les données avec cet encoding si vous ne voulez pas avoir de mauvaises surprises.
+
 # Architecture des API
 
 Ces API sont divisées en 3 catégories :
@@ -281,17 +287,12 @@ ID | The ID of the kitten to retrieve
 
 ## Présentation
 
-Ainsi nous fournissons plusieurs API pour que nos partenaires puissent nous envoyer les informations nécessaire au fonctionnement de la plateforme avec leurs données clientes.
+L'utilisation d'une API évènementielle implique qu'au lieu de nous transmettre l'état des différentes entités 
+(`Company`, `ProviderContact`, `Ticket`, ...), nous vous fournissons une interface mettant à disposition une liste 
+d'évènements (ex: `TicketOpened`), associées à une entité donnée, vous permettant de nous envoyer un incrément de cet état.
 
-Aujourd'hui il existe 3 principales entités qui correspondent à 3 API :
+Pour expliquer cela autrement, la communication des données concernant une entité passe par la description 
+d'une cause (un évènement) à un changement, plutôt que juste le changement lui-même.
 
-    Pour renseigner les Companies (les comptes clients et leur agences) /api/vEvent/companies
-    Pour renseigner les contacts de fournisseur de service /api/vEvent/providerContacts
-    Pour renseigner les Tickets (ou dossiers) relatifs à un suivi de problème sur un patrimoine /api/vEvent/tickets
-
-Précédemment, nous vous avons aprlé d'API évènementielle. Qu'est-ce que cela implique ?
-
-Au lieu de nous transmettre l'état des différentes entités (company, providerContact, ticket, ...), nous vous fournissons une interface mettant à disposition une liste d'évènements (ex: TicketOpened), associées à une entité donnée, vous permettant de nous envoyer un incrément de cet état.
-Pour expliquer cela autrement, la communication des données concernant une entité passe par la description d'une cause (un évènement) à un changement, plutôt que juste le changement lui-même.
-
-Nous vous fournissons, plus bas dans ce document, la liste des évènements (ainsi que le format de données pour chacun d'entre eux) pour chaque entités.
+Nous vous fournissons, plus bas dans ce document, la liste des évènements 
+(ainsi que le format de données pour chacun d'entre eux) pour chaque entités.
