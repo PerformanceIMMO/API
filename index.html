@@ -157,6 +157,12 @@ Pensez-bien de votre côté à toujours rajouter ces informations dans vos requ�
 <p>Chaque requête http; autre que <code class="prettyprint">GET</code>; requiert l&#39;envoi de json. N&#39;oubliez pas de spécifier le header 
 <strong><code class="prettyprint">Content-Type: application/json</code></strong> dans chacune de vos requêtes.</p>
 
+<h2 id="encoding">Encoding</h2>
+
+<p>Le seul enconding accepté pour utiliser les API est <code class="prettyprint">utf-8</code>.</p>
+
+<p>Faites bien attention à transmettre les données avec cet encoding si vous ne voulez pas avoir de mauvaises surprises.</p>
+
 <h1 id="architecture-des-api">Architecture des API</h1>
 
 <p>Ces API sont divisées en 3 catégories :</p>
@@ -400,20 +406,15 @@ Remember — a happy kitten is an authenticated kitten!
 
 <h2 id="pr-sentation">Présentation</h2>
 
-<p>Ainsi nous fournissons plusieurs API pour que nos partenaires puissent nous envoyer les informations nécessaire au fonctionnement de la plateforme avec leurs données clientes.</p>
+<p>L&#39;utilisation d&#39;une API évènementielle implique qu&#39;au lieu de nous transmettre l&#39;état des différentes entités 
+(<code class="prettyprint">Company</code>, <code class="prettyprint">ProviderContact</code>, <code class="prettyprint">Ticket</code>, &hellip;), nous vous fournissons une interface mettant à disposition une liste 
+d&#39;évènements (ex: <code class="prettyprint">TicketOpened</code>), associées à une entité donnée, vous permettant de nous envoyer un incrément de cet état.</p>
 
-<p>Aujourd&#39;hui il existe 3 principales entités qui correspondent à 3 API :</p>
+<p>Pour expliquer cela autrement, la communication des données concernant une entité passe par la description 
+d&#39;une cause (un évènement) à un changement, plutôt que juste le changement lui-même.</p>
 
-<p>Pour renseigner les Companies (les comptes clients et leur agences) /api/vEvent/companies
-    Pour renseigner les contacts de fournisseur de service /api/vEvent/providerContacts
-    Pour renseigner les Tickets (ou dossiers) relatifs à un suivi de problème sur un patrimoine /api/vEvent/tickets</p>
-
-<p>Précédemment, nous vous avons aprlé d&#39;API évènementielle. Qu&#39;est-ce que cela implique ?</p>
-
-<p>Au lieu de nous transmettre l&#39;état des différentes entités (company, providerContact, ticket, &hellip;), nous vous fournissons une interface mettant à disposition une liste d&#39;évènements (ex: TicketOpened), associées à une entité donnée, vous permettant de nous envoyer un incrément de cet état.
-Pour expliquer cela autrement, la communication des données concernant une entité passe par la description d&#39;une cause (un évènement) à un changement, plutôt que juste le changement lui-même.</p>
-
-<p>Nous vous fournissons, plus bas dans ce document, la liste des évènements (ainsi que le format de données pour chacun d&#39;entre eux) pour chaque entités.</p>
+<p>Nous vous fournissons, plus bas dans ce document, la liste des évènements 
+(ainsi que le format de données pour chacun d&#39;entre eux) pour chaque entités.</p>
 
           <h1 id="errors">Errors</h1>
 
