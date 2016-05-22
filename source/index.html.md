@@ -3,8 +3,6 @@ title: Performance Immo API Reference
 
 language_tabs:
   - shell
-  - ruby
-  - python
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -154,39 +152,89 @@ Il existe plusieurs types de `User` :
 
 # Authentication
 
-> To authorize, use this code:
+L'existence de 2 types d'API distincte (évènementielle en écriture et REST en lecture) implique deux systèmes d'authentification.
+ 
+<aside class="notice">
+Ce système à 2 authentifications suivant l'API sera prochainement supprimée.
+</aside> 
 
-```ruby
-require 'kittn'
+## API évènementielle
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> To login, use this code:
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -XPOST \ 
+> --header "Content-Type: application/json" \
+> -d '{"login":my_api_login, "password":my_api_password}' \
+> https://my_base_uri/api/vEvent/login
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> In your next request add
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+```shell
+curl --header "Content-Type: application/json" \
+> ...
+```
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
 </aside>
 
+Pour s'authentifier il faut :
+
+* `POST /api/vEvent/login` avec le login/password dans le body
+
+Retourne `200` si OK avec le header `Cookie: PI_SESSION=...`
+
+* Rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes
+
+<aside class="notice">
+La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
+et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
+</aside>
+
+## API REST
+
+> To login, use this code:
+
+```shell
+curl -XPOST \ 
+> --header "Content-Type: application/json" \
+> -d '{"login":my_api_login, "password":my_api_password}' \
+> https://my_base_uri/api/v1/login
+```
+
+> In your next request add
+
+```shell
+curl --header "Content-Type: application/json" \
+> ...
+```
+
+Pour s'authentifier il faut :
+
+* `POST /api/v1/login` avec le login/password dans le body
+
+Retourne `200` si OK avec le header `Cookie: PI_SESSION=...`
+
+* rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes
+
+
 # APIs de lecture
+
+## Company
+
+## ProviderContact
+
+## Operator
+
+## Ticket
+
+## Patrimony
+
+## Lot
+ 
+## User
 
 ## Get All Kittens
 
