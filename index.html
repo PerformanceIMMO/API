@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,6 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -265,37 +263,96 @@ via les API d&#39;écriture.</p>
 
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p>L&#39;existence de 2 types d&#39;API distincte (évènementielle en écriture et REST en lecture) implique deux systèmes d&#39;authentification.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Ce système à 2 authentifications suivant l'API sera prochainement supprimée.
+</aside> 
+
+<h2 id="api-v-nementielle">API évènementielle</h2>
+
+<blockquote>
+<p>To login, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>
+<span class="gp">&gt; </span>--header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>-d <span class="s1">'{"login":my_api_login, "password":my_api_password}'</span> <span class="se">\</span>
+<span class="gp">&gt; </span>https://my_base_uri/api/vEvent/login
+</code></pre>
+
+<blockquote>
+<p>In your next request add</p>
+</blockquote>
+<pre class="highlight shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>...
+</code></pre>
+
+<aside class="notice">
+Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
 </aside>
 
+<p>Pour s&#39;authentifier il faut :</p>
+
+<ul>
+<li><code class="prettyprint">POST /api/vEvent/login</code> avec le login/password dans le body</li>
+</ul>
+
+<p>Retourne <code class="prettyprint">200</code> si OK avec le header <code class="prettyprint">Cookie: PI_SESSION=...</code></p>
+
+<ul>
+<li>Rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes</li>
+</ul>
+
+<aside class="notice">
+La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
+et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
+</aside>
+
+<h2 id="api-rest">API REST</h2>
+
+<blockquote>
+<p>To login, use this code:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>
+<span class="gp">&gt; </span>--header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>-d <span class="s1">'{"login":my_api_login, "password":my_api_password}'</span> <span class="se">\</span>
+<span class="gp">&gt; </span>https://my_base_uri/api/v1/login
+</code></pre>
+
+<blockquote>
+<p>In your next request add</p>
+</blockquote>
+<pre class="highlight shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>...
+</code></pre>
+
+<p>Pour s&#39;authentifier il faut :</p>
+
+<ul>
+<li><code class="prettyprint">POST /api/v1/login</code> avec le login/password dans le body</li>
+</ul>
+
+<p>Retourne <code class="prettyprint">200</code> si OK avec le header <code class="prettyprint">Cookie: PI_SESSION=...</code></p>
+
+<ul>
+<li>rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes</li>
+</ul>
+
 <h1 id="apis-de-lecture">APIs de lecture</h1>
+
+<h2 id="company">Company</h2>
+
+<h2 id="providercontact">ProviderContact</h2>
+
+<h2 id="operator">Operator</h2>
+
+<h2 id="ticket">Ticket</h2>
+
+<h2 id="patrimony">Patrimony</h2>
+
+<h2 id="lot">Lot</h2>
+
+<h2 id="user">User</h2>
 
 <h2 id="get-all-kittens">Get All Kittens</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
@@ -503,8 +560,6 @@ d&#39;une cause (un évènement) à un changement, plutôt que juste le changeme
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
           </div>
       </div>
     </div>
