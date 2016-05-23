@@ -179,7 +179,7 @@ Pensez-bien de votre côté à toujours rajouter ces informations dans vos requ�
 d&#39;une catégorie d&#39;API à l&#39;autre.</p>
 
 <p>Dans cette partie, nous définissons la signification métier de chaque ressource. Pour une description concrète de 
-ces ressources, reportez-vous aux API spécifiques les concerant.</p>
+ces ressources, reportez-vous aux API spécifiques les concerant. </p>
 
 <h2 id="company">Company</h2>
 
@@ -212,7 +212,7 @@ doit possèder une référence vers un</code>CallCenter`.</p>
 
 <p>Il est componser de une ou plusieurs <code class="prettyprint">Agency</code>, qui elles représentent un groupement (géographique ou autre) permettant 
 la ségrégation d&#39;informations sur Performance Immo. Par exemple, pour restreindre l&#39;accès 
-à certains <code class="prettyprint">Ticket</code> ou à un certain <code class="prettyprint">Patrimony</code>. </p>
+à certains <code class="prettyprint">Ticket</code> ou à un certain <code class="prettyprint">Patrimony</code>.</p>
 
 <h2 id="providercontact">ProviderContact</h2>
 
@@ -266,7 +266,7 @@ via les API d&#39;écriture.</p>
 <p>L&#39;existence de 2 types d&#39;API distincte (évènementielle en écriture et REST en lecture) implique deux systèmes d&#39;authentification.</p>
 
 <aside class="notice">
-Ce système à 2 authentifications suivant l'API sera prochainement supprimée.
+Ce système à 2 authentifications suivant l'API sera prochainement supprimé.
 </aside> 
 
 <h2 id="api-v-nementielle">API évènementielle</h2>
@@ -275,33 +275,79 @@ Ce système à 2 authentifications suivant l'API sera prochainement supprimée.
 <p>To login, use this code:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>
-<span class="gp">&gt; </span>--header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<span class="gp">&gt; </span>-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 <span class="gp">&gt; </span>-d <span class="s1">'{"login":my_api_login, "password":my_api_password}'</span> <span class="se">\</span>
 <span class="gp">&gt; </span>https://my_base_uri/api/vEvent/login
 </code></pre>
 
 <blockquote>
-<p>In your next request add</p>
+<p>Response example :</p>
 </blockquote>
-<pre class="highlight shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Cookie</span><span class="p">:</span> <span class="s">PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd</span>
+</code></pre>
+
+<blockquote>
+<p>In your next request add :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd"</span> <span class="se">\</span>
 <span class="gp">&gt; </span>...
 </code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/vEvent/login</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>login</td>
+<td>body</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>body</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Empty</td>
+<td>Retourne le cookie de session <code class="prettyprint">PI_SESSION</code> dans le header de la réponse</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid or if User not found</td>
+</tr>
+</tbody></table>
+
+<p>Rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes pour être authentifié.</p>
 
 <aside class="notice">
 Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
 </aside>
-
-<p>Pour s&#39;authentifier il faut :</p>
-
-<ul>
-<li><code class="prettyprint">POST /api/vEvent/login</code> avec le login/password dans le body</li>
-</ul>
-
-<p>Retourne <code class="prettyprint">200</code> si OK avec le header <code class="prettyprint">Cookie: PI_SESSION=...</code></p>
-
-<ul>
-<li>Rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes</li>
-</ul>
 
 <aside class="notice">
 La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
@@ -326,33 +372,67 @@ et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
 <span class="gp">&gt; </span>...
 </code></pre>
 
-<p>Pour s&#39;authentifier il faut :</p>
+<h3 id="http-request">HTTP Request</h3>
 
-<ul>
-<li><code class="prettyprint">POST /api/v1/login</code> avec le login/password dans le body</li>
-</ul>
+<p><code class="prettyprint">POST /api/v1/login</code></p>
 
-<p>Retourne <code class="prettyprint">200</code> si OK avec le header <code class="prettyprint">Cookie: PI_SESSION=...</code></p>
+<h3 id="parameters">Parameters</h3>
 
-<ul>
-<li>rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes</li>
-</ul>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>login</td>
+<td>body</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>password</td>
+<td>body</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Empty</td>
+<td>Retourne le cookie de session <code class="prettyprint">PI_SESSION</code> dans le header de la réponse</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid or if User not found</td>
+</tr>
+</tbody></table>
+
+<p>Rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes pour être authentifié.</p>
+
+<aside class="notice">
+Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
+</aside>
+
+<aside class="notice">
+La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
+et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
+</aside>
 
 <h1 id="apis-de-lecture">APIs de lecture</h1>
-
-<h2 id="company">Company</h2>
-
-<h2 id="providercontact">ProviderContact</h2>
-
-<h2 id="operator">Operator</h2>
-
-<h2 id="ticket">Ticket</h2>
-
-<h2 id="patrimony">Patrimony</h2>
-
-<h2 id="lot">Lot</h2>
-
-<h2 id="user">User</h2>
 
 <h2 id="get-all-kittens">Get All Kittens</h2>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
@@ -484,19 +564,218 @@ d&#39;une cause (un évènement) à un changement, plutôt que juste le changeme
 <p>Nous vous fournissons, plus bas dans ce document, la liste des évènements 
 (ainsi que le format de données pour chacun d&#39;entre eux) pour chaque entités.</p>
 
-<h2 id="company">Company</h2>
+          <h1 id="companies">Companies</h1>
 
-<h2 id="providercontact">ProviderContact</h2>
+<h2 id="get-all-companies">Get all Companies</h2>
 
-<h2 id="operator">Operator</h2>
+<h3 id="http-request">HTTP Request</h3>
 
-<h2 id="ticket">Ticket</h2>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies</code></p>
 
-<h2 id="patrimony">Patrimony</h2>
+<h3 id="parameters">Parameters</h3>
 
-<h2 id="lot">Lot</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td>String</td>
+<td>0-100</td>
+<td>range selector for result pagination ex: <code class="prettyprint">range=0-19</code> (starRange should be &gt; endRange)</td>
+</tr>
+<tr>
+<td>holdinguid</td>
+<td>query</td>
+<td>Option[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>None</td>
+<td>uid of ClientAccountHolding. If this param is setted, return ClientAccountHolding&rsquo;s subsidiairies list. <strong>This param is incompatible with <code class="prettyprint">companytype</code>.</strong></td>
+</tr>
+<tr>
+<td>companytype</td>
+<td>query</td>
+<td>Option[String]</td>
+<td>None</td>
+<td>If this param is setted, return CallCenter&rsquo;s list. <strong>This param is incompatible with <code class="prettyprint">holdinguid</code>.</strong></td>
+</tr>
+</tbody></table>
 
-<h2 id="user">User</h2>
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Array[<a href="#companyqueryview">CompanyQueryView</a>]</td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Array[<a href="#companyqueryview">CompanyQueryView</a>]</td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-company">Get a specific Company</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>uid of the requested <code class="prettyprint">Company</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#companyqueryview">CompanyQueryView</a></td>
+<td>The <code class="prettyprint">Company</code> requested</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-agencies-of-a-company">Get Agencies of a Company</h2>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid/agencies</code></p>
+
+<p>cqrs.queries.application.controllers.CompaniesQueryAPI.agencies(range: Option[String], uid: SafeUUID)</p>
+
+<h2 id="get-users-of-a-company">Get Users of a Company</h2>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid/users</code></p>
+
+<p>cqrs.queries.application.controllers.CompaniesQueryAPI.companyUsers(range: Option[String], companyUid: SafeUUID)</p>
+
+<h2 id="get-subsidiaries-of-a-company">Get subsidiaries of a Company</h2>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid/subsidiaries</code></p>
+
+<p>cqrs.queries.application.controllers.CompaniesQueryAPI.subsidiaries(range: Option[String], companyUid: SafeUUID)</p>
+
+<h2 id="create-company">Create Company</h2>
+
+<h2 id="increment-company">Increment Company</h2>
+
+          <h1 id="models">Models</h1>
+
+<h2 id="safeuuid">SafeUUID</h2>
+
+<p>Identifiant garanti unique en utilisant la norme <a href="https://fr.wikipedia.org/wiki/Globally_Unique_Identifier">GUUID</a>    </p>
+
+<p>ex: <code class="prettyprint">8074964f-c633-3c2a-055f-bbaf8ca8181b</code></p>
+
+<h2 id="companyqueryview">CompanyQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>true</td>
+<td>id of the <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>true</td>
+<td>the <code class="prettyprint">Company</code>&rsquo;s label</td>
+</tr>
+<tr>
+<td>isActive</td>
+<td>Boolean</td>
+<td>true</td>
+<td><code class="prettyprint">true</code> if the <code class="prettyprint">Company</code> is active</td>
+</tr>
+<tr>
+<td>holding</td>
+<td><a href="#holdingqueryview">HoldingQueryView</a></td>
+<td>false</td>
+<td>a reference to <code class="prettyprint">Company</code>&rsquo;s holding if has it</td>
+</tr>
+<tr>
+<td>companyType</td>
+<td>String</td>
+<td>true</td>
+<td>enum : <code class="prettyprint">&quot;CallCenter&quot;</code> or <code class="prettyprint">&quot;ClientAccountHolding&quot;</code> or <code class="prettyprint">&quot;ClientAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="holdingqueryview">HoldingQueryView</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>true</td>
+<td>the holding&rsquo;s uid</td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>true</td>
+<td>the holding&rsquo;s label</td>
+</tr>
+</tbody></table>
 
           <h1 id="errors">Errors</h1>
 
