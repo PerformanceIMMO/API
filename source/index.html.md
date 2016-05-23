@@ -9,6 +9,8 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - companies
+  - models
   - errors
 
 search: true
@@ -72,7 +74,7 @@ Cependant, à la différences d'API REST "classique" le format de représentatio
 d'une catégorie d'API à l'autre.
 
 Dans cette partie, nous définissons la signification métier de chaque ressource. Pour une description concrète de 
-ces ressources, reportez-vous aux API spécifiques les concerant.
+ces ressources, reportez-vous aux API spécifiques les concerant. 
 
 ## Company
 
@@ -103,7 +105,7 @@ Il doit référencer un `CallCenter`et peut référencer un `ClientAccountHoldin
 
 Il est componser de une ou plusieurs `Agency`, qui elles représentent un groupement (géographique ou autre) permettant 
 la ségrégation d'informations sur Performance Immo. Par exemple, pour restreindre l'accès 
-à certains `Ticket` ou à un certain `Patrimony`. 
+à certains `Ticket` ou à un certain `Patrimony`.
 
 ## ProviderContact
 
@@ -155,7 +157,7 @@ Il existe plusieurs types de `User` :
 L'existence de 2 types d'API distincte (évènementielle en écriture et REST en lecture) implique deux systèmes d'authentification.
  
 <aside class="notice">
-Ce système à 2 authentifications suivant l'API sera prochainement supprimée.
+Ce système à 2 authentifications suivant l'API sera prochainement supprimé.
 </aside> 
 
 ## API évènementielle
@@ -164,29 +166,49 @@ Ce système à 2 authentifications suivant l'API sera prochainement supprimée.
 
 ```shell
 curl -XPOST \ 
-> --header "Content-Type: application/json" \
+> -H "Content-Type: application/json" \
 > -d '{"login":my_api_login, "password":my_api_password}' \
 > https://my_base_uri/api/vEvent/login
 ```
 
-> In your next request add
+> Response example :
+
+```http
+HTTP/1.1 200 OK
+Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd
+```
+
+> In your next request add :
 
 ```shell
-curl --header "Content-Type: application/json" \
+curl -H "Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd" \
 > ...
 ```
+
+### HTTP Request
+
+`POST /api/vEvent/login`
+
+### Parameters
+
+Name | In | Type | Description
+-------------- | -------------- | -------------- | ------------
+login | body | String | 
+password | body | String | 
+
+### Responses
+
+Http code | Type | Description
+----------| ------| -----------
+200       | Empty | Retourne le cookie de session `PI_SESSION` dans le header de la réponse
+400       | Error | Bad request, occurs most often when parameters passed are invalid or if User not found
+
+
+Rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes pour être authentifié.
 
 <aside class="notice">
 Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
 </aside>
-
-Pour s'authentifier il faut :
-
-* `POST /api/vEvent/login` avec le login/password dans le body
-
-Retourne `200` si OK avec le header `Cookie: PI_SESSION=...`
-
-* Rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes
 
 <aside class="notice">
 La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
@@ -211,30 +233,37 @@ curl --header "Content-Type: application/json" \
 > ...
 ```
 
-Pour s'authentifier il faut :
+### HTTP Request
 
-* `POST /api/v1/login` avec le login/password dans le body
+`POST /api/v1/login`
 
-Retourne `200` si OK avec le header `Cookie: PI_SESSION=...`
+### Parameters
 
-* rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes
+Name | In | Type | Description
+-------------- | -------------- | -------------- | ------------
+login | body | String | 
+password | body | String | 
 
+### Responses
+
+Http code | Type | Description
+----------| ------| -----------
+200       | Empty | Retourne le cookie de session `PI_SESSION` dans le header de la réponse
+400       | Error | Bad request, occurs most often when parameters passed are invalid or if User not found
+
+
+Rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes pour être authentifié.
+
+<aside class="notice">
+Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
+</aside>
+
+<aside class="notice">
+La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
+et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
+</aside>
 
 # APIs de lecture
-
-## Company
-
-## ProviderContact
-
-## Operator
-
-## Ticket
-
-## Patrimony
-
-## Lot
- 
-## User
 
 ## Get All Kittens
 
@@ -355,18 +384,4 @@ d'une cause (un évènement) à un changement, plutôt que juste le changement l
 
 Nous vous fournissons, plus bas dans ce document, la liste des évènements 
 (ainsi que le format de données pour chacun d'entre eux) pour chaque entités.
-
-## Company
-
-## ProviderContact
-
-## Operator
-
-## Ticket
-
-## Patrimony
-
-## Lot
- 
-## User 
 
