@@ -265,5 +265,5 @@ Http code | Type                                        | Description
 
 ## Create Company
 
-## Increment Company
+## Increment Company State
 
