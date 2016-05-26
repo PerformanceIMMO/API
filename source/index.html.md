@@ -154,9 +154,9 @@ Il existe plusieurs types de `User` :
 * ClientAccountManager - cadre de compte Client. Il est relié à un `ClientAccount`. Il peut gérer tout ce qui est lié à ce `ClientAccount` (`Ticket`, `Patrimony`, etc...)
 * Executive - Cadre d'agence. Il est relié à une ou plusieurs `Agency` et à un `ClientAccount`. Il peut gérer tout ce qui est lié avec ses agences (`Ticket`, `Patrimony`, etc...)
 
-# Authentication
+# Authentification
 
-L'existence de 2 types d'API distincte (évènementielle en écriture et REST en lecture) implique deux systèmes d'authentification.
+L'existence de 2 types d'API distincte (évènementielle en écriture et REST en lecture) qui implique deux systèmes d'authentification.
  
 <aside class="notice">
 Ce système à 2 authentifications suivant l'API sera prochainement supprimé.
