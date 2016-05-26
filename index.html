@@ -163,6 +163,18 @@ Pensez-bien de votre côté à toujours rajouter ces informations dans vos requ�
 
 <h2 id="range">Range</h2>
 
+<blockquote>
+<p>Request example</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">206</span> <span class="ne">Partial Content</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-10/256</span>
+<span class="na">Accept-Range</span><span class="p">:</span> <span class="s">100</span>
+</code></pre>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-9/10</span>
+<span class="na">Accept-Range</span><span class="p">:</span> <span class="s">100</span>
+</code></pre>
+
 <p><code class="prettyprint">range=0-10</code> is a query parameter that is available in several query API, for collection resources.
 It allow to paginate requests.</p>
 
@@ -175,6 +187,25 @@ It allow to paginate requests.</p>
 </ul>
 
 <p><code class="prettyprint">startIndex</code> should be &gt;= <code class="prettyprint">endIndex</code>.</p>
+
+<p>The request answer by :</p>
+
+<ul>
+<li><code class="prettyprint">200 OK</code> - All the elements of the resources are returned.</li>
+<li><code class="prettyprint">206 Partial Content</code> - Only a part of the resources are returned. </li>
+</ul>
+
+<p>To know what part of the collection is sent, See <code class="prettyprint">Content-Range</code> header response.</p>
+
+<p><code class="prettyprint">Content-Range offset – limit / count</code></p>
+
+<ul>
+<li>offset : index of the first element returned by the request.</li>
+<li>limit : index of the last element returned by the request.</li>
+<li>count : number of element in the entire collection.</li>
+</ul>
+
+<p>cf. <a href="http://blog.octo.com/designer-une-api-rest/#pagination">pagination the doc</a> for more explanation.</p>
 
 <h1 id="architecture-des-api">Architecture des API</h1>
 
@@ -1458,12 +1489,12 @@ https://base_url/api/v1/patrimonies
 </thead><tbody>
 <tr>
 <td>200</td>
-<td><a href="#ticketresultview">PatrimonyResultView</a></td>
+<td><a href="#patrimonyresultview">PatrimonyResultView</a></td>
 <td>All resources&rsquo;s elements are returned.</td>
 </tr>
 <tr>
 <td>206</td>
-<td><a href="#ticketresultview">PatrimonyResultView</a></td>
+<td><a href="#patrimonyresultview">PatrimonyResultView</a></td>
 <td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
 </tr>
 <tr>
@@ -1473,9 +1504,275 @@ https://base_url/api/v1/patrimonies
 </tr>
 </tbody></table>
 
-<p>GET         /api/v1/patrimonies/:uid                                        cqrs.queries.application.controllers.PatrimoniesQueryAPI.patrimony(uid: SafeUUID)
-GET         /api/v1/patrimonies/:patrimonyUid/buildings                     cqrs.queries.application.controllers.PatrimoniesQueryAPI.buildings(range: Option[String], patrimonyUid: SafeUUID)
-GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs.queries.application.controllers.PatrimoniesQueryAPI.building(patrimonyUid: SafeUUID, buildingUid: SafeUUID)</p>
+<h2 id="get-a-specific-patrimony">Get a specific Patrimony</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/patrimonies/6ed010a1-7481-4b38-87da-c219fc31ba64
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEMO_SOLFERINO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17 RUE DE SOLFERINO II"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foncia Agence Centrale"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"complementaryAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8fb38a44-7a31-4f6f-9948-2ff3515bdafa"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rue de Solférino"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boulogne-Billancourt"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92100"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.8287815</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.243447699999999</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"checker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJh7Ckz-965kcROIvFZzyeeok"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89532be8-543c-4d45-a0fc-4762b774eee5"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rue de Solférino"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boulogne-Billancourt"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92100"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.8287815</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.243447699999999</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"checker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJh7Ckz-965kcROIvFZzyeeok"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/patrimonies/:patrimony_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimony_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> requested</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#patrimonydetailqueryview">PatrimonyDetailQueryView</a></td>
+<td>the <code class="prettyprint">Patrimony</code> requested.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-buildings-of-a-patrimony">Get all Buildings of a Patrimony</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/patrimonies/6ed010a1-.../building
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/1</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456f4a1d-5287-494c-93d6-6535aaf1bc68"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Archipel"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f745b09-2e15-4dd7-82de-99d4c3e0a764"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/patrimonies/:patrimony_uid/buildings</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-100</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#patrimonybuildingresultview">PatrimonyBuildingResultView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#patrimonybuildingresultview">PatrimonyBuildingResultView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-building">Get a specific Building</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456f4a1d-5287-494c-93d6-6535aaf1bc68"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Archipel"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1f745b09-2e15-4dd7-82de-99d4c3e0a764"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1c8ead50-45b8-4771-ae46-d795d6e0cc8d"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avenue des États Unis"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Versailles"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"78000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.8112548</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.1479988</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"checker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJcYTADlB85kcRvg9dbMxqljc"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/patrimonies/:patrimony_uid/buildings/:building_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimony_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> requested</td>
+</tr>
+<tr>
+<td>building_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Building</code> requested</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#patrimonydetailedbuildingqueryview">PatrimonyDetailedBuildingQueryView</a></td>
+<td>the <code class="prettyprint">Building</code> requested.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
 
           <h1 id="lots">Lots</h1>
 
@@ -1487,7 +1784,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 
 <h2 id="option">Option</h2>
 
-<p>Means that filed is optional. If parameter has no value, it is not present in the json payload.</p>
+<p>Means that field is optional. If parameter has no value, it is not present in the json payload.</p>
 
 <aside class="warning">
     <code> { "field1":"toto", field2:"" } is not equivalent to { "field1":"toto" } </code>
@@ -1514,6 +1811,29 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 
 <p><a href="https://fr.wikipedia.org/wiki/ISO_8601">ISO-8601 calendar system</a><br>
 <code class="prettyprint">YYYY-MM-DDTHH:mm:ss+02:00</code> ex: <code class="prettyprint">2016-02-29T12:03:32+02:00</code></p>
+
+<h2 id="itemabstract">ItemAbstract</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the item</td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>the label of the item</td>
+</tr>
+</tbody></table>
 
 <h2 id="companyqueryview">CompanyQueryView</h2>
 
@@ -1548,7 +1868,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </tr>
 <tr>
 <td>companyType</td>
-<td>String</td>
+<td>Enum</td>
 <td>enum : <code class="prettyprint">&quot;CallCenter&quot;</code> or <code class="prettyprint">&quot;ClientAccountHolding&quot;</code> or <code class="prettyprint">&quot;ClientAccount&quot;</code></td>
 </tr>
 </tbody></table>
@@ -2732,7 +3052,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </tr>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name assigned.</td>
 </tr>
 </tbody></table>
@@ -2748,7 +3068,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name who answered.</td>
 </tr>
 </tbody></table>
@@ -2764,7 +3084,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name who did not answer.</td>
 </tr>
 </tbody></table>
@@ -2780,7 +3100,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name who accepted the mission.</td>
 </tr>
 </tbody></table>
@@ -2796,7 +3116,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name who dit not accept the mission.</td>
 </tr>
 </tbody></table>
@@ -2844,7 +3164,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name arrived on site.</td>
 </tr>
 </tbody></table>
@@ -2860,7 +3180,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>provider</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the <code class="prettyprint">Provider</code>s name gone from site.</td>
 </tr>
 </tbody></table>
@@ -2876,7 +3196,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>brakeDownNature</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>description of the breakdown</td>
 </tr>
 </tbody></table>
@@ -2892,7 +3212,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>brakeDownNature</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>description of the breakdown</td>
 </tr>
 </tbody></table>
@@ -2908,7 +3228,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>brakeDownNature</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>description of the breakdown</td>
 </tr>
 </tbody></table>
@@ -2924,7 +3244,7 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>brakeDownNature</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>description of the breakdown</td>
 </tr>
 </tbody></table>
@@ -2940,8 +3260,428 @@ GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs
 </thead><tbody>
 <tr>
 <td>brakeDownNature</td>
-<td>Option[String]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>description of the breakdown</td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyresultview">PatrimonyResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#patrimonyqueryview">PatrimonyQueryView</a>]</td>
+<td>Array of selected <code class="prettyprint">PatrimonyQueryView</code>s</td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyqueryview">PatrimonyQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>a client reference to <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>an optional label of the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>agencies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>a non empty array of agency uid linked to the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>complementaryAddresses</td>
+<td>Array[<a href="#patrimonyqueryaddressreference">PatrimonyQueryAddressReference</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>Array[<a href="#patrimonyqueryaddressreferencewithbuildinginfo">PatrimonyQueryAddressReferenceWithBuildingInfo</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonydetailqueryview">PatrimonyDetailQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>a client reference to <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>an optional label of the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>agencies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#patrimonyagencyqueryview">PatrimonyAgencyQueryView</a>]</td>
+<td>a non empty array of agency infos linked to the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>complementaryAddresses</td>
+<td>Array[<a href="#patrimonyqueryaddressreference">PatrimonyQueryAddressReference</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>Array[<a href="#patrimonyqueryaddressreferencewithbuildinginfo">PatrimonyQueryAddressReferenceWithBuildingInfo</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyagencyqueryview">PatrimonyAgencyQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>the name of the <code class="prettyprint">Agency</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonybuildingresultview">PatrimonyBuildingResultView</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#buildingqueryview">BuildingQueryView</a>]</td>
+<td>Array of selected <code class="prettyprint">Building</code>s</td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonydetailedbuildingqueryview">PatrimonyDetailedBuildingQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Building</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>the name of the <code class="prettyprint">Building</code></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td>PatrimonyBuildingView</td>
+<td>reference to the <code class="prettyprint">Patrimony</code> of this <code class="prettyprint">Building</code></td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>Array[<a href="#patrimonyqueryaddressreference">PatrimonyQueryAddressReference</a>]</td>
+<td>the <code class="prettyprint">Addresses</code> of the requested <code class="prettyprint">Building</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyqueryaddressreference">PatrimonyQueryAddressReference</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td>geolocation of the <code class="prettyprint">Address</code>.</td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td>a variable to allow to verify <code class="prettyprint">Address</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyqueryaddressreferencewithbuildinginfo">PatrimonyQueryAddressReferenceWithBuildingInfo</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td>geolocation of the <code class="prettyprint">Address</code>.</td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td>a variable to allow to verify <code class="prettyprint">Address</code>.</td>
+</tr>
+<tr>
+<td>building</td>
+<td><a href="#itemabstract">ItemAbstract</a></td>
+<td>a <code class="prettyprint">Building</code> reference for this <code class="prettyprint">Address</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="buildingqueryview">BuildingQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Building</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>the name of the <code class="prettyprint">Building</code></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td>PatrimonyBuildingView</td>
+<td>reference to the <code class="prettyprint">Patrimony</code> of this <code class="prettyprint">Building</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonybuildingview">PatrimonyBuildingView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="geolocation">GeoLocation</h2>
+
+<p>Geolocation of the <code class="prettyprint">Address</code>.</p>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lat</td>
+<td>Float</td>
+<td>latitude</td>
+</tr>
+<tr>
+<td>lng</td>
+<td>Float</td>
+<td>longitude</td>
+</tr>
+</tbody></table>
+
+<h2 id="addresschecker">AddressChecker</h2>
+
+<p><code class="prettyprint">AddressChecker</code> is an Enum, i.e type can take different values : </p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">AddressChecker</span> <span class="o">=</span> <span class="kt">GooglePlaceIdChecker</span>
+</code></pre>
+
+<h3 id="googleplaceidchecker">GooglePlaceIdChecker</h3>
+
+<blockquote>
+<p>GooglePlaceIdChecker example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="s2">"123456hg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">GooglePlaceIdChecker</code> allow to check <code class="prettyprint">Address</code>via Google Maps API.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>googlePlaceId</td>
+<td>String</td>
+<td>identifier to check the <code class="prettyprint">Address</code> with Google Maps API.</td>
 </tr>
 </tbody></table>
 
