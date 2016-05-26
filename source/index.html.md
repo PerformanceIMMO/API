@@ -66,6 +66,19 @@ Faites bien attention à transmettre les données avec cet encoding si vous ne v
 
 ## Range
 
+> Request example
+
+```http
+HTTP/1.1 206 Partial Content
+Content-Range: 0-10/256
+Accept-Range: 100
+```
+```http
+HTTP/1.1 200 OK
+Content-Range: 0-9/10
+Accept-Range: 100
+```
+
 `range=0-10` is a query parameter that is available in several query API, for collection resources.
 It allow to paginate requests.
 
@@ -76,6 +89,22 @@ It is a formatted String that is composed by 3 elements :
 * endIndex (start from 0)
 
 `startIndex` should be >= `endIndex`.
+
+The request answer by :
+
+* `200 OK` - All the elements of the resources are returned.
+* `206 Partial Content` - Only a part of the resources are returned. 
+
+To know what part of the collection is sent, See `Content-Range` header response.
+
+`Content-Range offset – limit / count`
+        
+* offset : index of the first element returned by the request.
+* limit : index of the last element returned by the request.
+* count : number of element in the entire collection.
+
+cf. [pagination the doc](http://blog.octo.com/designer-une-api-rest/#pagination) for more explanation.
+
 
 # Architecture des API
 
