@@ -2,7 +2,7 @@
 
 ## Option
 
-Means that filed is optional. If parameter has no value, it is not present in the json payload.
+Means that field is optional. If parameter has no value, it is not present in the json payload.
 
 <aside class="warning">
 	<code> { "field1":"toto", field2:"" } is not equivalent to { "field1":"toto" } </code>
@@ -30,6 +30,15 @@ ex: `8074964f-c633-3c2a-055f-bbaf8ca8181b`
 [ISO-8601 calendar system](https://fr.wikipedia.org/wiki/ISO_8601)  
 `YYYY-MM-DDTHH:mm:ss+02:00` ex: `2016-02-29T12:03:32+02:00`
 
+## ItemAbstract
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the item
+label       | String                                            | the label of the item
+
 ## CompanyQueryView
 
 ### Fields
@@ -40,7 +49,7 @@ uid         | [SafeUUID](#safeuuid)                             | id of the `Com
 label       | String                                            | the `Company`'s label
 isActive    | Boolean                                           | `true` if the `Company` is active
 holding     | [Option](#option)[[HoldingQueryView](#holdingqueryview)] | a reference to `Company`'s holding if has it
-companyType | String                                            | enum : `"CallCenter"` or `"ClientAccountHolding"` or `"ClientAccount"`
+companyType | Enum                                              | enum : `"CallCenter"` or `"ClientAccountHolding"` or `"ClientAccount"`
 
 ## AgencyQueryView
 
@@ -496,31 +505,31 @@ identifier  | String                                            | set to enter t
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 type        | Enum                                              | the type of the assignation.<br/> `RecourseChanged | ProviderAssigned`
-provider    | Option[String]                                    | the `Provider`s name assigned. 
+provider    | [Option](#option)[String]                                    | the `Provider`s name assigned. 
 
 ### CallAnsweredByProvider		
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-provider    | Option[String]                                    | the `Provider`s name who answered.
+provider    | [Option](#option)[String]                                    | the `Provider`s name who answered.
 
 ### CallNotAnsweredByProvider 		
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-provider    | Option[String]                                    | the `Provider`s name who did not answer.
+provider    | [Option](#option)[String]                                    | the `Provider`s name who did not answer.
 
 ### MissionAccepted		
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-provider    | Option[String]                                    | the `Provider`s name who accepted the mission.
+provider    | [Option](#option)[String]                                    | the `Provider`s name who accepted the mission.
 
 ### MissionRefused		
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-provider    | Option[String]                                    | the `Provider`s name who dit not accept the mission.
+provider    | [Option](#option)[String]                                    | the `Provider`s name who dit not accept the mission.
 		
 ### LogTrialAdded
 
@@ -538,41 +547,191 @@ message     | String                                            |
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-provider    | Option[String]                                    | the `Provider`s name arrived on site.
+provider    | [Option](#option)[String]                                    | the `Provider`s name arrived on site.
 
 ### GoneFromSite		
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-provider    | Option[String]                                    | the `Provider`s name gone from site.
+provider    | [Option](#option)[String]                                    | the `Provider`s name gone from site.
 
 ### TicketClosed
 
 Name            | Type                                              | Description
 ----------------| --------------------------------------------------| -----------------
-brakeDownNature | Option[String]                                    | description of the breakdown
+brakeDownNature | [Option](#option)[String]                                    | description of the breakdown
 
 ### PermanentlyFixed
 
 Name            | Type                                              | Description
 ----------------| --------------------------------------------------| -----------------
-brakeDownNature | Option[String]                                    | description of the breakdown
+brakeDownNature | [Option](#option)[String]                                    | description of the breakdown
 
 ### PartiallyFixed
 
 Name            | Type                                              | Description
 ----------------| --------------------------------------------------| -----------------
-brakeDownNature | Option[String]                                    | description of the breakdown
+brakeDownNature | [Option](#option)[String]                                    | description of the breakdown
 
 ### TicketClosedImpossibleRepair
 
 Name            | Type                                              | Description
 ----------------| --------------------------------------------------| -----------------
-brakeDownNature | Option[String]                                    | description of the breakdown
+brakeDownNature | [Option](#option)[String]                                    | description of the breakdown
 
 ### PostponedFix
 
 Name            | Type                                              | Description
 ----------------| --------------------------------------------------| -----------------
-brakeDownNature | Option[String]                                    | description of the breakdown
+brakeDownNature | [Option](#option)[String]                                    | description of the breakdown
 		
+## PatrimonyResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[PatrimonyQueryView](#patrimonyqueryview)]  | Array of selected `PatrimonyQueryView`s
+
+## PatrimonyQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Patrimony`
+ref         | String                                            | a client reference to `Patrimony`
+label       | [Option](#option)[String]                         | an optional label of the `Patrimony`
+agencies    | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | a non empty array of agency uid linked to the `Patrimony`
+complementaryAddresses | Array[[PatrimonyQueryAddressReference](#patrimonyqueryaddressreference)]  |
+addresses   | Array[[PatrimonyQueryAddressReferenceWithBuildingInfo](#patrimonyqueryaddressreferencewithbuildinginfo)] |
+
+## PatrimonyDetailQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Patrimony`
+ref         | String                                            | a client reference to `Patrimony`
+label       | [Option](#option)[String]                         | an optional label of the `Patrimony`
+agencies    | [NonEmptyList](#nonemptylist)[[PatrimonyAgencyQueryView](#patrimonyagencyqueryview)] | a non empty array of agency infos linked to the `Patrimony`
+complementaryAddresses | Array[[PatrimonyQueryAddressReference](#patrimonyqueryaddressreference)] |
+addresses   | Array[[PatrimonyQueryAddressReferenceWithBuildingInfo](#patrimonyqueryaddressreferencewithbuildinginfo)] |
+
+## PatrimonyAgencyQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Agency`
+label       | String                                            | the name of the `Agency`
+
+## PatrimonyBuildingResultView
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[BuildingQueryView](#buildingqueryview)]    | Array of selected `Building`s
+
+## PatrimonyDetailedBuildingQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Building`
+label       | String                                            | the name of the `Building`
+patrimony   | PatrimonyBuildingView                             | reference to the `Patrimony` of this `Building`
+addresses   | Array[[PatrimonyQueryAddressReference](#patrimonyqueryaddressreference)] | the `Addresses` of the requested `Building`
+
+## PatrimonyQueryAddressReference
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+number      | String                                            | 
+street      | String                                            | 
+city        | String                                            | 
+zipCode     | String                                            | 
+country     | [Option](#option)[String]                         | 
+quality     | [Option](#option)[String]                         | 
+complement  | [Option](#option)[String]                         | 
+state       | [Option](#option)[String]                         | 
+geoLocation | [GeoLocation](#geolocation)                       | geolocation of the `Address`. 
+checker     | [AddressChecker](#addresschecker)                 | a variable to allow to verify `Address`. 
+
+## PatrimonyQueryAddressReferenceWithBuildingInfo
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+number      | String                                            | 
+street      | String                                            | 
+city        | String                                            | 
+zipCode     | String                                            | 
+country     | [Option](#option)[String]                         | 
+quality     | [Option](#option)[String]                         | 
+complement  | [Option](#option)[String]                         | 
+state       | [Option](#option)[String]                         | 
+geoLocation | [GeoLocation](#geolocation)                       | geolocation of the `Address`. 
+checker     | [AddressChecker](#addresschecker)                 | a variable to allow to verify `Address`.
+building    | [ItemAbstract](#itemabstract)                     | a `Building` reference for this `Address`.
+
+## BuildingQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Building`
+label       | String                                            | the name of the `Building`
+patrimony   | PatrimonyBuildingView                             | reference to the `Patrimony` of this `Building`
+
+## PatrimonyBuildingView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Patrimony`
+
+## GeoLocation
+
+Geolocation of the `Address`.
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+lat         | Float                                             | latitude
+lng         | Float                                             | longitude 
+
+## AddressChecker
+
+`AddressChecker` is an Enum, i.e type can take different values : 
+
+```haskell
+data AddressChecker = GooglePlaceIdChecker
+```
+
+### GooglePlaceIdChecker 
+
+> GooglePlaceIdChecker example :
+
+```json
+{
+	"googlePlaceId":"123456hg"
+}
+```
+
+`GooglePlaceIdChecker` allow to check `Address`via Google Maps API.
+
+Name          | Type   | Description
+--------------| -------| --------------------------------------------------------
+googlePlaceId | String | identifier to check the `Address` with Google Maps API. 
+
