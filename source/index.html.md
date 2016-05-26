@@ -12,6 +12,10 @@ includes:
   - companies
   - providerContacts
   - tickets
+  - patrimonies
+  - lots
+  - operators
+  - users
   - models
   - errors
 
@@ -59,6 +63,19 @@ Chaque requête http; autre que `GET`; requiert l'envoi de json. N'oubliez pas d
 Le seul enconding accepté pour utiliser les API est `utf-8`.
 
 Faites bien attention à transmettre les données avec cet encoding si vous ne voulez pas avoir de mauvaises surprises.
+
+## Range
+
+`range=0-10` is a query parameter that is available in several query API, for collection resources.
+It allow to paginate requests.
+
+It is a formatted String that is composed by 3 elements :
+
+* startIndex (start from 0)
+* a separator `-`
+* endIndex (start from 0)
+
+`startIndex` should be >= `endIndex`.
 
 # Architecture des API
 
