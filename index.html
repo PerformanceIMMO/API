@@ -161,6 +161,21 @@ Pensez-bien de votre côté à toujours rajouter ces informations dans vos requ�
 
 <p>Faites bien attention à transmettre les données avec cet encoding si vous ne voulez pas avoir de mauvaises surprises.</p>
 
+<h2 id="range">Range</h2>
+
+<p><code class="prettyprint">range=0-10</code> is a query parameter that is available in several query API, for collection resources.
+It allow to paginate requests.</p>
+
+<p>It is a formatted String that is composed by 3 elements :</p>
+
+<ul>
+<li>startIndex (start from 0)</li>
+<li>a separator <code class="prettyprint">-</code></li>
+<li>endIndex (start from 0)</li>
+</ul>
+
+<p><code class="prettyprint">startIndex</code> should be &gt;= <code class="prettyprint">endIndex</code>.</p>
+
 <h1 id="architecture-des-api">Architecture des API</h1>
 
 <p>Ces API sont divisées en 3 catégories :</p>
@@ -1340,6 +1355,133 @@ https://base_url/api/v1/tickets/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
 <td>Bad request, occurs most often when parameters passed are invalid.</td>
 </tr>
 </tbody></table>
+
+          <h1 id="patrimonies">Patrimonies</h1>
+
+<aside class="warning">
+    You must be authenticated to use these API.
+</aside>
+
+<h2 id="get-all-patrimonies">Get all patrimonies</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/patrimonies
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/1</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PATRIMONY_42"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Résidence des Lillas"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"agencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"complementaryAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8fb38a44-7a31-4f6f-9948-2ff3515bdafa"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rue de Solférino"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boulogne-Billancourt"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92100"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.8287815</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.243447699999999</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nt">"checker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJh7Ckz-965kcROIvFZzyeeok"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89532be8-543c-4d45-a0fc-4762b774eee5"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rue de Solférino"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boulogne-Billancourt"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92100"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"geoLocation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">48.8287815</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.243447699999999</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nt">"checker"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJh7Ckz-965kcROIvFZzyeeok"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/patrimonies</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-100</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#ticketresultview">PatrimonyResultView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#ticketresultview">PatrimonyResultView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<p>GET         /api/v1/patrimonies/:uid                                        cqrs.queries.application.controllers.PatrimoniesQueryAPI.patrimony(uid: SafeUUID)
+GET         /api/v1/patrimonies/:patrimonyUid/buildings                     cqrs.queries.application.controllers.PatrimoniesQueryAPI.buildings(range: Option[String], patrimonyUid: SafeUUID)
+GET         /api/v1/patrimonies/:patrimonyUid/buildings/:buildingUid        cqrs.queries.application.controllers.PatrimoniesQueryAPI.building(patrimonyUid: SafeUUID, buildingUid: SafeUUID)</p>
+
+          <h1 id="lots">Lots</h1>
+
+          <h1 id="operators">Operators</h1>
+
+          <h1 id="users">Users</h1>
 
           <h1 id="models">Models</h1>
 
