@@ -735,3 +735,73 @@ Name          | Type   | Description
 --------------| -------| --------------------------------------------------------
 googlePlaceId | String | identifier to check the `Address` with Google Maps API. 
 
+## RawAgency
+
+> RawAgency example :
+
+```json
+{
+	"agencyUid":"2e761b3c-404e-710b-f3ea-317942ab3fb9",
+    "name":"My Agency name",
+    "extName":"a public name",
+    "address":{
+		"number":"12",
+		"street":"Rue de la performance",
+		"zipCode":"75001",
+		"city":"Paris"
+    },
+    "phones": ["0603245678"],
+    "fax": "0123784590",
+    "emails": ["myagency@performance-immo.com"]
+}
+```
+
+`RawAgency` describe an `Agency` for create it.
+
+Name          | Type                                                       | Description
+--------------| -----------------------------------------------------------| --------------------------------------------------------
+agencyUid     | [Option](#option)[[SafeUUID](#safeuuid)]                   | The UID of the `Agency`. If you don't set this param. PerfImmo generate it for you. 
+name          | String                                                     | The name of the `Agency` 
+extName       | [Option](#option)[String]                                  |  
+address       | [Option](#option)[[AddressForCommand](#addressforcommand)] | The address of the `Agency`
+phones        | Array[String]                                              | a list of phone number to contact the `Agency`
+fax           | [Option](#option)[String]                                  |  
+emails        | Array[String]                                              | a list of emails to contact the `Agency`
+
+## AddressForCommand
+
+`AddressForCommand` is an Enum, i.e type can take different values : 
+
+```haskell
+data AddressForCommand = RationalAddress | AddressReference
+```
+
+### RationalAddress
+ 
+Name          | Type                        | Description
+--------------| ----------------------------| --------------------------------------------------------
+quality       | [Option](#option)[String]   |   
+number        | String                      |  
+street        | String                      |  
+complement    | [Option](#option)[String]   | 
+zipCode       | String                      | 
+city          | String                      |  
+state         | [Option](#option)[String]   | 
+country       | [Option](#option)[String]   | 
+ 
+ 
+### AddressReference  
+  
+Name          | Type                                | Description
+--------------| ------------------------------------| --------------------------------------------------------
+quality       | [Option](#option)[String]           |  
+number        | String                              |  
+street        | String                              |  
+complement    | [Option](#option)[String]           | 
+zipCode       | String                              | 
+city          | String                              |  
+state         | [Option](#option)[String]           | 
+country       | [Option](#option)[String]           |  
+geoLocation   | [GeoLocation](#geolocation)         |  
+checker       | [AddressChecker](#addresschecker)   |  
+  

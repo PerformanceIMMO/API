@@ -14,9 +14,11 @@ includes:
   - tickets
   - patrimonies
   - lots
-  - operators
   - users
   - models
+  - commands
+  - events
+  - eventErrors
   - errors
 
 search: true
@@ -34,7 +36,7 @@ Cette documentation s'organise principalement autour de deux axes :
  * [Un axe architectural](#architecture-des-api)
  * [Un axe métier](#ressources-m-tier)
  
-Chaque type d'API définiera le format qu'il gère pour chaque ressource métier.
+Chaque ressource métier décrit les formats acceptés pour réaliser toutes les actions "primitives".
 
 La documentation est en cours de construction, donc s'il vous manque des informations ou que certaines choses ne sont 
 pas clairs, n'hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. 
@@ -110,8 +112,8 @@ cf. [pagination the doc](http://blog.octo.com/designer-une-api-rest/#pagination)
 
 Ces API sont divisées en 3 catégories :
 
-* [API évènementielle d'écriture](#apis-v-nementielle-d-39-criture)
-* [API REST de lecture](#apis-de-lecture)
+* API évènementielle d'écriture
+* API REST de lecture
 * API de notifications (en construction)
 
 # Ressources métier
@@ -178,17 +180,17 @@ représenté notament par un journal d'évènement.
 
 ## Lot
 
-`Lot` représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, ...)/
+`Lot` représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, ...)
 
 `Lot` est relié à un `Patrimony`.
 
-## Operator
+<!-- ## Operator
 
 `Operator` resprésente un acteur agissant sur le `Ticket`. Par exemple un opérateur répondant au téléphone 
 et saisissant uen ouverture de `Ticket`.
 
 Si vous souhaitez bénéficier des informations `Operator` sur la plateforme, de statistiques, vous devez les référencer 
-via les API d'écriture.
+via les API d'écriture. -->
 
 ## User
 
@@ -202,21 +204,25 @@ Il existe plusieurs types de `User` :
 
 # Authentification
 
-L'existence de 2 types d'API distincte (évènementielle en écriture et REST en lecture) qui implique deux systèmes d'authentification.
+Un seul système d'authentification existe pour les deux types d'API. Il utilise un cookie de session stateless.
+
+Cette session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
+et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
  
 <aside class="notice">
-Ce système à 2 authentifications suivant l'API sera prochainement supprimé.
-</aside> 
+Pour gérer les "robots" qui consommerait l'API Performmance-Immo, il est prévu de proposer une authentification 
+par token plutôt que via un cookie de session.
+</aside>   
 
-## API évènementielle
+## API REST
 
 > To login, use this code:
 
 ```shell
 curl -XPOST \ 
-> -H "Content-Type: application/json" \
+> --header "Content-Type: application/json" \
 > -d '{"login":my_api_login, "password":my_api_password}' \
-> https://my_base_uri/api/vEvent/login
+> https://my_base_uri/api/v1/login
 ```
 
 > Response example :
@@ -230,54 +236,6 @@ Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd
 
 ```shell
 curl -H "Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd" \
-> ...
-```
-
-### HTTP Request
-
-`POST /api/vEvent/login`
-
-### Parameters
-
-Name | In | Type | Description
--------------- | -------------- | -------------- | ------------
-login | body | String | 
-password | body | String | 
-
-### Responses
-
-Http code | Type | Description
-----------| ------| -----------
-200       | Empty | Retourne le cookie de session `PI_SESSION` dans le header de la réponse
-400       | Error | Bad request, occurs most often when parameters passed are invalid or if User not found
-
-
-Rajouter le header `Cookie: PI_SESSION=value_returned_by_server` dans les prochaines requêtes pour être authentifié.
-
-<aside class="notice">
-Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
-</aside>
-
-<aside class="notice">
-La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
-et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
-</aside>
-
-## API REST
-
-> To login, use this code:
-
-```shell
-curl -XPOST \ 
-> --header "Content-Type: application/json" \
-> -d '{"login":my_api_login, "password":my_api_password}' \
-> https://my_base_uri/api/v1/login
-```
-
-> In your next request add
-
-```shell
-curl --header "Content-Type: application/json" \
 > ...
 ```
 
@@ -325,3 +283,27 @@ d'une cause (un évènement) à un changement, plutôt que juste le changement l
 Nous vous fournissons, plus bas dans ce document, la liste des évènements 
 (ainsi que le format de données pour chacun d'entre eux) pour chaque entités.
 
+## Artefacts de l'API évènementielle
+
+### Command
+
+Une `Command` est une action qui doit être exécutée par l'application.
+
+ex: Référence cet utilisateur, cloture ce ticket ...
+
+### Event
+
+Un `Event` est le résultat de l'opération demandée avec la `Command`.
+
+C'est toujours un verbe au passé. 
+
+Si l'API renvoi un évènement, cela signifie que l'action décrite par la `Command` est 
+un succès et que l'information est enregistrée dans l'application.
+
+ex: l'utilisateur a été référencé, le ticket a été cloturé ... 
+
+## Fonctionnement
+
+Command  ---------> | PerformanceImmo | ---------> [Event] ou Error
+ 
+Le client de l'API envoi une `Command` et reçoit une liste d'`Event`; signifiant le succès de son action; ou une erreur. 

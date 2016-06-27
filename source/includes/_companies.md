@@ -217,14 +217,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Range: 0-0/1
 ```
-
-> HTTP response example :
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Range: 0-0/1
-```
 ```json
 {
 	"result": [
@@ -265,5 +257,167 @@ Http code | Type                                        | Description
 
 ## Create Company
 
+```shell
+curl -XGET \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+ "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+ "callCenterReference":"b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32",
+ "name":"MyClientAccount",
+ "createdDate":"2016-06-27",
+ "commandType":"CreateClientAccount"
+} \
+https://base_url/api/vEvent/companies
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 201 Created
+```
+
+**`POST`** `/api/vEvent/companies`
+
+### Parameters
+
+Name            | In    | Type                                         | Default   | Description
+--------------- | ------| ---------------------------------------------| ----------| -------------
+companyCommand  | body  | [CreateCompany](#createcompany)              |           | the event for create a Company
+
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+201       | String                                      | The `Company` is created
+400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+
+
 ## Increment Company State
+
+```shell
+curl -XGET \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+ "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+ "createdDate":"2016-06-27",
+ "commandType":"CancelCompany"
+} \
+https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 200 OK
+```
+
+**`PATCH`** `/api/vEvent/companies/company_uid`
+
+### Parameters
+
+Name            | In    | Type                                             | Default   | Description
+--------------- | ------| -------------------------------------------------| ----------| -------------
+company_uid     | query | [SafeUUID](#safeuuid)                            |           | the uid of the `Company`
+companyCommand  | body  | [IncrementCompany](#incrementcompany)            |           | the event for create a Company
+
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+200       | String                                      | The `Command` is a success
+400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+
+## Create Agency in Company
+
+```shell
+curl -XGET \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+ "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+ "createdDate":"2016-06-27",
+ "agency":{
+	"agencyUid":"4b4c3d2c-a828-ee38-de31-61ce0cd589e1",
+	"name":"My Agency Name",
+	"extName":"Name to display to client",
+	"address":{
+		"number":"12",
+        "street":"Rue de la performance",
+        "zipCode":"75001",
+        "city":"Paris"
+	},
+	"phones": ["0603245678"],
+	"fax": "0123784590",
+	"emails": ["myagency@performance-immo.com"]
+ },
+ "commandType":"CreateAgency"
+} \
+https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 201 Created
+```
+
+**`POST`** `/api/vEvent/companies/company_uid/agencies`
+
+### Parameters
+
+Name            | In    | Type                                             | Default   | Description
+--------------- | ------| -------------------------------------------------| ----------| -------------
+company_uid     | query | [SafeUUID](#safeuuid)                            |           | the uid of the `Company` for which you want to create this `Agency`
+agencyCommand   | body  | [CreateAgency](#createagency)                    |           | the event for create a Company
+
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+200       | String                                      | The `Command` is a success
+400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+
+## Increment Agency
+
+```shell
+curl -XGET \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+	"processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+	"deletedDate":"2016-06-28",
+	"agencyUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+	"commandType":"DeleteAgency"
+} \
+https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad/agencies/de4ef45f-26ed-562c-801d-896ef0e19311
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 200 Ok
+```
+
+**`PATCH`** `/api/vEvent/companies/company_uid/agencies/agency_uid`
+
+### Parameters
+
+Name            | In    | Type                                             | Default   | Description
+--------------- | ------| -------------------------------------------------| ----------| -------------
+company_uid     | query | [SafeUUID](#safeuuid)                            |           | the uid of the `Company` wherein the `Agency` is
+agency_uid      | query | [SafeUUID](#safeuuid)                            |           | the uid of the `Agency` incremented
+agencyCommand   | body  | [IncrementAgency](#incrementagency)              |           | the event for create a Company
+
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+200       | String                                      | The `Command` is a success
+400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 
