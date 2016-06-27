@@ -131,7 +131,7 @@ ses différents partenaires.</p>
 <li><a href="#ressources-m-tier">Un axe métier</a></li>
 </ul>
 
-<p>Chaque type d&#39;API définiera le format qu&#39;il gère pour chaque ressource métier.</p>
+<p>Chaque ressource métier décrit les formats acceptés pour réaliser toutes les actions &ldquo;primitives&rdquo;.</p>
 
 <p>La documentation est en cours de construction, donc s&#39;il vous manque des informations ou que certaines choses ne sont 
 pas clairs, n&#39;hésitez pas à nous contacter, nous nous ferons un plaisir de vous répondre. </p>
@@ -212,8 +212,8 @@ It allow to paginate requests.</p>
 <p>Ces API sont divisées en 3 catégories :</p>
 
 <ul>
-<li><a href="#apis-v-nementielle-d-39-criture">API évènementielle d&#39;écriture</a></li>
-<li><a href="#apis-de-lecture">API REST de lecture</a></li>
+<li>API évènementielle d&#39;écriture</li>
+<li>API REST de lecture</li>
 <li>API de notifications (en construction)</li>
 </ul>
 
@@ -283,17 +283,17 @@ représenté notament par un journal d&#39;évènement. </p>
 
 <h2 id="lot">Lot</h2>
 
-<p><code class="prettyprint">Lot</code> représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, &hellip;)/</p>
+<p><code class="prettyprint">Lot</code> représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, &hellip;)</p>
 
 <p><code class="prettyprint">Lot</code> est relié à un <code class="prettyprint">Patrimony</code>.</p>
 
-<h2 id="operator">Operator</h2>
+<!-- ## Operator
 
-<p><code class="prettyprint">Operator</code> resprésente un acteur agissant sur le <code class="prettyprint">Ticket</code>. Par exemple un opérateur répondant au téléphone 
-et saisissant uen ouverture de <code class="prettyprint">Ticket</code>.</p>
+`Operator` resprésente un acteur agissant sur le `Ticket`. Par exemple un opérateur répondant au téléphone 
+et saisissant uen ouverture de `Ticket`.
 
-<p>Si vous souhaitez bénéficier des informations <code class="prettyprint">Operator</code> sur la plateforme, de statistiques, vous devez les référencer 
-via les API d&#39;écriture.</p>
+Si vous souhaitez bénéficier des informations `Operator` sur la plateforme, de statistiques, vous devez les référencer 
+via les API d'écriture. -->
 
 <h2 id="user">User</h2>
 
@@ -309,96 +309,15 @@ via les API d&#39;écriture.</p>
 
 <h1 id="authentification">Authentification</h1>
 
-<p>L&#39;existence de 2 types d&#39;API distincte (évènementielle en écriture et REST en lecture) qui implique deux systèmes d&#39;authentification.</p>
+<p>Un seul système d&#39;authentification existe pour les deux types d&#39;API. Il utilise un cookie de session stateless.</p>
+
+<p>Cette session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
+et un idleTime de 1h (= si pas d&#39;activité pendant 1h, la session expire).</p>
 
 <aside class="notice">
-Ce système à 2 authentifications suivant l'API sera prochainement supprimé.
-</aside> 
-
-<h2 id="api-v-nementielle">API évènementielle</h2>
-
-<blockquote>
-<p>To login, use this code:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>
-<span class="gp">&gt; </span>-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-<span class="gp">&gt; </span>-d <span class="s1">'{"login":my_api_login, "password":my_api_password}'</span> <span class="se">\</span>
-<span class="gp">&gt; </span>https://my_base_uri/api/vEvent/login
-</code></pre>
-
-<blockquote>
-<p>Response example :</p>
-</blockquote>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Cookie</span><span class="p">:</span> <span class="s">PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd</span>
-</code></pre>
-
-<blockquote>
-<p>In your next request add :</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd"</span> <span class="se">\</span>
-<span class="gp">&gt; </span>...
-</code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST /api/vEvent/login</code></p>
-
-<h3 id="parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>login</td>
-<td>body</td>
-<td>String</td>
-<td></td>
-</tr>
-<tr>
-<td>password</td>
-<td>body</td>
-<td>String</td>
-<td></td>
-</tr>
-</tbody></table>
-
-<h3 id="responses">Responses</h3>
-
-<table><thead>
-<tr>
-<th>Http code</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Empty</td>
-<td>Retourne le cookie de session <code class="prettyprint">PI_SESSION</code> dans le header de la réponse</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Error</td>
-<td>Bad request, occurs most often when parameters passed are invalid or if User not found</td>
-</tr>
-</tbody></table>
-
-<p>Rajouter le header <code class="prettyprint">Cookie: PI_SESSION=value_returned_by_server</code> dans les prochaines requêtes pour être authentifié.</p>
-
-<aside class="notice">
-Les API évènementielles de performance immo sont accessible uniquement à des utilisateurs authentifiés. 
-</aside>
-
-<aside class="notice">
-La session a par défaut une durée de vie de 12 h (il faut donc prévoir un mécanisme de reconnexion), 
-et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
-</aside>
+Pour gérer les &ldquo;robots&rdquo; qui consommerait l'API Performmance-Immo, il est prévu de proposer une authentification 
+par token plutôt que via un cookie de session.
+</aside>   
 
 <h2 id="api-rest">API REST</h2>
 
@@ -412,9 +331,16 @@ et un idleTime de 1h (= si pas d'activité pendant 1h, la session expire).
 </code></pre>
 
 <blockquote>
-<p>In your next request add</p>
+<p>Response example :</p>
 </blockquote>
-<pre class="highlight shell"><code>curl --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Cookie</span><span class="p">:</span> <span class="s">PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd</span>
+</code></pre>
+
+<blockquote>
+<p>In your next request add :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd"</span> <span class="se">\</span>
 <span class="gp">&gt; </span>...
 </code></pre>
 
@@ -491,6 +417,31 @@ d&#39;une cause (un évènement) à un changement, plutôt que juste le changeme
 
 <p>Nous vous fournissons, plus bas dans ce document, la liste des évènements 
 (ainsi que le format de données pour chacun d&#39;entre eux) pour chaque entités.</p>
+
+<h2 id="artefacts-de-l-39-api-v-nementielle">Artefacts de l&#39;API évènementielle</h2>
+
+<h3 id="command">Command</h3>
+
+<p>Une <code class="prettyprint">Command</code> est une action qui doit être exécutée par l&#39;application.</p>
+
+<p>ex: Référence cet utilisateur, cloture ce ticket &hellip;</p>
+
+<h3 id="event">Event</h3>
+
+<p>Un <code class="prettyprint">Event</code> est le résultat de l&#39;opération demandée avec la <code class="prettyprint">Command</code>.</p>
+
+<p>C&#39;est toujours un verbe au passé. </p>
+
+<p>Si l&#39;API renvoi un évènement, cela signifie que l&#39;action décrite par la <code class="prettyprint">Command</code> est 
+un succès et que l&#39;information est enregistrée dans l&#39;application.</p>
+
+<p>ex: l&#39;utilisateur a été référencé, le ticket a été cloturé &hellip; </p>
+
+<h2 id="fonctionnement">Fonctionnement</h2>
+
+<p>Command  &mdash;&mdash;&mdash;&gt; | PerformanceImmo | &mdash;&mdash;&mdash;&gt; [Event] ou Error</p>
+
+<p>Le client de l&#39;API envoi une <code class="prettyprint">Command</code> et reçoit une liste d&rsquo;<code class="prettyprint">Event</code>; signifiant le succès de son action; ou une erreur. </p>
 
           <h1 id="companies">Companies</h1>
 
@@ -844,14 +795,6 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiar
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/1</span>
 </code></pre>
-
-<blockquote>
-<p>HTTP response example :</p>
-</blockquote>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/1</span>
-</code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -928,8 +871,293 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiar
 </tbody></table>
 
 <h2 id="create-company">Create Company</h2>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"callCenterReference"</span>:<span class="s2">"b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32"</span>,
+ <span class="s2">"name"</span>:<span class="s2">"MyClientAccount"</span>,
+ <span class="s2">"createdDate"</span>:<span class="s2">"2016-06-27"</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"CreateClientAccount"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/companies
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre>
+
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/companies</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>companyCommand</td>
+<td>body</td>
+<td><a href="#createcompany">CreateCompany</a></td>
+<td></td>
+<td>the event for create a Company</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>String</td>
+<td>The <code class="prettyprint">Company</code> is created</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#companyeventerror">CompanyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
 
 <h2 id="increment-company-state">Increment Company State</h2>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"createdDate"</span>:<span class="s2">"2016-06-27"</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"CancelCompany"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre>
+
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/companies/company_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>companyCommand</td>
+<td>body</td>
+<td><a href="#incrementcompany">IncrementCompany</a></td>
+<td></td>
+<td>the event for create a Company</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>String</td>
+<td>The <code class="prettyprint">Command</code> is a success</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#companyeventerror">CompanyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-agency-in-company">Create Agency in Company</h2>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"createdDate"</span>:<span class="s2">"2016-06-27"</span>,
+ <span class="s2">"agency"</span>:<span class="o">{</span>
+    <span class="s2">"agencyUid"</span>:<span class="s2">"4b4c3d2c-a828-ee38-de31-61ce0cd589e1"</span>,
+    <span class="s2">"name"</span>:<span class="s2">"My Agency Name"</span>,
+    <span class="s2">"extName"</span>:<span class="s2">"Name to display to client"</span>,
+    <span class="s2">"address"</span>:<span class="o">{</span>
+        <span class="s2">"number"</span>:<span class="s2">"12"</span>,
+        <span class="s2">"street"</span>:<span class="s2">"Rue de la performance"</span>,
+        <span class="s2">"zipCode"</span>:<span class="s2">"75001"</span>,
+        <span class="s2">"city"</span>:<span class="s2">"Paris"</span>
+    <span class="o">}</span>,
+    <span class="s2">"phones"</span>: <span class="o">[</span><span class="s2">"0603245678"</span><span class="o">]</span>,
+    <span class="s2">"fax"</span>: <span class="s2">"0123784590"</span>,
+    <span class="s2">"emails"</span>: <span class="o">[</span><span class="s2">"myagency@performance-immo.com"</span><span class="o">]</span>
+ <span class="o">}</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"CreateAgency"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre>
+
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/companies/company_uid/agencies</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Company</code> for which you want to create this <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>agencyCommand</td>
+<td>body</td>
+<td><a href="#createagency">CreateAgency</a></td>
+<td></td>
+<td>the event for create a Company</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>String</td>
+<td>The <code class="prettyprint">Command</code> is a success</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#companyeventerror">CompanyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
+
+<h2 id="increment-agency">Increment Agency</h2>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+    <span class="s2">"processUid"</span>:<span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span>,
+    <span class="s2">"deletedDate"</span>:<span class="s2">"2016-06-28"</span>,
+    <span class="s2">"agencyUid"</span>:<span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span>,
+    <span class="s2">"commandType"</span>:<span class="s2">"DeleteAgency"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad/agencies/de4ef45f-26ed-562c-801d-896ef0e19311
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre>
+
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/companies/company_uid/agencies/agency_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>company_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Company</code> wherein the <code class="prettyprint">Agency</code> is</td>
+</tr>
+<tr>
+<td>agency_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Agency</code> incremented</td>
+</tr>
+<tr>
+<td>agencyCommand</td>
+<td>body</td>
+<td><a href="#incrementagency">IncrementAgency</a></td>
+<td></td>
+<td>the event for create a Company</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>String</td>
+<td>The <code class="prettyprint">Command</code> is a success</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#companyeventerror">CompanyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
 
           <h1 id="providercontacts">ProviderContacts</h1>
 
@@ -1775,8 +2003,6 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
 </tbody></table>
 
           <h1 id="lots">Lots</h1>
-
-          <h1 id="operators">Operators</h1>
 
           <h1 id="users">Users</h1>
 
@@ -3684,6 +3910,742 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
 <td>identifier to check the <code class="prettyprint">Address</code> with Google Maps API.</td>
 </tr>
 </tbody></table>
+
+<h2 id="rawagency">RawAgency</h2>
+
+<blockquote>
+<p>RawAgency example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"2e761b3c-404e-710b-f3ea-317942ab3fb9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Agency name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"extName"</span><span class="p">:</span><span class="s2">"a public name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"Rue de la performance"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Paris"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"0603245678"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123784590"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"myagency@performance-immo.com"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p><code class="prettyprint">RawAgency</code> describe an <code class="prettyprint">Agency</code> for create it.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>agencyUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>The UID of the <code class="prettyprint">Agency</code>. If you don&rsquo;t set this param. PerfImmo generate it for you.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>The name of the <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>extName</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#option">Option</a>[<a href="#addressforcommand">AddressForCommand</a>]</td>
+<td>The address of the <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[String]</td>
+<td>a list of phone number to contact the <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>fax</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td>a list of emails to contact the <code class="prettyprint">Agency</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="addressforcommand">AddressForCommand</h2>
+
+<p><code class="prettyprint">AddressForCommand</code> is an Enum, i.e type can take different values : </p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">AddressForCommand</span> <span class="o">=</span> <span class="kt">RationalAddress</span> <span class="o">|</span> <span class="kt">AddressReference</span>
+</code></pre>
+
+<h3 id="rationaladdress">RationalAddress</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="addressreference">AddressReference</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td></td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="commands">Commands</h1>
+
+<h2 id="createcompany">CreateCompany</h2>
+
+<p>Il existe plusieurs types de <code class="prettyprint">Company</code> et donc plusieurs commandes différentes pour créer une <code class="prettyprint">Company</code>. </p>
+
+<p>cf. le détails sur la <a href="#company">ressource</a> <code class="prettyprint">Company</code>. </p>
+
+<h3 id="createclientaccount">CreateClientAccount</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"holdingReference"</span><span class="p">:</span><span class="s2">"9fe2e437-b237-8c9d-8b36-440d37fc8959"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"callCenterUid"</span><span class="p">:</span><span class="s2">"f13ede3b-12d9-70ab-4874-e25ab23e33c0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Client Account"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateClientAccount"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>holdingReference</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the <code class="prettyprint">ClientAccount</code>&rsquo;s holding if exist</td>
+</tr>
+<tr>
+<td>callCenterReference</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">CallCenter</code> which send this Command</td>
+</tr>
+<tr>
+<td>createdDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the creation&rsquo;s date of this <code class="prettyprint">ClientAccount</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the name of this <code class="prettyprint">ClientAccount</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CreateClientAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="createclientaccountholding">CreateClientAccountHolding</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"callCenterUid"</span><span class="p">:</span><span class="s2">"f13ede3b-12d9-70ab-4874-e25ab23e33c0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Holding"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateClientAccountHolding"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>callCenterReference</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">CallCenter</code> which send this Command</td>
+</tr>
+<tr>
+<td>createdDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the creation&rsquo;s date of this <code class="prettyprint">ClientAccountHolding</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the name of this <code class="prettyprint">ClientAccountHolding</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CreateClientAccountHolding&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="createcallcenter">CreateCallCenter</h3>
+
+<aside class="notice">
+    You need specifics rights to create CallCenter.
+</aside>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My CallCenter"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateCallCenter"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>createdDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the creation&rsquo;s date of this <code class="prettyprint">CallCenter</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the name of this <code class="prettyprint">CallCenter</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CreateCallCenter&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="incrementcompany">IncrementCompany</h2>
+
+<h3 id="cancelcompany">CancelCompany</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"canceledDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CancelCompany"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>canceledDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the cancelation&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CancelCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="reactivecompany">ReactiveCompany</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reactivatedDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"ReactiveCompany"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>reactivatedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the reactivated&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReactiveCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updateclientaccount">UpdateClientAccount</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"holdingReference"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"new name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"UpdateClientAccount"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>holdingReference</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the updated holding reference of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>updatedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the updated&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the updated name of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateClientAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updateclientaccountholding">UpdateClientAccountHolding</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"new name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"UpdateClientAccountHolding"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>updatedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the updated&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the updated name of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateClientAccountHolding&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updatecallcenter">UpdateCallCenter</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updatedDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"new name"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"UpdateCallCenter"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>updatedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the updated&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the updated name of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateCallCenter&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="createagency">CreateAgency</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agency"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"2e761b3c-404e-710b-f3ea-317942ab3fb9"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Agency name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"extName"</span><span class="p">:</span><span class="s2">"a public name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"Rue de la performance"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Paris"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"0603245678"</span><span class="p">],</span><span class="w">
+        </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123784590"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"myagency@performance-immo.com"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateAgency"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>createdDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the created&rsquo;s date of this <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>agency</td>
+<td><a href="#rawagency">RawAgency</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CreateAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="incrementagency">IncrementAgency</h2>
+
+<h3 id="deleteagency">DeleteAgency</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deletedDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"DeleteAgency"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>deletedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td></td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DeleteAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updateagency">UpdateAgency</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agency"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"2e761b3c-404e-710b-f3ea-317942ab3fb9"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Agency name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"extName"</span><span class="p">:</span><span class="s2">"a public name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"address"</span><span class="p">:{</span><span class="w">
+            </span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"Rue de la performance"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Paris"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"0603245678"</span><span class="p">],</span><span class="w">
+        </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0123784590"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"myagency@performance-immo.com"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateAgency"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>updatedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the updated&rsquo;s date of this <code class="prettyprint">Agency</code></td>
+</tr>
+<tr>
+<td>agency</td>
+<td><a href="#rawagency">RawAgency</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+          <h1 id="events">Events</h1>
+
+          <h1 id="event-errors">Event Errors</h1>
+
+<h2 id="companyeventerror">CompanyEventError</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errorType</td>
+<td>Enum</td>
+<td>code describing the type of the error</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>a message describing the error</td>
+</tr>
+</tbody></table>
+
+<h3 id="companygenericerror">CompanyGenericError</h3>
+
+<p>Va être supprimer ultérieurement</p>
+
+<h3 id="commandalreadysent">CommandAlreadySent</h3>
+
+<p>The <code class="prettyprint">Command</code> have been already sent &amp; computed, i.e an existing <code class="prettyprint">Event</code> already have the same <code class="prettyprint">processUid</code> &amp; <code class="prettyprint">aggregateUid</code> </p>
+
+<h3 id="impossibletocreateexistingcompany">ImpossibleToCreateExistingCompany</h3>
+
+<p>The <code class="prettyprint">Company</code> already exist.</p>
+
+<h3 id="impossibletoperfomcommandonnonexistingcompany">ImpossibleToPerfomCommandOnNonExistingCompany</h3>
+
+<p>The <code class="prettyprint">Command</code> reference a <code class="prettyprint">Company</code> that don&rsquo;t exist in database.</p>
+
+<h3 id="impossibletocreateexistingagency">ImpossibleToCreateExistingAgency</h3>
+
+<p>The <code class="prettyprint">Agency</code> already exist.</p>
+
+<h3 id="impossibletoperformcommandonnonexistingagency">ImpossibleToPerformCommandOnNonExistingAgency</h3>
+
+<p>The <code class="prettyprint">Command</code> reference a <code class="prettyprint">Agency</code> that don&rsquo;t exist in database.</p>
+
+<h3 id="impossibletocancelcanceledcompany">ImpossibleToCancelCanceledCompany</h3>
+
+<p>This <code class="prettyprint">Company</code> is laready Canceled.</p>
+
+<h3 id="impossibletocancelcallcenter">ImpossibleToCancelCallCenter</h3>
+
+<p>It is not allowed to cancel a <code class="prettyprint">CallCenter</code>.</p>
+
+<h3 id="impossibletocreateagencyinanothercompanythatclientaccount">ImpossibleToCreateAgencyInAnotherCompanyThatClientAccount</h3>
+
+<p>You can only create <code class="prettyprint">Agency</code> in <code class="prettyprint">ClientAccount</code>.</p>
 
           <h1 id="errors">Errors</h1>
 
