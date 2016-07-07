@@ -4306,6 +4306,125 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </tr>
 </tbody></table>
 
+<h2 id="patrimonyaddressreference">PatrimonyAddressReference</h2>
+
+<blockquote>
+<p>json body example : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"quality"</span><span class="p">:</span><span class="s2">"Entreprise Houdon père &amp; fils"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"rue de la performance"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"complement"</span><span class="p">:</span><span class="s2">"impasse de l'immobilier"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Paris"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"Ile de France"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"geoLocation"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">12.34</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lng"</span><span class="p">:</span><span class="mf">15.12</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"checker"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="s2">"12345"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"floor"</span><span class="p">:</span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"unit"</span><span class="p">:</span><span class="s2">"1C"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"digicode"</span><span class="p">:</span><span class="s2">"1435"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"entrance"</span><span class="p">:</span><span class="s2">"B"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"elevator"</span><span class="p">:</span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"staircase"</span><span class="p">:</span><span class="s2">"2E"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td>the number of the street. ex: 12</td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td>ex: avenue de Paris</td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td>zipCode of this <code class="prettyprint">Address</code></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>ex: Paris</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>ex: France</td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td>geolocation of the <code class="prettyprint">Address</code> (with latitude &amp; longitude value)</td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td>used to identify <code class="prettyprint">Address</code> across external tools (ex: google place ID)</td>
+</tr>
+<tr>
+<td>floor</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>digicode</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>entrance</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>elevator</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>staircase</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+</tbody></table>
+
           <h1 id="commands">Commands</h1>
 
 <h2 id="createcompany">CreateCompany</h2>
@@ -4862,7 +4981,7 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </tr>
 <tr>
 <td>complementaryAddress</td>
-<td>AddressReferenceJsonCommand</td>
+<td><a href="#patrimonyaddressreference">PatrimonyAddressReference</a></td>
 <td>a complementary address is an <code class="prettyprint">Address</code> that is not referenced by a <code class="prettyprint">Lot</code> but can be use for this <code class="prettyprint">Patrimony</code></td>
 </tr>
 <tr>
