@@ -853,11 +853,3 @@ digicode      | [Option](#option)[String]           |
 entrance      | [Option](#option)[String]           |
 elevator      | [Option](#option)[String]           |
 staircase     | [Option](#option)[String]           |
-
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-  

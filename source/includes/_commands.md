@@ -276,7 +276,21 @@ commandType        | Constant                                      | `"Reference
 {
     "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
     "complementaryAddress":{
-    
+        "quality":"Entreprise Houdon père & fils",
+        "number":"12",
+        "street":"rue de la performance",
+        "complement":"impasse de l'immobilier",
+        "city":"Paris",
+        "zipCode":"75001",
+        "country":"France",
+        "state":"Ile de France",
+        "geoLocation":{
+            "lat":12.34,
+            "lng":15.12
+        },
+        "checker":{
+            "googlePlaceId":"12345"
+        }
     },
     "commandType":"AddComplementaryAddressToPatrimony"
 } 
