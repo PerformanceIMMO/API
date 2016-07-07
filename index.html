@@ -783,6 +783,10 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/users
 </tbody></table>
 
 <h2 id="get-subsidiaries-of-a-company">Get subsidiaries of a Company</h2>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiaries
@@ -871,7 +875,11 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiar
 </tbody></table>
 
 <h2 id="create-company">Create Company</h2>
-<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>                                                                                                       
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="o">{</span>
@@ -934,7 +942,11 @@ https://base_url/api/vEvent/companies
 </tbody></table>
 
 <h2 id="increment-company-state">Increment Company State</h2>
-<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPATCH <span class="se">\ </span>                                                                                                       
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="o">{</span>
@@ -976,7 +988,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>body</td>
 <td><a href="#incrementcompany">IncrementCompany</a></td>
 <td></td>
-<td>the event for create a Company</td>
+<td>the <code class="prettyprint">Command</code> for increment a <code class="prettyprint">Company</code> state</td>
 </tr>
 </tbody></table>
 
@@ -1002,7 +1014,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 </tbody></table>
 
 <h2 id="create-agency-in-company">Create Agency in Company</h2>
-<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>                                                                                                       
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="o">{</span>
@@ -1058,7 +1070,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>body</td>
 <td><a href="#createagency">CreateAgency</a></td>
 <td></td>
-<td>the event for create a Company</td>
+<td>the <code class="prettyprint">Command</code> for create an <code class="prettyprint">Agency</code></td>
 </tr>
 </tbody></table>
 
@@ -1084,7 +1096,11 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 </tbody></table>
 
 <h2 id="increment-agency">Increment Agency</h2>
-<pre class="highlight shell"><code>curl -XGET <span class="se">\ </span>                                                                                                       
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPATCH <span class="se">\ </span>                                                                                                       
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="o">{</span>
@@ -1624,6 +1640,10 @@ https://base_url/api/v1/tickets/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
 <h2 id="get-all-patrimonies">Get all patrimonies</h2>
 
 <h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 https://base_url/api/v1/patrimonies
@@ -1735,6 +1755,10 @@ https://base_url/api/v1/patrimonies
 <h2 id="get-a-specific-patrimony">Get a specific Patrimony</h2>
 
 <h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 https://base_url/api/v1/patrimonies/6ed010a1-7481-4b38-87da-c219fc31ba64
@@ -1839,6 +1863,10 @@ https://base_url/api/v1/patrimonies/6ed010a1-7481-4b38-87da-c219fc31ba64
 <h2 id="get-all-buildings-of-a-patrimony">Get all Buildings of a Patrimony</h2>
 
 <h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 https://base_url/api/v1/patrimonies/6ed010a1-.../building
@@ -1915,6 +1943,10 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../building
 <h2 id="get-a-specific-building">Get a specific Building</h2>
 
 <h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
 https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
@@ -1999,6 +2031,184 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
 <td>400</td>
 <td>Error</td>
 <td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="reference-a-patrimony">Reference a Patrimony</h2>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"ref"</span>:<span class="s2">"#Patrimony_1"</span>,
+ <span class="s2">"agencyUids"</span>:[<span class="s2">"b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32"</span><span class="o">]</span>,
+ <span class="s2">"label"</span>:<span class="s2">"Résidence des flots bleu"</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"ReferencePatrimony"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/patrimonies
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre>
+
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/patrimonies</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td>body</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this <code class="prettyprint">Command</code>. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>body</td>
+<td>String</td>
+<td>a public reference to distinguish the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>agencyUids</td>
+<td>body</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>list of agency uids associated with this Patrimony. Allow Perfimmo to handle rights of read or update this Patrimony</td>
+</tr>
+<tr>
+<td>label</td>
+<td>body</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>label of the patrimony</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>body</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferencePatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>String</td>
+<td>The <code class="prettyprint">Patrimony</code> is created</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#patrimonyeventerror">PatrimonyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+<tr>
+<td>401</td>
+<td></td>
+<td>Not authenticated user</td>
+</tr>
+<tr>
+<td>403</td>
+<td></td>
+<td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="increment-patrimony-state">Increment Patrimony State</h2>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPATCH <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"agencyUid"</span>:<span class="s2">"b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32"</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"AssociatePatrimonyInAgency"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre>
+
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/patrimonies/patrimony_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimony_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>patrimonyCommand</td>
+<td>body</td>
+<td><a href="#incrementpatrimony">IncrementPatrimony</a></td>
+<td>the <code class="prettyprint">Command</code> for increment a <code class="prettyprint">Patrimony</code> state</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>String</td>
+<td>The <code class="prettyprint">Command</code> is a success</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#patrimonyeventerror">PatrimonyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+<tr>
+<td>401</td>
+<td></td>
+<td>Not authenticated user</td>
+</tr>
+<tr>
+<td>403</td>
+<td></td>
+<td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code></td>
 </tr>
 </tbody></table>
 
@@ -4577,12 +4787,244 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
 <tr>
 <td>agency</td>
 <td><a href="#rawagency">RawAgency</a></td>
-<td></td>
+<td>the agency updated</td>
 </tr>
 <tr>
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;UpdateAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="incrementpatrimony">IncrementPatrimony</h2>
+
+<h3 id="referencebuilding">ReferenceBuilding</h3>
+
+<blockquote>
+<p>json body example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Batiment A"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"ReferenceBuilding"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>the label of this <code class="prettyprint">Building</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferenceBuilding&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="addcomplementaryaddresstopatrimony">AddComplementaryAddressToPatrimony</h3>
+
+<blockquote>
+<p>json body example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"complementaryAddress"</span><span class="p">:{</span><span class="w">
+
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"AddComplementaryAddressToPatrimony"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>complementaryAddress</td>
+<td>AddressReferenceJsonCommand</td>
+<td>a complementary address is an <code class="prettyprint">Address</code> that is not referenced by a <code class="prettyprint">Lot</code> but can be use for this <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AddComplementaryAddressToPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="removecomplementaryaddressfrompatrimony">RemoveComplementaryAddressFromPatrimony</h3>
+
+<blockquote>
+<p>json body example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"addressUid"</span><span class="p">:</span><span class="s2">"2e761b3c-404e-710b-f3ea-317942ab3fb9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"RemoveComplementaryAddressFromPatrimony"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>addressUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Address</code> will be removed</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;RemoveComplementaryAddressFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updatepatrimony">UpdatePatrimony</h3>
+
+<blockquote>
+<p>json body example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ref"</span><span class="p">:</span><span class="s2">"#Patrimony_2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Immeuble des rousses"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"un commentaire"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"UpdatePatrimony"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdatePatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="associatepatrimonyinagency">AssociatePatrimonyInAgency</h3>
+
+<blockquote>
+<p>json body example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"2e761b3c-404e-710b-f3ea-317942ab3fb9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"AssociatePatrimonyInAgency"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the agency associated</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociatePatrimonyInAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="dissociatepatrimonyfromagency">DissociatePatrimonyFromAgency</h3>
+
+<blockquote>
+<p>json body example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"2e761b3c-404e-710b-f3ea-317942ab3fb9"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"DissociatePatrimonyFromAgency"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the agency dissociated</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DissociatePatrimonyFromAgency&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -4613,7 +5055,7 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
 
 <h3 id="companygenericerror">CompanyGenericError</h3>
 
-<p>Va être supprimer ultérieurement</p>
+<aside class="warning"> Will be removed soon </aside>
 
 <h3 id="commandalreadysent">CommandAlreadySent</h3>
 
@@ -4646,6 +5088,51 @@ https://base_url/api/v1/patrimonies/6ed010a1-.../buildings/456f4a1d-...
 <h3 id="impossibletocreateagencyinanothercompanythatclientaccount">ImpossibleToCreateAgencyInAnotherCompanyThatClientAccount</h3>
 
 <p>You can only create <code class="prettyprint">Agency</code> in <code class="prettyprint">ClientAccount</code>.</p>
+
+<h2 id="patrimonyeventerror">PatrimonyEventError</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errorType</td>
+<td>Enum</td>
+<td>code describing the type of the error</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>a message describing the error</td>
+</tr>
+</tbody></table>
+
+<h3 id="patrimonygenericerror">PatrimonyGenericError</h3>
+
+<aside class="warning"> Will be removed soon </aside>
+
+<h3 id="commandalreadysent">CommandAlreadySent</h3>
+
+<p>The <code class="prettyprint">Command</code> have been already sent &amp; computed, i.e an existing <code class="prettyprint">Event</code> already have the same <code class="prettyprint">processUid</code> &amp; <code class="prettyprint">aggregateUid</code></p>
+
+<h3 id="impossibletocreateexistingpatrimony">ImpossibleToCreateExistingPatrimony</h3>
+
+<h3 id="impossibletoperformcommandonnonexistingpatrimony">ImpossibleToPerformCommandOnNonExistingPatrimony</h3>
+
+<h3 id="impossibletoreferencealreadyexistingbuilding">ImpossibleToReferenceAlreadyExistingBuilding</h3>
+
+<h3 id="impossibletoaddalreadyexistingcomplementaryaddresstopatrimony">ImpossibleToAddAlreadyExistingComplementaryAddressToPatrimony</h3>
+
+<h3 id="impossibletoremovenonexistingcomplementaryaddressfrompatrimony">ImpossibleToRemoveNonExistingComplementaryAddressFromPatrimony</h3>
+
+<h3 id="impossibletoassociatepatrimonyinagencyforalreadyassociatedagency">ImpossibleToAssociatePatrimonyInAgencyForAlreadyAssociatedAgency</h3>
+
+<h3 id="impossibletodissociatepatrimonyfromagencythatdoesntexist">ImpossibleToDissociatePatrimonyFromAgencyThatDoesntExist</h3>
+
+<h3 id="impossibletodissociatepatrimonyfromagencyremainonlyoneagency">ImpossibleToDissociatePatrimonyFromAgencyRemainOnlyOneAgency</h3>
 
           <h1 id="errors">Errors</h1>
 
