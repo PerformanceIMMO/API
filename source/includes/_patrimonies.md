@@ -8,6 +8,8 @@
 
 ### HTTP Request
 
+> HTTP query example :
+
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
@@ -91,6 +93,8 @@ Http code | Type                                          | Description
 
 ### HTTP Request
 
+> HTTP query example :
+
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
@@ -171,6 +175,8 @@ Http code | Type                                          | Description
 
 ### HTTP Request
 
+> HTTP query example :
+
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
@@ -218,6 +224,8 @@ Http code | Type                                          | Description
 ## Get a specific Building
 
 ### HTTP Request
+
+> HTTP query example :
 
 ```shell
 curl -XGET \
@@ -274,3 +282,88 @@ Http code | Type                                          | Description
 ----------| ----------------------------------------------| ----------------------------
 200       | [PatrimonyDetailedBuildingQueryView](#patrimonydetailedbuildingqueryview) | the `Building` requested.
 400       | Error                                         | Bad request, occurs most often when parameters passed are invalid.
+
+## Reference a Patrimony
+
+> HTTP query example :
+
+```shell
+curl -XPOST \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+ "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+ "ref":"#Patrimony_1",
+ "agencyUids":["b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32"],
+ "label":"Résidence des flots bleu",
+ "commandType":"ReferencePatrimony"
+} \
+https://base_url/api/vEvent/patrimonies
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 201 Created
+```
+
+**`POST`** `/api/vEvent/patrimonies`
+
+### Parameters
+
+Name            | In    | Type                                         | Description
+--------------- | ------| ---------------------------------------------| -------------
+processUid      | body  | [SafeUUID](#safeuuid)                        | the uid of this `Command`. Allow PerfImmo to know if this Command is duplicated 
+ref             | body  | String                                       | a public reference to distinguish the `Patrimony` 
+agencyUids      | body  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | list of agency uids associated with this Patrimony. Allow Perfimmo to handle rights of read or update this Patrimony  
+label           | body  | [Option](#option)[String]                    | label of the patrimony 
+commandType     | body  | Constant                                     | `"ReferencePatrimony"` 
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+201       | String                                      | The `Patrimony` is created
+400       | [PatrimonyEventError](#patrimonyeventerror) | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+401       |                                             | Not authenticated user
+403       |                                             | `User` doesn't have right to perform this `Command`
+
+## Increment Patrimony State
+
+> HTTP query example :
+
+```shell
+curl -XPATCH \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+ "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+ "agencyUid":"b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32",
+ "commandType":"AssociatePatrimonyInAgency"
+} \
+https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 200 OK
+```
+
+**`PATCH`** `/api/vEvent/patrimonies/patrimony_uid`
+
+### Parameters
+
+Name            | In    | Type                                             | Description
+--------------- | ------| -------------------------------------------------| -------------
+patrimony_uid   | query | [SafeUUID](#safeuuid)                            | the uid of the `Patrimony`
+patrimonyCommand | body | [IncrementPatrimony](#incrementpatrimony)        | the `Command` for increment a `Patrimony` state
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+200       | String                                      | The `Command` is a success
+400       | [PatrimonyEventError](#patrimonyeventerror) | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+401       |                                             | Not authenticated user
+403       |                                             | `User` doesn't have right to perform this `Command`

@@ -9,7 +9,7 @@ message            | String | a message describing the error
 
 ### CompanyGenericError
 
-Va être supprimer ultérieurement
+<aside class="warning"> Will be removed soon </aside>
 
 ### CommandAlreadySent 
 
@@ -42,3 +42,35 @@ It is not allowed to cancel a `CallCenter`.
 ### ImpossibleToCreateAgencyInAnotherCompanyThatClientAccount
 
 You can only create `Agency` in `ClientAccount`.
+
+## PatrimonyEventError
+
+Name               | Type   | Description
+-------------------| -------| --------------------------------------------------
+errorType          | Enum   | code describing the type of the error
+message            | String | a message describing the error
+
+### PatrimonyGenericError
+
+<aside class="warning"> Will be removed soon </aside>
+
+### CommandAlreadySent
+
+The `Command` have been already sent & computed, i.e an existing `Event` already have the same `processUid` & `aggregateUid`
+
+### ImpossibleToCreateExistingPatrimony
+
+### ImpossibleToPerformCommandOnNonExistingPatrimony
+
+### ImpossibleToReferenceAlreadyExistingBuilding
+
+### ImpossibleToAddAlreadyExistingComplementaryAddressToPatrimony
+
+### ImpossibleToRemoveNonExistingComplementaryAddressFromPatrimony
+
+### ImpossibleToAssociatePatrimonyInAgencyForAlreadyAssociatedAgency
+
+### ImpossibleToDissociatePatrimonyFromAgencyThatDoesntExist
+
+### ImpossibleToDissociatePatrimonyFromAgencyRemainOnlyOneAgency
+

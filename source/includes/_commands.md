@@ -245,5 +245,121 @@ Name               | Type                                          | Description
 -------------------| ----------------------------------------------| --------------------------------------------------
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 updatedDate        | [LocalDate](#localdate)                       | the updated's date of this `Agency`  
-agency             | [RawAgency](#rawagency)                       |   
+agency             | [RawAgency](#rawagency)                       | the agency updated  
 commandType        | Constant                                      | `"UpdateAgency"`
+
+## IncrementPatrimony
+
+### ReferenceBuilding
+
+> json body example :
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "label":"Batiment A",
+    "commandType":"ReferenceBuilding"
+} 
+``` 
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+label              | String                                        | the label of this `Building`  
+commandType        | Constant                                      | `"ReferenceBuilding"`
+
+### AddComplementaryAddressToPatrimony
+
+> json body example :
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "complementaryAddress":{
+    
+    },
+    "commandType":"AddComplementaryAddressToPatrimony"
+} 
+``` 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+complementaryAddress| AddressReferenceJsonCommand                   | a complementary address is an `Address` that is not referenced by a `Lot` but can be use for this `Patrimony`  
+commandType         | Constant                                      | `"AddComplementaryAddressToPatrimony"`
+
+### RemoveComplementaryAddressFromPatrimony
+
+> json body example :
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "addressUid":"2e761b3c-404e-710b-f3ea-317942ab3fb9",
+    "commandType":"RemoveComplementaryAddressFromPatrimony"
+} 
+``` 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+addressUid          | [SafeUUID](#safeuuid)                         | the uid of the `Address` will be removed  
+commandType         | Constant                                      | `"RemoveComplementaryAddressFromPatrimony"`
+
+### UpdatePatrimony
+
+> json body example :
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "ref":"#Patrimony_2",
+    "label":"Immeuble des rousses",
+    "comment":"un commentaire",
+    "commandType":"UpdatePatrimony"
+} 
+``` 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+ref                 | String                                        |   
+label               | [Option](#option)[String]                     |   
+comment             | String                                        |   
+commandType         | Constant                                      | `"UpdatePatrimony"`
+
+### AssociatePatrimonyInAgency
+
+> json body example :
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "agencyUid":"2e761b3c-404e-710b-f3ea-317942ab3fb9",
+    "commandType":"AssociatePatrimonyInAgency"
+} 
+``` 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency associated   
+commandType         | Constant                                      | `"AssociatePatrimonyInAgency"`
+
+### DissociatePatrimonyFromAgency
+
+> json body example :
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "agencyUid":"2e761b3c-404e-710b-f3ea-317942ab3fb9",
+    "commandType":"DissociatePatrimonyFromAgency"
+} 
+``` 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency dissociated   
+commandType         | Constant                                      | `"DissociatePatrimonyFromAgency"`

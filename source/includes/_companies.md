@@ -204,6 +204,8 @@ Http code | Type                                        | Description
 
 ## Get subsidiaries of a Company
 
+> HTTP query example :
+
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
@@ -257,8 +259,10 @@ Http code | Type                                        | Description
 
 ## Create Company
 
+> HTTP query example :
+
 ```shell
-curl -XGET \                                                                                                        
+curl -XPOST \                                                                                                        
 -H "Cookie: PI_SESSION=..." \
 -H "Content-Type: application/json" \
 -d {
@@ -296,8 +300,10 @@ Http code | Type                                        | Description
 
 ## Increment Company State
 
+> HTTP query example :
+
 ```shell
-curl -XGET \                                                                                                        
+curl -XPATCH \                                                                                                        
 -H "Cookie: PI_SESSION=..." \
 -H "Content-Type: application/json" \
 -d {
@@ -321,7 +327,7 @@ HTTP/1.1 200 OK
 Name            | In    | Type                                             | Default   | Description
 --------------- | ------| -------------------------------------------------| ----------| -------------
 company_uid     | query | [SafeUUID](#safeuuid)                            |           | the uid of the `Company`
-companyCommand  | body  | [IncrementCompany](#incrementcompany)            |           | the event for create a Company
+companyCommand  | body  | [IncrementCompany](#incrementcompany)            |           | the `Command` for increment a `Company` state
 
 
 ### Responses
@@ -334,7 +340,7 @@ Http code | Type                                        | Description
 ## Create Agency in Company
 
 ```shell
-curl -XGET \                                                                                                        
+curl -XPOST \                                                                                                        
 -H "Cookie: PI_SESSION=..." \
 -H "Content-Type: application/json" \
 -d {
@@ -372,7 +378,7 @@ HTTP/1.1 201 Created
 Name            | In    | Type                                             | Default   | Description
 --------------- | ------| -------------------------------------------------| ----------| -------------
 company_uid     | query | [SafeUUID](#safeuuid)                            |           | the uid of the `Company` for which you want to create this `Agency`
-agencyCommand   | body  | [CreateAgency](#createagency)                    |           | the event for create a Company
+agencyCommand   | body  | [CreateAgency](#createagency)                    |           | the `Command` for create an `Agency`
 
 
 ### Responses
@@ -384,8 +390,10 @@ Http code | Type                                        | Description
 
 ## Increment Agency
 
+> HTTP query example :
+
 ```shell
-curl -XGET \                                                                                                        
+curl -XPATCH \                                                                                                        
 -H "Cookie: PI_SESSION=..." \
 -H "Content-Type: application/json" \
 -d {
