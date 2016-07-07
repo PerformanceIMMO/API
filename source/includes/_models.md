@@ -804,4 +804,60 @@ state         | [Option](#option)[String]           |
 country       | [Option](#option)[String]           |  
 geoLocation   | [GeoLocation](#geolocation)         |  
 checker       | [AddressChecker](#addresschecker)   |  
+
+## PatrimonyAddressReference
+
+> json body example : 
+
+```json
+{
+	"quality":"Entreprise Houdon père & fils",
+	"number":"12",
+	"street":"rue de la performance",
+	"complement":"impasse de l'immobilier",
+	"city":"Paris",
+	"zipCode":"75001",
+	"country":"France",
+	"state":"Ile de France",
+	"geoLocation":{
+		"lat":12.34,
+		"lng":15.12
+	},
+	"checker":{
+		"googlePlaceId":"12345"
+	},
+	"floor":"3",
+	"unit":"1C",
+	"digicode":"1435",
+	"entrance":"B",
+	"elevator":"C",
+	"staircase":"2E"
+}
+```
+
+Name          | Type                                | Description
+--------------| ------------------------------------| --------------------------------------------------------
+quality       | [Option](#option)[String]           |  
+number        | String                              | the number of the street. ex: 12 
+street        | String                              | ex: avenue de Paris 
+complement    | [Option](#option)[String]           | 
+zipCode       | String                              | zipCode of this `Address` 
+city          | String                              | ex: Paris 
+state         | [Option](#option)[String]           | 
+country       | [Option](#option)[String]           | ex: France 
+geoLocation   | [GeoLocation](#geolocation)         | geolocation of the `Address` (with latitude & longitude value) 
+checker       | [AddressChecker](#addresschecker)   | used to identify `Address` across external tools (ex: google place ID)
+floor         | [Option](#option)[String]           | 
+unit          | [Option](#option)[String]           |
+digicode      | [Option](#option)[String]           |
+entrance      | [Option](#option)[String]           |
+elevator      | [Option](#option)[String]           |
+staircase     | [Option](#option)[String]           |
+
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
   

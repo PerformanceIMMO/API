@@ -282,11 +282,11 @@ commandType        | Constant                                      | `"Reference
 } 
 ``` 
 
-Name                | Type                                          | Description
-------------------- | ----------------------------------------------| --------------------------------------------------
-processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-complementaryAddress| AddressReferenceJsonCommand                   | a complementary address is an `Address` that is not referenced by a `Lot` but can be use for this `Patrimony`  
-commandType         | Constant                                      | `"AddComplementaryAddressToPatrimony"`
+Name                | Type                                                    | Description
+------------------- | --------------------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                                   | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+complementaryAddress| [PatrimonyAddressReference](#patrimonyaddressreference) | a complementary address is an `Address` that is not referenced by a `Lot` but can be use for this `Patrimony`  
+commandType         | Constant                                                | `"AddComplementaryAddressToPatrimony"`
 
 ### RemoveComplementaryAddressFromPatrimony
 
