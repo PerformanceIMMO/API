@@ -853,3 +853,58 @@ digicode      | [Option](#option)[String]           |
 entrance      | [Option](#option)[String]           |
 elevator      | [Option](#option)[String]           |
 staircase     | [Option](#option)[String]           |
+
+## ProviderContactResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[ProviderContactQueryView](#providercontactqueryview)]  | Array of selected `ProviderContactQueryView`s
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## ProviderContactQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `ProviderContact`
+label       | String                                            | label of the `ProviderContact`
+phones      | Array[String]                                     | 
+fax         | Array[String]                                     | 
+emails      | Array[String]                                     | 
+active      | Boolean                                           | 
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## ProviderContactStats
+
+### Fields
+
+Name                        | Type                                              | Description
+----------------------------| --------------------------------| --------------------------------------------------
+interventionDelay           | Array[[DelayStat](#delaystat)]  | Time between [`MissionAccepted`](#missionaccepted) & [`InterventionStarted`](#interventionstarted) 
+missionAcceptedDelay        | Array[[DelayStat](#delaystat)]  | Time between [`CallEmittedTo`](#callemittedto) & [`MissionAccepted`](#missionaccepted)
+repairDelay                 | Array[[DelayStat](#delaystat)]  | Time between [`MissionAccepted`](#missionaccepted) & [`InterventionFinished`](#interventionfinished) or `ClosingTicketEvent` 
+callBeforeMissionAccepted   | Array[[CountStat](#countstat)]  | Count the number of [`CallEmittedTo`](#callemittedto) before [`MissionAccepted`](#missionaccepted) 
+interventionNumber          | Array[[CountStat](#countstat)]  | Count the number of intervention of this `ProviderContact`
+
+## DelayStat
+
+### Fields
+
+This statistic measure a time average in milliseconds grouped by day of ticket creation.
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+day                         | [LocalDate](#localdate)         | a day when tickets are created
+value                       | Long                            | a time average in milliseconds
+
+## CountStat
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+day                         | [LocalDate](#localdate)         | a day when tickets are created
+value                       | Float                           | a count with 2 significant figures
