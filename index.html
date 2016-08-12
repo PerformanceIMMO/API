@@ -1181,6 +1181,345 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad/agenc
     You must be authenticated to use these API.
 </aside>
 
+<h2 id="get-provider-contacts">Get Provider Contacts</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/providercontacts?range<span class="o">=</span>0-0
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">206</span> <span class="ne">Partial Content</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/19234</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atti nord"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"06.71.01.83.65"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"relation.client@itac-itservices.eu"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+
+        </span><span class="p">},</span><span class="w">    
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/v1/providercontacts"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/providercontacts</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-100</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercontactresultview">ProviderContactResultView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#providercontactresultview">ProviderContactResultView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-provider-contact">Get a Provider Contact</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atti nord"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"06.71.01.83.65"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"relation.client@itac-itservices.eu"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">    
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/providercontacts/:contact_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contact_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>uid of the requested <code class="prettyprint">ProviderContact</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercontactqueryview">ProviderContactQueryView</a></td>
+<td>the requested <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h3 id="navigationlinks">NavigationLinks</h3>
+
+<p>Rest Navivation Links represent what it is possible to do with this resource.</p>
+
+<p>These different links below (except <code class="prettyprint">self</code> that are mandatory) are optional in<br>
+the response because of the specific state of the request done to retrieve this response.</p>
+
+<p>ex: state of the resource, rights of the user performing the request, etc&hellip; </p>
+
+<table><thead>
+<tr>
+<th>rel</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">self</code></td>
+<td>the resource itself</td>
+</tr>
+<tr>
+<td><code class="prettyprint">stats</code></td>
+<td>statistics associate with this <code class="prettyprint">ProviderContact</code>. cf. <a href="#get-stats-on-a-provider-contact">Get stats on a Provider Contact</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">AssociateProviderContactToAgency</code></td>
+<td>cf. <a href="#increment-providercontact-state">Increment ProviderContact</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">DissociateProviderContactToAgency</code></td>
+<td>cf. <a href="#increment-providercontact-state">Increment ProviderContact</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">UpdateProviderContact</code></td>
+<td>cf. <a href="#increment-providercontact-state">Increment ProviderContact</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">DisableProviderContact</code></td>
+<td>cf. <a href="#increment-providercontact-state">Increment ProviderContact</a></td>
+</tr>
+<tr>
+<td><code class="prettyprint">EnableProviderContact</code></td>
+<td>cf. <a href="#increment-providercontact-state">Increment ProviderContact</a></td>
+</tr>
+</tbody></table>
+
+<h2 id="get-stats-on-a-provider-contact">Get stats on a Provider Contact</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74/stats
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"interventionDelay"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">5090000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"missionAcceptedDelay"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">133000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"repairDelay"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+
+            </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">6590000</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"callBeforeMissionAccepted"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"interventionNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/providercontacts/:contact_uid/stats</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contact_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>uid of the requested <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>from</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#localdate">LocalDate</a>]</td>
+<td>None</td>
+<td>query matching with <code class="prettyprint">from</code> local date.<br/> ex: <code class="prettyprint">from=2015-07-02</code>.<br/> if <strong><code class="prettyprint">from</code></strong> but not <strong><code class="prettyprint">to</code></strong> =&gt; from <strong><code class="prettyprint">from</code></strong> to <strong>now</strong></td>
+</tr>
+<tr>
+<td>to</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#localdate">LocalDate</a>]</td>
+<td>None</td>
+<td>query matching with <code class="prettyprint">to</code> local date.<br/> ex: <code class="prettyprint">to=2015-07-03</code>.<br/> if <strong><code class="prettyprint">to</code></strong> but not <strong><code class="prettyprint">from</code></strong> =&gt; until <strong><code class="prettyprint">to</code></strong>. <strong><code class="prettyprint">to</code></strong> must be &gt;= <strong><code class="prettyprint">from</code></strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercontactstats">ProviderContactStats</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
 <h2 id="create-providercontact">Create ProviderContact</h2>
 
 <p>POST         /api/vEvent/providerContacts                                   cqrs.commands.application.controllers.ProvidersContactCommandAPI.create</p>
@@ -4422,6 +4761,163 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>staircase</td>
 <td><a href="#option">Option</a>[String]</td>
 <td></td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactresultview">ProviderContactResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#providercontactqueryview">ProviderContactQueryView</a>]</td>
+<td>Array of selected <code class="prettyprint">ProviderContactQueryView</code>s</td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td>Array of <code class="prettyprint">RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactqueryview">ProviderContactQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>label of the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>fax</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>Boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td>Array of <code class="prettyprint">RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactstats">ProviderContactStats</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>interventionDelay</td>
+<td>Array[<a href="#delaystat">DelayStat</a>]</td>
+<td>Time between <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a> &amp; <a href="#interventionstarted"><code class="prettyprint">InterventionStarted</code></a></td>
+</tr>
+<tr>
+<td>missionAcceptedDelay</td>
+<td>Array[<a href="#delaystat">DelayStat</a>]</td>
+<td>Time between <a href="#callemittedto"><code class="prettyprint">CallEmittedTo</code></a> &amp; <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a></td>
+</tr>
+<tr>
+<td>repairDelay</td>
+<td>Array[<a href="#delaystat">DelayStat</a>]</td>
+<td>Time between <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a> &amp; <a href="#interventionfinished"><code class="prettyprint">InterventionFinished</code></a> or <code class="prettyprint">ClosingTicketEvent</code></td>
+</tr>
+<tr>
+<td>callBeforeMissionAccepted</td>
+<td>Array[<a href="#countstat">CountStat</a>]</td>
+<td>Count the number of <a href="#callemittedto"><code class="prettyprint">CallEmittedTo</code></a> before <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a></td>
+</tr>
+<tr>
+<td>interventionNumber</td>
+<td>Array[<a href="#countstat">CountStat</a>]</td>
+<td>Count the number of intervention of this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="delaystat">DelayStat</h2>
+
+<h3 id="fields">Fields</h3>
+
+<p>This statistic measure a time average in milliseconds grouped by day of ticket creation.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>day</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>a day when tickets are created</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Long</td>
+<td>a time average in milliseconds</td>
+</tr>
+</tbody></table>
+
+<h2 id="countstat">CountStat</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>day</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>a day when tickets are created</td>
+</tr>
+<tr>
+<td>value</td>
+<td>Float</td>
+<td>a count with 2 significant figures</td>
 </tr>
 </tbody></table>
 
