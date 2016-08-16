@@ -1689,26 +1689,81 @@ https://base_url/api/vEvent/providercontacts
 
 <h2 id="increment-providercontact-state">Increment ProviderContact State</h2>
 
-<p>PATCH        /api/vEvent/providerContacts/:aggregateUid                     cqrs.commands.application.controllers.ProvidersContactCommandAPI.increment(aggregateUid: String)</p>
+<blockquote>
+<p>HTTP command example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPATCH <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+    <span class="s2">"processUid"</span>:<span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span>,
+    <span class="s2">"agencyUid"</span>:<span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span>,
+    <span class="s2">"date"</span>:<span class="s2">"2016-02-29"</span>,
+    <span class="s2">"commandType"</span>:<span class="s2">"AssociateProviderContactToAgency"</span>
+ <span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/providerContacts/7634c414-8822-e29d-fe2b-0a18b3174369
+</code></pre>
 
-<p>case class UpdateProviderContact(processUid: SafeUUID,
-                                 aggregateUid: SafeUUID,
-                                 name: Name,
-                                 phones: List[String],
-                                 fax: List[String],
-                                 emails: List[String],
-                                 date: DateTime,
-                                 sentDate: DateTime) extends OtherProviderContactCommand</p>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"events"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-02-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactAssociatedToAgency"</span><span class="w">
+        </span><span class="p">}</span><span class="w">    
+    </span><span class="p">]</span><span class="w">
+</span></code></pre>
 
-<p>case class DisableProviderContact(processUid: SafeUUID,
-                                  aggregateUid: SafeUUID,
-                                  date: DateTime,
-                                  sentDate: DateTime) extends OtherProviderContactCommand</p>
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/providerContacts/aggregate_uid</code></p>
 
-<p>case class EnableProviderContact(processUid: SafeUUID,
-                                 aggregateUid: SafeUUID,
-                                 date: DateTime,
-                                 sentDate: DateTime) extends OtherProviderContactCommand</p>
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>body</td>
+<td><a href="#incrementprovidercontact">IncrementProviderContact</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercontacteventresultview">ProviderContactEventResultView</a></td>
+<td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#providercontacteventerror">ProviderContactEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
 
           <h1 id="tickets">Tickets</h1>
 
@@ -5904,6 +5959,168 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;DissociatePatrimonyFromAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="incrementprovidercontact">IncrementProviderContact</h2>
+
+<h3 id="associateprovidercontacttoagency">AssociateProviderContactToAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the agency associated</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociateProviderContactToAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="dissociateprovidercontactfromagency">DissociateProviderContactFromAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the agency associated</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DissociateProviderContactFromAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updateprovidercontact">UpdateProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#name">Name</a></td>
+<td></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>fax</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="disableprovidercontact">DisableProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DisableProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="enableprovidercontact">EnableProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;EnableProviderContact&quot;</code></td>
 </tr>
 </tbody></table>
 
