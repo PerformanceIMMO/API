@@ -39,6 +39,50 @@ Name        | Type                                              | Description
 uid         | [SafeUUID](#safeuuid)                             | the uid of the item
 label       | String                                            | the label of the item
 
+## Name
+
+`Name` is an Enum, i.e type can take different values : 
+
+```haskell
+data Name = PoorName | CivilName
+```
+
+### PoorName
+
+> PoorName example :
+
+```json
+{
+	"name":"John Doe",
+    "nameType":"PoorName"
+}
+```
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+name        | String                                            | 
+nameType    | Constant                                          | `"PoorName"`
+
+### CivilName
+
+> CivilName example :
+
+```json
+{
+	"gender":"female",
+	"firstName":"John",
+	"lastName":"Doe",
+    "nameType":"CivilName"
+}
+```
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+gender      | [Option](#option)[String]                         | only value accepted are `"Male"` or `"Female"`
+firstName   | String                                            | 
+lastName    | String                                            | 
+nameType    | Constant                                          | `"CivilName"`
+
 ## CompanyQueryView
 
 ### Fields
@@ -99,7 +143,7 @@ firstName   | String                                            | `User`'s first
 lastName    | String                                            | `User`'s last name
 job         | [Option](#option)[String]                         | `User`'s job (optional)
 phone       | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType    | String                                            | "superUser"
+userType    | Constant                                          | `"superUser"
 
 ### CallCenterUser 
 
@@ -132,7 +176,7 @@ firstName   | String                                            | `User`'s first
 lastName    | String                                            | `User`'s last name
 job         | [Option](#option)[String]                         | `User`'s job (optional)
 phone       | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType    | String                                            | "callCenterUser"
+userType    | Constant                                          | `"callCenterUser"`
 
 ### ClientAccountManager 
 
@@ -165,7 +209,7 @@ firstName   | String                                            | `User`'s first
 lastName    | String                                            | `User`'s last name
 job         | [Option](#option)[String]                         | `User`'s job (optional)
 phone       | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType    | String                                            | "clientAccountManager"
+userType    | Constant                                          | `"clientAccountManager"
 
 ### Executive
 
@@ -202,7 +246,7 @@ firstName       | String                                            | `User`'s f
 lastName        | String                                            | `User`'s last name
 job             | [Option](#option)[String]                         | `User`'s job (optional)
 phone           | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType        | String                                            | "executive"
+userType        | Constant                                          | `"executive"
 
 ## TicketResultView
 
@@ -908,3 +952,12 @@ Name                        | Type                            | Description
 ----------------------------| --------------------------------| --------------------------------------------------
 day                         | [LocalDate](#localdate)         | a day when tickets are created
 value                       | Float                           | a count with 2 significant figures
+
+## ProviderContactEventResultView
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[ProviderContactEvent](#providercontactevent)] | The `Event`s resulting of this `Command`
+

@@ -74,3 +74,19 @@ The `Command` have been already sent & computed, i.e an existing `Event` already
 
 ### ImpossibleToDissociatePatrimonyFromAgencyRemainOnlyOneAgency
 
+## ProviderContactEventError
+
+Name               | Type   | Description
+-------------------| -------| --------------------------------------------------
+errorType          | Enum   | code describing the type of the error
+message            | String | a message describing the error
+
+### CommandAlreadySent 
+
+The `Command` have been already sent & computed, i.e an existing `Event` already have the same `processUid` & `aggregateUid`
+
+### ImpossibleToAddExistingProviderContact
+
+### ImpossibleToPerfomCommandOnNonExistingProviderContactCommand
+
+### ImpossibleToAssociateToAgencyThatIsAlreadyAssociated

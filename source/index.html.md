@@ -138,8 +138,8 @@ Elle peut prendre 3 formes :
 
 ### CallCenter
 
-Un `CallCenter` représente un centre d'appel, qui ouvre des tickets. Chaque entité `Company` autre que `CallCenter 
-doit possèder une référence vers un `CallCenter`.
+Un `CallCenter` représente un centre d'appel, qui ouvre des tickets. Chaque entité `Company` autre que `CallCenter` 
+doit posséder une référence vers un `CallCenter`.
 
 ### ClientAccountHolding
 
@@ -153,16 +153,16 @@ Un `ClientAccount` représente la structure qui gère un patrimoine immobilier.
 
 Il doit référencer un `CallCenter`et peut référencer un `ClientAccountHolding`.
 
-Il est componser de une ou plusieurs `Agency`, qui elles représentent un groupement (géographique ou autre) permettant 
+Il est composé d'une ou plusieurs `Agency`, qui elles représentent un groupement (géographique ou autre) permettant 
 la ségrégation d'informations sur Performance Immo. Par exemple, pour restreindre l'accès 
-à certains `Ticket` ou à un certain `Patrimony`.
+à certains `Ticket` ou à un certains `Patrimony`.
 
 ## ProviderContact
 
 Un `ProviderContact` est un contact qui a possiblement à intervenir sur un incident.
 
 Si vous souhaitez bénéficier des informations fournisseurs sur la plateforme, de statistiques, vous devez les référencer 
-via les API d'écriture.
+via les [API d'écriture](#create-providercontact).
 
 ## Ticket
 
@@ -306,4 +306,7 @@ ex: l'utilisateur a été référencé, le ticket a été cloturé ...
 
 Command  ---------> | PerformanceImmo | ---------> [Event] ou Error
  
-Le client de l'API envoi une `Command` et reçoit une liste d'`Event`; signifiant le succès de son action; ou une erreur. 
+Le client de l'API envoi une `Command` et reçoit une liste d'`Event`; signifiant le succès de son action; ou une erreur.
+ 
+# Liens de navigation
+

@@ -339,6 +339,8 @@ Http code | Type                                        | Description
 
 ## Create Agency in Company
 
+> HTTP command example :
+
 ```shell
 curl -XPOST \                                                                                                        
 -H "Cookie: PI_SESSION=..." \
@@ -390,7 +392,7 @@ Http code | Type                                        | Description
 
 ## Increment Agency
 
-> HTTP query example :
+> HTTP command example :
 
 ```shell
 curl -XPATCH \                                                                                                        

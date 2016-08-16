@@ -222,16 +222,90 @@ Http code | Type                                                      | Descript
 
 ## Create ProviderContact
 
-POST         /api/vEvent/providerContacts                                   cqrs.commands.application.controllers.ProvidersContactCommandAPI.create
+> HTTP command example :
 
-case class AddProviderContact(processUid: SafeUUID,
-                              aggregateUid: SafeUUID,
-                              date: DateTime,
-                              name: Name,
-                              phones: List[String],
-                              fax: List[String],
-                              emails: List[String],
-                              sentDate: DateTime) extends ProviderContactCommand
+```shell
+curl -XPOST \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+ "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+ "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+ "callCenterUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
+ "date":"2016-02-29T12:03:32+02:00",
+ "name":{
+    "gender":"Male",
+    "firstName":"John",
+    "lastName":"Doe",
+    "nameType":"CivilName"
+ },
+ "phones":[ "0145123456" ],
+ "fax":[],
+ "emails":[],
+ "commandType":"AddProviderContact"
+} \
+https://base_url/api/vEvent/providercontacts
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 201 Created
+```
+```json
+{
+    "events":[
+        {
+            "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+            "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+            "date":"2016-02-29T12:03:32+02:00",
+            "name":{
+                "gender":"Male",
+                "firstName":"John",
+                "lastName":"Doe",
+                "nameType":"CivilName"
+             },
+             "phones":[ "0145123456" ],
+             "fax":[],
+             "emails":[],
+             "sentDate":"2016-02-29T12:05:32+02:00",
+             "eventType":"ProviderContactAdded"
+        },
+        {
+            "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+            "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+            "date":"2016-02-29",
+            "callCenterUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
+            "sentDate":"2016-02-29T12:05:32+02:00",
+            "eventType":"ProviderContactAssociatedToCallCenter"
+        }
+    ]
+}
+```
+
+**`POST`** `/api/vEvent/providercontacts`
+
+### Parameters
+
+Name            | In    | Type                                             | Default   | Description
+--------------- | ------| -------------------------------------------------| ----------| -------------
+processUid      | body  | [SafeUUID](#safeuuid)                            |           | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid    | body  | [Option](#option)[[SafeUUID](#safeuuid)]         |           | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
+callCenterUid   | body  | [SafeUUID](#safeuuid)                            |           | the uid of the `CallCenter` that send this data
+date            | body  | [DateTime](#datetime)                            |           | the creation date of this resource
+name            | body  | [Name](#name)                                    |           | the name of the `ProviderContact`
+phones          | body  | Array[String]                                    |           | 
+fax             | body  | Array[String]                                    |           | 
+emails          | body  | Array[String]                                    |           | 
+commandType     | body  | Constant                                         |           | `"AddProviderContact"`
+
+### Responses
+
+Http code | Type                                                              | Description
+----------| ------------------------------------------------------------------| ----------------------------
+201       | [ProviderContactEventResultView](#providercontacteventresultview) | The `Event`s resulting of this `Command`
+400       | [ProviderContactEventError](#providercontacteventerror)           | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+
 
 ## Increment ProviderContact State
 
