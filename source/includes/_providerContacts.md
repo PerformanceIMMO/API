@@ -309,23 +309,53 @@ Http code | Type                                                              | 
 
 ## Increment ProviderContact State
 
-PATCH        /api/vEvent/providerContacts/:aggregateUid                     cqrs.commands.application.controllers.ProvidersContactCommandAPI.increment(aggregateUid: String)
+> HTTP command example :
 
-case class UpdateProviderContact(processUid: SafeUUID,
-                                 aggregateUid: SafeUUID,
-                                 name: Name,
-                                 phones: List[String],
-                                 fax: List[String],
-                                 emails: List[String],
-                                 date: DateTime,
-                                 sentDate: DateTime) extends OtherProviderContactCommand
+```shell
+curl -XPATCH \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "agencyUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
+    "date":"2016-02-29",
+    "commandType":"AssociateProviderContactToAgency"
+ } \
+https://base_url/api/vEvent/providerContacts/7634c414-8822-e29d-fe2b-0a18b3174369
+```
 
-case class DisableProviderContact(processUid: SafeUUID,
-                                  aggregateUid: SafeUUID,
-                                  date: DateTime,
-                                  sentDate: DateTime) extends OtherProviderContactCommand
+> HTTP response example :
 
-case class EnableProviderContact(processUid: SafeUUID,
-                                 aggregateUid: SafeUUID,
-                                 date: DateTime,
-                                 sentDate: DateTime) extends OtherProviderContactCommand
+```http
+HTTP/1.1 200 Ok
+```
+```json
+{
+    "events":[
+        {
+            "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+            "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+            "date":"2016-02-29",
+            "agencyUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
+            "sentDate":"2016-02-29T12:05:32+02:00",
+            "eventType":"ProviderContactAssociatedToAgency"
+        }    
+    ]
+```
+
+**`PATCH`** `/api/vEvent/providerContacts/aggregate_uid`
+
+### Parameters
+
+Name            | In    | Type                                                  | Default   | Description
+--------------- | ------| ------------------------------------------------------| ----------| -------------
+                | body  | [IncrementProviderContact](#incrementprovidercontact) |           | 
+
+
+### Responses
+
+Http code | Type                                                              | Description
+----------| ------------------------------------------------------------------| ----------------------------
+200       | [ProviderContactEventResultView](#providercontacteventresultview) | The `Event`s resulting of this `Command`
+400       | [ProviderContactEventError](#providercontacteventerror)           | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+

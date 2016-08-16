@@ -375,5 +375,53 @@ commandType         | Constant                                      | `"Associat
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency dissociated   
+agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency dissociated
 commandType         | Constant                                      | `"DissociatePatrimonyFromAgency"`
+
+## IncrementProviderContact
+
+### AssociateProviderContactToAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency associated
+date                | [LocalDate](#localdate)                       | 
+commandType         | Constant                                      | `"AssociateProviderContactToAgency"`
+
+### DissociateProviderContactFromAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency associated
+date                | [LocalDate](#localdate)                       | 
+commandType         | Constant                                      | `"DissociateProviderContactFromAgency"`
+
+### UpdateProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+name                | [Name](#name)                                 | 
+phones              | Array[String]                                 | 
+fax                 | Array[String]                                 | 
+emails              | Array[String]                                 | 
+date                | [DateTime](#datetime)                         | 
+commandType         | Constant                                      | `"UpdateProviderContact"`
+            
+### DisableProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+date                | [DateTime](#datetime)                         | 
+commandType         | Constant                                      | `"DisableProviderContact"`
+            
+### EnableProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+date                | [DateTime](#datetime)                         | 
+commandType         | Constant                                      | `"EnableProviderContact"`            
