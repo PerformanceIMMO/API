@@ -1798,9 +1798,15 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REF20160526"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Agency"</span><span class="w">
+            </span><span class="nt">"agencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Agency"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">    
+            </span><span class="nt">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2"</span><span class="p">,</span><span class="w"> 
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My patrimony"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1896,6 +1902,13 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
 <td><a href="#option">Option</a>[String]</td>
 <td>None</td>
 <td>query matching with several <code class="prettyprint">callpurpose</code>.<br/> ex: <code class="prettyprint">callpurpose=one,two,three</code></td>
+</tr>
+<tr>
+<td>activeproviders</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td>query matching with several active provider contacts uid.<br/> ex: <code class="prettyprint">activeproviders=provider_uid1,provider_uid2</code></td>
 </tr>
 <tr>
 <td>fulltext</td>
@@ -2067,9 +2080,15 @@ https://base_url/api/v1/tickets/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"REF20160526"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"agency"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Agency"</span><span class="w">
+    </span><span class="nt">"agencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Agency"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">    
+    </span><span class="nt">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My patrimony"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CLOSED"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2176,8 +2195,8 @@ https://base_url/api/v1/tickets/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
 </thead><tbody>
 <tr>
 <td>200</td>
-<td>Array[<a href="#detailedticketview">DetailedTicketView</a>]</td>
-<td>All resources&rsquo;s elements are returned.</td>
+<td><a href="#detailedticketview">DetailedTicketView</a></td>
+<td>The detailed <code class="prettyprint">Ticket</code></td>
 </tr>
 <tr>
 <td>400</td>
@@ -3401,9 +3420,14 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>the <code class="prettyprint">Ticket</code>&rsquo;s client reference.<br/> Could be <code class="prettyprint">clientClaimNumber</code>or <code class="prettyprint">callCenterClaimNumber</code> or <code class="prettyprint">ticket_uid</code>.</td>
 </tr>
 <tr>
-<td>agency</td>
-<td><a href="#agencyabstract">AgencyAbstract</a></td>
+<td>agencies</td>
+<td>Array[<a href="#agencyabstract">AgencyAbstract</a>]</td>
 <td>the <code class="prettyprint">Agency</code> linked to this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#option">Option</a>[<a href="#patrimonyabstract">PatrimonyAbstract</a>]</td>
+<td>the <code class="prettyprint">Patrimony</code> linked to this <code class="prettyprint">Ticket</code>. optional.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -3591,6 +3615,29 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>name</td>
 <td>String</td>
 <td>the <code class="prettyprint">Agency</code>&rsquo;s name</td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyabstract">PatrimonyAbstract</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the <code class="prettyprint">Patrimony</code>&rsquo;s uid</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the <code class="prettyprint">Patrimony</code>&rsquo;s name</td>
 </tr>
 </tbody></table>
 
@@ -3867,9 +3914,14 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>the <code class="prettyprint">Ticket</code>&rsquo;s client reference.<br/> Could be <code class="prettyprint">clientClaimNumber</code>or <code class="prettyprint">callCenterClaimNumber</code> or <code class="prettyprint">ticket_uid</code>.</td>
 </tr>
 <tr>
-<td>agency</td>
-<td><a href="#agencyabstract">AgencyAbstract</a></td>
+<td>agencies</td>
+<td>Array[<a href="#agencyabstract">AgencyAbstract</a>]</td>
 <td>the <code class="prettyprint">Agency</code> linked to this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#option">Option</a>[<a href="#patrimonyabstract">PatrimonyAbstract</a>]</td>
+<td>the <code class="prettyprint">Patrimony</code> linked to this <code class="prettyprint">Ticket</code>. optional.</td>
 </tr>
 <tr>
 <td>status</td>
