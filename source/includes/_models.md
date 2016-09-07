@@ -292,7 +292,8 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 uid         | [SafeUUID](#safeuuid)                             | the `Ticket`'s uid
 ref         | String                                            | the `Ticket`'s client reference.<br/> Could be `clientClaimNumber`or `callCenterClaimNumber` or `ticket_uid`.
-agency      | [AgencyAbstract](#agencyabstract)                 | the `Agency` linked to this `Ticket`.
+agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
+patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
 state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
 created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
@@ -370,6 +371,15 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 uid         | [SafeUUID](#safeuuid)                             | the `Agency`'s uid
 name        | String                                            | the `Agency`'s name
+
+## PatrimonyAbstract
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+uid         | [SafeUUID](#safeuuid)                             | the `Patrimony`'s uid
+name        | String                                            | the `Patrimony`'s name
 
 ## TicketStateView
 
@@ -472,7 +482,8 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 uid         | [SafeUUID](#safeuuid)                             | the `Ticket`'s uid
 ref         | String                                            | the `Ticket`'s client reference.<br/> Could be `clientClaimNumber`or `callCenterClaimNumber` or `ticket_uid`.
-agency      | [AgencyAbstract](#agencyabstract)                 | the `Agency` linked to this `Ticket`.
+agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
+patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
 state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
 request     | String                                            | description of the issue.

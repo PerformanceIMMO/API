@@ -27,9 +27,15 @@ Content-Range: 0-0/256
 		{
             "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2",
             "ref": "REF20160526",
-            "agency": {
-                "uid": "17d706c1-7844-00f5-a4a4-f1afa1975184",
-                "name": "My Agency"
+            "agencies": [
+                {
+                    "uid": "17d706c1-7844-00f5-a4a4-f1afa1975184",
+                    "name": "My Agency"
+                }
+            ],    
+            "patrimony": {
+                "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2", 
+                "name": "My patrimony"
             },
             "status": "CLOSED",
             "state": {
@@ -77,6 +83,7 @@ location        | query | [Option](#option)[String]                 | None      
 from            | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `from` local date.<br/> ex: `from=2015-07-02`.<br/> if **`from`** but not **`to`** => from **`from`** to **now**
 to              | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `to` local date.<br/> ex: `to=2015-07-03`.<br/> if **`to`** but not **`from`** => until **`to`**. **`to`** must be >= **`from`**
 callpurpose     | query | [Option](#option)[String]                 | None      | query matching with several `callpurpose`.<br/> ex: `callpurpose=one,two,three`
+activeproviders | query | [Option](#option)[String]                 | None      | query matching with several active provider contacts uid.<br/> ex: `activeproviders=provider_uid1,provider_uid2`
 fulltext        | query | [Option](#option)[[String](#localdate)]   | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.<br/> This param is incompatible with the others (except for range).
 
 
@@ -159,9 +166,15 @@ Content-Type: application/json
 {
     "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2",
     "ref": "REF20160526",
-    "agency": {
-        "uid": "17d706c1-7844-00f5-a4a4-f1afa1975184",
-        "name": "My Agency"
+    "agencies": [
+        {
+            "uid": "17d706c1-7844-00f5-a4a4-f1afa1975184",
+            "name": "My Agency"
+        }
+    ],    
+    "patrimony": {
+        "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2", 
+        "name": "My patrimony"
     },
     "status": "CLOSED",
     "state": {
@@ -245,7 +258,7 @@ ticket_uid      | path  | [SafeUUID](#safeuuid)                     | 0-100     
 
 ### Responses
 
-Http code | Type                        | Description
-----------| ----------------------------| ----------------------------
-200       | Array[[DetailedTicketView](#detailedticketview)]    | All resources's elements are returned.
-400       | Error                                               | Bad request, occurs most often when parameters passed are invalid.
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+200       | [DetailedTicketView](#detailedticketview)   | The detailed `Ticket`
+400       | Error                                       | Bad request, occurs most often when parameters passed are invalid.
