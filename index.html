@@ -6002,6 +6002,40 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </tr>
 </tbody></table>
 
+<h3 id="associateprovidercontacttocompany">AssociateProviderContactToCompany</h3>
+
+<p>Associate this <code class="prettyprint">ProviderContact</code> to a specific <code class="prettyprint">Company</code> and by inheritance to all of its <code class="prettyprint">Agencies</code>. 
+Works only if the <code class="prettyprint">Company</code> is a <code class="prettyprint">ClientAccount</code>(i.e have agencies itself)</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the agency associated</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociateProviderContactToCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h3 id="dissociateprovidercontactfromagency">DissociateProviderContactFromAgency</h3>
 
 <table><thead>
@@ -6136,6 +6170,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <h2 id="providercontactevent">ProviderContactEvent</h2>
 
 <h3 id="providercontactadded">ProviderContactAdded</h3>
+
+<blockquote>
+<p>ProviderContactAdded example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
@@ -6155,6 +6193,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </span></code></pre>
 
 <h3 id="providercontactassociatedtocallcenter">ProviderContactAssociatedToCallCenter</h3>
+
+<blockquote>
+<p>ProviderContactAssociatedToCallCenter example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
@@ -6166,6 +6208,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </span></code></pre>
 
 <h3 id="providercontactassociatedtoagency">ProviderContactAssociatedToAgency</h3>
+
+<blockquote>
+<p>ProviderContactAssociatedToAgency example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
@@ -6176,7 +6222,26 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<h3 id="providercontactassociatedtocompany">ProviderContactAssociatedToCompany</h3>
+
+<blockquote>
+<p>ProviderContactAssociatedToCompany example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-02-29"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"companyUid"</span><span class="p">:</span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactAssociatedToCompany"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h3 id="providercontactdissociatedfromagency">ProviderContactDissociatedFromAgency</h3>
+
+<blockquote>
+<p>ProviderContactDissociatedFromAgency example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
@@ -6188,6 +6253,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </span></code></pre>
 
 <h3 id="providercontactupdated">ProviderContactUpdated</h3>
+
+<blockquote>
+<p>ProviderContactUpdated example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
@@ -6207,6 +6276,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </span></code></pre>
 
 <h3 id="providercontactdisabled">ProviderContactDisabled</h3>
+
+<blockquote>
+<p>ProviderContactDisabled example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
@@ -6217,6 +6290,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </span></code></pre>
 
 <h3 id="providercontactenabled">ProviderContactEnabled</h3>
+
+<blockquote>
+<p>ProviderContactEnabled example :</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
