@@ -389,6 +389,18 @@ agencyUid           | [SafeUUID](#safeuuid)                         | the uid of
 date                | [LocalDate](#localdate)                       | 
 commandType         | Constant                                      | `"AssociateProviderContactToAgency"`
 
+### AssociateProviderContactToCompany
+
+Associate this `ProviderContact` to a specific `Company` and by inheritance to all of its `Agencies`. 
+Works only if the `Company` is a `ClientAccount`(i.e have agencies itself)
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the agency associated
+date                | [LocalDate](#localdate)                       | 
+commandType         | Constant                                      | `"AssociateProviderContactToCompany"`
+
 ### DissociateProviderContactFromAgency
 
 Name                | Type                                          | Description

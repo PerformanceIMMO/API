@@ -4,6 +4,8 @@
 
 ### ProviderContactAdded
 
+> ProviderContactAdded example :
+
 ```json
 {
     "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
@@ -25,6 +27,8 @@
 
 ### ProviderContactAssociatedToCallCenter
 
+> ProviderContactAssociatedToCallCenter example :
+
 ```json
 {
     "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
@@ -38,6 +42,8 @@
 
 ### ProviderContactAssociatedToAgency
 
+> ProviderContactAssociatedToAgency example :
+
 ```json
 {
     "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
@@ -49,7 +55,24 @@
 }
 ```
 
+### ProviderContactAssociatedToCompany
+
+> ProviderContactAssociatedToCompany example :
+
+```json
+{
+    "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+    "date":"2016-02-29",
+    "companyUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
+    "sentDate":"2016-02-29T12:05:32+02:00",
+    "eventType":"ProviderContactAssociatedToCompany"
+}
+```
+
 ### ProviderContactDissociatedFromAgency
+
+> ProviderContactDissociatedFromAgency example :
 
 ```json
 {
@@ -63,6 +86,8 @@
 ```
 
 ### ProviderContactUpdated
+
+> ProviderContactUpdated example :
 
 ```json
 {
@@ -85,6 +110,8 @@
 
 ### ProviderContactDisabled
 
+> ProviderContactDisabled example :
+
 ```json
 {
     "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
@@ -96,6 +123,8 @@
 ```
 
 ### ProviderContactEnabled
+
+> ProviderContactEnabled example :
 
 ```json
 {
