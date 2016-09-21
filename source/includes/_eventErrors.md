@@ -93,3 +93,15 @@ The `Command` have been already sent & computed, i.e an existing `Event` already
 
 ## TicketEventError
 
+Name               | Type   | Description
+-------------------| -------| --------------------------------------------------
+errorType          | Enum   | code describing the type of the error
+message            | String | a message describing the error
+
+### TicketGenericError
+
+### CommandAlreadySent
+
+### ImpossibleToOpenExistingTicket
+
+### ImpossibleToPerfomCommandOnNonExistingTicket
