@@ -262,3 +262,171 @@ Http code | Type                                        | Description
 ----------| --------------------------------------------| ----------------------------
 200       | [DetailedTicketView](#detailedticketview)   | The detailed `Ticket`
 400       | Error                                       | Bad request, occurs most often when parameters passed are invalid.
+
+## Open a Ticket
+
+> HTTP query example :
+
+```shell
+curl -XPOST \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+   "processUid": "5a7bd760-9487-cd87-860a-e043d0b3e99d",
+   "aggregateUid": "eb0ea007-67af-4bf5-a34a-43dfca55717c",
+   "locationRef": {
+     "patrimonyUid": "74aa4bf3-8fde-4985-b16e-e3ba2788868f",
+     "locationReferenceType": "PatrimonyLocation"
+   },
+   "operator": {
+     "operatorUid": "f281d579-084e-95a1-8abb-582f2dcc2ed5",
+     "operatorType": "ReferencedOperator"
+   },
+   "ticket": {
+     "caller": {
+       "name": {
+         "value": "Mr John Doe",
+         "nameType": "PoorName"
+       },
+       "medium": {
+         "phone": "0320015450",
+         "contactMediumType": "Phone"
+       },
+       "callerType": "HumanCaller"
+     },
+     "claimNumber": {
+       "clientClaimNumber": "2016256649"
+     },
+     "address": {
+       "quality": "quality",
+       "street":"street",
+       "complement": "complement",
+       "zipCode": "zipCode",
+       "city": "city",
+       "state": "state",
+       "country":"country"
+     },
+     "request": "FRIGOS EN PANNE",
+     "callPurposeLabel": "frigoriste",
+     "altCallPurpose": {},
+     "additionalData": {
+       "Code magasin": "FRPK98",
+       "Corps de métier": "FRIGORISTE",
+       "Libellé Code panne": "FRIGORISTE",
+       "Nom magasin": "TOURCOING",
+       "Heure réception OT": "16:51:02",
+       "OS urgent": "NON",
+     }
+   },
+   "openedDate": "2016-08-25T16:51:23.000+02:00",
+   "commandType": "OpenTicket"
+} \
+https://base_url/api/vEvent/tickets
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 201 Created
+```
+
+**`POST`** `/api/vEvent/tickets`
+
+### Parameters
+
+Name            | In    | Type                                         | Description
+--------------- | ------| ---------------------------------------------| -------------
+processUid      | body  | [SafeUUID](#safeuuid)                        | the uid of this `Command`. Allow PerfImmo to know if this Command is duplicated 
+aggregateUid    | body  | [Option](#option)[[SafeUUID](#safeuuid)]     | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
+locationRef     | body  | [LocationReference](#locationreference)      | a reference to another resource (`Agency`, `Patrimony`, etc...)
+operator        | body  | [Operator](#operator)                        | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+ticket          | body  | [TicketInfos](#ticketinfos)                  | infos specific to the `Ticket` opened. 
+openedDate      | body  | [DateTime](#datetime)                        | the opened date of this `Ticket`.
+commandType     | body  | Constant                                     | `"OpenTicket"` 
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+201       | [TicketEventResultView](#ticketeventresultview) | The `Event`s resulting of this successful `Command`.
+400       | [TicketEventError](#ticketeventerror)       | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+401       |                                             | Not authenticated user
+403       |                                             | `User` doesn't have right to perform this `Command`
+
+## Increment Ticket State
+
+> HTTP query example :
+
+```shell
+curl -XPATCH \                                                                                                        
+-H "Cookie: PI_SESSION=..." \
+-H "Content-Type: application/json" \
+-d {
+   "processUid": "f5391199-e544-60f3-037c-16f3229fd59d",
+   "operator": {
+     "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+     "operatorType": "ReferencedOperator"
+   },
+   "provider": {
+     "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+     "providerType": "ReferencedProvider"
+   },
+   "purpose": {
+     "comment": "Choix du contact par l'opérateur",
+     "providerAssignationPurposeType": "RecourseChanged"
+   },
+   "date": "2016-08-25T15:31:53.000+02:00",
+   "commandType": "AssignProvider"
+} \
+https://base_url/api/vEvent/tickets/1d178826-76dc-cd04-e174-346ba60eedad
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+    "events": [
+        {
+          "processUid": "f5391199-e544-60f3-037c-16f3229fd59d",
+          "aggregateUid": "c9c5c9d2-ab38-a010-46cd-97013fbfbeb2",
+          "operator": {
+            "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+            "operatorType": "ReferencedOperator"
+          },
+          "provider": {
+            "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+            "providerType": "ReferencedProvider"
+          },
+          "purpose": {
+            "comment": "Choix du contact par l'opérateur",
+            "providerAssignationPurposeType": "RecourseChanged"
+          },
+          "date": "2016-08-25T15:31:53.000+02:00",
+          "sentDate": "2016-08-25T15:31:50.000+02:00",
+          "eventType": "ProviderAssigned"
+        }
+    ]
+}        
+```
+
+**`PATCH`** `/api/vEvent/tickets/:ticket_uid`
+
+### Parameters
+
+Name            | In    | Type                                             | Description
+--------------- | ------| -------------------------------------------------| -------------
+ticket_uid      | query | [SafeUUID](#safeuuid)                            | the uid of the `Ticket`
+                | body  | [IncrementTicket](#incrementticket)              | the `Command` for increment a `Ticket` state
+
+### Responses
+
+Http code | Type                                        | Description
+----------| --------------------------------------------| ----------------------------
+200       | [TicketEventResultView](#ticketeventresultview) | The `Event`s resulting of this successful `Command`.
+400       | [TicketEventError](#ticketeventerror)       | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
+401       |                                             | Not authenticated user
+403       |                                             | `User` doesn't have right to perform this `Command`

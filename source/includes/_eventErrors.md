@@ -90,3 +90,6 @@ The `Command` have been already sent & computed, i.e an existing `Event` already
 ### ImpossibleToPerfomCommandOnNonExistingProviderContactCommand
 
 ### ImpossibleToAssociateToAgencyThatIsAlreadyAssociated
+
+## TicketEventError
+

@@ -10,7 +10,20 @@ Means that field is optional. If parameter has no value, it is not present in th
 
 ## NonEmptyList
 
-An json `array`that can't be empty.
+A json `array`that can't be empty.
+
+## Map
+
+a json object with "free" field
+
+> Map[String, String] example :
+
+```json
+{
+    "field1":"value1",
+    "field2":"value2"
+}
+```
 
 ## SafeUUID
 
@@ -971,4 +984,542 @@ value                       | Float                           | a count with 2 s
 Name                        | Type                            | Description
 ----------------------------| --------------------------------| --------------------------------------------------
 events                      | Array[[ProviderContactEvent](#providercontactevent)] | The `Event`s resulting of this `Command`
+
+## TicketEventResultView
+
+> example :
+
+```json
+{
+    "events": [
+        {
+          "processUid": "f5391199-e544-60f3-037c-16f3229fd59d",
+          "aggregateUid": "c9c5c9d2-ab38-a010-46cd-97013fbfbeb2",
+          "operator": {
+            "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+            "operatorType": "ReferencedOperator"
+          },
+          "provider": {
+            "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+            "providerType": "ReferencedProvider"
+          },
+          "purpose": {
+            "comment": "Choix du contact par l'opérateur",
+            "providerAssignationPurposeType": "RecourseChanged"
+          },
+          "date": "2016-08-25T15:31:53.000+02:00",
+          "sentDate": "2016-08-25T15:31:50.000+02:00",
+          "eventType": "ProviderAssigned"
+        }
+    ]
+}        
+```
+
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[TicketEvent](#ticketevent)] | The `Event`s resulting of this `Command`
+
+## LocationReference
+
+`LocationReference` is an Enum, i.e type can take different values : 
+
+```haskell
+data LocationReference = AgencyLocation | PatrimonyLocation
+```
+
+### AgencyLocation 
+
+> AgencyLocation example :
+
+```json
+{
+	"agencyUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "locationReferenceType":"AgencyLocation"
+}
+```
+
+A `AgencyLocation` bind a `Ticket` with an `Agency`.
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+agencyUid   | [SafeUUID](#safeuuid)                             | uid of the `Agency`.
+locationReferenceType | Constant                                | `"AgencyLocation"`
+                        
+### PatrimonyLocation                        
+   
+> PatrimonyLocation example :
+
+```json
+{
+	"patrimonyUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "locationReferenceType":"PatrimonyLocation"
+}
+```                        
+                        
+A `PatrimonyLocation` bind a `Ticket` with an `Patrimony`.
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+patrimonyUid| [SafeUUID](#safeuuid)                             | uid of the `Patrimony`.
+locationReferenceType | Constant                                | `"PatrimonyLocation"`
+
+## Operator
+
+`Operator` is an Enum, i.e type can take different values : 
+
+```haskell
+data Operator = ReferencedOperator | AnonymousOperator
+```
+
+An `Operator` is a person who perform the `Command` on a `Ticket`.
+
+### ReferencedOperator 
+
+`ReferencedOperator` is a known `Operator` on Perfimmo and we can retrieve him with his uid.
+
+> ReferencedOperator example :
+
+```json
+{
+	"operatorUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "operatorType":"ReferencedOperator"
+}
+```
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+operatorUid | [SafeUUID](#safeuuid)                             | uid of the `Operator`.
+operatorType| Constant                                          | `"ReferencedOperator"`
+                        
+### AnonymousOperator                        
+   
+> AnonymousOperator example :
+
+```json
+{
+	"name":"John Doe",
+    "operatorType":"AnonymousOperator"
+}
+```                        
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+name        | String                                            | the name of the `Operator`. 
+operatorType| Constant                                          | `"AnonymousOperator"`
+
+## TicketInfos
+
+> TicketInfos example :
+
+```json
+{
+	"ticket": {
+         "caller": {
+           "name": {
+             "value": "Mr John Doe",
+             "nameType": "PoorName"
+           },
+           "medium": {
+             "phone": "0320015450",
+             "contactMediumType": "Phone"
+           },
+           "callerType": "HumanCaller"
+         },
+         "claimNumber": {
+           "clientClaimNumber": "2016256649"
+         },
+         "address": {
+           "quality": "quality",
+           "street":"street",
+           "complement": "complement",
+           "zipCode": "zipCode",
+           "city": "city",
+           "state": "state",
+           "country":"country"
+         },
+         "request": "FRIGOS EN PANNE",
+         "callPurposeLabel": "frigoriste",
+         "altCallPurpose":{},
+         "additionalData":{
+           "Code magasin": "FRPK98",
+           "Corps de métier": "FRIGORISTE",
+           "Libellé Code panne": "FRIGORISTE",
+           "Nom magasin": "TOURCOING",
+           "Heure réception OT": "16:51:02",
+           "OS urgent": "NON"
+         }
+    }
+}
+```
+
+### Fields
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+caller            | [CallerType](#callertype)                         | the origin of the creation of the `Ticket`.
+contactToCallback | [Option](#option)[[ContactToCallback](#contacttocallback)] | a person to callback.
+claimNumber       | [ClaimNumber](#claimnumber)                       | an external `Ticket id to display on Perfimmo web app.
+address           | [BasicAddress](#basicaddress)                               | the `Address` where the incident took place.
+request           | String                                            | a description of the problem that is causing the opening of the ticket. 
+instructions      | [Option](#option)[String]                         | optional instructions about this incident.
+callPurposeLabel  | String                                            | the purpose of the incident. This field will be display on the Perfimmo web app. 
+altCallPurpose    | [Map](#map)[String, Array[String]],               |  
+additionalData    | [Map](#map)[String, [Option](#option)[String]]    | some addional data you want to display on the detailed `Ticket` page.
+
+## CallerType
+
+`CallerType` is an Enum, i.e type can take different values : 
+
+```haskell
+data CallerType = HumanCaller | AutomatonCaller
+```
+
+### HumanCaller 
+
+> HumanCaller example :
+
+```json
+{
+    "name":{
+        "name":"John Doe",
+        "nameType":"PoorName"
+    },
+    "medium":{
+        "phone":"0146305645",
+        "contactMediumType":"Phone"
+    },
+    "comment":"Some comments.",
+    "callerType":"HumanCaller"
+}
+```
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+name        | [Name](#name)                                     | the name of the caller.
+medium      | [Option](#option)[[ContactMedium](#contactmedium)]| the medium used to contact.
+comment     | [Option](#option)[String]                         | 
+callerType  | Constant                                          | `"HumanCaller"`
+                        
+### AutomatonCaller                        
+   
+> AutomatonCaller example :
+
+```json
+"AutomatonCaller"
+```                        
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+            | Constant                                          | `"AutomatonCaller"`
+
+## ContactToCallback
+
+> ContactToCallback example :
+
+```json
+{
+    "name":"John Doe",
+    "medium":{
+        "phone":"0146305645",
+        "contactMediumType":"Phone"
+    },
+    "availability":"2016-02-29T12:03:32+02:00",
+    "comment":"this person is the real owner of the apartment"
+}
+```
+
+### Fields
+ 
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+name        | String                                            | the name of the person to call back.
+medium      | [ContactMedium](#contactmedium)                   | the medium to use to call back.
+availability| [Option](#option)[[DateTime](#datetime)]          | the moment when the person must be call back. 
+comment     | [Option](#option)[String]                         | 
+
+## ClaimNumber
+
+`ClaimNumber` is an `Ticket` identifier you can use to display for your clients and for research `Ticket`.
+This allows to use identifier that have more sense than Perfimmo one for users.
+
+The rules is :
+  
+  - display `clientClaimNumber` first if exist
+  
+  - then display `callCenterClaimNumber` if exist
+  
+  - then display the internal Perfimmo uid (i.e aggregateUid)
+
+> ClaimNumber example :
+
+```json
+{
+    "callCenterClaimNumber":"CC_234",
+    "clientClaimNumber":"CLIENT_1234"
+} 
+```
+
+### Fields
+ 
+Name                  | Type                                              | Description
+----------------------| --------------------------------------------------| --------------------------
+callCenterClaimNumber | [Option](#option)[String]                         | an id specific to the `CallCenter`.
+clientClaimNumber     | [Option](#option)[String]                         | an id specific to the client of the `CallCenter`.
+
+## ContactMedium
+
+`ContactMedium` is an Enum, i.e type can take different values : 
+
+```haskell
+data ContactMedium = Phone | Fax | Mail | SMS
+```
+
+### Phone 
+
+> Phone example :
+
+```json
+{
+    "phone":"0146305674",
+    "contactMediumType":"Phone"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+phone             | String                                            | 
+contactMediumType | Constant                                          | `"Phone"`
+                        
+### Fax 
+
+> Fax example :
+
+```json
+{
+    "fax":"0146305674",
+    "contactMediumType":"Fax"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+fax               | String                                            | 
+contactMediumType | Constant                                          | `"Fax"`
+
+### Mail 
+
+> Mail example :
+
+```json
+{
+    "fax":"0146305674",
+    "contactMediumType":"Mail"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+mail              | String                                            | 
+contactMediumType | Constant                                          | `"Mail"`
+
+### SMS 
+
+> SMS example :
+
+```json
+{
+    "phone":"0146305674",
+    "contactMediumType":"SMS"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+phone             | String                                            | 
+contactMediumType | Constant                                          | `"SMS"`
+
+## Persona
+
+`Persona` is an Enum, i.e type can take different values : 
+
+```haskell
+data Persona = UnClassifiedPersona | ProviderPersona
+```
+
+### UnClassifiedPersona 
+
+> UnClassifiedPersona example :
+
+```json
+{
+    "name":{
+        "name":"John Doe",
+        "nameType":"PoorName"
+    },
+    "status":"guardian",
+    "callPurpose":"ask for open doors",
+    "personaType":"UnClassifiedPersona"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+name              | [Name](#name)                                     | the name of the person called.
+status            | [Option](#option)[String]                         | the status of this person. 
+callPurpose       | [Option](#option)[String]                         | the purpose of the call. 
+personaType       | Constant                                          | `"UnClassifiedPersona"`    
+    
+### ProviderPersona 
+
+> ProviderPersona example :
+
+```json
+{
+    "provider":{
+        "providerUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+        "providerType":"ReferencedProvider"
+    },
+    "personaType":"ProviderPersona"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+provider          | [Provider](#provider)                             | the provider called.
+personaType       | Constant                                          | `"ProviderPersona"`    
+
+## Provider
+
+`Provider` is an Enum, i.e type can take different values : 
+
+```haskell
+data Provider = ReferencedProvider | AnonymousProvider
+```
+
+### ReferencedProvider 
+
+A `ReferencedProvider` is a `Provider` that can be identified by its uid on Performance-immo app. 
+
+> ReferencedProvider example :
+
+```json
+{
+    "providerUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "providerType":"ReferencedProvider"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+providerUid       | [SafeUUID](#safeuuid)                             | 
+providerType      | Constant                                          | `"ReferencedProvider"`
+
+### AnonymousProvider 
+
+An `AnonymousProvider` is a `Provider` that is not referenced on Performance-immo app.
+
+> AnonymousProvider example :
+
+```json
+{
+    "name":{
+        "firstName":"John",
+        "lastName":"Doe",
+        "gender":"Male",
+        "nameType":"CivilName"
+    },
+    "phones":["0146374567", "0645342378"],
+    "fax":[],
+    "emails":["john.doe@performance-immo.com"],
+    "providerType":"AnonymousProvider"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+name              | [Name](#name)                                     |  
+phones            | Array[String]                                     |  
+fax               | Array[String]                                     |  
+emails            | Array[String]                                     |  
+providerType      | Constant                                          | `"AnonymousProvider"`
+
+## ProviderAssignationPurpose
+
+`ProviderAssignationPurpose` is an Enum, i.e type can take different values : 
+
+```haskell
+data ProviderAssignationPurpose = RecourseChanged | Purpose
+```
+
+### Purpose 
+
+> Purpose example :
+
+```json
+{
+    "purpose":"pre assignation",
+    "providerAssignationPurposeType":"Purpose"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+purpose           | String                                            | 
+providerAssignationPurposeType | Constant                             | `"Purpose"`
+
+
+### RecourseChanged 
+
+> RecourseChanged example :
+
+```json
+{
+    "comment":"not for plumbing",
+    "providerAssignationPurposeType":"RecourseChanged"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+comment           | String                                            | 
+providerAssignationPurposeType | Constant                             | `"RecourseChanged"`
+
+## LogTrial
+
+> LogTrial example :
+
+```json
+{
+    "trialCode":"123",
+    "trialLabel":"a log append to the journal of the Ticket"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+trialCode         | [Option](#option)[String]                         | 
+trialLabel        | String                                            | 
+
+## StillOnSite
+
+`StillOnSite` is an Enum, i.e type can take different values. 
+
+```haskell
+data StillOnSite = Yes | No | NotAsked | ProviderRefuseToReply | NA
+```
+
+A simple String value that only can be :
+
+- Yes 
+
+- No 
+
+- NotAsked
+
+- ProviderRefuseToReply
+
+- NA
 

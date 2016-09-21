@@ -314,6 +314,7 @@ HTTP/1.1 201 Created
 Name            | In    | Type                                         | Description
 --------------- | ------| ---------------------------------------------| -------------
 processUid      | body  | [SafeUUID](#safeuuid)                        | the uid of this `Command`. Allow PerfImmo to know if this Command is duplicated 
+aggregateUid    | body  | [Option](#option)[[SafeUUID](#safeuuid)]     | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
 ref             | body  | String                                       | a public reference to distinguish the `Patrimony` 
 agencyUids      | body  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | list of agency uids associated with this Patrimony. Allow Perfimmo to handle rights of read or update this Patrimony  
 label           | body  | [Option](#option)[String]                    | label of the patrimony 

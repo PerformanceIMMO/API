@@ -135,3 +135,366 @@
     "eventType":"ProviderContactEnabled"
 }
 ```
+
+## TicketEvent
+
+### TicketOpened
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Ticket` opened.
+locationRef         | [LocationReference](#locationreference)       | a reference to another resource (`Agency`, `Patrimony`, etc...)
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+ticket              | [TicketInfos](#ticketinfos)                   | infos specific to the `Ticket` opened. 
+openedDate          | [DateTime](#datetime)                         | the opened date of this `Ticket`.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"TicketOpened"`
+
+### CallEmittedTo 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+recipient           | [Persona](#persona)                           | the recipient of this call.
+comment             | [Option](#option)[String]                     |  
+medium              | [ContactMedium](#contactmedium)               | the medium used to perform this call.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | 
+eventType           | Constant                                      | `"CallEmittedTo"`
+
+### CallReceived
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+callPurpose         | String                                        | purpose of the call.
+caller              | String                                        | 
+comment             | [Option](#option)[String]                     |  
+medium              | [ContactMedium](#contactmedium)               | the medium used to perform this call.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"CallReceived"`
+
+### ProviderAssigned
+
+> ProviderAssigned example : 
+
+```json
+{
+  "processUid": "f5391199-e544-60f3-037c-16f3229fd59d",
+  "aggregateUid": "c9c5c9d2-ab38-a010-46cd-97013fbfbeb2",
+  "operator": {
+    "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+    "operatorType": "ReferencedOperator"
+  },
+  "provider": {
+    "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+    "providerType": "ReferencedProvider"
+  },
+  "purpose": {
+    "comment": "Choix du contact par l'opérateur",
+    "providerAssignationPurposeType": "RecourseChanged"
+  },
+  "date": "2016-08-25T15:31:53.000+02:00",
+  "sentDate": "2016-08-25T15:31:50.000+02:00",
+  "eventType": "ProviderAssigned"
+}
+```
+
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
+purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged)
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"ProviderAssigned"`
+
+### CallAnsweredByProvider
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who answer.
+comment             | String                                        | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"CallAnsweredByProvider"`
+
+### CallNotAnsweredByProvider
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who not answer.
+comment             | String                                        | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"CallNotAnsweredByProvider"`
+
+### MissionAccepted
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who accept the mission.
+comment             | String                                        | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"MissionAccepted"`
+
+### MissionRefused
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who refuse the mission.
+comment             | String                                        | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"MissionRefused"`
+
+### TicketReopened
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+purpose             | Option[String]                                | the reason why the `Ticket` was reopened. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"TicketReopened"`
+
+### LogTrialAdded
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Option](#option)[[Provider](#provider)]      | 
+logTrial            | [LogTrial](#logtrial)                         | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+logTrialAddedDate   | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"LogTrialAdded"`
+
+### MessageAdded
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+message             | String                                        | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+messageAddedDate    | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"MessageAdded"`
+
+### TicketCancelled
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"TicketCancelled"`
+
+### ArrivedOnSite
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who arrive on site.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"ArrivedOnSite"`
+
+### GoneFromSite
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who gone from site.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"GoneFromSite"`
+
+### InterventionStarted
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who start the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+startedDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"InterventionStarted"`
+
+### InterventionFinished
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who finish the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+finishedDate        | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"InterventionFinished"`
+
+### TicketUpdated
+
+A compensation 'Event' to correct issue in the original `TicketOpened`. 
+Don't use it for increment the `Ticket` state. Use other `Command` for that.
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Ticket` opened.
+locationRef         | [LocationReference](#locationreference)       | a reference to another resource (`Agency`, `Patrimony`, etc...)
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who update this `Ticket`. 
+ticket              | [TicketInfos](#ticketinfos)                   | infos specific to the `Ticket` opened. 
+openedDate          | [DateTime](#datetime)                         | the opened date of this `Ticket`.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"TicketUpdated"`
+
+<aside class="notice">
+Received the following events means the Ticket was closed.
+</aside>
+
+
+### TicketClosed
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
+brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
+stillOnSite         | [StillOnSite](#stillonsite)                   | 
+report              | [Option](#option)[String]                     | an optional explanation of the intervention.
+result              | [Option](#option)[String]                     |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"TicketClosed"`
+
+### TicketArchived
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+comment             | [Option](#option)[String]                     | 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"TicketArchived"`
+
+### PermanentlyFixed
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
+brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
+stillOnSite         | [StillOnSite](#stillonsite)                   | 
+report              | [Option](#option)[String]                     | an optional explanation of the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"PermanentlyFixed"`
+
+### PartiallyFixed
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
+brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
+stillOnSite         | [StillOnSite](#stillonsite)                   | 
+report              | [Option](#option)[String]                     | an optional explanation of the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"PartiallyFixed"`
+
+### TicketClosedImpossibleRepair
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
+brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
+stillOnSite         | [StillOnSite](#stillonsite)                   | 
+report              | [Option](#option)[String]                     | an optional explanation of the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"TicketClosedImpossibleRepair"`
+
+### PostponedFix
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
+brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
+stillOnSite         | [StillOnSite](#stillonsite)                   | 
+report              | [Option](#option)[String]                     | an optional explanation of the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"PostponedFix"`
+
+### ClosedBeyondCallCenterScope
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"ClosedBeyondCallCenterScope"`
+
+### ClosedAfterSeveralUnsuccessfulRecalls
+
+After several attempt, it seems it is impossible to contact a `Provider` to resolve this `Ticket`. 
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+eventType           | Constant                                      | `"ClosedAfterSeveralUnsuccessfulRecalls"`
