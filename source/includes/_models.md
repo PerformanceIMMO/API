@@ -1071,7 +1071,7 @@ locationReferenceType | Constant                                | `"PatrimonyLoc
 `Operator` is an Enum, i.e type can take different values : 
 
 ```haskell
-data Operator = ReferencedOperator | AnonymousOperator
+data Operator = ReferencedOperator | AnonymousOperator | ReferencedUser
 ```
 
 An `Operator` is a person who perform the `Command` on a `Ticket`.
@@ -1109,6 +1109,22 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------
 name        | String                                            | the name of the `Operator`. 
 operatorType| Constant                                          | `"AnonymousOperator"`
+
+### ReferencedUser                        
+   
+> ReferencedUser example :
+
+```json
+{
+	"userUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "operatorType":"ReferencedUser"
+}
+```                        
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+userUid     | [SafeUUID](#safeuuid)                             | the uid of the `ReferencedUser` who perform this `Command`. 
+operatorType| Constant                                          | `"ReferencedUser"`
 
 ## TicketInfos
 

@@ -339,7 +339,7 @@ Name            | In    | Type                                         | Descrip
 processUid      | body  | [SafeUUID](#safeuuid)                        | the uid of this `Command`. Allow PerfImmo to know if this Command is duplicated 
 aggregateUid    | body  | [Option](#option)[[SafeUUID](#safeuuid)]     | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
 locationRef     | body  | [LocationReference](#locationreference)      | a reference to another resource (`Agency`, `Patrimony`, etc...)
-operator        | body  | [Operator](#operator)                        | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+operator        | body  | [Option](#option)[[Operator](#operator)]     | an optional reference to who perform this `Command`. We can say who open this `Ticket`. 
 ticket          | body  | [TicketInfos](#ticketinfos)                  | infos specific to the `Ticket` opened. 
 openedDate      | body  | [DateTime](#datetime)                        | the opened date of this `Ticket`.
 commandType     | body  | Constant                                     | `"OpenTicket"` 

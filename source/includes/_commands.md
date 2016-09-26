@@ -444,7 +444,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 locationRef         | [LocationReference](#locationreference)       | a reference to another resource (`Agency`, `Patrimony`, etc...)
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. We can say who open this `Ticket`. 
 ticket              | [TicketInfos](#ticketinfos)                   | infos specific to the `Ticket` opened. 
 openedDate          | [DateTime](#datetime)                         | the opened date of this `Ticket`.
 commandType         | Constant                                      | `"OpenTicket"`
@@ -456,7 +456,7 @@ commandType         | Constant                                      | `"OpenTick
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 recipient           | [Persona](#persona)                           | the recipient of this call.
 comment             | [Option](#option)[String]                     |
 medium              | [ContactMedium](#contactmedium)               | the medium used to perform this call.
@@ -468,10 +468,10 @@ commandType         | Constant                                      | `"EmitCall
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 callPurpose         | String                                        | purpose of the call.
 caller              | String                                        | 
-comment             | [Option](#option)[String]                     |  
+comment             | [Option](#option)[String]                     |
 medium              | [ContactMedium](#contactmedium)               | the medium used to perform this call.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ReceiveCall"`
@@ -504,7 +504,7 @@ commandType         | Constant                                      | `"ReceiveC
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
 purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged)
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
@@ -515,7 +515,7 @@ commandType         | Constant                                      | `"AssignPr
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who answer.
 comment             | String                                        | 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
@@ -526,7 +526,7 @@ commandType         | Constant                                      | `"Provider
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who not answer.
 comment             | String                                        | 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
@@ -537,7 +537,7 @@ commandType         | Constant                                      | `"Provider
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who accept the mission.
 comment             | String                                        | 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
@@ -548,7 +548,7 @@ commandType         | Constant                                      | `"AcceptMi
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who refuse the mission.
 comment             | String                                        | 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
@@ -559,7 +559,7 @@ commandType         | Constant                                      | `"RefuseMi
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 purpose             | Option[String]                                | the reason why the `Ticket` was reopened. 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ReopenTicket"`
@@ -569,7 +569,7 @@ commandType         | Constant                                      | `"ReopenTi
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Option](#option)[[Provider](#provider)]      | 
 logTrial            | [LogTrial](#logtrial)                         | 
 logTrialAddedDate   | [DateTime](#datetime)                         | date on which the `Event` took place.
@@ -580,7 +580,7 @@ commandType         | Constant                                      | `"AddLogTr
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 message             | String                                        | 
 messageAddedDate    | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"AddMessage"`
@@ -590,7 +590,7 @@ commandType         | Constant                                      | `"AddMessa
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CancelTicket"`
 
@@ -599,7 +599,7 @@ commandType         | Constant                                      | `"CancelTi
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who arrive on site.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ArriveOnSite"`
@@ -609,7 +609,7 @@ commandType         | Constant                                      | `"ArriveOn
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who gone from site.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"GoFromSite"`
@@ -619,7 +619,7 @@ commandType         | Constant                                      | `"GoFromSi
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who start the intervention.
 startedDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"StartIntervention"`
@@ -629,7 +629,7 @@ commandType         | Constant                                      | `"StartInt
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` who finish the intervention.
 finishedDate        | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"FinishIntervention"`
@@ -643,7 +643,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 locationRef         | [LocationReference](#locationreference)       | a reference to another resource (`Agency`, `Patrimony`, etc...)
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who update this `Ticket`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. We can say who update this `Ticket`. 
 ticket              | [TicketInfos](#ticketinfos)                   | infos specific to the `Ticket` opened. 
 openedDate          | [DateTime](#datetime)                         | the opened date of this `Ticket`.
 commandType         | Constant                                      | `"UpdateTicket"`
@@ -658,7 +658,7 @@ The following commands are made to close the Ticket.
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
 brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
 stillOnSite         | [StillOnSite](#stillonsite)                   | 
@@ -672,7 +672,7 @@ commandType         | Constant                                      | `"CloseTic
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 comment             | [Option](#option)[String]                     | 
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ArchiveTicket"`
@@ -682,7 +682,7 @@ commandType         | Constant                                      | `"ArchiveT
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
 brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
 stillOnSite         | [StillOnSite](#stillonsite)                   | 
@@ -695,7 +695,7 @@ commandType         | Constant                                      | `"FixPerma
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
 brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
 stillOnSite         | [StillOnSite](#stillonsite)                   | 
@@ -708,7 +708,7 @@ commandType         | Constant                                      | `"FixParti
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
 brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
 stillOnSite         | [StillOnSite](#stillonsite)                   | 
@@ -721,7 +721,7 @@ commandType         | Constant                                      | `"CloseTic
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Option](#option)[[Provider](#provider)]      | a reference to the `Provider` who close the `Ticket`.
 brakedownNature     | [Option](#option)[String]                     | an optional explanation of the reason of the breakedown.
 stillOnSite         | [StillOnSite](#stillonsite)                   | 
@@ -734,7 +734,7 @@ commandType         | Constant                                      | `"Postpone
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CloseBeyondCallCenterScope"`
 
@@ -745,6 +745,6 @@ After several attempt, it seems it is impossible to contact a `Provider` to reso
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`.
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CloseAfterSeveralUnsuccessfulRecalls"`
