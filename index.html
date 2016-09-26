@@ -2305,8 +2305,8 @@ https://base_url/api/vEvent/tickets
 <tr>
 <td>operator</td>
 <td>body</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>. We can say who open this <code class="prettyprint">Ticket</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform this <code class="prettyprint">Command</code>. We can say who open this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>ticket</td>
@@ -5692,7 +5692,7 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <h2 id="operator">Operator</h2>
 
 <p><code class="prettyprint">Operator</code> is an Enum, i.e type can take different values : </p>
-<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">Operator</span> <span class="o">=</span> <span class="kt">ReferencedOperator</span> <span class="o">|</span> <span class="kt">AnonymousOperator</span>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">Operator</span> <span class="o">=</span> <span class="kt">ReferencedOperator</span> <span class="o">|</span> <span class="kt">AnonymousOperator</span> <span class="o">|</span> <span class="kt">ReferencedUser</span>
 </code></pre>
 
 <p>An <code class="prettyprint">Operator</code> is a person who perform the <code class="prettyprint">Command</code> on a <code class="prettyprint">Ticket</code>.</p>
@@ -5756,6 +5756,36 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>operatorType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;AnonymousOperator&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="referenceduser">ReferencedUser</h3>
+
+<blockquote>
+<p>ReferencedUser example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"userUid"</span><span class="p">:</span><span class="s2">"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="s2">"ReferencedUser"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ReferencedUser</code> who perform this <code class="prettyprint">Command</code>.</td>
+</tr>
+<tr>
+<td>operatorType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferencedUser&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -7394,8 +7424,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>. We can say who open this <code class="prettyprint">Ticket</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>. We can say who open this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>ticket</td>
@@ -7432,8 +7462,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>recipient</td>
@@ -7478,8 +7508,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>callPurpose</td>
@@ -7551,8 +7581,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7592,8 +7622,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7633,8 +7663,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7674,8 +7704,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7715,8 +7745,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7756,8 +7786,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>purpose</td>
@@ -7792,8 +7822,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7833,8 +7863,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>message</td>
@@ -7869,8 +7899,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>date</td>
@@ -7900,8 +7930,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7936,8 +7966,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -7972,8 +8002,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8008,8 +8038,8 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8052,8 +8082,8 @@ Don&rsquo;t use it for increment the <code class="prettyprint">Ticket</code> sta
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>. We can say who update this <code class="prettyprint">Ticket</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>. We can say who update this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>ticket</td>
@@ -8092,8 +8122,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8148,8 +8178,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>comment</td>
@@ -8184,8 +8214,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8235,8 +8265,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8286,8 +8316,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8337,8 +8367,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>provider</td>
@@ -8388,8 +8418,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>closingDate</td>
@@ -8421,8 +8451,8 @@ The following commands are made to close the Ticket.
 </tr>
 <tr>
 <td>operator</td>
-<td><a href="#operator">Operator</a></td>
-<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>closingDate</td>
