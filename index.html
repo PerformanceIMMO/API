@@ -325,22 +325,23 @@ par token plutôt que via un cookie de session.
 <p>To login, use this code:</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>
-<span class="gp">&gt; </span>--header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-<span class="gp">&gt; </span>-d <span class="s1">'{"login":my_api_login, "password":my_api_password}'</span> <span class="se">\</span>
-<span class="gp">&gt; </span>https://my_base_uri/api/v1/login
+--header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="s1">'{"login":my_api_login, "password":my_api_password}'</span> <span class="se">\</span>
+https://my_base_uri/api/v1/login
 </code></pre>
 
 <blockquote>
 <p>Response example :</p>
 </blockquote>
-<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Cookie</span><span class="p">:</span> <span class="s">PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd</span>
+<pre class="highlight plaintext"><code>&lt; HTTP/1.1 200 OK
+...
+&lt; Set-Cookie: PI_SESSION=c08c9ebd971aabb8bf43b6...; Path=/; Domain=.performance-immo.com; HTTPOnly
 </code></pre>
 
 <blockquote>
 <p>In your next request add :</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -H <span class="s2">"Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd"</span> <span class="se">\</span>
+<pre class="highlight shell"><code>curl -H <span class="s2">"Cookie: PI_SESSION=c08c9ebd971aabb8bf43b6..."</span> <span class="se">\</span>
 <span class="gp">&gt; </span>...
 </code></pre>
 
@@ -384,7 +385,7 @@ par token plutôt que via un cookie de session.
 <tr>
 <td>200</td>
 <td>Empty</td>
-<td>Retourne le cookie de session <code class="prettyprint">PI_SESSION</code> dans le header de la réponse</td>
+<td>Retourne le cookie de session <code class="prettyprint">PI_SESSION</code> dans le header <code class="prettyprint">Set-Cookie</code> de la réponse</td>
 </tr>
 <tr>
 <td>400</td>
