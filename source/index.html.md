@@ -220,22 +220,23 @@ par token plutôt que via un cookie de session.
 
 ```shell
 curl -XPOST \ 
-> --header "Content-Type: application/json" \
-> -d '{"login":my_api_login, "password":my_api_password}' \
-> https://my_base_uri/api/v1/login
+--header "Content-Type: application/json" \
+-d '{"login":my_api_login, "password":my_api_password}' \
+https://my_base_uri/api/v1/login
 ```
 
 > Response example :
 
-```http
-HTTP/1.1 200 OK
-Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd
+```
+< HTTP/1.1 200 OK
+...
+< Set-Cookie: PI_SESSION=c08c9ebd971aabb8bf43b6...; Path=/; Domain=.performance-immo.com; HTTPOnly
 ```
 
 > In your next request add :
 
 ```shell
-curl -H "Cookie: PI_SESSION=dqsmùlkdqsùmlkdsùmlkdqùsmlkdùmqslkdùmqsLkd" \
+curl -H "Cookie: PI_SESSION=c08c9ebd971aabb8bf43b6..." \
 > ...
 ```
 
@@ -252,9 +253,9 @@ password | body | String |
 
 ### Responses
 
-Http code | Type | Description
+Http code | Type  | Description
 ----------| ------| -----------
-200       | Empty | Retourne le cookie de session `PI_SESSION` dans le header de la réponse
+200       | Empty | Retourne le cookie de session `PI_SESSION` dans le header `Set-Cookie` de la réponse
 400       | Error | Bad request, occurs most often when parameters passed are invalid or if User not found
 
 
