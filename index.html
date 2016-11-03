@@ -186,7 +186,7 @@ It allow to paginate requests.</p>
 <li>endIndex (start from 0)</li>
 </ul>
 
-<p><code class="prettyprint">startIndex</code> should be &gt;= <code class="prettyprint">endIndex</code>.</p>
+<p><code class="prettyprint">startIndex</code> should be &lt;= <code class="prettyprint">endIndex</code>.</p>
 
 <p>The request answer by :</p>
 
@@ -1860,7 +1860,7 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
 <td>query</td>
 <td><a href="#option">Option</a>[String]</td>
 <td>0-100</td>
-<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &lt;= endRange</td>
 </tr>
 <tr>
 <td>agency</td>
