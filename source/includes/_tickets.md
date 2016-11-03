@@ -76,7 +76,7 @@ Content-Range: 0-0/256
 
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
-range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
+range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be <= endRange
 agency          | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
 status          | query | [Option](#option)[ENUM]                   | None      | query matching with `status` { OPENED or CLOSED }.<br/> ex: `status=OPENED`
 location        | query | [Option](#option)[String]                 | None      | query matching with several `locations`.<br/> ex: `location=paris,marseille,toulouse`

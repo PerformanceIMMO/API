@@ -90,7 +90,7 @@ It is a formatted String that is composed by 3 elements :
 * a separator `-`
 * endIndex (start from 0)
 
-`startIndex` should be >= `endIndex`.
+`startIndex` should be <= `endIndex`.
 
 The request answer by :
 
