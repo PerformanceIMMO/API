@@ -1946,6 +1946,183 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
 </tr>
 </tbody></table>
 
+<h2 id="export-bulk-tickets">Export bulk tickets</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/tickets/export
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">206</span> <span class="ne">Partial Content</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-19999/80000</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ebf5b908-dc8d-cd22-02f8-8dc9bfc8c345"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20163000er4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"agencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7yccba5b-25c6-153f-2feb-7aef9e509123"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Agence du Nord"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f178e729-3286-74d1-ab19-c8539d1dc741"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZER319"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPENED"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MissionAccepted"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-09T11:44:48.000Z"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-09T11:42:30.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-09T11:45:00.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"callPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"froid alimentaire"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEUBLE CHARCUTERIE TRAD."</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b1dbc546-48bd-f49c-b76f-5028426d5321"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chauffagiste Raymond &amp; Fils"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"0146306552"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"0345632753"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"john.doe@unknown.com"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"caller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email DI"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"mediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0654675432"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zi saint hermentaire"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83300"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAGUIGNAN"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"additionalDataz"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"Code magasin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OT456"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"Heure réception OT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:41:07"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"OT urgente"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NON"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">   
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/tickets/export</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-19999</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-10000</code> <br/> startRange should be &lt;= endRange</td>
+</tr>
+<tr>
+<td>agency</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>None</td>
+<td>query matching with several <code class="prettyprint">agencies</code> uid.<br/> ex: <code class="prettyprint">agency=agency_uid1,agency_uid2</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>query</td>
+<td><a href="#option">Option</a>[ENUM]</td>
+<td>None</td>
+<td>query matching with <code class="prettyprint">status</code> { OPENED or CLOSED }.<br/> ex: <code class="prettyprint">status=OPENED</code></td>
+</tr>
+<tr>
+<td>location</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td>query matching with several <code class="prettyprint">locations</code>.<br/> ex: <code class="prettyprint">location=paris,marseille,toulouse</code></td>
+</tr>
+<tr>
+<td>from</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#localdate">LocalDate</a>]</td>
+<td>None</td>
+<td>query matching with <code class="prettyprint">from</code> local date.<br/> ex: <code class="prettyprint">from=2015-07-02</code>.<br/> if <strong><code class="prettyprint">from</code></strong> but not <strong><code class="prettyprint">to</code></strong> =&gt; from <strong><code class="prettyprint">from</code></strong> to <strong>now</strong></td>
+</tr>
+<tr>
+<td>to</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#localdate">LocalDate</a>]</td>
+<td>None</td>
+<td>query matching with <code class="prettyprint">to</code> local date.<br/> ex: <code class="prettyprint">to=2015-07-03</code>.<br/> if <strong><code class="prettyprint">to</code></strong> but not <strong><code class="prettyprint">from</code></strong> =&gt; until <strong><code class="prettyprint">to</code></strong>. <strong><code class="prettyprint">to</code></strong> must be &gt;= <strong><code class="prettyprint">from</code></strong></td>
+</tr>
+<tr>
+<td>callpurpose</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td>query matching with several <code class="prettyprint">callpurpose</code>.<br/> ex: <code class="prettyprint">callpurpose=one,two,three</code></td>
+</tr>
+<tr>
+<td>activeproviders</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td>query matching with several active provider contacts uid.<br/> ex: <code class="prettyprint">activeproviders=provider_uid1,provider_uid2</code></td>
+</tr>
+<tr>
+<td>fulltext</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#localdate">String</a>]</td>
+<td>None</td>
+<td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.<br/> This param is incompatible with the others (except for range).</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#ticketexportview">TicketExportView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#ticketexportview">TicketExportView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-stats-on-tickets">Get stats on tickets</h2>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -3618,6 +3795,22 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </tr>
 </tbody></table>
 
+<h2 id="ticketexportview">TicketExportView</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#exportedticket">ExportedTicket</a>]</td>
+<td>Array of exported <code class="prettyprint">Ticket</code>s</td>
+</tr>
+</tbody></table>
+
 <h2 id="holdingqueryview">HoldingQueryView</h2>
 
 <h3 id="fields">Fields</h3>
@@ -3762,6 +3955,94 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>address</td>
 <td><a href="#basicaddress">BasicAddress</a></td>
 <td>the <code class="prettyprint">Address</code> where the incident occurs.</td>
+</tr>
+</tbody></table>
+
+<h2 id="exportedticket">ExportedTicket</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the <code class="prettyprint">Ticket</code>&rsquo;s uid</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>the <code class="prettyprint">Ticket</code>&rsquo;s client reference.<br/> Could be <code class="prettyprint">clientClaimNumber</code>or <code class="prettyprint">callCenterClaimNumber</code> or <code class="prettyprint">ticket_uid</code>.</td>
+</tr>
+<tr>
+<td>agencies</td>
+<td>Array[<a href="#agencyabstract">AgencyAbstract</a>]</td>
+<td>the <code class="prettyprint">Agency</code> linked to this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#option">Option</a>[<a href="#patrimonyabstract">PatrimonyAbstract</a>]</td>
+<td>the <code class="prettyprint">Patrimony</code> linked to this <code class="prettyprint">Ticket</code>. optional.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ENUM</td>
+<td><code class="prettyprint">OPENED</code> or <code class="prettyprint">CLOSED</code>.</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[<a href="#ticketstateview">TicketStateView</a>]</td>
+<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">MissionAccepted</code></td>
+</tr>
+<tr>
+<td>created</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when this <code class="prettyprint">Ticket</code> was opened.</td>
+</tr>
+<tr>
+<td>updated</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when last update of this <code class="prettyprint">Ticket</code> occured.</td>
+</tr>
+<tr>
+<td>closed</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when this <code class="prettyprint">Ticket</code> was closed.</td>
+</tr>
+<tr>
+<td>callPurpose</td>
+<td>String</td>
+<td>the <code class="prettyprint">callPurpose</code> of this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>request</td>
+<td>String</td>
+<td>the details of the demand.</td>
+</tr>
+<tr>
+<td>caller</td>
+<td><a href="#callerqueryview">CallerQueryView</a></td>
+<td>informations on person who ask for open this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>provider</td>
+<td><a href="#option">Option</a>[<a href="#providerqueryview">ProviderQueryView</a>]</td>
+<td>informations on the possible last <code class="prettyprint">Provider</code> acting on this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#basicaddress">BasicAddress</a></td>
+<td>the <code class="prettyprint">Address</code> where the incident occurs.</td>
+</tr>
+<tr>
+<td>additionalDataz</td>
+<td>Map[String, String]</td>
+<td>a map of client’s additional fields. ex: {field1: value_1}</td>
 </tr>
 </tbody></table>
 
