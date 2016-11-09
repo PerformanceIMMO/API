@@ -1267,6 +1267,27 @@ https://base_url/api/v1/providercontacts?range<span class="o">=</span>0-0
 <td>0-100</td>
 <td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
 </tr>
+<tr>
+<td>companyuid</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>None</td>
+<td>query matching with one <code class="prettyprint">Company</code> uid.<br/> ex: <code class="prettyprint">agency=company_uid</code></td>
+</tr>
+<tr>
+<td>agencyuids</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td>query matching with several <code class="prettyprint">agencies</code> uid.<br/> ex: <code class="prettyprint">agency=agency_uid1,agency_uid2</code></td>
+</tr>
+<tr>
+<td>fulltext</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.</td>
+</tr>
 </tbody></table>
 
 <h3 id="responses">Responses</h3>
@@ -1709,7 +1730,7 @@ https://base_url/api/vEvent/providercontacts
     <span class="s2">"date"</span>:<span class="s2">"2016-02-29"</span>,
     <span class="s2">"commandType"</span>:<span class="s2">"AssociateProviderContactToAgency"</span>
  <span class="o">}</span> <span class="se">\</span>
-https://base_url/api/vEvent/providerContacts/7634c414-8822-e29d-fe2b-0a18b3174369
+https://base_url/api/vEvent/providercontacts/7634c414-8822-e29d-fe2b-0a18b3174369
 </code></pre>
 
 <blockquote>
@@ -1730,7 +1751,7 @@ https://base_url/api/vEvent/providerContacts/7634c414-8822-e29d-fe2b-0a18b317436
     </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/providerContacts/aggregate_uid</code></p>
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/providercontacts/aggregate_uid</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -2093,7 +2114,7 @@ https://base_url/api/v1/tickets/export
 <td>query</td>
 <td><a href="#option">Option</a>[<a href="#localdate">String</a>]</td>
 <td>None</td>
-<td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.<br/> This param is incompatible with the others (except for range).</td>
+<td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.</td>
 </tr>
 </tbody></table>
 
