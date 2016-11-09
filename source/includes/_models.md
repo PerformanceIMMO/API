@@ -270,6 +270,12 @@ Name        | Type                                              | Description
 result      | Array[[TicketQueryView](#ticketqueryview)]        | Array of selected `Ticket`s
 aggergations| [Aggregations](#aggregations)                     | Aggregations of several params.
 
+## TicketExportView
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[ExportedTicket](#exportedticket)]          | Array of exported `Ticket`s
+
 ## HoldingQueryView 
 
 ### Fields
@@ -316,6 +322,28 @@ callPurpose | String                                            | the `callPurpo
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
 provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
+
+## ExportedTicket
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+uid         | [SafeUUID](#safeuuid)                             | the `Ticket`'s uid
+ref         | String                                            | the `Ticket`'s client reference.<br/> Could be `clientClaimNumber`or `callCenterClaimNumber` or `ticket_uid`.
+agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
+patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
+status      | ENUM                                              | `OPENED` or `CLOSED`.
+state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
+created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
+updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
+closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
+callPurpose | String                                            | the `callPurpose` of this `Ticket`.
+request     | String                                            | the details of the demand.
+caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
+provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
+address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
+additionalDataz | Map[String, String]                           | a map of client’s additional fields. ex: {field1: value_1}
 
 ## Aggregations
 

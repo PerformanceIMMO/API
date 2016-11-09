@@ -95,6 +95,108 @@ Http code | Type                                          | Description
 206       | [TicketResultView](#ticketresultview)          | Partial Content. See `Content-Range` header for use pagination.
 400       | Error                                         | Bad request, occurs most often when parameters passed are invalid.
 
+
+## Export bulk tickets
+
+### HTTP Request
+
+```shell
+curl -XGET \
+-H "Cookie: PI_SESSION=..." \
+https://base_url/api/v1/tickets/export
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 206 Partial Content
+Content-Type: application/json
+Content-Range: 0-19999/80000
+```
+```json
+{
+	"result": [
+        {
+            "uid": "ebf5b908-dc8d-cd22-02f8-8dc9bfc8c345",
+            "ref": "20163000er4",
+            "agencies": [
+                {
+                    "uid": "7yccba5b-25c6-153f-2feb-7aef9e509123",
+                    "name": "Agence du Nord"
+                }
+            ],
+            "patrimony": {
+                "uid": "f178e729-3286-74d1-ab19-c8539d1dc741",
+                "name": "ZER319"
+            },
+            "status": "OPENED",
+            "state": {
+                "value": "MissionAccepted",
+                "date": "2016-11-09T11:44:48.000Z"
+            },
+            "created": "2016-11-09T11:42:30.000Z",
+            "updated": "2016-11-09T11:45:00.000Z",
+            "callPurpose": "froid alimentaire",
+            "request": "MEUBLE CHARCUTERIE TRAD.",
+            "provider": {
+                "uid": "b1dbc546-48bd-f49c-b76f-5028426d5321",
+                "name": "chauffagiste Raymond & Fils",
+                "phones": [
+                    "0146306552",
+                    "0345632753"
+                ],
+                "fax": [ ],
+                "emails": [
+                    "john.doe@unknown.com"
+                ]
+            },
+            "caller": {
+                "name": "email DI",
+                "medium": {
+                    "mediumType": "PHONE",
+                    "identifier": "0654675432"
+                }
+            },
+            "address": {
+                "street": "zi saint hermentaire",
+                "zipCode": "83300",
+                "city": "DRAGUIGNAN"
+            },
+            "additionalDataz": {
+                "Code magasin": "OT456",
+                "Heure réception OT": "12:41:07",
+                "OT urgente": "NON"
+            }
+        }
+    ]	
+}	
+```
+
+**`GET`** `/api/v1/tickets/export`
+
+### Parameters
+
+Name            | In    | Type                                      | Default   | Description
+--------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
+range           | query | [Option](#option)[String]                 | 0-19999   | range selector for result pagination.<br/> ex: `range=0-10000` <br/> startRange should be <= endRange
+agency          | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
+status          | query | [Option](#option)[ENUM]                   | None      | query matching with `status` { OPENED or CLOSED }.<br/> ex: `status=OPENED`
+location        | query | [Option](#option)[String]                 | None      | query matching with several `locations`.<br/> ex: `location=paris,marseille,toulouse`
+from            | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `from` local date.<br/> ex: `from=2015-07-02`.<br/> if **`from`** but not **`to`** => from **`from`** to **now**
+to              | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `to` local date.<br/> ex: `to=2015-07-03`.<br/> if **`to`** but not **`from`** => until **`to`**. **`to`** must be >= **`from`**
+callpurpose     | query | [Option](#option)[String]                 | None      | query matching with several `callpurpose`.<br/> ex: `callpurpose=one,two,three`
+activeproviders | query | [Option](#option)[String]                 | None      | query matching with several active provider contacts uid.<br/> ex: `activeproviders=provider_uid1,provider_uid2`
+fulltext        | query | [Option](#option)[[String](#localdate)]   | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.<br/> This param is incompatible with the others (except for range).
+
+### Responses
+
+Http code | Type                                          | Description
+----------| ----------------------------------------------| ----------------------------
+200       | [TicketExportView](#ticketexportview)         | All resources's elements are returned.
+206       | [TicketExportView](#ticketexportview)         | Partial Content. See `Content-Range` header for use pagination.
+400       | Error                                         | Bad request, occurs most often when parameters passed are invalid.
+
+
 ## Get stats on tickets
 
 ### HTTP Request
