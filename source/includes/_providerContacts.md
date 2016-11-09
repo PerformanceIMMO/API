@@ -64,6 +64,9 @@ Content-Range: 0-0/19234
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
 range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
+companyuid      | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with one `Company` uid.<br/> ex: `agency=company_uid`
+agencyuids      | query | [Option](#option)[String]                 | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
+fulltext        | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
 
 ### Responses
 
@@ -321,7 +324,7 @@ curl -XPATCH \
     "date":"2016-02-29",
     "commandType":"AssociateProviderContactToAgency"
  } \
-https://base_url/api/vEvent/providerContacts/7634c414-8822-e29d-fe2b-0a18b3174369
+https://base_url/api/vEvent/providercontacts/7634c414-8822-e29d-fe2b-0a18b3174369
 ```
 
 > HTTP response example :
@@ -343,7 +346,7 @@ HTTP/1.1 200 Ok
     ]
 ```
 
-**`PATCH`** `/api/vEvent/providerContacts/aggregate_uid`
+**`PATCH`** `/api/vEvent/providercontacts/aggregate_uid`
 
 ### Parameters
 
