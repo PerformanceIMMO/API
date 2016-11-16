@@ -1880,7 +1880,7 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
 <td>range</td>
 <td>query</td>
 <td><a href="#option">Option</a>[String]</td>
-<td>0-100</td>
+<td>0-99</td>
 <td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &lt;= endRange</td>
 </tr>
 <tr>
@@ -2187,7 +2187,7 @@ https://base_url/api/v1/tickets
 <td>range</td>
 <td>query</td>
 <td><a href="#option">Option</a>[String]</td>
-<td>0-100</td>
+<td>0-99</td>
 <td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
 </tr>
 <tr>
@@ -2378,7 +2378,7 @@ https://base_url/api/v1/tickets/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
 <td>ticket_uid</td>
 <td>path</td>
 <td><a href="#safeuuid">SafeUUID</a></td>
-<td>0-100</td>
+<td>0-99</td>
 <td>the uid of the selected <code class="prettyprint">Ticket</code>.</td>
 </tr>
 </tbody></table>
@@ -2670,6 +2670,127 @@ https://base_url/api/vEvent/tickets/1d178826-76dc-cd04-e174-346ba60eedad
 <td>403</td>
 <td></td>
 <td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="listen-ticket-event">Listen Ticket Event</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/vEvent/tickets?range<span class="o">=</span>0-0&amp;from<span class="o">=</span>2015-10-01T05:30:59.000Z&amp;to<span class="o">=</span>2016-10-02T05:30:59.000Z
+</code></pre>
+
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">206</span> <span class="ne">Partial Content</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/256</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b000454f-6561-179a-35e5-254d09934d43"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b20efb62-a12a-cc8f-e1b7-edcf5c869e57"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"locationRef"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"agencyUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5ced7e8e-3baa-1cb1-575d-b0e98cf21d5c"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"locationReferenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AgencyLocation"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d7b82473-8fcc-739c-4e2e-7665d942f387"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-01T05:34:59.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ticket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"caller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"nameType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PoorName"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0146304563"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nt">"callerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HumanCaller"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 rue de Paris"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75001"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paris"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fuite au niveau du plafond de la cuisine."</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"callPurposeLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fuite d'eau"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"altCallPurpose"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"additionalData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"openedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-01T05:34:59.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TicketOpened"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">   
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/vEvent/tickets</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-99</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &lt;= endRange</td>
+</tr>
+<tr>
+<td>from</td>
+<td>query</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+<td>select all the events since that date (included).<br/> ex: <code class="prettyprint">from=2015-10-01T05:30:59.000Z</code>.<br/></td>
+</tr>
+<tr>
+<td>to</td>
+<td>query</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+<td>select all the events until this date (included).<br/> ex: <code class="prettyprint">to=2015-10-01T05:30:59.000Z</code>.<br/> <strong><code class="prettyprint">to</code></strong> must be &gt;= <strong><code class="prettyprint">from</code></strong></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#ticketeventresultview">TicketEventResultView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#ticketeventresultview">TicketEventResultView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
 </tr>
 </tbody></table>
 
