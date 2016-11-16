@@ -76,7 +76,7 @@ Content-Range: 0-0/256
 
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
-range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be <= endRange
+range           | query | [Option](#option)[String]                 | 0-99      | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be <= endRange
 agency          | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
 status          | query | [Option](#option)[ENUM]                   | None      | query matching with `status` { OPENED or CLOSED }.<br/> ex: `status=OPENED`
 location        | query | [Option](#option)[String]                 | None      | query matching with several `locations`.<br/> ex: `location=paris,marseille,toulouse`
@@ -232,7 +232,7 @@ Content-Type: application/json
 
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
-range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
+range           | query | [Option](#option)[String]                 | 0-99      | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
 agency          | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
 status          | query | [Option](#option)[ENUM]                   | None      | query matching with `status` { OPENED or CLOSED }.<br/> ex: `status=OPENED`
 location        | query | [Option](#option)[String]                 | None      | query matching with several `locations`.<br/> ex: `location=paris,marseille,toulouse`
@@ -356,7 +356,7 @@ Content-Type: application/json
 
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -------------
-ticket_uid      | path  | [SafeUUID](#safeuuid)                     | 0-100     | the uid of the selected `Ticket`.
+ticket_uid      | path  | [SafeUUID](#safeuuid)                     | 0-99      | the uid of the selected `Ticket`.
 
 ### Responses
 
@@ -532,3 +532,84 @@ Http code | Type                                        | Description
 400       | [TicketEventError](#ticketeventerror)       | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 401       |                                             | Not authenticated user
 403       |                                             | `User` doesn't have right to perform this `Command`
+
+## Listen Ticket Event
+
+### HTTP Request
+
+```shell
+curl -XGET \
+-H "Cookie: PI_SESSION=..." \
+https://base_url/api/vEvent/tickets?range=0-0&from=2015-10-01T05:30:59.000Z&to=2016-10-02T05:30:59.000Z
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 206 Partial Content
+Content-Type: application/json
+Content-Range: 0-0/256
+```
+```json
+{
+	"events": [
+		{
+            "processUid": "b000454f-6561-179a-35e5-254d09934d43",
+            "aggregateUid": "b20efb62-a12a-cc8f-e1b7-edcf5c869e57",
+            "locationRef": {
+                "agencyUid": "5ced7e8e-3baa-1cb1-575d-b0e98cf21d5c",
+                "locationReferenceType": "AgencyLocation"
+            },
+            "operator": {
+                "operatorUid": "d7b82473-8fcc-739c-4e2e-7665d942f387",
+                "operatorType": "ReferencedOperator"
+            },
+            "sentDate": "2015-10-01T05:34:59.000Z",
+            "ticket": {
+                "caller": {
+                    "name": {
+                        "value": "John Doe",
+                        "nameType": "PoorName"
+                    },
+                    "medium": {
+                        "phone": "0146304563",
+                        "contactMediumType": "Phone"
+                    },
+                    "callerType": "HumanCaller"
+                },
+                "claimNumber": { },
+                "address": {
+                    "street": "3 rue de Paris",
+                    "zipCode": "75001",
+                    "city": "Paris"
+                },
+                "request": "Fuite au niveau du plafond de la cuisine.",
+                "callPurposeLabel": "Fuite d'eau",
+                "altCallPurpose": { },
+                "additionalData": { }
+            },
+            "openedDate": "2015-10-01T05:34:59.000Z",
+            "eventType": "TicketOpened"
+        }
+	]	
+}	
+```
+
+**`GET`** `/api/vEvent/tickets`
+
+### Parameters
+
+Name            | In    | Type                                      | Default   | Description
+--------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
+range           | query | [Option](#option)[String]                 | 0-99      | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be <= endRange
+from            | query | [DateTime](#datetime)                     |           | select all the events since that date (included).<br/> ex: `from=2015-10-01T05:30:59.000Z`.<br/>
+to              | query | [DateTime](#datetime)                     |           | select all the events until this date (included).<br/> ex: `to=2015-10-01T05:30:59.000Z`.<br/> **`to`** must be >= **`from`**
+
+
+### Responses
+
+Http code | Type                                          | Description
+----------| ----------------------------------------------| ----------------------------
+200       | [TicketEventResultView](#ticketeventresultview) | All resources's elements are returned.
+206       | [TicketEventResultView](#ticketeventresultview) | Partial Content. See `Content-Range` header for use pagination.
+400       | Error                                           | Bad request, occurs most often when parameters passed are invalid.
