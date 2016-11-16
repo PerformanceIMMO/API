@@ -105,3 +105,5 @@ message            | String | a message describing the error
 ### ImpossibleToOpenExistingTicket
 
 ### ImpossibleToPerfomCommandOnNonExistingTicket
+
+### ImpossibleToScheduleMissionIfNoProviderIsAssigned
