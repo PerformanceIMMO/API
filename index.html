@@ -7991,6 +7991,57 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<h3 id="schedulemission">ScheduleMission</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
+</tr>
+<tr>
+<td>provider</td>
+<td><a href="#option">Option</a>[<a href="#provider">Provider</a>]</td>
+<td>an optional reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the start date of this scheduled mission.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the end date of this scheduled mission.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ScheduleMission&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h3 id="acceptmission">AcceptMission</h3>
 
 <table><thead>
@@ -9254,6 +9305,67 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
+<h3 id="missionscheduled">MissionScheduled</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+</tr>
+<tr>
+<td>provider</td>
+<td><a href="#option">Option</a>[<a href="#provider">Provider</a>]</td>
+<td>an optional reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[[String]]</td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the start date of this scheduled mission.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the end date of this scheduled mission.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;MissionScheduled&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h3 id="missionaccepted">MissionAccepted</h3>
 
 <table><thead>
@@ -10385,6 +10497,8 @@ Received the following events means the Ticket was closed.
 <h3 id="impossibletoopenexistingticket">ImpossibleToOpenExistingTicket</h3>
 
 <h3 id="impossibletoperfomcommandonnonexistingticket">ImpossibleToPerfomCommandOnNonExistingTicket</h3>
+
+<h3 id="impossibletoschedulemissionifnoproviderisassigned">ImpossibleToScheduleMissionIfNoProviderIsAssigned</h3>
 
           <h1 id="errors">Errors</h1>
 
