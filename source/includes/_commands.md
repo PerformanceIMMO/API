@@ -506,7 +506,8 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
-purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged)
+purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged).
+serviceOrder        | [Option](#otpion)[[ServiceOrder](#serviceorder)] | an optional field to indicate if `ServiceOrder` was sent by the client to the `Provider`
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"AssignProvider"`
 

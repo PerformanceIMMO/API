@@ -214,9 +214,45 @@ aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
 purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged)
-sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+sentDate            | [DateTime](#datetime)                         | when `Event` was sending to Perfimmo.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"ProviderAssigned"`
+
+### ServiceOrderSent
+
+> ServiceOrderSent example : 
+
+```json
+{
+  "processUid": "f5391199-e544-60f3-037c-16f3229fd59d",
+  "aggregateUid": "c9c5c9d2-ab38-a010-46cd-97013fbfbeb2",
+  "operator": {
+    "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+    "operatorType": "ReferencedOperator"
+  },
+  "provider": {
+    "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+    "providerType": "ReferencedProvider"
+  },
+  "date": "2016-08-25T15:31:53.000+02:00",
+  "ref": "1234FRX",
+  "kindOfSending": "NotSentByPerfimmo",
+  "sentDate": "2016-08-25T15:31:50.000+02:00",
+  "eventType": "ServiceOrderSent"
+}
+```
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+ref                 | String                                        | the reference of the service order sent.
+kindOfSending       | [ServiceOrderKind](#serviceorderkind)         | allow to know who sent the service order (Perfimmo or the client for example)
+sentDate            | [DateTime](#datetime)                         | when `Event` was sending to Perfimmo.
+eventType           | Constant                                      | `"ServiceOrderSent"`
 
 ### CallAnsweredByProvider
 

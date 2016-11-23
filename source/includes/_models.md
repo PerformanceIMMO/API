@@ -1567,3 +1567,34 @@ A simple String value that only can be :
 
 - NA
 
+## ServiceOrderKind
+
+Allow to know who sent the service order (Perfimmo or the client for example)
+
+`ServiceOrderKind` is an Enum, i.e type can take different values. 
+
+```haskell
+data ServiceOrderKind = NotSentByPerfimmo | SentByPerfimmo
+```
+
+A simple String value that only can be :
+
+- NotSentByPerfimmo
+ 
+- SentByPerfimmo 
+
+## ServiceOrder
+
+> ServiceOrder example :
+
+```json
+{
+	"ref":"123DRX34",
+	"sendingDate":"2016-02-29T12:03:32+02:00"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+ref               | String                                            | the reference of the service order.
+sendingDate       | [DateTime](#datetime)                             | the sending date of the service order.
