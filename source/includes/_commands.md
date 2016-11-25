@@ -500,16 +500,46 @@ commandType         | Constant                                      | `"ReceiveC
 }
 ```
 
-
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
 purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged).
-serviceOrder        | [Option](#otpion)[[ServiceOrder](#serviceorder)] | an optional field to indicate if `ServiceOrder` was sent by the client to the `Provider`
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"AssignProvider"`
+
+### ReportSendingServiceOrder
+
+> ReportSendingServiceOrder example : 
+
+```json
+{
+    "processUid":"5deed63d-a7f4-254e-9127-7c177d7fd5a8",
+    "operator": {
+         "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+         "operatorType": "ReferencedOperator"
+    },
+    "provider": {
+         "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+         "providerType": "ReferencedProvider"
+    },
+    "ref":"AEX34J",
+    "reportDate":"2016-08-18T16:40:51.000+02:00",
+    "sendingDate":"2016-08-18T16:40:51.000+02:00",
+    "commandType":"ReportSendingServiceOrder"
+}
+```
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
+ref                 | String                                        | the reference of the service order sent.
+reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
+sendingDate         | [DateTime](#datetime)                         | date when the service order was sending.
+commandType         | Constant                                      | `"ReportSendingServiceOrder"`
 
 ### ProviderAnswerCall
 

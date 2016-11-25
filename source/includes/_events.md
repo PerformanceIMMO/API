@@ -218,9 +218,9 @@ sentDate            | [DateTime](#datetime)                         | when `Even
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"ProviderAssigned"`
 
-### ServiceOrderSent
+### SendingServiceOrderReported
 
-> ServiceOrderSent example : 
+> SendingServiceOrderReported example : 
 
 ```json
 {
@@ -234,11 +234,11 @@ eventType           | Constant                                      | `"Provider
     "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
     "providerType": "ReferencedProvider"
   },
-  "date": "2016-08-25T15:31:53.000+02:00",
   "ref": "1234FRX",
-  "kindOfSending": "NotSentByPerfimmo",
+  "reportDate": "2016-08-25T15:31:53.000+02:00",
+  "sendingDate": "2016-08-25T15:31:53.000+02:00",
   "sentDate": "2016-08-25T15:31:50.000+02:00",
-  "eventType": "ServiceOrderSent"
+  "eventType": "SendingServiceOrderReported"
 }
 ```
 
@@ -248,11 +248,11 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
 provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
-date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 ref                 | String                                        | the reference of the service order sent.
-kindOfSending       | [ServiceOrderKind](#serviceorderkind)         | allow to know who sent the service order (Perfimmo or the client for example)
+reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
+sendingDate         | [DateTime](#datetime)                         | date when the service order was sending.
 sentDate            | [DateTime](#datetime)                         | when `Event` was sending to Perfimmo.
-eventType           | Constant                                      | `"ServiceOrderSent"`
+eventType           | Constant                                      | `"SendingServiceOrderReported"`
 
 ### CallAnsweredByProvider
 
