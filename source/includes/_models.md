@@ -1528,7 +1528,7 @@ providerAssignationPurposeType | Constant                             | `"Purpos
 
 Name              | Type                                              | Description
 ------------------| --------------------------------------------------| --------------------------
-comment           | String                                            | 
+comment           | [Option](#option)[String]                                            | 
 providerAssignationPurposeType | Constant                             | `"RecourseChanged"`
 
 ## LogTrial
