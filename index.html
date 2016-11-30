@@ -7288,6 +7288,70 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<h3 id="upgradecompanytopremiumaccount">UpgradeCompanyToPremiumAccount</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"upgradedDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"UpgradeCompanyToPremiumAccount"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>upgradedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the updated&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpgradeCompanyToPremiumAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="downgradepremiumaccount">DowngradePremiumAccount</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"upgradedDate"</span><span class="p">:</span><span class="s2">"2016-06-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"DowngradePremiumAccount"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>downgradedDate</td>
+<td><a href="#localdate">LocalDate</a></td>
+<td>the updated&rsquo;s date of this <code class="prettyprint">Company</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DowngradePremiumAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="createagency">CreateAgency</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
