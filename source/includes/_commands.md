@@ -166,6 +166,38 @@ updatedDate        | [LocalDate](#localdate)                       | the updated
 name               | String                                        | the updated name of this `Company`  
 commandType        | Constant                                      | `"UpdateCallCenter"`
 
+### UpgradeCompanyToPremiumAccount
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "upgradedDate":"2016-06-28",
+    "commandType":"UpgradeCompanyToPremiumAccount"
+} 
+``` 
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+upgradedDate       | [LocalDate](#localdate)                       | the updated's date of this `Company`  
+commandType        | Constant                                      | `"UpgradeCompanyToPremiumAccount"`
+
+### DowngradePremiumAccount
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "upgradedDate":"2016-06-28",
+    "commandType":"DowngradePremiumAccount"
+} 
+``` 
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+downgradedDate     | [LocalDate](#localdate)                       | the updated's date of this `Company`  
+commandType        | Constant                                      | `"DowngradePremiumAccount"`
+
 ## CreateAgency
 
 ```json
