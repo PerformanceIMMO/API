@@ -307,6 +307,19 @@ date                | [DateTime](#datetime)                         | date on wh
 deadline            | [DateTime](#datetime)                         | the deadline defined.
 eventType           | Constant                                      | `"InterventionDeadlineDefined"`
 
+### FormalNoticeForProviderReported
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+ref                 | [Option](#option)[String]                     | an optional reference to this formal notice.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
+deadline            | [DateTime](#datetime)                         | a new deadline defined.
+eventType           | Constant                                      | `"FormalNoticeForProviderReported"`
+
 ### MissionAccepted
 
 Name                | Type                                          | Description
