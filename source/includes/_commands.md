@@ -601,7 +601,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Option](#option)[[Provider](#provider)]      | an optional reference to the `Provider` who will perform the mission.
+provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
 comment             | [Option](#option)[String]                     | 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 startDate           | [DateTime](#datetime)                         | the start date of this scheduled mission.

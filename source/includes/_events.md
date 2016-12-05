@@ -287,7 +287,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Option](#option)[[Provider](#provider)]      | an optional reference to the `Provider` who will perform the mission.
+provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
 comment             | [Option](#option)[[String]]                   | 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
