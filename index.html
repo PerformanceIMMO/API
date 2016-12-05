@@ -8338,6 +8338,47 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<h3 id="defineinterventiondeadline">DefineInterventionDeadline</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
+</tr>
+<tr>
+<td>provider</td>
+<td><a href="#provider">Provider</a></td>
+<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the deadline defined.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DefineInterventionDeadline&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h3 id="acceptmission">AcceptMission</h3>
 
 <table><thead>
@@ -9737,6 +9778,52 @@ The following commands are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;MissionScheduled&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="interventiondeadlinedefined">InterventionDeadlineDefined</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+</tr>
+<tr>
+<td>provider</td>
+<td><a href="#provider">Provider</a></td>
+<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the deadline defined.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;InterventionDeadlineDefined&quot;</code></td>
 </tr>
 </tbody></table>
 
