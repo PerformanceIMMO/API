@@ -295,6 +295,18 @@ startDate           | [DateTime](#datetime)                         | the start 
 endDate             | [DateTime](#datetime)                         | the end date of this scheduled mission.
 eventType           | Constant                                      | `"MissionScheduled"`
 
+### InterventionDeadlineDefined
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+deadline            | [DateTime](#datetime)                         | the deadline defined.
+eventType           | Constant                                      | `"InterventionDeadlineDefined"`
+
 ### MissionAccepted
 
 Name                | Type                                          | Description
