@@ -343,7 +343,28 @@ request     | String                                            | the details of
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
 provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
-additionalDataz | Map[String, String]                           | a map of client’s additional fields. ex: {field1: value_1}
+interventionScheduled | [Option](#option)[[InterventionScheduled](#interventionscheduled)] | period of the last scheduled intervention for this `Ticket`.
+interventionDeadline | [Option](#option)[[DateTime](#datetime)] | last intervention deadline for this `Ticket`. 
+formalNotice | [Option](#option)[[FormalNotice](#formalnotice)] | last formalNotice for this `Ticket`.
+
+## InterventionScheduled
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+startDate   | [DateTime](#datetime)                             | startDate of the scheduled period
+endDate     | [DateTime](#datetime)                             | endDate of the scheduled period
+
+## FormalNotice
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+date        | [DateTime](#datetime)                             | date when this formal notice was sent
+deadline    | [DateTime](#datetime)                             | deadline of this formal notice
+
 
 ## Aggregations
 
