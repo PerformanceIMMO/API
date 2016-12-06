@@ -4182,9 +4182,65 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>the <code class="prettyprint">Address</code> where the incident occurs.</td>
 </tr>
 <tr>
-<td>additionalDataz</td>
-<td>Map[String, String]</td>
-<td>a map of client’s additional fields. ex: {field1: value_1}</td>
+<td>interventionScheduled</td>
+<td><a href="#option">Option</a>[<a href="#interventionscheduled">InterventionScheduled</a>]</td>
+<td>period of the last scheduled intervention for this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>interventionDeadline</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>last intervention deadline for this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>formalNotice</td>
+<td><a href="#option">Option</a>[<a href="#formalnotice">FormalNotice</a>]</td>
+<td>last formalNotice for this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="interventionscheduled">InterventionScheduled</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>startDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>startDate of the scheduled period</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>endDate of the scheduled period</td>
+</tr>
+</tbody></table>
+
+<h2 id="formalnotice">FormalNotice</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date when this formal notice was sent</td>
+</tr>
+<tr>
+<td>deadline</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>deadline of this formal notice</td>
 </tr>
 </tbody></table>
 
