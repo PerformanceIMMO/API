@@ -79,7 +79,8 @@ Content-Range: 0-0/1
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
 range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
-
+fulltext        | query | [Option](#option)[String]                 | None      | allow to search patrimonies by key-word (ex: ref or label)
+agencyuids      | query | Array[[SafeUUID](#safeuuid)]              | []        | allow to search patrimonies by agency uids associated with it. 
 
 ### Responses
 
