@@ -198,9 +198,10 @@ via les API d'écriture. -->
 
 Il existe plusieurs types de `User` :
 
-* CallCenterUser - cadre de centre d'appel. Il est relié à un `CallCenter`. Il peut gérer tout ce qui est lié à ce `CallCenter` (`ClientAccount`, `Ticket`, etc...)
-* ClientAccountManager - cadre de compte Client. Il est relié à un `ClientAccount`. Il peut gérer tout ce qui est lié à ce `ClientAccount` (`Ticket`, `Patrimony`, etc...)
-* Executive - Cadre d'agence. Il est relié à une ou plusieurs `Agency` et à un `ClientAccount`. Il peut gérer tout ce qui est lié avec ses agences (`Ticket`, `Patrimony`, etc...)
+* **CallCenterUser** - cadre de centre d'appel. Il est relié à un `CallCenter`. Il peut gérer tout ce qui est lié à ce `CallCenter` (`ClientAccount`, `Ticket`, etc...)
+* **ClientAccountManager** - cadre de compte Client. Il est relié à un `ClientAccount`. Il peut gérer tout ce qui est lié à ce `ClientAccount` (`Ticket`, `Patrimony`, etc...)
+* **Executive** - Cadre d'agence. Il est relié à une ou plusieurs `Agency` et à un `ClientAccount`. Il peut gérer tout ce qui est lié avec ses agences (`Ticket`, `Patrimony`, etc...)
+* **PatrimonyManager** - Gestionnaire de patrimoine. Il est relié à une ou plusieurs `Patrimony` et à un `ClientAccount`. Il peut gérer tout ce qui est lié avec ses patrimoines (`Ticket`, `Patrimony`, etc...)
 
 # Authentification
 
