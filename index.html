@@ -6890,6 +6890,36 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<h2 id="fieldstocorrect">FieldsToCorrect</h2>
+
+<aside class="warning">
+    It is possible to set <b>closingReport</b> field only if the <b>Ticket</b> is already closed.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>field <code class="prettyprint">request</code> in <a href="#ticketinfos">TicketInfos</a>. If setted with non blank value, will be overwritten the old value.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>field <code class="prettyprint">instructions</code> in <a href="#ticketinfos">TicketInfos</a>. If setted with non blank value, will be overwritten the old value.</td>
+</tr>
+<tr>
+<td>closingReport</td>
+<td><a href="#option">Option</a>[String]</td>
+<td><code class="prettyprint">closingReport</code> when <code class="prettyprint">Ticket</code> is closed. If setted with non blank value, will be overwritten the old value.</td>
+</tr>
+</tbody></table>
+
           <h1 id="commands">Commands</h1>
 
 <h2 id="createcompany">CreateCompany</h2>
@@ -8765,6 +8795,62 @@ Don&rsquo;t use it for increment the <code class="prettyprint">Ticket</code> sta
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;UpdateTicket&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="correctticketinformations">CorrectTicketInformations</h3>
+
+<blockquote>
+<p>CorrectTicketInformations example : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"5deed63d-a7f4-254e-9127-7c177d7fd5a8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"fieldsToCorrect"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TicketInfos.request field updated"</span><span class="w">
+    </span><span class="p">},</span><span class="w">   
+    </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-08-18T16:40:51.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CorrectTicketInformations"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A compensation &#39;Command&rsquo; to correct some text informations in <code class="prettyprint">Ticket</code>. <br/>
+If you set a field with value, this field will be overwritten by this new value. <br/>
+It is forbidden to set a field with blank value.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>fieldsToCorrect</td>
+<td><a href="#fieldstocorrect">FieldsToCorrect</a></td>
+<td>a &#39;list&rsquo; of optional field to correct</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>. We can say who update this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the opened date of this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CorrectTicketInformations&quot;</code></td>
 </tr>
 </tbody></table>
 
