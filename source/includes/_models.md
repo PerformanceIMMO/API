@@ -1619,3 +1619,15 @@ Name              | Type                                              | Descript
 ------------------| --------------------------------------------------| --------------------------
 ref               | String                                            | the reference of the service order.
 sendingDate       | [DateTime](#datetime)                             | the sending date of the service order.
+
+## FieldsToCorrect
+
+<aside class="warning">
+	It is possible to set <b>closingReport</b> field only if the <b>Ticket</b> is already closed.
+</aside>
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+request           | [Option](#option)[String]                         | field `request` in [TicketInfos](#ticketinfos). If setted with non blank value, will be overwritten the old value.
+instructions      | [Option](#option)[String]                         | field `instructions` in [TicketInfos](#ticketinfos). If setted with non blank value, will be overwritten the old value.
+closingReport     | [Option](#option)[String]                         | `closingReport` when `Ticket` is closed. If setted with non blank value, will be overwritten the old value.

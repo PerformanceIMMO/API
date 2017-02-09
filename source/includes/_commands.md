@@ -747,6 +747,38 @@ ticket              | [TicketInfos](#ticketinfos)                   | infos spec
 openedDate          | [DateTime](#datetime)                         | the opened date of this `Ticket`.
 commandType         | Constant                                      | `"UpdateTicket"`
 
+### CorrectTicketInformations
+ 
+
+> CorrectTicketInformations example : 
+
+```json
+{
+    "processUid":"5deed63d-a7f4-254e-9127-7c177d7fd5a8",
+    "operator": {
+         "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+         "operatorType": "ReferencedOperator"
+    },
+ 	"fieldsToCorrect": {
+ 		"request": "TicketInfos.request field updated"
+ 	},   
+    "date":"2016-08-18T16:40:51.000+02:00",
+    "commandType":"CorrectTicketInformations"
+}
+``` 
+ 
+A compensation 'Command' to correct some text informations in `Ticket`. <br/>
+If you set a field with value, this field will be overwritten by this new value. <br/>
+It is forbidden to set a field with blank value.
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+fieldsToCorrect     | [FieldsToCorrect](#fieldstocorrect)           | a 'list' of optional field to correct
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. We can say who update this `Ticket`. 
+date                | [DateTime](#datetime)                         | the opened date of this `Ticket`.
+commandType         | Constant                                      | `"CorrectTicketInformations"`
+
 <aside class="notice">
 The following commands are made to close the Ticket.
 </aside>
