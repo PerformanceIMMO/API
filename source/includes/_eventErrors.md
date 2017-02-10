@@ -107,3 +107,17 @@ message            | String | a message describing the error
 ### ImpossibleToPerfomCommandOnNonExistingTicket
 
 ### ImpossibleToScheduleMissionIfNoProviderIsAssigned
+
+### ImpossibleToDefineInterventionDeadlineIfNoProviderIsAssigned
+
+### ImpossibleToReportSendingServiceOrderIfNoProviderIsAssigned
+
+### ImpossibleToReportFormalNoticeIfNoInterventionDeadlineWasDefined
+
+### ImpossibleToReportFormalNoticeIfInterventionDeadlineIsNotExcedeed
+
+### ImpossibleToReportFormalNoticeIfNewDeadlineIsMinusThanPreviousInterventionDeadline
+
+### BlankTextIsForbiddenToCorrectTicketInformations
+
+### ImpossibleToUpdateClosingReportFieldIfTicketIsNotClosed
