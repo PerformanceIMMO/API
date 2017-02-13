@@ -8845,7 +8845,7 @@ It is forbidden to set a field with blank value.</p>
 <tr>
 <td>date</td>
 <td><a href="#datetime">DateTime</a></td>
-<td>the opened date of this <code class="prettyprint">Ticket</code>.</td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
 </tr>
 <tr>
 <td>commandType</td>
@@ -8853,6 +8853,71 @@ It is forbidden to set a field with blank value.</p>
 <td><code class="prettyprint">&quot;CorrectTicketInformations&quot;</code></td>
 </tr>
 </tbody></table>
+
+<h3 id="correctticketeventinformations">CorrectTicketEventInformations</h3>
+
+<blockquote>
+<p>CorrectTicketEventInformations example : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"5deed63d-a7f4-254e-9127-7c177d7fd5a8"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"targetedEvent"</span><span class="p">:</span><span class="s2">"5deed63d-a7f4-254e-9127-7c177d7fd5a7"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">"text updated"</span><span class="p">,</span><span class="w">   
+    </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-08-18T16:40:51.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CorrectTicketEventInformations"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>A compensation &#39;Command&rsquo; to correct some text informations in the <code class="prettyprint">Ticket</code> journal <code class="prettyprint">Event</code>. <br/>
+Only few <code class="prettyprint">Event</code> can see their text updated :<br/>
+- MessageAdded.message <br/>
+- CallReceived.comment <br/>
+- CallEmittedTo.comment</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated.</td>
+</tr>
+<tr>
+<td>targetedEvent</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Event</code> whose text has been updated.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>the new text of the targeted <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>. We can say who update this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CorrectTicketEventInformations&quot;</code></td>
+</tr>
+</tbody></table>
+
+<p><br/>
+<br/></p>
 
 <aside class="notice">
 The following commands are made to close the Ticket.
@@ -10453,6 +10518,110 @@ Don&rsquo;t use it for increment the <code class="prettyprint">Ticket</code> sta
 </tr>
 </tbody></table>
 
+<h3 id="ticketinformationscorrected">TicketInformationsCorrected</h3>
+
+<p>Some text in the <code class="prettyprint">Ticket</code> were updated.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>fieldsCorrected</td>
+<td><a href="#fieldstocorrect">FieldsToCorrect</a></td>
+<td>a &#39;list&rsquo; of optional field corrected</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code class="prettyprint">Command</code>. We can say who update this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;TicketInformationsCorrected&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="ticketeventinformationscorrected">TicketEventInformationsCorrected</h3>
+
+<p>The text of a previous <code class="prettyprint">Event</code> was updated.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated.</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>targetedEvent</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Event</code> whose text has been updated.</td>
+</tr>
+<tr>
+<td>text</td>
+<td>String</td>
+<td>the new text of the targeted <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who perform for this <code class="prettyprint">Command</code>. We can say who update this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CorrectTicketEventInformations&quot;</code></td>
+</tr>
+</tbody></table>
+
+<p><br/>
+<br/></p>
+
 <aside class="notice">
 Received the following events means the Ticket was closed.
 </aside>
@@ -11076,6 +11245,10 @@ Received the following events means the Ticket was closed.
 <h3 id="blanktextisforbiddentocorrectticketinformations">BlankTextIsForbiddenToCorrectTicketInformations</h3>
 
 <h3 id="impossibletoupdateclosingreportfieldifticketisnotclosed">ImpossibleToUpdateClosingReportFieldIfTicketIsNotClosed</h3>
+
+<h3 id="eventtargetednotfound">EventTargetedNotFound</h3>
+
+<h3 id="eventtargetedisnotelligibletothiscommand">EventTargetedIsNotElligibleToThisCommand</h3>
 
           <h1 id="errors">Errors</h1>
 
