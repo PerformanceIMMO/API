@@ -458,10 +458,42 @@ openedDate          | [DateTime](#datetime)                         | the opened
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 eventType           | Constant                                      | `"TicketUpdated"`
 
+### TicketInformationsCorrected
+
+Some text in the `Ticket` were updated.
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+fieldsCorrected     | [FieldsToCorrect](#fieldstocorrect)           | a 'list' of optional field corrected 
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who update this `Ticket`. 
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"TicketInformationsCorrected"`
+
+### TicketEventInformationsCorrected
+
+The text of a previous `Event` was updated.
+                                            
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated.
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+targetedEvent       | [SafeUUID](#safeuuid)                         | the uid of the `Event` whose text has been updated.
+text                | String                                        | the new text of the targeted `Event`.
+operator            | [Operator](#operator)                         | a reference to who perform for this `Command`. We can say who update this `Ticket`. 
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+commandType         | Constant                                      | `"CorrectTicketEventInformations"`
+                                            
+
+<br/>
+<br/>
+
 <aside class="notice">
 Received the following events means the Ticket was closed.
 </aside>
-
 
 ### TicketClosed
 

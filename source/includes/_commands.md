@@ -776,13 +776,49 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 fieldsToCorrect     | [FieldsToCorrect](#fieldstocorrect)           | a 'list' of optional field to correct
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. We can say who update this `Ticket`. 
-date                | [DateTime](#datetime)                         | the opened date of this `Ticket`.
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CorrectTicketInformations"`
+
+### CorrectTicketEventInformations
+ 
+
+> CorrectTicketEventInformations example : 
+
+```json
+{
+    "processUid":"5deed63d-a7f4-254e-9127-7c177d7fd5a8",
+    "targetedEvent":"5deed63d-a7f4-254e-9127-7c177d7fd5a7",
+    "operator": {
+         "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+         "operatorType": "ReferencedOperator"
+    },
+ 	"text":"text updated",   
+    "date":"2016-08-18T16:40:51.000+02:00",
+    "commandType":"CorrectTicketEventInformations"
+}
+``` 
+ 
+A compensation 'Command' to correct some text informations in the `Ticket` journal `Event`. <br/>
+Only few `Event` can see their text updated :<br/>
+- MessageAdded.message <br/>
+- CallReceived.comment <br/>
+- CallEmittedTo.comment
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated.
+targetedEvent       | [SafeUUID](#safeuuid)                         | the uid of the `Event` whose text has been updated.
+text                | String                                        | the new text of the targeted `Event`.
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. We can say who update this `Ticket`. 
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+commandType         | Constant                                      | `"CorrectTicketEventInformations"`
+
+<br/>
+<br/>
 
 <aside class="notice">
 The following commands are made to close the Ticket.
 </aside>
-
 
 ### CloseTicket
 

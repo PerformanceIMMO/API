@@ -121,3 +121,7 @@ message            | String | a message describing the error
 ### BlankTextIsForbiddenToCorrectTicketInformations
 
 ### ImpossibleToUpdateClosingReportFieldIfTicketIsNotClosed
+
+### EventTargetedNotFound
+
+### EventTargetedIsNotElligibleToThisCommand
