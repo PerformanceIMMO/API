@@ -390,6 +390,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+comment             | [Option](#option)[String]                     | Explain why this `Event` happened.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"TicketCancelled"`
@@ -592,6 +593,7 @@ aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+comment             | [Option](#option)[String]                     | Explain why this `Event` happened.
 eventType           | Constant                                      | `"ClosedBeyondCallCenterScope"`
 
 ### ClosedAfterSeveralUnsuccessfulRecalls
@@ -605,4 +607,5 @@ aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+comment             | [Option](#option)[String]                     | Explain why this `Event` happened.
 eventType           | Constant                                      | `"ClosedAfterSeveralUnsuccessfulRecalls"`

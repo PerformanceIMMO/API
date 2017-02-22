@@ -690,6 +690,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
+comment             | [Option](#option)[String]                     | Explain what happened.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CancelTicket"`
 
@@ -903,6 +904,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+comment             | [Option](#option)[String]                     | Explain what happened.
 commandType         | Constant                                      | `"CloseBeyondCallCenterScope"`
 
 ### CloseAfterSeveralUnsuccessfulRecalls
@@ -914,4 +916,5 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`.
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
+comment             | [Option](#option)[String]                     | Explain what happened.
 commandType         | Constant                                      | `"CloseAfterSeveralUnsuccessfulRecalls"`
