@@ -4453,6 +4453,8 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
     This kind of address will be deprecated soon.
 </aside>
 
+<p>cf. <a href="https://www.amabis.com/rediger-saisir-adresse-postale/">Recommendation format d&#39;adresse par La Poste</a></p>
+
 <h3 id="fields">Fields</h3>
 
 <table><thead>
@@ -4475,6 +4477,16 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <tr>
 <td>complement</td>
 <td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>recipientIdentificationSupplement</td>
+<td><a href="#option">Option</a>[<a href="#recipientidentificationsupplement">RecipientIdentification</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>geographicalIdentificationSupplement</td>
+<td><a href="#option">Option</a>[<a href="#geographicalidentificationsupplement">GeographicalIdentification</a>]</td>
 <td></td>
 </tr>
 <tr>
@@ -8599,6 +8611,11 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>Explain what happened.</td>
+</tr>
+<tr>
 <td>date</td>
 <td><a href="#datetime">DateTime</a></td>
 <td>date on which the <code class="prettyprint">Event</code> took place.</td>
@@ -9244,6 +9261,11 @@ The following commands are made to close the Ticket.
 <td>date on which the <code class="prettyprint">Event</code> took place.</td>
 </tr>
 <tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>Explain what happened.</td>
+</tr>
+<tr>
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;CloseBeyondCallCenterScope&quot;</code></td>
@@ -9275,6 +9297,11 @@ The following commands are made to close the Ticket.
 <td>closingDate</td>
 <td><a href="#datetime">DateTime</a></td>
 <td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>Explain what happened.</td>
 </tr>
 <tr>
 <td>commandType</td>
@@ -10264,6 +10291,11 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>Explain why this <code class="prettyprint">Event</code> happened.</td>
+</tr>
+<tr>
 <td>sentDate</td>
 <td><a href="#datetime">DateTime</a></td>
 <td>the received date of this <code class="prettyprint">Event</code>.</td>
@@ -11017,6 +11049,11 @@ Received the following events means the Ticket was closed.
 <td>date on which the <code class="prettyprint">Event</code> took place.</td>
 </tr>
 <tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>Explain why this <code class="prettyprint">Event</code> happened.</td>
+</tr>
+<tr>
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;ClosedBeyondCallCenterScope&quot;</code></td>
@@ -11058,6 +11095,11 @@ Received the following events means the Ticket was closed.
 <td>closingDate</td>
 <td><a href="#datetime">DateTime</a></td>
 <td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>Explain why this <code class="prettyprint">Event</code> happened.</td>
 </tr>
 <tr>
 <td>eventType</td>
