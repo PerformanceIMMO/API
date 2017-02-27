@@ -488,6 +488,8 @@ emails      | Array[String]                                     | the emails's l
 	This kind of address will be deprecated soon.
 </aside>
 
+cf. [Recommendation format d'adresse par La Poste](https://www.amabis.com/rediger-saisir-adresse-postale/)
+
 ### Fields
 
 Name        | Type                                              | Description
@@ -495,6 +497,8 @@ Name        | Type                                              | Description
 quality     | [Option](#option)[String]                         | 
 street      | String                                            | 
 complement  | [Option](#option)[String]                         | 
+recipientIdentificationSupplement    | [Option](#option)[[RecipientIdentification](#recipientidentificationsupplement)]    |
+geographicalIdentificationSupplement | [Option](#option)[[GeographicalIdentification](#geographicalidentificationsupplement)] |
 zipCode     | String                                            |
 city        | String                                            |
 state       | String                                            |
