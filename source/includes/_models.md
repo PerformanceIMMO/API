@@ -504,6 +504,22 @@ city        | String                                            |
 state       | String                                            |
 country     | [Option](#option)[String]                         |
 
+## RecipientIdentificationSupplement
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+floor       | Option[String]                                    | Etage
+unit        | Option[String]                                    | numéro d'appartement
+entrance    | Option[String]                                    | Entrée
+elevator    | Option[String]                                    | ascensceur
+staircase   | Option[String]                                    | escalier
+   
+## GeographicalIdentificationSupplement
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+building    | Option[String]                                    | batiment
+
 ## AbstractProviderView
 
 ### Fields
