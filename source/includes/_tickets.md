@@ -162,6 +162,12 @@ Content-Range: 0-19999/80000
                 "zipCode": "83300",
                 "city": "DRAGUIGNAN"
             },
+            "freeCommentaries": [
+                {
+                   "date":"2017-02-28T15:35:00+01:00", 
+                   "message":"le message"
+                }
+            ],
             "additionalDataz": {
                 "Code magasin": "OT456",
                 "Heure réception OT": "12:41:07",

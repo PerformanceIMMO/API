@@ -346,6 +346,17 @@ address     | [BasicAddress](#basicaddress)                     | the `Address` 
 interventionScheduled | [Option](#option)[[InterventionScheduled](#interventionscheduled)] | period of the last scheduled intervention for this `Ticket`.
 interventionDeadline | [Option](#option)[[DateTime](#datetime)] | last intervention deadline for this `Ticket`. 
 formalNotice | [Option](#option)[[FormalNotice](#formalnotice)] | last formalNotice for this `Ticket`.
+freeCommentaries    | Array[[FreeCommentary](#freecommentary)]  | the list of free commentaries added in this ticket
+additionalDataz     | Map[String, String]                       |
+
+## FreeCommentary
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+date        | [DateTime](#datetime)                             | the date when the free commentary was written
+message     | String                                            | 
 
 ## InterventionScheduled
 
