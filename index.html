@@ -1983,6 +1983,12 @@ https://base_url/api/v1/tickets/export
                 </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83300"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAGUIGNAN"</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"freeCommentaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                   </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w"> 
+                   </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"le message"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="nt">"additionalDataz"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"Code magasin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OT456"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"Heure réception OT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:41:07"</span><span class="p">,</span><span class="w">
@@ -4129,6 +4135,39 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>formalNotice</td>
 <td><a href="#option">Option</a>[<a href="#formalnotice">FormalNotice</a>]</td>
 <td>last formalNotice for this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>freeCommentaries</td>
+<td>Array[<a href="#freecommentary">FreeCommentary</a>]</td>
+<td>the list of free commentaries added in this ticket</td>
+</tr>
+<tr>
+<td>additionalDataz</td>
+<td>Map[String, String]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="freecommentary">FreeCommentary</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when the free commentary was written</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td></td>
 </tr>
 </tbody></table>
 
