@@ -508,8 +508,8 @@ Name        | Type                                              | Description
 quality     | [Option](#option)[String]                         | 
 street      | String                                            | 
 complement  | [Option](#option)[String]                         | 
-recipientIdentificationSupplement    | [Option](#option)[[RecipientIdentification](#recipientidentificationsupplement)]    |
-geographicalIdentificationSupplement | [Option](#option)[[GeographicalIdentification](#geographicalidentificationsupplement)] |
+recipientSupplement    | [Option](#option)[[RecipientIdentificationSupplement](#recipientidentificationsupplement)]    |
+geographicalSupplement | [Option](#option)[[GeographicalIdentificationSupplement](#geographicalidentificationsupplement)] |
 zipCode     | String                                            |
 city        | String                                            |
 state       | String                                            |
