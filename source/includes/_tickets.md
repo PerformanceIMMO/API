@@ -84,6 +84,7 @@ from            | query | [Option](#option)[[LocalDate](#localdate)]| None      
 to              | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `to` local date.<br/> ex: `to=2015-07-03`.<br/> if **`to`** but not **`from`** => until **`to`**. **`to`** must be >= **`from`**
 callpurpose     | query | [Option](#option)[String]                 | None      | query matching with several `callpurpose`.<br/> ex: `callpurpose=one,two,three`
 activeproviders | query | [Option](#option)[String]                 | None      | query matching with several active provider contacts uid.<br/> ex: `activeproviders=provider_uid1,provider_uid2`
+intervention    | query | [Option](#option)[Boolean]                | None      | query matching with intervention on the `Ticket`.<br/> ex: `intervention=true` (true or false only accepted)
 fulltext        | query | [Option](#option)[[String](#localdate)]   | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.<br/> This param is incompatible with the others (except for range).
 
 
@@ -192,6 +193,7 @@ from            | query | [Option](#option)[[LocalDate](#localdate)]| None      
 to              | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `to` local date.<br/> ex: `to=2015-07-03`.<br/> if **`to`** but not **`from`** => until **`to`**. **`to`** must be >= **`from`**
 callpurpose     | query | [Option](#option)[String]                 | None      | query matching with several `callpurpose`.<br/> ex: `callpurpose=one,two,three`
 activeproviders | query | [Option](#option)[String]                 | None      | query matching with several active provider contacts uid.<br/> ex: `activeproviders=provider_uid1,provider_uid2`
+intervention    | query | [Option](#option)[Boolean]                | None      | query matching with intervention on the `Ticket`.<br/> ex: `intervention=true` (true or false only accepted)
 fulltext        | query | [Option](#option)[[String](#localdate)]   | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
 
 ### Responses
@@ -245,6 +247,7 @@ location        | query | [Option](#option)[String]                 | None      
 from            | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `from` local date.<br/> ex: `from=2015-07-02`.<br/> if **`from`** but not **`to`** => from **`from`** to **now**
 to              | query | [Option](#option)[[LocalDate](#localdate)]| None      | query matching with `to` local date.<br/> ex: `to=2015-07-03`.<br/> if **`to`** but not **`from`** => until **`to`**. **`to`** must be >= **`from`**
 callpurpose     | query | [Option](#option)[String]                 | None      | query matching with several `callpurpose`.<br/> ex: `callpurpose=one,two,three`
+intervention    | query | [Option](#option)[Boolean]                | None      | query matching with intervention on the `Ticket`.<br/> ex: `intervention=true` (true or false only accepted)
 fulltext        | query | [Option](#option)[[String](#localdate)]   | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.<br/> This param is incompatible with the others (except for range).
 
 ### Responses
