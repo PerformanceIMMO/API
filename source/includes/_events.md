@@ -512,6 +512,18 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"TicketClosed"`
 
+### TicketCancelled
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who perform for this `Command`. 
+comment             | [Option](#option)[String]                     |
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+commandType         | Constant                                      | `"TicketCancelled"`
+
 ### TicketArchived
 
 Name                | Type                                          | Description

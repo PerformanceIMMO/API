@@ -835,6 +835,16 @@ result              | [Option](#option)[String]                     |
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CloseTicket"`
 
+### CancelTicket
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
+comment             | [Option](#option)[String]                     |
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+commandType         | Constant                                      | `"CancelTicket"`
+
 ### ArchiveTicket
 
 Name                | Type                                          | Description
