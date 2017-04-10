@@ -1997,6 +1997,18 @@ https://base_url/api/v1/tickets/export
                 </span><span class="nt">"interventionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3600000"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"repairTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"159006000"</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"journalAdditionalInfos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"interventionStarted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"interventionScheduled"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"startDate"</span><span class="p">:</span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"endDate"</span><span class="p">:</span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nt">"interventionDeadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"formalNotice"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="nt">"deadline"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nt">"freeCommentaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                    </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w"> 
@@ -4154,6 +4166,39 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>the <code class="prettyprint">Address</code> where the incident occurs.</td>
 </tr>
 <tr>
+<td>journalAdditionalInfos</td>
+<td><a href="#journalexportadditionalinfos">JournalExportAdditionalInfos</a></td>
+<td>a set of several infos extract from the <code class="prettyprint">Ticket</code>&rsquo;s journal.</td>
+</tr>
+<tr>
+<td>freeCommentaries</td>
+<td>Array[<a href="#freecommentary">FreeCommentary</a>]</td>
+<td>the list of free commentaries added in this ticket</td>
+</tr>
+<tr>
+<td>stats</td>
+<td><a href="#detailedticketstats">DetailedTicketStats</a></td>
+<td>a set of several stats on this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
+<td>additionalDataz</td>
+<td>Map[String, String]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="journalexportadditionalinfos">JournalExportAdditionalInfos</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
 <td>interventionStarted</td>
 <td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
 <td>date when possible intervention started.</td>
@@ -4172,21 +4217,6 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>formalNotice</td>
 <td><a href="#option">Option</a>[<a href="#formalnotice">FormalNotice</a>]</td>
 <td>last formalNotice for this <code class="prettyprint">Ticket</code>.</td>
-</tr>
-<tr>
-<td>freeCommentaries</td>
-<td>Array[<a href="#freecommentary">FreeCommentary</a>]</td>
-<td>the list of free commentaries added in this ticket</td>
-</tr>
-<tr>
-<td>stats</td>
-<td><a href="#detailedticketstats">DetailedTicketStats</a></td>
-<td>a set of several stats on this <code class="prettyprint">Ticket</code>.</td>
-</tr>
-<tr>
-<td>additionalDataz</td>
-<td>Map[String, String]</td>
-<td></td>
 </tr>
 </tbody></table>
 
