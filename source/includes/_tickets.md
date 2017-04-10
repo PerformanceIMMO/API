@@ -170,6 +170,18 @@ Content-Range: 0-19999/80000
             	"interventionDuration": "3600000",
             	"repairTime": "159006000"
             },
+            "journalAdditionalInfos": {
+            	"interventionStarted": "2017-02-28T15:35:00+01:00",
+                "interventionScheduled": {
+                	"startDate":"2017-02-28T15:35:00+01:00",
+                	"endDate":"2017-02-28T15:35:00+01:00"
+                },
+                "interventionDeadline": "2017-02-28T15:35:00+01:00",
+                "formalNotice": {
+                	"date": "2017-02-28T15:35:00+01:00", 
+                	"deadline": "2017-02-28T15:35:00+01:00"
+                }
+            },
             "freeCommentaries": [
                 {
                    "date":"2017-02-28T15:35:00+01:00", 

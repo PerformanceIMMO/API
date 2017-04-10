@@ -347,14 +347,22 @@ request     | String                                            | the details of
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
 provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
-interventionStarted | [Option](#option)[[DateTime](#datetime)] | date when possible intervention started.
-interventionScheduled | [Option](#option)[[InterventionScheduled](#interventionscheduled)] | period of the last scheduled intervention for this `Ticket`.
-interventionDeadline | [Option](#option)[[DateTime](#datetime)] | last intervention deadline for this `Ticket`. 
-formalNotice | [Option](#option)[[FormalNotice](#formalnotice)] | last formalNotice for this `Ticket`.
+journalAdditionalInfos | [JournalExportAdditionalInfos](#journalexportadditionalinfos) | a set of several infos extract from the `Ticket`'s journal.
 freeCommentaries    | Array[[FreeCommentary](#freecommentary)]  | the list of free commentaries added in this ticket
 stats        | [DetailedTicketStats](#detailedticketstats)      | a set of several stats on this `Ticket`.
 additionalDataz     | Map[String, String]                       |
 
+
+## JournalExportAdditionalInfos
+
+### Fields
+
+Name                    | Type                                              | Description
+------------------------| --------------------------------------------------| -----------------
+interventionStarted     | [Option](#option)[[DateTime](#datetime)]          | date when possible intervention started.
+interventionScheduled   | [Option](#option)[[InterventionScheduled](#interventionscheduled)] | period of the last scheduled intervention for this `Ticket`.
+interventionDeadline    | [Option](#option)[[DateTime](#datetime)]          | last intervention deadline for this `Ticket`. 
+formalNotice            | [Option](#option)[[FormalNotice](#formalnotice)]  | last formalNotice for this `Ticket`.
 
 ## FreeCommentary
 
