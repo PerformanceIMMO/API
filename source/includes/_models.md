@@ -43,6 +43,10 @@ ex: `8074964f-c633-3c2a-055f-bbaf8ca8181b`
 [ISO-8601 calendar system](https://fr.wikipedia.org/wiki/ISO_8601)  
 `YYYY-MM-DDTHH:mm:ss+02:00` ex: `2016-02-29T12:03:32+02:00`
 
+## Duration
+
+a duration represented in milliseconds.
+
 ## ItemAbstract
 
 ### Fields
@@ -343,11 +347,14 @@ request     | String                                            | the details of
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
 provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
+interventionStarted | [Option](#option)[[DateTime](#datetime)] | date when possible intervention started.
 interventionScheduled | [Option](#option)[[InterventionScheduled](#interventionscheduled)] | period of the last scheduled intervention for this `Ticket`.
 interventionDeadline | [Option](#option)[[DateTime](#datetime)] | last intervention deadline for this `Ticket`. 
 formalNotice | [Option](#option)[[FormalNotice](#formalnotice)] | last formalNotice for this `Ticket`.
 freeCommentaries    | Array[[FreeCommentary](#freecommentary)]  | the list of free commentaries added in this ticket
+stats        | [DetailedTicketStats](#detailedticketstats)      | a set of several stats on this `Ticket`.
 additionalDataz     | Map[String, String]                       |
+
 
 ## FreeCommentary
 
@@ -591,11 +598,33 @@ provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | infor
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
 journal     | Array[[DayEvent](#dayevent)]                      | the `Ticket`'s event log.
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
-callCenterReactionTime  | Option[Number]                        | duration in milliseconds.
-transmissionTime        | Option[Number]                        | duration in milliseconds.
-interventionResponseTime| Option[Number]                        | duration in milliseconds.
-interventionDuration    | Option[Number]                        | duration in milliseconds.
-repairTime              | Option[Number]                        | duration in milliseconds.
+stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
+
+
+## DetailedTicketStats
+
+> DetailedTicketStats example :
+
+```json
+{
+	"callCenterReactionTime":"300000",       
+    "transmissionTime":"3600000",
+    "interventionResponseTime":"4560000",
+    "interventionDuration":"360000",
+    "repairTime":"54000"
+}
+``` 
+
+### Fields
+
+Name                    | Type                                     | Description
+------------------------| -----------------------------------------| -----------------
+callCenterReactionTime  | [Option[[Duration](#duration)]](#option) | Calcul du temps de réaction du centre d'appel. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et la première action signficative du centre d'appel
+transmissionTime        | [Option[[Duration](#duration)]](#option) | Calcul du temps de transmission vers un intervenant. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et l'acceptation d'une mission par un intervenant. <br/> i.e l'évènement `MissionAccepted` 
+interventionResponseTime| [Option[[Duration](#duration)]](#option) | Calcul du temps de réponse pour intervenir sur un problème. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et une action significative de l'intervenant. <br/> i.e `InterventionStarted`, `InterventionFinished`, `ArrivedOnSite`, `GoneFromSite` 
+interventionDuration    | [Option[[Duration](#duration)]](#option) | Calcul de la durée d'intervention. <br/> i.e le temps entre `InterventionStarted` et `InterventionFinished`
+repairTime              | [Option[[Duration](#duration)]](#option) | Calcul le délai de réparation. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du ticket et la date de fin d'intervention
+
 
 ## DayEvent
 

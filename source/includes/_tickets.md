@@ -163,6 +163,13 @@ Content-Range: 0-19999/80000
                 "zipCode": "83300",
                 "city": "DRAGUIGNAN"
             },
+            "stats": {
+                "callCenterReactionTime": "163014000",
+                "transmissionTime": "163014000",
+                "interventionResponseTime": "159006000",
+            	"interventionDuration": "3600000",
+            	"repairTime": "159006000"
+            },
             "freeCommentaries": [
                 {
                    "date":"2017-02-28T15:35:00+01:00", 
