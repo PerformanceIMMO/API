@@ -1990,6 +1990,13 @@ https://base_url/api/v1/tickets/export
                 </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83300"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DRAGUIGNAN"</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"callCenterReactionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163014000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"transmissionTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"163014000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"interventionResponseTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"159006000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"interventionDuration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3600000"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"repairTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"159006000"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nt">"freeCommentaries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                    </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2017-02-28T15:35:00+01:00"</span><span class="p">,</span><span class="w"> 
@@ -3399,6 +3406,10 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <p><a href="https://fr.wikipedia.org/wiki/ISO_8601">ISO-8601 calendar system</a><br>
 <code class="prettyprint">YYYY-MM-DDTHH:mm:ss+02:00</code> ex: <code class="prettyprint">2016-02-29T12:03:32+02:00</code></p>
 
+<h2 id="duration">Duration</h2>
+
+<p>a duration represented in milliseconds.</p>
+
 <h2 id="itemabstract">ItemAbstract</h2>
 
 <h3 id="fields">Fields</h3>
@@ -4143,6 +4154,11 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>the <code class="prettyprint">Address</code> where the incident occurs.</td>
 </tr>
 <tr>
+<td>interventionStarted</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>date when possible intervention started.</td>
+</tr>
+<tr>
 <td>interventionScheduled</td>
 <td><a href="#option">Option</a>[<a href="#interventionscheduled">InterventionScheduled</a>]</td>
 <td>period of the last scheduled intervention for this <code class="prettyprint">Ticket</code>.</td>
@@ -4161,6 +4177,11 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>freeCommentaries</td>
 <td>Array[<a href="#freecommentary">FreeCommentary</a>]</td>
 <td>the list of free commentaries added in this ticket</td>
+</tr>
+<tr>
+<td>stats</td>
+<td><a href="#detailedticketstats">DetailedTicketStats</a></td>
+<td>a set of several stats on this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>additionalDataz</td>
@@ -4817,29 +4838,58 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <td>a map of client&rsquo;s additional fields.<br/> ex: <code class="prettyprint">{field1: value_1}</code></td>
 </tr>
 <tr>
+<td>stats</td>
+<td>DetailedTicketStats</td>
+<td>a set of several stats on this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="detailedticketstats">DetailedTicketStats</h2>
+
+<blockquote>
+<p>DetailedTicketStats example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"callCenterReactionTime"</span><span class="p">:</span><span class="s2">"300000"</span><span class="p">,</span><span class="w">       
+    </span><span class="nt">"transmissionTime"</span><span class="p">:</span><span class="s2">"3600000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"interventionResponseTime"</span><span class="p">:</span><span class="s2">"4560000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"interventionDuration"</span><span class="p">:</span><span class="s2">"360000"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"repairTime"</span><span class="p">:</span><span class="s2">"54000"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
 <td>callCenterReactionTime</td>
-<td>Option[Number]</td>
-<td>duration in milliseconds.</td>
+<td><a href="#option">Option[<a href="#duration">Duration</a>]</a></td>
+<td>Calcul du temps de réaction du centre d&#39;appel. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du <code class="prettyprint">Ticket</code> et la première action signficative du centre d&#39;appel</td>
 </tr>
 <tr>
 <td>transmissionTime</td>
-<td>Option[Number]</td>
-<td>duration in milliseconds.</td>
+<td><a href="#option">Option[<a href="#duration">Duration</a>]</a></td>
+<td>Calcul du temps de transmission vers un intervenant. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du <code class="prettyprint">Ticket</code> et l&#39;acceptation d&#39;une mission par un intervenant. <br/> i.e l&#39;évènement <code class="prettyprint">MissionAccepted</code></td>
 </tr>
 <tr>
 <td>interventionResponseTime</td>
-<td>Option[Number]</td>
-<td>duration in milliseconds.</td>
+<td><a href="#option">Option[<a href="#duration">Duration</a>]</a></td>
+<td>Calcul du temps de réponse pour intervenir sur un problème. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du <code class="prettyprint">Ticket</code> et une action significative de l&#39;intervenant. <br/> i.e <code class="prettyprint">InterventionStarted</code>, <code class="prettyprint">InterventionFinished</code>, <code class="prettyprint">ArrivedOnSite</code>, <code class="prettyprint">GoneFromSite</code></td>
 </tr>
 <tr>
 <td>interventionDuration</td>
-<td>Option[Number]</td>
-<td>duration in milliseconds.</td>
+<td><a href="#option">Option[<a href="#duration">Duration</a>]</a></td>
+<td>Calcul de la durée d&#39;intervention. <br/> i.e le temps entre <code class="prettyprint">InterventionStarted</code> et <code class="prettyprint">InterventionFinished</code></td>
 </tr>
 <tr>
 <td>repairTime</td>
-<td>Option[Number]</td>
-<td>duration in milliseconds.</td>
+<td><a href="#option">Option[<a href="#duration">Duration</a>]</a></td>
+<td>Calcul le délai de réparation. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du ticket et la date de fin d&#39;intervention</td>
 </tr>
 </tbody></table>
 
