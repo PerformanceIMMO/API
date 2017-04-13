@@ -920,8 +920,8 @@ https://base_url/api/vEvent/companies
 </thead><tbody>
 <tr>
 <td>201</td>
-<td>String</td>
-<td>The <code class="prettyprint">Company</code> is created</td>
+<td><a href="#companyeventresultview">CompanyEventResultView</a></td>
+<td>The <code class="prettyprint">Company</code> is created. Return the <code class="prettyprint">Event</code>s resulting of this successful <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
 <td>400</td>
@@ -3421,6 +3421,11 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 <h2 id="duration">Duration</h2>
 
 <p>a duration represented in milliseconds.</p>
+
+<h2 id="siret">SIRET</h2>
+
+<p>a <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements">SIRET</a> 
+is an unique identifier for <code class="prettyprint">Company</code>.</p>
 
 <h2 id="itemabstract">ItemAbstract</h2>
 
@@ -6165,6 +6170,24 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </tr>
 </tbody></table>
 
+<h2 id="companyeventresultview">CompanyEventResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>events</td>
+<td>Array[<a href="#companyevent">CompanyEvent</a>]</td>
+<td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="providercontacteventresultview">ProviderContactEventResultView</h2>
 
 <h3 id="fields">Fields</h3>
@@ -7140,6 +7163,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
     </span><span class="nt">"callCenterUid"</span><span class="p">:</span><span class="s2">"f13ede3b-12d9-70ab-4874-e25ab23e33c0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Client Account"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateClientAccount"</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre>
@@ -7181,6 +7205,11 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>the name of this <code class="prettyprint">ClientAccount</code>.</td>
 </tr>
 <tr>
+<td>siretNumber</td>
+<td><a href="#option">Option</a>[<a href="#siret">SIRET</a>]</td>
+<td>an optional siret number for this <code class="prettyprint">ClientAccount</code>.</td>
+</tr>
+<tr>
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;CreateClientAccount&quot;</code></td>
@@ -7194,6 +7223,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
     </span><span class="nt">"callCenterUid"</span><span class="p">:</span><span class="s2">"f13ede3b-12d9-70ab-4874-e25ab23e33c0"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My Holding"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateClientAccountHolding"</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre>
@@ -7230,6 +7260,11 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>the name of this <code class="prettyprint">ClientAccountHolding</code>.</td>
 </tr>
 <tr>
+<td>siretNumber</td>
+<td><a href="#option">Option</a>[<a href="#siret">SIRET</a>]</td>
+<td>an optional siret number for this <code class="prettyprint">ClientAccountHolding</code>.</td>
+</tr>
+<tr>
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;CreateClientAccountHolding&quot;</code></td>
@@ -7246,6 +7281,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
     </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"createdDate"</span><span class="p">:</span><span class="s2">"2016-06-27"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"My CallCenter"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"CreateCallCenter"</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
 </span></code></pre>
@@ -7277,6 +7313,11 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>the name of this <code class="prettyprint">CallCenter</code>.</td>
 </tr>
 <tr>
+<td>siretNumber</td>
+<td><a href="#option">Option</a>[<a href="#siret">SIRET</a>]</td>
+<td>an optional siret number for this <code class="prettyprint">CallCenter</code>.</td>
+</tr>
+<tr>
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;CreateCallCenter&quot;</code></td>
@@ -7284,6 +7325,45 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tbody></table>
 
 <h2 id="incrementcompany">IncrementCompany</h2>
+
+<h3 id="identifycompany">IdentifyCompany</h3>
+
+<aside class="notice">
+    You need specifics rights to identify a Company.
+</aside>
+
+<blockquote>
+<p>IdentifyCompany example : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"IdentifyCompany"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>siretNumber</td>
+<td><a href="#siret">SIRET</a></td>
+<td>the siret number of the <code class="prettyprint">Company</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;IdentifyCompany&quot;</code></td>
+</tr>
+</tbody></table>
 
 <h3 id="cancelcompany">CancelCompany</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -9540,6 +9620,55 @@ The following commands are made to close the Ticket.
 
           <h1 id="events">Events</h1>
 
+<h2 id="companyevent">CompanyEvent</h2>
+
+<h3 id="companyidentified">CompanyIdentified</h3>
+
+<blockquote>
+<p>CompanyIdentified example : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:03:32+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"CompanyIdentified"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>siretNumber</td>
+<td><a href="#siret">SIRET</a></td>
+<td>the siret number of the <code class="prettyprint">Company</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CallReceived&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="providercontactevent">ProviderContactEvent</h2>
 
 <h3 id="providercontactadded">ProviderContactAdded</h3>
@@ -11440,6 +11569,16 @@ Received the following events means the Ticket was closed.
 <h3 id="impossibletocreateagencyinanothercompanythatclientaccount">ImpossibleToCreateAgencyInAnotherCompanyThatClientAccount</h3>
 
 <p>You can only create <code class="prettyprint">Agency</code> in <code class="prettyprint">ClientAccount</code>.</p>
+
+<h3 id="callcenterisnoteligibletopremiumaccount">CallCenterIsNotEligibleToPremiumAccount</h3>
+
+<h3 id="companyisalreadypremiumaccount">CompanyIsAlreadyPremiumAccount</h3>
+
+<h3 id="companyisalreadysponsoredaccount">CompanyIsAlreadySponsoredAccount</h3>
+
+<h3 id="callcenterisnotdowngradable">CallCenterIsNotDowngradable</h3>
+
+<h3 id="companyalreadyidentified">CompanyAlreadyIdentified</h3>
 
 <h2 id="patrimonyeventerror">PatrimonyEventError</h2>
 
