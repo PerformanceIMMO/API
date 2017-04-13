@@ -16,6 +16,7 @@ cf. le détails sur la [ressource](#company) `Company`.
     "callCenterUid":"f13ede3b-12d9-70ab-4874-e25ab23e33c0",
     "createdDate":"2016-06-27",
     "name":"My Client Account",
+    "siretNumber":"80242504100018",
     "commandType":"CreateClientAccount"
 } 
 ``` 
@@ -27,7 +28,8 @@ aggregateUid       | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of 
 holdingReference   | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the `ClientAccount`'s holding if exist 
 callCenterReference| [SafeUUID](#safeuuid)                         | the uid of the `CallCenter` which send this Command  
 createdDate        | [LocalDate](#localdate)                       | the creation's date of this `ClientAccount`  
-name               | String                                        | the name of this `ClientAccount`.  
+name               | String                                        | the name of this `ClientAccount`.
+siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `ClientAccount`.
 commandType        | Constant                                      | `"CreateClientAccount"`  
 
 ### CreateClientAccountHolding 
@@ -39,6 +41,7 @@ commandType        | Constant                                      | `"CreateCli
     "callCenterUid":"f13ede3b-12d9-70ab-4874-e25ab23e33c0",
     "createdDate":"2016-06-27",
     "name":"My Holding",
+    "siretNumber":"80242504100018",
     "commandType":"CreateClientAccountHolding"
 } 
 ``` 
@@ -50,6 +53,7 @@ aggregateUid       | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of 
 callCenterReference| [SafeUUID](#safeuuid)                         | the uid of the `CallCenter` which send this Command
 createdDate        | [LocalDate](#localdate)                       | the creation's date of this `ClientAccountHolding`  
 name               | String                                        | the name of this `ClientAccountHolding`.  
+siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `ClientAccountHolding`.
 commandType        | Constant                                      | `"CreateClientAccountHolding"`
 
 ### CreateCallCenter
@@ -64,6 +68,7 @@ commandType        | Constant                                      | `"CreateCli
     "aggregateUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
     "createdDate":"2016-06-27",
     "name":"My CallCenter",
+    "siretNumber":"80242504100018",
     "commandType":"CreateCallCenter"
 } 
 ``` 
@@ -74,9 +79,32 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 aggregateUid       | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
 createdDate        | [LocalDate](#localdate)                       | the creation's date of this `CallCenter`  
 name               | String                                        | the name of this `CallCenter`.  
+siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `CallCenter`.
 commandType        | Constant                                      | `"CreateCallCenter"`
 
 ## IncrementCompany
+
+### IdentifyCompany
+
+<aside class="notice">
+	You need specifics rights to identify a Company.
+</aside>
+
+> IdentifyCompany example : 
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "siretNumber":"80242504100018",
+    "commandType":"IdentifyCompany"
+} 
+```
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+siretNumber        | [SIRET](#siret)                               | the siret number of the `Company`.  
+commandType        | Constant                                      | `"IdentifyCompany"`
 
 ### CancelCompany
 

@@ -295,7 +295,7 @@ companyCommand  | body  | [CreateCompany](#createcompany)              |        
 
 Http code | Type                                        | Description
 ----------| --------------------------------------------| ----------------------------
-201       | String                                      | The `Company` is created
+201       | [CompanyEventResultView](#companyeventresultview) | The `Company` is created. Return the `Event`s resulting of this successful `Command`.
 400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 
 

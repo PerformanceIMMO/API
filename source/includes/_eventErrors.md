@@ -43,6 +43,16 @@ It is not allowed to cancel a `CallCenter`.
 
 You can only create `Agency` in `ClientAccount`.
 
+### CallCenterIsNotEligibleToPremiumAccount
+
+### CompanyIsAlreadyPremiumAccount
+
+### CompanyIsAlreadySponsoredAccount
+
+### CallCenterIsNotDowngradable
+
+### CompanyAlreadyIdentified
+
 ## PatrimonyEventError
 
 Name               | Type   | Description

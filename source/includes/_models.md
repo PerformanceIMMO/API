@@ -47,6 +47,12 @@ ex: `8074964f-c633-3c2a-055f-bbaf8ca8181b`
 
 a duration represented in milliseconds.
 
+## SIRET
+
+a [SIRET](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) 
+is an unique identifier for `Company`.
+
+
 ## ItemAbstract
 
 ### Fields
@@ -1093,6 +1099,14 @@ Name                        | Type                            | Description
 ----------------------------| --------------------------------| --------------------------------------------------
 day                         | [LocalDate](#localdate)         | a day when tickets are created
 value                       | Float                           | a count with 2 significant figures
+
+## CompanyEventResultView
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[CompanyEvent](#companyevent)] | The `Event`s resulting of this `Command`
 
 ## ProviderContactEventResultView
 

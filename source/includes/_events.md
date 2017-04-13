@@ -1,5 +1,29 @@
 # Events
 
+## CompanyEvent
+
+### CompanyIdentified
+
+> CompanyIdentified example : 
+
+```json
+{
+	"processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+    "siretNumber":"80242504100018",
+    "sentDate":"2016-02-29T12:03:32+02:00",
+	"eventType":"CompanyIdentified"
+}
+```
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+siretNumber         | [SIRET](#siret)                               | the siret number of the `Company`.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"CallReceived"`
+
 ## ProviderContactEvent
 
 ### ProviderContactAdded
