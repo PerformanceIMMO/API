@@ -160,6 +160,32 @@ eventType           | Constant                                      | `"CallRece
 }
 ```
 
+## ProviderCompanyEvent
+
+### ProviderCompanyReferenced 
+
+> ProviderCompanyEvent example :
+
+```json
+{
+    "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+    "name":"Performance Immo",
+    "siretNumber":"80242504100018",
+    "sentDate":"2017-04-19T15:11:32+01:00",
+    "eventType":"ProviderCompanyReferenced"
+}
+```
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderCompany` referenced.
+name                | String                                        | the name of the `ProviderCompany`
+siretNumber         | [SIRET](#siret)                               | the siret number of this `ProviderCompany`
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"ProviderCompanyReferenced"`
+
 ## TicketEvent
 
 ### TicketOpened

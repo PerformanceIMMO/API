@@ -36,21 +36,21 @@ ex: `8074964f-c633-3c2a-055f-bbaf8ca8181b`
 ## LocalDate
 
 [ISO-8601 calendar system](https://fr.wikipedia.org/wiki/ISO_8601)  
-`YYYY-MM-DD` ex: `2016-02-29`
+`YYYY-MM-DD` ex: `"2016-02-29"`
 
 ## DateTime
 
 [ISO-8601 calendar system](https://fr.wikipedia.org/wiki/ISO_8601)  
-`YYYY-MM-DDTHH:mm:ss+02:00` ex: `2016-02-29T12:03:32+02:00`
+`YYYY-MM-DDTHH:mm:ss+02:00` ex: `"2016-02-29T12:03:32+02:00"`
 
 ## Duration
 
-a duration represented in milliseconds.
+a duration represented in milliseconds. ex: `"300000"`
 
 ## SIRET
 
 a [SIRET](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) 
-is an unique identifier for `Company`.
+is an unique identifier for `Company`. ex: `"80242504100018"`
 
 
 ## ItemAbstract
@@ -1115,6 +1115,14 @@ events                      | Array[[CompanyEvent](#companyevent)] | The `Event`
 Name                        | Type                            | Description
 ----------------------------| --------------------------------| --------------------------------------------------
 events                      | Array[[ProviderContactEvent](#providercontactevent)] | The `Event`s resulting of this `Command`
+
+## ProviderCompanyEventResultView
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[ProviderCompanyEvent](#providercompanyevent)] | The `Event`s resulting of this `Command`
 
 ## TicketEventResultView
 

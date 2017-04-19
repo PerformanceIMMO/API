@@ -9,12 +9,13 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - companies
-  - providerContacts
-  - tickets
+  - users
   - patrimonies
   - lots
-  - users
+  - companies
+  - providerContacts
+  - providerCompanies
+  - tickets
   - models
   - commands
   - events

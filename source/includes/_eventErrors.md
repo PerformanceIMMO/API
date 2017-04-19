@@ -135,3 +135,16 @@ message            | String | a message describing the error
 ### EventTargetedNotFound
 
 ### EventTargetedIsNotElligibleToThisCommand
+
+## ProviderCompanyEventError
+
+Name               | Type   | Description
+-------------------| -------| --------------------------------------------------
+errorType          | Enum   | code describing the type of the error
+message            | String | a message describing the error
+
+### CommandAlreadySent
+
+### ImpossibleToReferenceAlreadyExistingProviderCompany
+
+### ImpossibleToPerfomCommandOnNonExistingProviderCompany
