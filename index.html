@@ -265,6 +265,14 @@ la ségrégation d&#39;informations sur Performance Immo. Par exemple, pour rest
 <p>Si vous souhaitez bénéficier des informations fournisseurs sur la plateforme, de statistiques, vous devez les référencer 
 via les <a href="#create-providercontact">API d&#39;écriture</a>.</p>
 
+<h2 id="providercompany">ProviderCompany</h2>
+
+<p><code class="prettyprint">ProviderCompany</code> représente un entreprise fournisseur de service. Par exemple une entreprise de plomberie.</p>
+
+<p>Cette entité permet de regrouper plusieurs <code class="prettyprint">ProviderContact</code> afin d&#39;aggréger certaines statistiques.</p>
+
+<p>Il permet aussi de récupérer certaines informations légales et documentaires sur les dits fournisseurs. (document d&#39;assurance à jour, lutte contre le travail dissimulé, etc&hellip; )</p>
+
 <h2 id="ticket">Ticket</h2>
 
 <p>Un <code class="prettyprint">Ticket</code> est une déclaration d&#39;incident. Il permet de suivre l&#39;évolution du traitement de cet incident, 
@@ -1966,7 +1974,7 @@ https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74
 
 <p>Rest Navivation Links represent what it is possible to do with this resource.</p>
 
-<p>These different links below (except <code class="prettyprint">self</code> that are mandatory) are optional in<br>
+<p>These different links below (except <code class="prettyprint">self</code> that is mandatory) are optional in<br>
 the response because of the specific state of the request done to retrieve this response.</p>
 
 <p>ex: state of the resource, rights of the user performing the request, etc&hellip; </p>
@@ -2353,6 +2361,214 @@ https://base_url/api/vEvent/providercontacts/7634c414-8822-e29d-fe2b-0a18b317436
 <aside class="warning">
     You must be authenticated to use these API.
 </aside>
+
+<h2 id="get-provider-companies-amp-filter-it">Get Provider Companies &amp; filter it</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/providercompanies?range<span class="o">=</span>0-0
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">206</span> <span class="ne">Partial Content</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/256</span>
+</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Performance Immo"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="w">  
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/v1/providercompanies"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferenceProviderCompany"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/vEvent/providercompanies"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"POST"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/providercompanies</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-99</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &lt;= endRange</td>
+</tr>
+<tr>
+<td>fulltext</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#localdate">String</a>]</td>
+<td>None</td>
+<td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.<br/> This param is incompatible with the others (except for range). <br/> You can filter by name or by siretNumber for example.</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercompanyresultview">ProviderCompanyResultView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#providercompanyresultview">ProviderCompanyResultView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h3 id="navigationlinks">NavigationLinks</h3>
+
+<p>Rest Navivation Links represent what it is possible to do with this resource.</p>
+
+<p>These different links below (except <code class="prettyprint">self</code> that is mandatory) are optional in<br>
+the response because of the specific state of the request done to retrieve this response.</p>
+
+<p>ex: state of the resource, rights of the user performing the request, etc&hellip; </p>
+
+<table><thead>
+<tr>
+<th>rel</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">self</code></td>
+<td>the resource itself</td>
+</tr>
+<tr>
+<td><code class="prettyprint">ReferenceProviderCompnay</code></td>
+<td>cf. <a href="#reference-a-provider-company">Reference a Provider Company</a></td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-provider-company">Get a Provider Company</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/providercompanies/7634c414-8822-e29d-fe2b-0a18b3174369
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Performance Immo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"siretNumber"</span><span class="p">:</span><span class="s2">"80242504100018"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/v1/providercompanies/7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">    
+</span></code></pre>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/providercompanies/:providercompany_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>providercompany_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>uid of the requested <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercompanyqueryview">ProviderCompanyQueryView</a></td>
+<td>the requested <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h3 id="navigationlinks">NavigationLinks</h3>
+
+<p>Rest Navivation Links represent what it is possible to do with this resource.</p>
+
+<p>These different links below (except <code class="prettyprint">self</code> that is mandatory) are optional in<br>
+the response because of the specific state of the request done to retrieve this response.</p>
+
+<p>ex: state of the resource, rights of the user performing the request, etc&hellip; </p>
+
+<table><thead>
+<tr>
+<th>rel</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">self</code></td>
+<td>the resource itself</td>
+</tr>
+</tbody></table>
 
 <h2 id="reference-a-provider-company">Reference a Provider Company</h2>
 
@@ -3537,6 +3753,50 @@ https://base_url/api/vEvent/tickets?range<span class="o">=</span>0-0&amp;from<sp
 
 <p>a <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements">SIRET</a> 
 is an unique identifier for <code class="prettyprint">Company</code>. ex: <code class="prettyprint">&quot;80242504100018&quot;</code></p>
+
+<h2 id="restnavigationlink">RestNavigationLink</h2>
+
+<blockquote>
+<p>RestNavigationLink example : </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"rel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"self"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://base_url/api/v1/providercompanies/7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Rest Navivation Links represent what it is possible to do with this resource.</p>
+
+<p>These different links below (except <code class="prettyprint">self</code> that is mandatory) are optional in<br>
+the response because of the specific state of the request done to retrieve this response.</p>
+
+<p>ex: state of the resource, rights of the user performing the request, etc&hellip;</p>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rel</td>
+<td>String</td>
+<td>a label to identifiy what this navigation link is supposed to do.</td>
+</tr>
+<tr>
+<td>href</td>
+<td>String</td>
+<td>the complete URL to perform request.</td>
+</tr>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>the http method to use to perform request (GET, POST, PATCH, &hellip;)</td>
+</tr>
+</tbody></table>
 
 <h2 id="itemabstract">ItemAbstract</h2>
 
@@ -6187,6 +6447,62 @@ is an unique identifier for <code class="prettyprint">Company</code>. ex: <code 
 <td>active</td>
 <td>Boolean</td>
 <td></td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td>Array of <code class="prettyprint">RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercompanyresultview">ProviderCompanyResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#providercompanyqueryview">ProviderCompanyQueryView</a>]</td>
+<td>Array of selected <code class="prettyprint">ProviderCompanyQueryView</code>s</td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td>Array of <code class="prettyprint">RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercompanyqueryview">ProviderCompanyQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the name of the <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+<tr>
+<td>siretNumber</td>
+<td><a href="#siret">SIRET</a></td>
+<td>the siret number of the <code class="prettyprint">ProviderCompany</code></td>
 </tr>
 <tr>
 <td>_links</td>
