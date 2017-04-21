@@ -165,6 +165,14 @@ Un `ProviderContact` est un contact qui a possiblement à intervenir sur un inci
 Si vous souhaitez bénéficier des informations fournisseurs sur la plateforme, de statistiques, vous devez les référencer 
 via les [API d'écriture](#create-providercontact).
 
+## ProviderCompany
+
+`ProviderCompany` représente un entreprise fournisseur de service. Par exemple une entreprise de plomberie.
+
+Cette entité permet de regrouper plusieurs `ProviderContact` afin d'aggréger certaines statistiques.
+
+Il permet aussi de récupérer certaines informations légales et documentaires sur les dits fournisseurs. (document d'assurance à jour, lutte contre le travail dissimulé, etc... )
+
 ## Ticket
 
 Un `Ticket` est une déclaration d'incident. Il permet de suivre l'évolution du traitement de cet incident, 

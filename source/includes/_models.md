@@ -52,6 +52,32 @@ a duration represented in milliseconds. ex: `"300000"`
 a [SIRET](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) 
 is an unique identifier for `Company`. ex: `"80242504100018"`
 
+## RestNavigationLink
+
+> RestNavigationLink example : 
+
+```json
+{
+    "rel": "self",
+    "href": "https://base_url/api/v1/providercompanies/7634c414-8822-e29d-fe2b-0a18b3174369",
+    "method": "GET"
+}
+```
+
+Rest Navivation Links represent what it is possible to do with this resource.
+
+These different links below (except `self` that is mandatory) are optional in  
+the response because of the specific state of the request done to retrieve this response.
+
+ex: state of the resource, rights of the user performing the request, etc...
+
+### Fields
+
+Name        | Type           | Description
+------------| ---------------| --------------------------------------------------
+rel         | String         | a label to identifiy what this navigation link is supposed to do.
+href        | String         | the complete URL to perform request.
+method      | String         | the http method to use to perform request (GET, POST, PATCH, ...)
 
 ## ItemAbstract
 
@@ -1066,6 +1092,26 @@ phones      | Array[String]                                     |
 fax         | Array[String]                                     | 
 emails      | Array[String]                                     | 
 active      | Boolean                                           | 
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## ProviderCompanyResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[ProviderCompanyQueryView](#providercompanyqueryview)]  | Array of selected `ProviderCompanyQueryView`s
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## ProviderCompanyQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `ProviderCompany`
+name        | String                                            | the name of the `ProviderCompany` 
+siretNumber | [SIRET](#siret)                                   | the siret number of the `ProviderCompany`  
 _links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
 
 ## ProviderContactStats

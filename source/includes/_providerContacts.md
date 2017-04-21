@@ -136,7 +136,7 @@ Http code | Type                                                      | Descript
 
 Rest Navivation Links represent what it is possible to do with this resource.
 
-These different links below (except `self` that are mandatory) are optional in  
+These different links below (except `self` that is mandatory) are optional in  
 the response because of the specific state of the request done to retrieve this response.
 
 ex: state of the resource, rights of the user performing the request, etc... 
