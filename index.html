@@ -1846,7 +1846,7 @@ https://base_url/api/v1/providercontacts?range<span class="o">=</span>0-0
 <td>query</td>
 <td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
 <td>None</td>
-<td>query matching with one <code class="prettyprint">Company</code> uid.<br/> ex: <code class="prettyprint">agency=company_uid</code></td>
+<td>query matching with one <code class="prettyprint">Company</code> uid.<br/> ex: <code class="prettyprint">companyuid=company_uid</code></td>
 </tr>
 <tr>
 <td>agencyuids</td>
@@ -1854,6 +1854,13 @@ https://base_url/api/v1/providercontacts?range<span class="o">=</span>0-0
 <td><a href="#option">Option</a>[String]</td>
 <td>None</td>
 <td>query matching with several <code class="prettyprint">agencies</code> uid.<br/> ex: <code class="prettyprint">agency=agency_uid1,agency_uid2</code></td>
+</tr>
+<tr>
+<td>providercompanyuid</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>None</td>
+<td>query matching with one <code class="prettyprint">ProviderCompany</code> uid. <br/> <code class="prettyprint">providercompanyuid=company_uid</code></td>
 </tr>
 <tr>
 <td>fulltext</td>
@@ -8626,6 +8633,32 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<h3 id="associateprovidercontactwithprovidercompany">AssociateProviderContactWithProviderCompany</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>providerCompanyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderCompany</code> with which this <code class="prettyprint">ProviderContact</code> should be associated.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociateProviderContactWithProviderCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="openticket">OpenTicket</h2>
 
 <table><thead>
@@ -10240,6 +10273,19 @@ The following commands are made to close the Ticket.
     </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactEnabled"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="providercontactassociatedwithprovidercompany">ProviderContactAssociatedWithProviderCompany</h3>
+
+<blockquote>
+<p>ProviderContactAssociatedWithProviderCompany example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"providerCompanyUid"</span><span class="p">:</span><span class="s2">"c9c5c9d2-ab38-a010-46cd-97013fbfbeb2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactAssociatedWithProviderCompany"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id="providercompanyevent">ProviderCompanyEvent</h2>
@@ -12155,6 +12201,8 @@ Received the following events means the Ticket was closed.
 <h3 id="impossibletoperfomcommandonnonexistingprovidercontactcommand">ImpossibleToPerfomCommandOnNonExistingProviderContactCommand</h3>
 
 <h3 id="impossibletoassociatetoagencythatisalreadyassociated">ImpossibleToAssociateToAgencyThatIsAlreadyAssociated</h3>
+
+<h3 id="imppossibletoassociatewithprovidercompanythatisalreadyassociated">ImppossibleToAssociateWithProviderCompanyThatIsAlreadyAssociated</h3>
 
 <h2 id="ticketeventerror">TicketEventError</h2>
 
