@@ -2141,7 +2141,6 @@ https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74/st
 -d <span class="o">{</span>
  <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
  <span class="s2">"aggregateUid"</span>:<span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span>,
- <span class="s2">"callCenterUid"</span>:<span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span>,
  <span class="s2">"date"</span>:<span class="s2">"2016-02-29T12:03:32+02:00"</span>,
  <span class="s2">"name"</span>:<span class="o">{</span>
     <span class="s2">"gender"</span>:<span class="s2">"Male"</span>,
@@ -2198,7 +2197,6 @@ https://base_url/api/vEvent/providercontacts
 <th>Name</th>
 <th>In</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2206,35 +2204,30 @@ https://base_url/api/vEvent/providercontacts
 <td>processUid</td>
 <td>body</td>
 <td><a href="#safeuuid">SafeUUID</a></td>
-<td></td>
 <td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
 </tr>
 <tr>
 <td>aggregateUid</td>
 <td>body</td>
 <td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
-<td></td>
 <td>the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.</td>
 </tr>
 <tr>
-<td>callCenterUid</td>
+<td>providerCompanyUid</td>
 <td>body</td>
-<td><a href="#safeuuid">SafeUUID</a></td>
-<td></td>
-<td>the uid of the <code class="prettyprint">CallCenter</code> that send this data</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>if this field is set, this produce an association between <code class="prettyprint">ProviderContact</code> created &amp; that <code class="prettyprint">ProviderCompany</code>.</td>
 </tr>
 <tr>
 <td>date</td>
 <td>body</td>
 <td><a href="#datetime">DateTime</a></td>
-<td></td>
 <td>the creation date of this resource</td>
 </tr>
 <tr>
 <td>name</td>
 <td>body</td>
 <td><a href="#name">Name</a></td>
-<td></td>
 <td>the name of the <code class="prettyprint">ProviderContact</code></td>
 </tr>
 <tr>
@@ -2242,13 +2235,11 @@ https://base_url/api/vEvent/providercontacts
 <td>body</td>
 <td>Array[String]</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>fax</td>
 <td>body</td>
 <td>Array[String]</td>
-<td></td>
 <td></td>
 </tr>
 <tr>
@@ -2256,13 +2247,11 @@ https://base_url/api/vEvent/providercontacts
 <td>body</td>
 <td>Array[String]</td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td>commandType</td>
 <td>body</td>
 <td>Constant</td>
-<td></td>
 <td><code class="prettyprint">&quot;AddProviderContact&quot;</code></td>
 </tr>
 </tbody></table>
