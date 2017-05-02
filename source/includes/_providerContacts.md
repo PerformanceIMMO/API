@@ -235,7 +235,6 @@ curl -XPOST \
 -d {
  "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
  "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
- "callCenterUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
  "date":"2016-02-29T12:03:32+02:00",
  "name":{
     "gender":"Male",
@@ -291,17 +290,17 @@ HTTP/1.1 201 Created
 
 ### Parameters
 
-Name            | In    | Type                                             | Default   | Description
---------------- | ------| -------------------------------------------------| ----------| -------------
-processUid      | body  | [SafeUUID](#safeuuid)                            |           | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-aggregateUid    | body  | [Option](#option)[[SafeUUID](#safeuuid)]         |           | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
-callCenterUid   | body  | [SafeUUID](#safeuuid)                            |           | the uid of the `CallCenter` that send this data
-date            | body  | [DateTime](#datetime)                            |           | the creation date of this resource
-name            | body  | [Name](#name)                                    |           | the name of the `ProviderContact`
-phones          | body  | Array[String]                                    |           | 
-fax             | body  | Array[String]                                    |           | 
-emails          | body  | Array[String]                                    |           | 
-commandType     | body  | Constant                                         |           | `"AddProviderContact"`
+Name               | In    | Type                                             | Description
+------------------ | ------| -------------------------------------------------| -------------
+processUid         | body  | [SafeUUID](#safeuuid)                            | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | body  | [Option](#option)[[SafeUUID](#safeuuid)]         | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
+providerCompanyUid | body  | [Option](#option)[[SafeUUID](#safeuuid)]         | if this field is set, this produce an association between `ProviderContact` created & that `ProviderCompany`. 
+date               | body  | [DateTime](#datetime)                            | the creation date of this resource
+name               | body  | [Name](#name)                                    | the name of the `ProviderContact`
+phones             | body  | Array[String]                                    | 
+fax                | body  | Array[String]                                    | 
+emails             | body  | Array[String]                                    | 
+commandType        | body  | Constant                                         | `"AddProviderContact"`
 
 ### Responses
 
