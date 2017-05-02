@@ -160,6 +160,19 @@ eventType           | Constant                                      | `"CallRece
 }
 ```
 
+### ProviderContactAssociatedWithProviderCompany
+
+> ProviderContactAssociatedWithProviderCompany example :
+
+```json
+{
+    "processUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+    "providerCompanyUid":"c9c5c9d2-ab38-a010-46cd-97013fbfbeb2",
+    "sentDate":"2016-02-29T12:05:32+02:00",
+    "eventType":"ProviderContactAssociatedWithProviderCompany"
+}
+```
 ## ProviderCompanyEvent
 
 ### ProviderCompanyReferenced 

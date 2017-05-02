@@ -496,7 +496,15 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 date                | [DateTime](#datetime)                         | 
-commandType         | Constant                                      | `"EnableProviderContact"`            
+commandType         | Constant                                      | `"EnableProviderContact"`
+            
+### AssociateProviderContactWithProviderCompany
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+providerCompanyUid  | [SafeUUID](#safeuuid)                         | the uid of the `ProviderCompany` with which this `ProviderContact` should be associated. 
+commandType         | Constant                                      | `"AssociateProviderContactWithProviderCompany"`            
 
 ## OpenTicket
 

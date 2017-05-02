@@ -61,12 +61,13 @@ Content-Range: 0-0/19234
 
 ### Parameters
 
-Name            | In    | Type                                      | Default   | Description
---------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
-range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
-companyuid      | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with one `Company` uid.<br/> ex: `agency=company_uid`
-agencyuids      | query | [Option](#option)[String]                 | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
-fulltext        | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
+Name               | In    | Type                                      | Default   | Description
+------------------ | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
+range              | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
+companyuid         | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with one `Company` uid.<br/> ex: `companyuid=company_uid`
+agencyuids         | query | [Option](#option)[String]                 | None      | query matching with several `agencies` uid.<br/> ex: `agency=agency_uid1,agency_uid2`
+providercompanyuid | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with one `ProviderCompany` uid. <br/> `providercompanyuid=company_uid`
+fulltext           | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
 
 ### Responses
 
