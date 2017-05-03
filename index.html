@@ -1046,18 +1046,18 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 
           <h1 id="lots">Lots</h1>
 
-          <h1 id="companies">Companies</h1>
+          <h1 id="clientcompanies">ClientCompanies</h1>
 
 <aside class="warning">
     You must be authenticated to use these API.
 </aside>
 
-<h2 id="get-all-companies">Get all Companies</h2>
+<h2 id="get-all-clientcompanies">Get all ClientCompanies</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
-https://base_url/api/v1/companies
+https://base_url/api/v1/clientcompanies
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
@@ -1080,7 +1080,7 @@ https://base_url/api/v1/companies
     </span><span class="p">]</span><span class="w">   
 </span><span class="p">}</span><span class="w">   
 </span></code></pre>
-<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies</code></p>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/clientcompanies</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1142,12 +1142,12 @@ https://base_url/api/v1/companies
 </tr>
 </tbody></table>
 
-<h2 id="get-a-specific-company">Get a specific Company</h2>
+<h2 id="get-a-specific-clientcompany">Get a specific ClientCompany</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
@@ -1161,7 +1161,7 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154
     </span><span class="nt">"companyType"</span><span class="p">:</span><span class="s2">"ClientAccountHolding"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid</code></p>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/clientcompanies/:company_uid</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1204,10 +1204,10 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154
 </tr>
 </tbody></table>
 
-<h2 id="get-agencies-of-a-company">Get Agencies of a Company</h2>
+<h2 id="get-agencies-of-a-clientcompany">Get Agencies of a ClientCompany</h2>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/agencies?range<span class="o">=</span>0-0
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154/agencies?range<span class="o">=</span>0-0
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
@@ -1230,7 +1230,7 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/agencies?
     </span><span class="p">]</span><span class="w">   
 </span><span class="p">}</span><span class="w">   
 </span></code></pre>
-<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid/agencies</code></p>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/clientcompanies/:company_uid/agencies</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1292,10 +1292,10 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/agencies?
 </tr>
 </tbody></table>
 
-<h2 id="get-users-of-a-company">Get Users of a Company</h2>
+<h2 id="get-users-of-a-clientcompany">Get Users of a ClientCompany</h2>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/users
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154/users
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
@@ -1325,7 +1325,7 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/users
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">   
 </span></code></pre>
-<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid/users</code></p>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/clientcompanies/:company_uid/users</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1380,14 +1380,14 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/users
 </tr>
 </tbody></table>
 
-<h2 id="get-subsidiaries-of-a-company">Get subsidiaries of a Company</h2>
+<h2 id="get-subsidiaries-of-a-clientcompany">Get subsidiaries of a ClientCompany</h2>
 
 <blockquote>
 <p>HTTP query example :</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
 -H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiaries
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiaries
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
@@ -1414,7 +1414,7 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiar
     If the company requested is not a ClientAccountHolding, the API will return empty result [].
 </aside>
 
-<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/companies/:company_uid/subsidiaries</code></p>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/clientcompanies/:company_uid/subsidiaries</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1469,7 +1469,7 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiar
 </tr>
 </tbody></table>
 
-<h2 id="create-company">Create Company</h2>
+<h2 id="create-a-clientcompany">Create a ClientCompany</h2>
 
 <blockquote>
 <p>HTTP query example :</p>
@@ -1484,14 +1484,14 @@ https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiar
  <span class="s2">"createdDate"</span>:<span class="s2">"2016-06-27"</span>,
  <span class="s2">"commandType"</span>:<span class="s2">"CreateClientAccount"</span>
 <span class="o">}</span> <span class="se">\</span>
-https://base_url/api/vEvent/companies
+https://base_url/api/vEvent/clientcompanies
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
 </blockquote>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 </code></pre>
-<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/companies</code></p>
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/clientcompanies</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1534,7 +1534,7 @@ https://base_url/api/vEvent/companies
 </tr>
 </tbody></table>
 
-<h2 id="increment-company-state">Increment Company State</h2>
+<h2 id="increment-clientcompany-state">Increment ClientCompany State</h2>
 
 <blockquote>
 <p>HTTP query example :</p>
@@ -1547,14 +1547,14 @@ https://base_url/api/vEvent/companies
  <span class="s2">"createdDate"</span>:<span class="s2">"2016-06-27"</span>,
  <span class="s2">"commandType"</span>:<span class="s2">"CancelCompany"</span>
 <span class="o">}</span> <span class="se">\</span>
-https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+https://base_url/api/vEvent/clientcompanies/1d178826-76dc-cd04-e174-346ba60eedad
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
 </blockquote>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 </code></pre>
-<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/companies/company_uid</code></p>
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/clientcompanies/company_uid</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1604,7 +1604,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 </tr>
 </tbody></table>
 
-<h2 id="create-agency-in-company">Create Agency in Company</h2>
+<h2 id="create-agency-in-clientcompany">Create Agency in ClientCompany</h2>
 
 <blockquote>
 <p>HTTP command example :</p>
@@ -1631,14 +1631,14 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
  <span class="o">}</span>,
  <span class="s2">"commandType"</span>:<span class="s2">"CreateAgency"</span>
 <span class="o">}</span> <span class="se">\</span>
-https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+https://base_url/api/vEvent/clientcompanies/1d178826-76dc-cd04-e174-346ba60eedad
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
 </blockquote>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
 </code></pre>
-<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/companies/company_uid/agencies</code></p>
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/clientcompanies/company_uid/agencies</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -1702,14 +1702,14 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
     <span class="s2">"agencyUid"</span>:<span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span>,
     <span class="s2">"commandType"</span>:<span class="s2">"DeleteAgency"</span>
 <span class="o">}</span> <span class="se">\</span>
-https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad/agencies/de4ef45f-26ed-562c-801d-896ef0e19311
+https://base_url/api/vEvent/clientcompanies/1d178826-76dc-cd04-e174-346ba60eedad/agencies/de4ef45f-26ed-562c-801d-896ef0e19311
 </code></pre>
 <blockquote>
 <p>HTTP response example :</p>
 </blockquote>
 <pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
 </code></pre>
-<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/companies/company_uid/agencies/agency_uid</code></p>
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/clientcompanies/company_uid/agencies/agency_uid</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
