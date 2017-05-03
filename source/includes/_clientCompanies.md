@@ -1,17 +1,17 @@
-# Companies
+# ClientCompanies
 
 <aside class="warning">
 	You must be authenticated to use these API.
 </aside>
 
-## Get all Companies
+## Get all ClientCompanies
 
 ### HTTP Request
 
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
-https://base_url/api/v1/companies
+https://base_url/api/v1/clientcompanies
 ```
 
 > HTTP response example :
@@ -38,7 +38,7 @@ Content-Range: 0-0/1
 }	
 ```
 
-**`GET`** `/api/v1/companies`
+**`GET`** `/api/v1/clientcompanies`
 
 ### Parameters
 
@@ -56,14 +56,14 @@ Http code | Type                        | Description
 206       | Array[[CompanyQueryView](#companyqueryview)]    | Partial Content. See `Content-Range` header for use pagination.
 400       | Error                                           | Bad request, occurs most often when parameters passed are invalid.
 
-## Get a specific Company
+## Get a specific ClientCompany
 
 ### HTTP Request
 
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154
 ```
 
 > HTTP response example :
@@ -81,7 +81,7 @@ Content-Type: application/json
 }
 ```
 
-**`GET`** `/api/v1/companies/:company_uid`
+**`GET`** `/api/v1/clientcompanies/:company_uid`
 
 ### Parameters
 
@@ -96,12 +96,12 @@ Http code | Type                | Description
 200       | [CompanyQueryView](#companyqueryview)   | The `Company` requested 
 400       | Error                                   | Bad request, occurs most often when parameters passed are invalid.
 
-## Get Agencies of a Company
+## Get Agencies of a ClientCompany
 
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/agencies?range=0-0
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154/agencies?range=0-0
 ```
 
 > HTTP response example :
@@ -128,7 +128,7 @@ Content-Range: 0-0/2
 }	
 ```
 
-**`GET`** `/api/v1/companies/:company_uid/agencies`
+**`GET`** `/api/v1/clientcompanies/:company_uid/agencies`
 
 ### Parameters
 
@@ -146,12 +146,12 @@ Http code | Type                                        | Description
 206       | Array[[AgencyQueryView](#agencyqueryview)]  | Partial Content. See `Content-Range` header for use pagination.
 400       | Error                                       | Bad request, occurs most often when parameters passed are invalid.
 
-## Get Users of a Company
+## Get Users of a ClientCompany
 
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/users
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154/users
 ```
 
 > HTTP response example :
@@ -186,7 +186,7 @@ Content-Range: 0-0/1
 }	
 ```
 
-**`GET`** `/api/v1/companies/:company_uid/users`
+**`GET`** `/api/v1/clientcompanies/:company_uid/users`
 
 ### Parameters
 
@@ -203,14 +203,14 @@ Http code | Type                                        | Description
 206       | Array[[UserQueryView](#userqueryview)]      | Partial Content. See `Content-Range` header for use pagination.
 400       | Error                                       | Bad request, occurs most often when parameters passed are invalid.
 
-## Get subsidiaries of a Company
+## Get subsidiaries of a ClientCompany
 
 > HTTP query example :
 
 ```shell
 curl -XGET \
 -H "Cookie: PI_SESSION=..." \
-https://base_url/api/v1/companies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiaries
+https://base_url/api/v1/clientcompanies/1471965c-e1ea-37e9-fa45-770753dc5154/subsidiaries
 ```
 
 > HTTP response example :
@@ -241,7 +241,7 @@ Content-Range: 0-0/1
 	If the company requested is not a ClientAccountHolding, the API will return empty result [].
 </aside>
 
-**`GET`** `/api/v1/companies/:company_uid/subsidiaries`
+**`GET`** `/api/v1/clientcompanies/:company_uid/subsidiaries`
 
 ### Parameters
 
@@ -258,7 +258,7 @@ Http code | Type                                        | Description
 206       | Array[[CompanyQueryView](#companyqueryview)]| Partial Content. See `Content-Range` header for use pagination.
 400       | Error                                       | Bad request, occurs most often when parameters passed are invalid.
 
-## Create Company
+## Create a ClientCompany
 
 > HTTP query example :
 
@@ -273,7 +273,7 @@ curl -XPOST \
  "createdDate":"2016-06-27",
  "commandType":"CreateClientAccount"
 } \
-https://base_url/api/vEvent/companies
+https://base_url/api/vEvent/clientcompanies
 ```
 
 > HTTP response example :
@@ -282,7 +282,7 @@ https://base_url/api/vEvent/companies
 HTTP/1.1 201 Created
 ```
 
-**`POST`** `/api/vEvent/companies`
+**`POST`** `/api/vEvent/clientcompanies`
 
 ### Parameters
 
@@ -299,7 +299,7 @@ Http code | Type                                        | Description
 400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 
 
-## Increment Company State
+## Increment ClientCompany State
 
 > HTTP query example :
 
@@ -312,7 +312,7 @@ curl -XPATCH \
  "createdDate":"2016-06-27",
  "commandType":"CancelCompany"
 } \
-https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+https://base_url/api/vEvent/clientcompanies/1d178826-76dc-cd04-e174-346ba60eedad
 ```
 
 > HTTP response example :
@@ -321,7 +321,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 HTTP/1.1 200 OK
 ```
 
-**`PATCH`** `/api/vEvent/companies/company_uid`
+**`PATCH`** `/api/vEvent/clientcompanies/company_uid`
 
 ### Parameters
 
@@ -338,7 +338,7 @@ Http code | Type                                        | Description
 200       | String                                      | The `Command` is a success
 400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 
-## Create Agency in Company
+## Create Agency in ClientCompany
 
 > HTTP command example :
 
@@ -365,7 +365,7 @@ curl -XPOST \
  },
  "commandType":"CreateAgency"
 } \
-https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
+https://base_url/api/vEvent/clientcompanies/1d178826-76dc-cd04-e174-346ba60eedad
 ```
 
 > HTTP response example :
@@ -374,7 +374,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad
 HTTP/1.1 201 Created
 ```
 
-**`POST`** `/api/vEvent/companies/company_uid/agencies`
+**`POST`** `/api/vEvent/clientcompanies/company_uid/agencies`
 
 ### Parameters
 
@@ -405,7 +405,7 @@ curl -XPATCH \
 	"agencyUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
 	"commandType":"DeleteAgency"
 } \
-https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad/agencies/de4ef45f-26ed-562c-801d-896ef0e19311
+https://base_url/api/vEvent/clientcompanies/1d178826-76dc-cd04-e174-346ba60eedad/agencies/de4ef45f-26ed-562c-801d-896ef0e19311
 ```
 
 > HTTP response example :
@@ -414,7 +414,7 @@ https://base_url/api/vEvent/companies/1d178826-76dc-cd04-e174-346ba60eedad/agenc
 HTTP/1.1 200 Ok
 ```
 
-**`PATCH`** `/api/vEvent/companies/company_uid/agencies/agency_uid`
+**`PATCH`** `/api/vEvent/clientcompanies/company_uid/agencies/agency_uid`
 
 ### Parameters
 
