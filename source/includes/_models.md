@@ -102,14 +102,14 @@ data Name = PoorName | CivilName
 
 ```json
 {
-	"name":"John Doe",
+	"value":"John Doe",
     "nameType":"PoorName"
 }
 ```
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------------------------------
-name        | String                                            | 
+value       | String                                            | 
 nameType    | Constant                                          | `"PoorName"`
 
 ### CivilName
