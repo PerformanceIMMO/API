@@ -2416,9 +2416,16 @@ https://base_url/api/v1/providercompanies?range<span class="o">=</span>0-0
 <tr>
 <td>fulltext</td>
 <td>query</td>
-<td><a href="#option">Option</a>[<a href="#localdate">String</a>]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>None</td>
 <td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.<br/> This param is incompatible with the others (except for range). <br/> You can filter by name or by siretNumber for example.</td>
+</tr>
+<tr>
+<td>filtered</td>
+<td>query</td>
+<td><a href="#option">Option</a>[Boolean]</td>
+<td>false</td>
+<td>allow to display only specific <code class="prettyprint">ProviderCompanies</code> with which User works or to display All of them.</td>
 </tr>
 </tbody></table>
 
