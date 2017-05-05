@@ -52,7 +52,9 @@ Content-Range: 0-0/256
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
 range           | query | [Option](#option)[String]                 | 0-99      | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be <= endRange
-fulltext        | query | [Option](#option)[[String](#localdate)]   | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.<br/> This param is incompatible with the others (except for range). <br/> You can filter by name or by siretNumber for example.
+fulltext        | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.<br/> This param is incompatible with the others (except for range). <br/> You can filter by name or by siretNumber for example.
+filtered        | query | [Option](#option)[Boolean]                | false     | allow to display only specific `ProviderCompanies` with which User works or to display All of them. 
+                  
 
 
 ### Responses
