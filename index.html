@@ -6432,6 +6432,11 @@ the response because of the specific state of the request done to retrieve this 
 <td>label of the <code class="prettyprint">ProviderContact</code></td>
 </tr>
 <tr>
+<td>providerCompany</td>
+<td><a href="#option">Option[<a href="#providercompanyincontact">ProviderCompanyInContact</a>]</a></td>
+<td>an optional reference to a <code class="prettyprint">ProviderCompany</code>. <br/> Means this <code class="prettyprint">ProviderContact</code> is a part of this <code class="prettyprint">ProviderCompany</code>.</td>
+</tr>
+<tr>
 <td>phones</td>
 <td>Array[String]</td>
 <td></td>
@@ -6455,6 +6460,32 @@ the response because of the specific state of the request done to retrieve this 
 <td>_links</td>
 <td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
 <td>Array of <code class="prettyprint">RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercompanyincontact">ProviderCompanyInContact</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>name of the <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+<tr>
+<td>siretNumber</td>
+<td><a href="#siret">SIRET</a></td>
+<td>siretNumber of the <code class="prettyprint">ProviderCompany</code></td>
 </tr>
 </tbody></table>
 
