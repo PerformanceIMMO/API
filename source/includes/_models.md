@@ -1084,16 +1084,25 @@ _links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `Rest
 
 ### Fields
 
-Name        | Type                                              | Description
-------------| --------------------------------------------------| --------------------------------------------------
-uid         | [SafeUUID](#safeuuid)                             | the uid of the `ProviderContact`
-label       | String                                            | label of the `ProviderContact`
-phones      | Array[String]                                     | 
-fax         | Array[String]                                     | 
-emails      | Array[String]                                     | 
-active      | Boolean                                           | 
-_links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+Name            | Type                                                  | Description
+----------------| ------------------------------------------------------| --------------------------------------------------
+uid             | [SafeUUID](#safeuuid)                                 | the uid of the `ProviderContact`
+label           | String                                                | label of the `ProviderContact`
+providerCompany | [Option[[ProviderCompanyInContact](#providercompanyincontact)]](#option) | an optional reference to a `ProviderCompany`. <br/> Means this `ProviderContact` is a part of this `ProviderCompany`.
+phones          | Array[String]                                         | 
+fax             | Array[String]                                         | 
+emails          | Array[String]                                         | 
+active          | Boolean                                               | 
+_links          | Array[[RestNavigationLink](#restnavigationlink)]      | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
 
+## ProviderCompanyInContact
+
+Name            | Type                                                  | Description
+----------------| ------------------------------------------------------| --------------------------------------------------
+uid             | [SafeUUID](#safeuuid)                                 | the uid of the `ProviderCompany`
+name            | String                                                | name of the `ProviderCompany`
+siretNumber     | [SIRET](#siret)                                       | siretNumber of the `ProviderCompany` 
+  
 ## ProviderCompanyResultView
 
 ### Fields
