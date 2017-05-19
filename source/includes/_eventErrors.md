@@ -150,3 +150,30 @@ message            | String | a message describing the error
 ### ImpossibleToReferenceAlreadyExistingProviderCompany
 
 ### ImpossibleToPerfomCommandOnNonExistingProviderCompany
+
+## LotEventError
+
+Name               | Type   | Description
+-------------------| -------| --------------------------------------------------
+errorType          | Enum   | code describing the type of the error
+message            | String | a message describing the error
+
+### CommandAlreadySent
+
+### ImpossibleToCreateExistingLot
+
+### ImpossibleToPerformCommandOnNonExistingLot
+
+### ImpossibleToRemoveNonExistingAddressFromLot
+
+### ImpossibleToRemoveOnlyAddressFromLot
+
+### PatrimonyNotFound
+
+### LotReferenceAlreadyExist
+
+### LotNumberAlreadyExist
+
+### AddressNotConform
+
+### BuildingDontExist

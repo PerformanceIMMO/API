@@ -199,6 +199,81 @@ siretNumber         | [SIRET](#siret)                               | the siret 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 eventType           | Constant                                      | `"ProviderCompanyReferenced"`
 
+## LotEvent
+
+### LotReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` referenced.
+patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` of the `Lot`.
+ref                 | String                                        | a public reference to distinguish the `Lot` in a `Agency` context 
+lotNumber           | String                                        | a public number to distinguish the `Lot` in its `Patrimony`   
+usage               | [LotUsage](#lotusage)                         | what kind of `Lot` it is. 
+addresses           | [NonEmptyList](#nonemptylist)[[LotAddressReference](#lotaddressreference)]  |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"LotReferenced"`
+
+### AddressAddedToLot
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` incremented.
+lotAddress          | [LotAddressReference](#lotaddressreference)   |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"AddressAddedToLot"`
+
+### AddressRemovedFromLot
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` incremented.
+addressUid          | [SafeUUID](#safeuuid)                         |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"AddressRemovedFromLot"`
+
+### LotReferenceUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` incremented.
+ref                 | String                                        |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"LotReferenceUpdated"`
+
+### LotNumberUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` incremented.
+lotNumber           | [SafeUUID](#safeuuid)                         |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"LotNumberUpdated"`
+
+### LotUsageUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` incremented.
+usage               | [LotUsage](#lotusage)                         |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"LotUsageUpdated"`
+
+### LotDeleted
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Lot` incremented.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"LotDeleted"`
+
 ## TicketEvent
 
 ### TicketOpened

@@ -964,3 +964,52 @@ operator            | [Option](#option)[[Operator](#operator)]      | an optiona
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 comment             | [Option](#option)[String]                     | Explain what happened.
 commandType         | Constant                                      | `"CloseAfterSeveralUnsuccessfulRecalls"`
+
+## IncrementLot
+
+### AddAddressToLot
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+address             | [LotAddressReference](#lotaddressreference)   |
+commandType         | Constant                                      | `"AddAddressToLot"`
+ 
+### RemoveAddressFromLot
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+addressUid          | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"RemoveAddressFromLot"`
+
+### UpdateLotReference
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+ref                 | [NonEmptyString](#nonemptystring)             |
+commandType         | Constant                                      | `"UpdateLotReference"`
+
+### UpdateLotNumber
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+lotNumber           | [NonEmptyString](#nonemptystring)             |
+commandType         | Constant                                      | `"UpdateLotNumber"`
+
+### UpdateLotUsage(processUid: SafeUUID, usage: LotUsage) extends IncrementLotJsonCommand
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+usage               | [LotUsage](#lotusage)                         |
+commandType         | Constant                                      | `"UpdateLotUsage"`
+
+### DeleteLot
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+commandType         | Constant                                      | `"DeleteLot"`

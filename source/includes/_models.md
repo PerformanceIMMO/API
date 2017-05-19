@@ -12,6 +12,10 @@ Means that field is optional. If parameter has no value, it is not present in th
 
 A json `array`that can't be empty.
 
+## NonEmptyString
+
+A `String` that can't be empty.
+
 ## Map
 
 a json object with "free" field
@@ -917,6 +921,83 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------------------------------
 uid         | [SafeUUID](#safeuuid)                             | the uid of the `Patrimony`
 
+## LotResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[LotQueryView](#lotqueryview)]              | Array of selected `Lot`s
+
+## LotQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Lot`
+patrimony   | [PatrimonyInfoView](#patrimonyinfoview)           |
+addresses   | Array[[LotQueryAddress](#lotqueryaddress)]        | 
+ref         | String                                            | a client reference to `Lot`
+lotNumber   | String                                            | describe a `Lot` inside a `Patrimony`
+usage       | [LotUsage](#lotusage)                             | What kind of `Lot` it is.
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  | 
+
+## LotQueryAddress
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+number      | String                                            | 
+street      | String                                            | 
+city        | String                                            | 
+zipCode     | String                                            | 
+country     | [Option](#option)[String]                         |
+quality     | [Option](#option)[String]                         |
+complement  | [Option](#option)[String]                         |
+recipientSupplement    | [Option](#option)[[RecipientIdentificationSupplement](#recipientidentificationsupplement)] |
+geographicalSupplement | [Option](#option)[[GeographicalIdentificationSupplement](#geographicalidentificationsupplement)] |
+state       | [Option](#option)[String]                         |
+geoLocation | [GeoLocation](#geolocation)                       |
+checker     | [AddressChecker](#addresschecker)                 |
+building    | [Option](#option)[[BuildingInfoView](#buildinginfoview)] |
+
+## PatrimonyInfoView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+label       | [Option](#option)[String]                         |
+ref         | String                                            |
+
+## BuildingInfoView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+label       | String                                            |
+
+## LotDetailQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the `Lot`
+patrimony   | [PatrimonyInfoView](#patrimonyinfoview)           |
+addresses   | Array[[LotQueryAddress](#lotqueryaddress)]        | 
+ref         | String                                            | a client reference to `Lot`
+lotNumber   | String                                            | describe a `Lot` inside a `Patrimony`
+usage       | [LotUsage](#lotusage)                             | What kind of `Lot` it is.
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  |
+
+
 ## GeoLocation
 
 Geolocation of the `Address`.
@@ -1178,6 +1259,14 @@ events                      | Array[[ProviderContactEvent](#providercontactevent
 Name                        | Type                            | Description
 ----------------------------| --------------------------------| --------------------------------------------------
 events                      | Array[[ProviderCompanyEvent](#providercompanyevent)] | The `Event`s resulting of this `Command`
+
+## LotEventResultView
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[LotEvent](#lotevent)]    | The `Event`s resulting of this `Command`
 
 ## TicketEventResultView
 
@@ -1776,3 +1865,10 @@ Name              | Type                                              | Descript
 request           | [Option](#option)[String]                         | field `request` in [TicketInfos](#ticketinfos). If setted with non blank value, will be overwritten the old value.
 instructions      | [Option](#option)[String]                         | field `instructions` in [TicketInfos](#ticketinfos). If setted with non blank value, will be overwritten the old value.
 closingReport     | [Option](#option)[String]                         | `closingReport` when `Ticket` is closed. If setted with non blank value, will be overwritten the old value.
+
+### LotAddressReference
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+addressReference  | [AddressReference](#addressreference)             | 
+building          | [Option](#option)[[SafeUUID](#safeuuid)]          | 
