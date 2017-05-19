@@ -1046,6 +1046,422 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 
           <h1 id="lots">Lots</h1>
 
+<aside class="warning">
+    You must be authenticated to use these API.
+</aside>
+
+<h2 id="get-all-lots-of-a-patrimony">Get all lots of a Patrimony</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/lots?patrimonyuid<span class="o">=</span>89532be8-543c-4d45-a0fc-4762b774eee5
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/1</span>
+</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"addresses"</span><span class="p">:[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"01761fce-aafa-4d01-adbf-12021f0d72b4"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"21"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"Rue de Paris"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Montpellier"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="s2">"34000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+                    </span><span class="nt">"geoLocation"</span><span class="p">:{</span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">43.6037654</span><span class="p">,</span><span class="nt">"lng"</span><span class="p">:</span><span class="mf">3.8730828</span><span class="p">},</span><span class="w">
+                    </span><span class="nt">"checker"</span><span class="p">:{</span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="s2">"ChIJ72W3Da-vthIRPu9q87gz_D8"</span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"patrimony"</span><span class="p">:{</span><span class="w">
+                </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"dcac705e-175e-6a23-c314-ebb77242ff87"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"My Patrimony"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"ref"</span><span class="p">:</span><span class="s2">"00101"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nt">"ref"</span><span class="p">:</span><span class="s2">"97079"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"usage"</span><span class="p">:</span><span class="s2">"Apartment"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"owners"</span><span class="p">:[],</span><span class="w">
+            </span><span class="nt">"occupants"</span><span class="p">:[],</span><span class="w">
+            </span><span class="nt">"_links"</span><span class="p">:[</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"self"</span><span class="p">,</span><span class="w"> </span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/v1/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"AddAddressToLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"RemoveAddressFromLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"UpdateLotReference"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"UpdateLotNumber"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"UpdateLotUsage"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"DeleteLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+    </span><span class="p">,</span><span class="nt">"_links"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"self"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/v1/lots"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"ReferenceLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"POST"</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/patrimonies</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-100</td>
+<td>range selector for result pagination.<br/> ex: <code class="prettyprint">range=0-19</code> <br/> startRange should be &gt; endRange</td>
+</tr>
+<tr>
+<td>patrimonyuid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the patrimony linked to these lots</td>
+</tr>
+<tr>
+<td>buildinguids</td>
+<td>query</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#lotresultview">LotResultView</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#lotresultview">LotResultView</a></td>
+<td>Partial Content. See <code class="prettyprint">Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-lot">Get a specific Lot</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/lots/6ed010a1-7481-4b38-87da-c219fc31ba64
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"addresses"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"01761fce-aafa-4d01-adbf-12021f0d72b4"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"number"</span><span class="p">:</span><span class="s2">"21"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"Avenue de Paris"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"city"</span><span class="p">:</span><span class="s2">"Montpellier"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="s2">"34000"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"geoLocation"</span><span class="p">:{</span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">43.6037654</span><span class="p">,</span><span class="nt">"lng"</span><span class="p">:</span><span class="mf">3.8730828</span><span class="p">},</span><span class="w">
+            </span><span class="nt">"checker"</span><span class="p">:{</span><span class="nt">"googlePlaceId"</span><span class="p">:</span><span class="s2">"ChIJ72W3Da-vthIRPu9q87gz_D8"</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"dcac705e-175e-6a23-c314-ebb77242ff87"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"My patrimony"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ref"</span><span class="p">:</span><span class="s2">"00101"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"ref"</span><span class="p">:</span><span class="s2">"97079"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"usage"</span><span class="p">:</span><span class="s2">"Apartment"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owners"</span><span class="p">:[],</span><span class="w">
+    </span><span class="nt">"occupants"</span><span class="p">:[],</span><span class="w">
+    </span><span class="nt">"_links"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"self"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/v1/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"GET"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"AddAddressToLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"RemoveAddressFromLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"UpdateLotReference"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"UpdateLotNumber"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"UpdateLotUsage"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="nt">"rel"</span><span class="p">:</span><span class="s2">"DeleteLot"</span><span class="p">,</span><span class="nt">"href"</span><span class="p">:</span><span class="s2">"https://preprod.performance-immo.com/api/vEvent/lots/814443ab-b495-487b-bf17-b786880de384"</span><span class="p">,</span><span class="nt">"method"</span><span class="p">:</span><span class="s2">"PATCH"</span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/lots/:lot_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lot_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+<td>the uid of the <code class="prettyprint">Lot</code> requested</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#lotdetailqueryview">LotDetailQueryView</a></td>
+<td>the <code class="prettyprint">Lot</code> requested.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="reference-a-lot">Reference a Lot</h2>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"ref"</span>:<span class="s2">"#Lot_1"</span>,
+ <span class="s2">"lotNumber"</span>:<span class="s2">"34"</span>,
+ <span class="s2">"patrimonyUid"</span>:<span class="s2">"b60521f2-cc1a-a4cf-5ba8-9510eeaf2d32"</span>,
+ <span class="s2">"addresses"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      ...
+    <span class="o">}</span>
+ <span class="o">]</span>,
+ <span class="s2">"usage"</span>:<span class="s2">"Apartement"</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"ReferencePatrimony"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/patrimonies
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre>
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/lots</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td>body</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this <code class="prettyprint">Command</code>. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td>body</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>body</td>
+<td>String</td>
+<td>a public reference to distinguish the <code class="prettyprint">Lot</code> in a <code class="prettyprint">Agency</code> context</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>body</td>
+<td>String</td>
+<td>a public number to distinguish the <code class="prettyprint">Lot</code> in its <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td>body</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>body</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>usage</td>
+<td>body</td>
+<td><a href="#lotusage">LotUsage</a></td>
+<td>what kind of <code class="prettyprint">Lot</code> it is.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>body</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferenceLot&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="#loteventresultview">LotEventResultView</a></td>
+<td>The <code class="prettyprint">Lot</code> is referenced.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#loteventerror">LotEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+<tr>
+<td>401</td>
+<td></td>
+<td>Not authenticated user .</td>
+</tr>
+<tr>
+<td>403</td>
+<td></td>
+<td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="increment-lot-state">Increment Lot State</h2>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPATCH <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"ref"</span>:<span class="s2">"new_ref"</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"UpdateLotReference"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/lots/1d178826-76dc-cd04-e174-346ba60eedad
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre>
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/lots/lot_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lot_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code></td>
+</tr>
+<tr>
+<td>lotCommand</td>
+<td>body</td>
+<td><a href="#incrementlot">IncrementLot</a></td>
+<td>the <code class="prettyprint">Command</code> for increment a <code class="prettyprint">Lot</code> state</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#loteventresultview">LotEventResultView</a></td>
+<td>The <code class="prettyprint">Command</code> is a success</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#loteventerror">LotEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+<tr>
+<td>401</td>
+<td></td>
+<td>Not authenticated user</td>
+</tr>
+<tr>
+<td>403</td>
+<td></td>
+<td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="clientcompanies">ClientCompanies</h1>
 
 <aside class="warning">
@@ -3718,6 +4134,10 @@ https://base_url/api/vEvent/tickets?range<span class="o">=</span>0-0&amp;from<sp
 
 <p>A json <code class="prettyprint">array</code>that can&rsquo;t be empty.</p>
 
+<h2 id="nonemptystring">NonEmptyString</h2>
+
+<p>A <code class="prettyprint">String</code> that can&rsquo;t be empty.</p>
+
 <h2 id="map">Map</h2>
 
 <p>a json object with &ldquo;free&rdquo; field</p>
@@ -6031,6 +6451,254 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </tbody></table>
 
+<h2 id="lotresultview">LotResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#lotqueryview">LotQueryView</a>]</td>
+<td>Array of selected <code class="prettyprint">Lot</code>s</td>
+</tr>
+</tbody></table>
+
+<h2 id="lotqueryview">LotQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#patrimonyinfoview">PatrimonyInfoView</a></td>
+<td></td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>Array[<a href="#lotqueryaddress">LotQueryAddress</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>a client reference to <code class="prettyprint">Lot</code></td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>String</td>
+<td>describe a <code class="prettyprint">Lot</code> inside a <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>usage</td>
+<td><a href="#lotusage">LotUsage</a></td>
+<td>What kind of <code class="prettyprint">Lot</code> it is.</td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="lotqueryaddress">LotQueryAddress</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>recipientSupplement</td>
+<td><a href="#option">Option</a>[<a href="#recipientidentificationsupplement">RecipientIdentificationSupplement</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>geographicalSupplement</td>
+<td><a href="#option">Option</a>[<a href="#geographicalidentificationsupplement">GeographicalIdentificationSupplement</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td></td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td></td>
+</tr>
+<tr>
+<td>building</td>
+<td><a href="#option">Option</a>[<a href="#buildinginfoview">BuildingInfoView</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyinfoview">PatrimonyInfoView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="buildinginfoview">BuildingInfoView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="lotdetailqueryview">LotDetailQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#patrimonyinfoview">PatrimonyInfoView</a></td>
+<td></td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>Array[<a href="#lotqueryaddress">LotQueryAddress</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>a client reference to <code class="prettyprint">Lot</code></td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>String</td>
+<td>describe a <code class="prettyprint">Lot</code> inside a <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>usage</td>
+<td><a href="#lotusage">LotUsage</a></td>
+<td>What kind of <code class="prettyprint">Lot</code> it is.</td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="geolocation">GeoLocation</h2>
 
 <p>Geolocation of the <code class="prettyprint">Address</code>.</p>
@@ -6681,6 +7349,24 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>events</td>
 <td>Array[<a href="#providercompanyevent">ProviderCompanyEvent</a>]</td>
+<td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="loteventresultview">LotEventResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>events</td>
+<td>Array[<a href="#lotevent">LotEvent</a>]</td>
 <td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
 </tr>
 </tbody></table>
@@ -7623,6 +8309,27 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>closingReport</td>
 <td><a href="#option">Option</a>[String]</td>
 <td><code class="prettyprint">closingReport</code> when <code class="prettyprint">Ticket</code> is closed. If setted with non blank value, will be overwritten the old value.</td>
+</tr>
+</tbody></table>
+
+<h3 id="lotaddressreference">LotAddressReference</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>addressReference</td>
+<td><a href="#addressreference">AddressReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>building</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10123,6 +10830,159 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
+<h2 id="incrementlot">IncrementLot</h2>
+
+<h3 id="addaddresstolot">AddAddressToLot</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#lotaddressreference">LotAddressReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AddAddressToLot&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="removeaddressfromlot">RemoveAddressFromLot</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>addressUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;RemoveAddressFromLot&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updatelotreference">UpdateLotReference</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>ref</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateLotReference&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updatelotnumber">UpdateLotNumber</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateLotNumber&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="updatelotusage-processuid-safeuuid-usage-lotusage-extends-incrementlotjsoncommand">UpdateLotUsage(processUid: SafeUUID, usage: LotUsage) extends IncrementLotJsonCommand</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>usage</td>
+<td><a href="#lotusage">LotUsage</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateLotUsage&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="deletelot">DeleteLot</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DeleteLot&quot;</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="events">Events</h1>
 
 <h2 id="companyevent">CompanyEvent</h2>
@@ -10367,6 +11227,275 @@ The following commands are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;ProviderCompanyReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="lotevent">LotEvent</h2>
+
+<h3 id="lotreferenced">LotReferenced</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> referenced.</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> of the <code class="prettyprint">Lot</code>.</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>a public reference to distinguish the <code class="prettyprint">Lot</code> in a <code class="prettyprint">Agency</code> context</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td>String</td>
+<td>a public number to distinguish the <code class="prettyprint">Lot</code> in its <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>usage</td>
+<td><a href="#lotusage">LotUsage</a></td>
+<td>what kind of <code class="prettyprint">Lot</code> it is.</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#lotaddressreference">LotAddressReference</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;LotReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="addressaddedtolot">AddressAddedToLot</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> incremented.</td>
+</tr>
+<tr>
+<td>lotAddress</td>
+<td><a href="#lotaddressreference">LotAddressReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AddressAddedToLot&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="addressremovedfromlot">AddressRemovedFromLot</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> incremented.</td>
+</tr>
+<tr>
+<td>addressUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AddressRemovedFromLot&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="lotreferenceupdated">LotReferenceUpdated</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> incremented.</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;LotReferenceUpdated&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="lotnumberupdated">LotNumberUpdated</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> incremented.</td>
+</tr>
+<tr>
+<td>lotNumber</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;LotNumberUpdated&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="lotusageupdated">LotUsageUpdated</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> incremented.</td>
+</tr>
+<tr>
+<td>usage</td>
+<td><a href="#lotusage">LotUsage</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;LotUsageUpdated&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="lotdeleted">LotDeleted</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Lot</code> incremented.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;LotDeleted&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -12306,6 +13435,47 @@ Received the following events means the Ticket was closed.
 <h3 id="impossibletoreferencealreadyexistingprovidercompany">ImpossibleToReferenceAlreadyExistingProviderCompany</h3>
 
 <h3 id="impossibletoperfomcommandonnonexistingprovidercompany">ImpossibleToPerfomCommandOnNonExistingProviderCompany</h3>
+
+<h2 id="loteventerror">LotEventError</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errorType</td>
+<td>Enum</td>
+<td>code describing the type of the error</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>a message describing the error</td>
+</tr>
+</tbody></table>
+
+<h3 id="commandalreadysent">CommandAlreadySent</h3>
+
+<h3 id="impossibletocreateexistinglot">ImpossibleToCreateExistingLot</h3>
+
+<h3 id="impossibletoperformcommandonnonexistinglot">ImpossibleToPerformCommandOnNonExistingLot</h3>
+
+<h3 id="impossibletoremovenonexistingaddressfromlot">ImpossibleToRemoveNonExistingAddressFromLot</h3>
+
+<h3 id="impossibletoremoveonlyaddressfromlot">ImpossibleToRemoveOnlyAddressFromLot</h3>
+
+<h3 id="patrimonynotfound">PatrimonyNotFound</h3>
+
+<h3 id="lotreferencealreadyexist">LotReferenceAlreadyExist</h3>
+
+<h3 id="lotnumberalreadyexist">LotNumberAlreadyExist</h3>
+
+<h3 id="addressnotconform">AddressNotConform</h3>
+
+<h3 id="buildingdontexist">BuildingDontExist</h3>
 
           <h1 id="errors">Errors</h1>
 
