@@ -5632,9 +5632,9 @@ the response because of the specific state of the request done to retrieve this 
 <td>the date when this <code class="prettyprint">Ticket</code> was closed.</td>
 </tr>
 <tr>
-<td>callPurpose</td>
-<td>String</td>
-<td>the <code class="prettyprint">callPurpose</code> of this <code class="prettyprint">Ticket</code>.</td>
+<td>openingTicketPurpose</td>
+<td><a href="#openingticketpurpose">OpeningTicketPurpose</a></td>
+<td>The reason the <code class="prettyprint">Ticket</code> was opened.</td>
 </tr>
 <tr>
 <td>caller</td>
@@ -5670,6 +5670,29 @@ the response because of the specific state of the request done to retrieve this 
 <td>stats</td>
 <td>DetailedTicketStats</td>
 <td>a set of several stats on this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="openingticketpurpose">OpeningTicketPurpose</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callPurpose</td>
+<td>String</td>
+<td>the label of the purpose</td>
+</tr>
+<tr>
+<td>callPurposeUid:</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>if a referenced <code class="prettyprint">CallPurpose</code> on Performance Immo was used. (recommended)</td>
 </tr>
 </tbody></table>
 
@@ -7601,7 +7624,7 @@ the response because of the specific state of the request done to retrieve this 
            </span><span class="nt">"clientClaimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016256649"</span><span class="w">
          </span><span class="p">},</span><span class="w">
          </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-           </span><span class="nt">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quality"</span><span class="p">,</span><span class="w">
+           </span><span class="nt">"quality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quality"</span><span class="p">,</span><span class="w">   
            </span><span class="nt">"street"</span><span class="p">:</span><span class="s2">"street"</span><span class="p">,</span><span class="w">
            </span><span class="nt">"complement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complement"</span><span class="p">,</span><span class="w">
            </span><span class="nt">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zipCode"</span><span class="p">,</span><span class="w">
@@ -7611,6 +7634,7 @@ the response because of the specific state of the request done to retrieve this 
          </span><span class="p">},</span><span class="w">
          </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRIGOS EN PANNE"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"callPurposeLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frigoriste"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"callPurposeUid"</span><span class="p">:</span><span class="s2">"62043f05-0e0a-462d-9777-16a152bb291a"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"altCallPurpose"</span><span class="p">:{},</span><span class="w">
          </span><span class="nt">"additionalData"</span><span class="p">:{</span><span class="w">
            </span><span class="nt">"Code magasin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FRPK98"</span><span class="p">,</span><span class="w">
@@ -7666,6 +7690,11 @@ the response because of the specific state of the request done to retrieve this 
 <td>callPurposeLabel</td>
 <td>String</td>
 <td>the purpose of the incident. This field will be display on the Perfimmo web app.</td>
+</tr>
+<tr>
+<td>callPurposeUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>if a referenced <code class="prettyprint">CallPurpose</code> on Performance Immo was used. (recommended)</td>
 </tr>
 <tr>
 <td>altCallPurpose</td>
