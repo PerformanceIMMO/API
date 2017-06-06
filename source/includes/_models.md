@@ -635,7 +635,7 @@ instructions| String                                            | insctructions 
 created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
 updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
 closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
-callPurpose | String                                            | the `callPurpose` of this `Ticket`.
+openingTicketPurpose | [OpeningTicketPurpose](#openingticketpurpose) | The reason the `Ticket` was opened.
 caller      | [CallerTicketDetailedQueryView](#callerticketdetailedqueryview) | informations on person who ask for open this `Ticket`.
 report      | [Option](#option)[String]                         | intervention report, when intervention took place. 
 provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
@@ -644,6 +644,15 @@ journal     | Array[[DayEvent](#dayevent)]                      | the `Ticket`'s
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
 stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
 
+
+## OpeningTicketPurpose
+
+### Fields
+
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| -----------------
+callPurpose     | String                                            | the label of the purpose
+callPurposeUid: | [Option](#option)[[SafeUUID](#safeuuid)]          | if a referenced `CallPurpose` on Performance Immo was used. (recommended)
 
 ## DetailedTicketStats
 
@@ -1431,7 +1440,7 @@ operatorType| Constant                                          | `"ReferencedUs
            "clientClaimNumber": "2016256649"
          },
          "address": {
-           "quality": "quality",
+           "quality": "quality",   
            "street":"street",
            "complement": "complement",
            "zipCode": "zipCode",
@@ -1441,6 +1450,7 @@ operatorType| Constant                                          | `"ReferencedUs
          },
          "request": "FRIGOS EN PANNE",
          "callPurposeLabel": "frigoriste",
+         "callPurposeUid":"62043f05-0e0a-462d-9777-16a152bb291a",
          "altCallPurpose":{},
          "additionalData":{
            "Code magasin": "FRPK98",
@@ -1465,6 +1475,7 @@ address           | [BasicAddress](#basicaddress)                               
 request           | String                                            | a description of the problem that is causing the opening of the ticket. 
 instructions      | [Option](#option)[String]                         | optional instructions about this incident.
 callPurposeLabel  | String                                            | the purpose of the incident. This field will be display on the Perfimmo web app. 
+callPurposeUid    | [Option](#option)[[SafeUUID](#safeuuid)]          | if a referenced `CallPurpose` on Performance Immo was used. (recommended) 
 altCallPurpose    | [Map](#map)[String, Array[String]],               |  
 additionalData    | [Map](#map)[String, [Option](#option)[String]]    | some addional data you want to display on the detailed `Ticket` page.
 
