@@ -1530,6 +1530,13 @@ https://base_url/api/v1/clientcompanies
 <td>None</td>
 <td>If this param is setted to <code class="prettyprint">CallCenter, return CallCenter&#39;s list. **This param is incompatible with</code>holdinguid`.**</td>
 </tr>
+<tr>
+<td>fulltext</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>None</td>
+<td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.</td>
+</tr>
 </tbody></table>
 
 <h3 id="responses">Responses</h3>
@@ -3239,7 +3246,7 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
 <tr>
 <td>fulltext</td>
 <td>query</td>
-<td><a href="#option">Option</a>[<a href="#localdate">String</a>]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>None</td>
 <td><code class="prettyprint">fulltext</code> query matching with several terms.<br/> ex: <code class="prettyprint">fulltext=word,other+word</code>.<br/> This param is incompatible with the others (except for range).</td>
 </tr>
