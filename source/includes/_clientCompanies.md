@@ -47,6 +47,7 @@ Name            | In    | Type                                      | Default   
 range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
 holdinguid      | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | uid of ClientAccountHolding. If this param is setted, return ClientAccountHolding's subsidiairies list. **This param is incompatible with `companytype`.**
 companytype     | query | [Option](#option)[String]                 | None      | If this param is setted to `CallCenter, return CallCenter's list. **This param is incompatible with `holdinguid`.**
+fulltext        | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
 
 ### Responses
 
