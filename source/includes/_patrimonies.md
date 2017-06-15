@@ -82,6 +82,7 @@ range           | query | [Option](#option)[String]                 | 0-100     
 fulltext        | query | [Option](#option)[String]                 | None      | allow to search patrimonies by key-word (ex: ref or label)
 agencyuids      | query | Array[[SafeUUID](#safeuuid)]              | [ ]       | allow to search patrimonies by agency uids associated with it. 
 companyuid      | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | allow to filter patrimonies with company 
+placeid         | query | [Option](#option)[String]                 | None      | allow to filter patrimonies with le placeid referencing patrimony address. <br/> `ex: placeid=12345
 geolocation     | query | [Option](#option)[String]                 | None      | allow to filter patrimonies with geolocation of its addresses.<br/> `geolocation=latitude,longitude,distance`.<br/> The last param `distance` must be an Int and represent meters distance and is optional.<br/> `ex: geolocation=48.858398,2.294524,150`
 
 ### Responses
