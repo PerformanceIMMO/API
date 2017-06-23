@@ -12,6 +12,7 @@ includes:
   - users
   - patrimonies
   - lots
+  - patrimonyContacts
   - clientCompanies
   - providerContacts
   - providerCompanies

@@ -1277,6 +1277,12 @@ Name                        | Type                            | Description
 ----------------------------| --------------------------------| --------------------------------------------------
 events                      | Array[[LotEvent](#lotevent)]    | The `Event`s resulting of this `Command`
 
+## PatrimonyContactEventResultView
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[PatrimonyContactEvent](#patrimonycontactevent)]    | The `Event`s resulting of this `Command`
+
 ## TicketEventResultView
 
 > example :
@@ -1883,3 +1889,126 @@ Name              | Type                                              | Descript
 ------------------| --------------------------------------------------| --------------------------
 addressReference  | [AddressReference](#addressreference)             | 
 building          | [Option](#option)[[SafeUUID](#safeuuid)]          | 
+
+## PatrimonyContactResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[PatrimonyContactQueryView](#patrimonycontactqueryview)]  | Array of selected `PatrimonyContact`s
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## PatrimonyContactQueryView
+
+### Fields
+
+Name            | Type                                                  | Description
+----------------| ------------------------------------------------------| --------------------------------------------------
+uid             | [SafeUUID](#safeuuid)                                 | the uid of the `PatrimonyContact`
+name            | [Name](#name)                                         | the name of the `PatrimonyContact`
+company         | [Option](#option)[String]                             | an optional company's name of the `PatrimonyContact`
+address         | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`  
+contacts        | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
+linkedWith      | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
+_links          | Array[[RestNavigationLink](#restnavigationlink)]      | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## PatrimonyContactEntityLink
+
+`PatrimonyContactEntityLink` is an Enum, i.e type can take different values : 
+
+```haskell
+data PatrimonyContactEntityLink = LinkToPatrimonyAsCareTaker | LinkToPatrimonyAsHomeOwnerAssociation | LinkToLotAsTenant | LinkToLotAsOwner | LinkToLotAsLandlord 
+```
+
+### LinkToPatrimonyAsCareTaker
+
+> LinkToPatrimonyAsCareTaker example :
+
+```json
+{
+	"patrimonyUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "linkType":"LinkToPatrimonyAsCareTaker"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+patrimonyUid | [SafeUUID](#safeuuid)                             | 
+linkType     | Constant                                          | `"LinkToPatrimonyAsCareTaker"`
+
+### LinkToPatrimonyAsHomeOwnerAssociation
+
+> LinkToPatrimonyAsHomeOwnerAssociation example :
+
+```json
+{
+	"patrimonyUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+	"position":"Member",
+    "linkType":"LinkToPatrimonyAsHomeOwnerAssociation"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+patrimonyUid | [SafeUUID](#safeuuid)                             | 
+position     | [HomeOwnerAssociationPosition](#homeownerassociationposition) | 
+linkType     | Constant                                          | `"LinkToPatrimonyAsHomeOwnerAssociation"`
+
+### LinkToLotAsTenant
+
+> LinkToLotAsTenant example :
+
+```json
+{
+	"lotUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "linkType":"LinkToLotAsTenant"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+lotUid       | [SafeUUID](#safeuuid)                             | 
+linkType     | Constant                                          | `"LinkToLotAsTenant"`
+
+### LinkToLotAsOwner
+
+> LinkToLotAsOwner example :
+
+```json
+{
+	"lotUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "linkType":"LinkToLotAsOwner"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+lotUid       | [SafeUUID](#safeuuid)                             | 
+linkType     | Constant                                          | `"LinkToLotAsOwner"`
+
+### LinkToLotAsLandlord
+
+> LinkToLotAsLandlord example :
+
+```json
+{
+	"lotUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "linkType":"LinkToLotAsLandlord"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+lotUid       | [SafeUUID](#safeuuid)                             | 
+linkType     | Constant                                          | `"LinkToLotAsLandlord"`
+
+## HomeOwnerAssociationPosition
+
+`HomeOwnerAssociationPosition` is an Enum, i.e type can take different values : 
+
+`"Member"` or `"President"`
+
+```haskell
+data HomeOwnerAssociationPosition = Member | President 
+```

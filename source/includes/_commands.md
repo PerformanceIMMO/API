@@ -1013,3 +1013,62 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 commandType         | Constant                                      | `"DeleteLot"`
+
+
+## IncrementPatrimonyContact
+
+### ReferencePatrimonyContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+name                | [Name](#name)                                 |
+company             | [Option](#option)[String]                     |  
+address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`
+contacts            | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
+commandType         | Constant                                      | `"ReferencePatrimonyContact"`
+
+### LinkPatrimonyContactWith
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+linkedWith          | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
+commandType         | Constant                                      | `"LinkPatrimonyContactWith"`
+
+
+### RemoveLinkFromPatrimonyContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+linkedWith          | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
+commandType         | Constant                                      | `"RemoveLinkFromPatrimonyContact"`
+
+### AddContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+contact             | [ContactMedium](#contactmedium)               | a contact like phone number or email 
+commandType         | Constant                                    | `"AddContact"`
+
+### RemoveContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+contact             | [ContactMedium](#contactmedium)               | a contact like phone number or email 
+commandType         | Constant                                      | `"RemoveContact"`
+
+
+### UpdatePatrimonyContactIdentity
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+name                | [Option](#option)[[Name](#name)]              | if None, field not updated
+company             | [Option](#option)[String]                     | if None, field not updated 
+address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
+commandType         | Constant                                      | `"UpdatePatrimonyContactIdentity"`

@@ -759,3 +759,72 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 closingDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 comment             | [Option](#option)[String]                     | Explain why this `Event` happened.
 eventType           | Constant                                      | `"ClosedAfterSeveralUnsuccessfulRecalls"`
+
+## PatrimonyContactEvent
+
+### PatrimonyContactReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+name                | [Name](#name)                                 |
+company             | [Option](#option)[String]                     |  
+address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`
+contacts            | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
+eventType           | Constant                                      | `"PatrimonyContactReferenced"`
+
+### PatrimonyContactLinkedWith
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+linkedWith          | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
+eventType           | Constant                                      | `"PatrimonyContactLinkedWith"`
+
+
+### LinkRemovedFromPatrimonyContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+linkedWith          | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
+eventType           | Constant                                      | `"LinkRemovedFromPatrimonyContact"`
+
+### ContactAdded
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+contact             | [ContactMedium](#contactmedium)               | a contact like phone number or email 
+eventType           | Constant                                      | `"ContactAdded"`
+
+### ContactRemoved
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+contact             | [ContactMedium](#contactmedium)               | a contact like phone number or email 
+eventType           | Constant                                      | `"ContactRemoved"`
+
+
+### PatrimonyContactIdentityUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+name                | [Option](#option)[[Name](#name)]              | if None, field not updated
+company             | [Option](#option)[String]                     | if None, field not updated 
+address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
+eventType           | Constant                                      | `"PatrimonyContactIdentityUpdated"`

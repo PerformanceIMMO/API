@@ -177,3 +177,26 @@ message            | String | a message describing the error
 ### AddressNotConform
 
 ### BuildingDontExist
+
+## PatrimonyContactEventError
+
+Name               | Type   | Description
+-------------------| -------| --------------------------------------------------
+errorType          | Enum   | code describing the type of the error
+message            | String | a message describing the error
+
+### CommandAlreadySent
+
+### ImpossibleToReferenceAlreadyExistingPatrimonyContact
+
+### ImpossibleToPerformCommandOnNonExistingPatrimonyContact
+
+### ImpossibleToLinkAlreadyLinkedEntityWithPatrimonyContact
+
+### ImpossibleToRemoveNonExistingLink
+
+### ImpossibleToAddContactThatAlreadyExistInThisPatrimonyContact
+
+### ImpossibleToRemoveNonExistingContact
+
+### ImpossibleToRemoveBecauseShouldHaveAtLeastOneRemainingContact
