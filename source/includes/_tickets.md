@@ -56,7 +56,7 @@ Content-Range: 0-0/256
                 "name": "John Doe",
                 "medium": {
                     "mediumType": "PHONE",
-                    "identifier": "0601020304"
+                    "identifier": [ "0601020304" ]
                 }
             },
             "address": {
@@ -155,7 +155,7 @@ Content-Range: 0-19999/80000
                 "name": "email DI",
                 "medium": {
                     "mediumType": "PHONE",
-                    "identifier": "0654675432"
+                    "identifier": [ "0654675432" ]
                 }
             },
             "address": {
@@ -320,7 +320,7 @@ Content-Type: application/json
         "name": "john Doe",
         "medium": {
             "mediumType": "PHONE",
-            "identifier": "0601020304"
+            "identifier": [ "0601020304" ]
         }
     },
     "provider": {

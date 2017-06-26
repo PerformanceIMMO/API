@@ -520,8 +520,9 @@ date        | [DateTime](#datetime)                             | the date when 
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
+uid         | [Option](#option)[[SafeUUID](#safeuuid)]          | the uid of the caller if he is referenced by Perfimmo as `PatrimonyContact`
 name        | String                                            | the name of the caller
-medium      | [Option](#option)[[ContactMediumView](#contactmediumview)] | the medium use by the caller to open `Ticket`. 
+medium      | Array[[ContactMediumView](#contactmediumview)]    | the mediums of the caller. 
 
 ## ContactMediumView
 
@@ -1490,7 +1491,7 @@ additionalData    | [Map](#map)[String, [Option](#option)[String]]    | some add
 `CallerType` is an Enum, i.e type can take different values : 
 
 ```haskell
-data CallerType = HumanCaller | AutomatonCaller
+data CallerType = HumanCaller | AutomatonCaller | ReferencedContactCaller
 ```
 
 ### HumanCaller 
@@ -1530,6 +1531,24 @@ callerType  | Constant                                          | `"HumanCaller"
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------
             | Constant                                          | `"AutomatonCaller"`
+
+### ReferencedContactCaller
+
+A caller that is already identified as a `PatrimonyContact`.
+
+> ReferencedContactCaller example :
+
+```json
+{
+    "uid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "callerType":"ReferencedContactCaller"
+}
+```
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+uid         | [SafeUUID](#safeuuid)                             | the unique identifier of the contact 
+callerType  | Constant                                          | `"ReferencedContactCaller"`
 
 ## ContactToCallback
 
