@@ -3655,7 +3655,7 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
                 </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"mediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0601020304"</span><span class="w">
+                    </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"0601020304"</span><span class="w"> </span><span class="p">]</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3832,7 +3832,7 @@ https://base_url/api/v1/tickets/export
                 </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email DI"</span><span class="p">,</span><span class="w">
                 </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"mediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0654675432"</span><span class="w">
+                    </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"0654675432"</span><span class="w"> </span><span class="p">]</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4146,7 +4146,7 @@ https://base_url/api/v1/tickets/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john Doe"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"mediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0601020304"</span><span class="w">
+            </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"0601020304"</span><span class="w"> </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5793,14 +5793,19 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </thead><tbody>
 <tr>
+<td>uid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the caller if he is referenced by Perfimmo as <code class="prettyprint">PatrimonyContact</code></td>
+</tr>
+<tr>
 <td>name</td>
 <td>String</td>
 <td>the name of the caller</td>
 </tr>
 <tr>
 <td>medium</td>
-<td><a href="#option">Option</a>[<a href="#contactmediumview">ContactMediumView</a>]</td>
-<td>the medium use by the caller to open <code class="prettyprint">Ticket</code>.</td>
+<td>Array[<a href="#contactmediumview">ContactMediumView</a>]</td>
+<td>the mediums of the caller.</td>
 </tr>
 </tbody></table>
 
@@ -8235,7 +8240,7 @@ the response because of the specific state of the request done to retrieve this 
 <h2 id="callertype">CallerType</h2>
 
 <p><code class="prettyprint">CallerType</code> is an Enum, i.e type can take different values : </p>
-<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">CallerType</span> <span class="o">=</span> <span class="kt">HumanCaller</span> <span class="o">|</span> <span class="kt">AutomatonCaller</span>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">CallerType</span> <span class="o">=</span> <span class="kt">HumanCaller</span> <span class="o">|</span> <span class="kt">AutomatonCaller</span> <span class="o">|</span> <span class="kt">ReferencedContactCaller</span>
 </code></pre>
 <h3 id="humancaller">HumanCaller</h3>
 
@@ -8302,6 +8307,37 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;AutomatonCaller&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="referencedcontactcaller">ReferencedContactCaller</h3>
+
+<p>A caller that is already identified as a <code class="prettyprint">PatrimonyContact</code>.</p>
+
+<blockquote>
+<p>ReferencedContactCaller example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"callerType"</span><span class="p">:</span><span class="s2">"ReferencedContactCaller"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the unique identifier of the contact</td>
+</tr>
+<tr>
+<td>callerType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferencedContactCaller&quot;</code></td>
 </tr>
 </tbody></table>
 
