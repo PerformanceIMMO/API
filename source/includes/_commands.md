@@ -506,6 +506,22 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 providerCompanyUid  | [SafeUUID](#safeuuid)                         | the uid of the `ProviderCompany` with which this `ProviderContact` should be associated. 
 commandType         | Constant                                      | `"AssociateProviderContactWithProviderCompany"`            
 
+### AssociateProviderContactWithPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` with which this `ProviderContact` should be associated. 
+commandType         | Constant                                      | `"AssociateProviderContactWithPatrimony"`
+
+### DissociateProviderContactFromPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` with which this `ProviderContact` should be associated. 
+commandType         | Constant                                      | `"DissociateProviderContactFromPatrimony"`
+
 ## OpenTicket
 
 Name                | Type                                          | Description

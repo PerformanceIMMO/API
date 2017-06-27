@@ -103,6 +103,10 @@ The `Command` have been already sent & computed, i.e an existing `Event` already
 
 ### ImppossibleToAssociateWithProviderCompanyThatIsAlreadyAssociated
 
+### ImpossibleToAssociateWithPatrimonyThatIsAlreadyAssociated
+
+### ImpossibleToDissociateFromPatrimonyThatIsNotAlreadyAssociated
+
 ## TicketEventError
 
 Name               | Type   | Description
