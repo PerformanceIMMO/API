@@ -2775,9 +2775,9 @@ https://base_url/api/v1/providercontacts?range<span class="o">=</span>0-0
 <tr>
 <td>agencyuids</td>
 <td>query</td>
-<td><a href="#option">Option</a>[String]</td>
-<td>None</td>
-<td>query matching with several <code class="prettyprint">agencies</code> uid.<br/> ex: <code class="prettyprint">agency=agency_uid1,agency_uid2</code></td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>[ ]</td>
+<td>query matching with several <code class="prettyprint">agencies</code> uid.<br/> ex: <code class="prettyprint">agencyuids=agency_uid1,agency_uid2</code></td>
 </tr>
 <tr>
 <td>providercompanyuid</td>
@@ -2785,6 +2785,13 @@ https://base_url/api/v1/providercontacts?range<span class="o">=</span>0-0
 <td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
 <td>None</td>
 <td>query matching with one <code class="prettyprint">ProviderCompany</code> uid. <br/> <code class="prettyprint">providercompanyuid=company_uid</code></td>
+</tr>
+<tr>
+<td>patrimonyuids</td>
+<td>query</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>[ ]</td>
+<td>query matching with several <code class="prettyprint">Patrimony</code> uid.<br/> ex: <code class="prettyprint">patrimonyuids=patrimony_uid1,patrimony_uid2</code></td>
 </tr>
 <tr>
 <td>fulltext</td>
@@ -10216,6 +10223,58 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<h3 id="associateprovidercontactwithpatrimony">AssociateProviderContactWithPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> with which this <code class="prettyprint">ProviderContact</code> should be associated.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociateProviderContactWithPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="dissociateprovidercontactfrompatrimony">DissociateProviderContactFromPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> with which this <code class="prettyprint">ProviderContact</code> should be associated.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DissociateProviderContactFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="openticket">OpenTicket</h2>
 
 <table><thead>
@@ -12186,6 +12245,83 @@ The following commands are made to close the Ticket.
     </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactAssociatedWithProviderCompany"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h3 id="providercontactassociatedwithpatrimony">ProviderContactAssociatedWithPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderCompany</code> referenced.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> resource associated with the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ProviderContactAssociatedWithPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<p>(processUid: ProcessUid,
+                                                  aggregateUid: AggregateUid,
+                                                  sentDate: DateTime,
+                                                  patrimonyUid: SafeUUID) extends OtherProviderContactEvent</p>
+
+<h3 id="providercontactdissociatedfrompatrimony">ProviderContactDissociatedFromPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderCompany</code> referenced.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Patrimony</code> resource dissociated with the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ProviderContactDissociatedFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="providercompanyevent">ProviderCompanyEvent</h2>
 
 <h3 id="providercompanyreferenced">ProviderCompanyReferenced</h3>
@@ -14613,6 +14749,10 @@ Received the following events means the Ticket was closed.
 <h3 id="impossibletoassociatetoagencythatisalreadyassociated">ImpossibleToAssociateToAgencyThatIsAlreadyAssociated</h3>
 
 <h3 id="imppossibletoassociatewithprovidercompanythatisalreadyassociated">ImppossibleToAssociateWithProviderCompanyThatIsAlreadyAssociated</h3>
+
+<h3 id="impossibletoassociatewithpatrimonythatisalreadyassociated">ImpossibleToAssociateWithPatrimonyThatIsAlreadyAssociated</h3>
+
+<h3 id="impossibletodissociatefrompatrimonythatisnotalreadyassociated">ImpossibleToDissociateFromPatrimonyThatIsNotAlreadyAssociated</h3>
 
 <h2 id="ticketeventerror">TicketEventError</h2>
 
