@@ -797,7 +797,7 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 name                | [Name](#name)                                 |
 company             | [Option](#option)[String]                     |  
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`
-contacts            | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
+contacts            | [NonEmptyList](#nonemptylist)[[ContactInfo](#contactinfo)] | a non empty list of contact like phone number or email 
 eventType           | Constant                                      | `"PatrimonyContactReferenced"`
 
 ### PatrimonyContactLinkedWith
@@ -828,7 +828,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
-contact             | [ContactMedium](#contactmedium)               | a contact like phone number or email 
+contact             | [ContactInfo](#contactinfo)                 | a contact like phone number or email 
 eventType           | Constant                                      | `"ContactAdded"`
 
 ### ContactRemoved
@@ -838,7 +838,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
-contact             | [ContactMedium](#contactmedium)               | a contact like phone number or email 
+contact             | [ContactInfo](#contactinfo)                   | a contact like phone number or email 
 eventType           | Constant                                      | `"ContactRemoved"`
 
 

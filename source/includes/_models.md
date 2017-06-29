@@ -1676,6 +1676,62 @@ Name              | Type                                              | Descript
 phone             | String                                            | 
 contactMediumType | Constant                                          | `"SMS"`
 
+## ContactInfo
+
+`ContactInfo` is an Enum, i.e type can take different values : 
+
+```haskell
+data ContactInfo = Phone | Fax | Mail
+```
+
+### Phone 
+
+> Phone example :
+
+```json
+{
+    "phone":"0146305674",
+    "contactInfoType":"Phone"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+phone             | String                                            | 
+contactInfoType   | Constant                                          | `"Phone"`
+                        
+### Fax 
+
+> Fax example :
+
+```json
+{
+    "fax":"0146305674",
+    "contactInfoType":"Fax"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+fax               | String                                            | 
+contactInfoType   | Constant                                          | `"Fax"`
+
+### Mail 
+
+> Mail example :
+
+```json
+{
+    "fax":"0146305674",
+    "contactInfoType":"Mail"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+mail              | String                                            | 
+contactInfoType   | Constant                                          | `"Mail"`
+
 ## Persona
 
 `Persona` is an Enum, i.e type can take different values : 
