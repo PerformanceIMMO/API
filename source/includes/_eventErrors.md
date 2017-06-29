@@ -199,6 +199,8 @@ message            | String | a message describing the error
 
 ### ImpossibleToRemoveNonExistingLink
 
+### ImpossibleToRemoveBecauseShouldHaveAtLeastOneRemainingLink
+
 ### ImpossibleToAddContactThatAlreadyExistInThisPatrimonyContact
 
 ### ImpossibleToRemoveNonExistingContact
