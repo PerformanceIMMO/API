@@ -8557,6 +8557,98 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<h2 id="contactinfo">ContactInfo</h2>
+
+<p><code class="prettyprint">ContactInfo</code> is an Enum, i.e type can take different values : </p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">ContactInfo</span> <span class="o">=</span> <span class="kt">Phone</span> <span class="o">|</span> <span class="kt">Fax</span> <span class="o">|</span> <span class="kt">Mail</span>
+</code></pre>
+<h3 id="phone">Phone</h3>
+
+<blockquote>
+<p>Phone example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"phone"</span><span class="p">:</span><span class="s2">"0146305674"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>contactInfoType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;Phone&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="fax">Fax</h3>
+
+<blockquote>
+<p>Fax example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:</span><span class="s2">"0146305674"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Fax"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fax</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>contactInfoType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;Fax&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="mail">Mail</h3>
+
+<blockquote>
+<p>Mail example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:</span><span class="s2">"0146305674"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Mail"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mail</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>contactInfoType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;Mail&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="persona">Persona</h2>
 
 <p><code class="prettyprint">Persona</code> is an Enum, i.e type can take different values : </p>
@@ -14403,7 +14495,7 @@ Received the following events means the Ticket was closed.
 </tr>
 <tr>
 <td>contacts</td>
-<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#contactmedium">ContactMedium</a>]</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#contactinfo">ContactInfo</a>]</td>
 <td>a non empty list of contact like phone number or email</td>
 </tr>
 <tr>
@@ -14511,7 +14603,7 @@ Received the following events means the Ticket was closed.
 </tr>
 <tr>
 <td>contact</td>
-<td><a href="#contactmedium">ContactMedium</a></td>
+<td><a href="#contactinfo">ContactInfo</a></td>
 <td>a contact like phone number or email</td>
 </tr>
 <tr>
@@ -14547,7 +14639,7 @@ Received the following events means the Ticket was closed.
 </tr>
 <tr>
 <td>contact</td>
-<td><a href="#contactmedium">ContactMedium</a></td>
+<td><a href="#contactinfo">ContactInfo</a></td>
 <td>a contact like phone number or email</td>
 </tr>
 <tr>
