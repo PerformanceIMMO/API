@@ -1180,6 +1180,7 @@ Name            | Type                                                  | Descri
 uid             | [SafeUUID](#safeuuid)                                 | the uid of the `ProviderContact`
 label           | String                                                | label of the `ProviderContact`
 providerCompany | [Option[[ProviderCompanyInContact](#providercompanyincontact)]](#option) | an optional reference to a `ProviderCompany`. <br/> Means this `ProviderContact` is a part of this `ProviderCompany`.
+activities      | Array[[ProviderContactActivity](#providercontactactivity)]
 phones          | Array[String]                                         | 
 fax             | Array[String]                                         | 
 emails          | Array[String]                                         | 
@@ -1194,6 +1195,13 @@ uid             | [SafeUUID](#safeuuid)                                 | the ui
 name            | String                                                | name of the `ProviderCompany`
 siretNumber     | [SIRET](#siret)                                       | siretNumber of the `ProviderCompany` 
   
+## ProviderContactActivity  
+
+Name            | Type                                                  | Description
+----------------| ------------------------------------------------------| --------------------------------------------------
+activityUid     | [SafeUUID](#safeuuid)                                 | the uid of the `Activity`
+excludedIncidentTypes | Array[[SafeUUID](#safeuuid)]                    | 
+
 ## ProviderCompanyResultView
 
 ### Fields

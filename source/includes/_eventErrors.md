@@ -206,3 +206,5 @@ message            | String | a message describing the error
 ### ImpossibleToRemoveNonExistingContact
 
 ### ImpossibleToRemoveBecauseShouldHaveAtLeastOneRemainingContact
+
+### ImpossibleToRemoveNonExistingActivity

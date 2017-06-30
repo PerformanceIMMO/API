@@ -178,7 +178,7 @@ eventType           | Constant                                      | `"CallRece
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderCompany` referenced.
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` resource associated with the `ProviderContact`
 eventType           | Constant                                      | `"ProviderContactAssociatedWithPatrimony"`
@@ -193,10 +193,30 @@ eventType           | Constant                                      | `"Provider
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderCompany` referenced.
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` resource dissociated with the `ProviderContact`
 eventType           | Constant                                      | `"ProviderContactDissociatedFromPatrimony"`
+
+### ActivityAssignedToProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
+activityUid         | [SafeUUID](#safeuuid)                         | the uid of the `Activity` assigned to this `ProviderContact` 
+excludedIncidentTypes | Array[[SafeUUID](#safeuuid)]                | the list of incident type that is not managed for this Activity by this `ProviderContact` 
+eventType           | Constant                                      | `"ActivityAssignedToProviderContact"`
+
+### ActivityRemovedFromProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
+activityUid         | [SafeUUID](#safeuuid)                         | the uid of the `Activity` removed from this `ProviderContact` 
+eventType           | Constant                                      | `"ActivityRemovedFromProviderContact"`
+
 
 ## ProviderCompanyEvent
 

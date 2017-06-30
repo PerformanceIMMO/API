@@ -522,6 +522,23 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` with which this `ProviderContact` should be associated. 
 commandType         | Constant                                      | `"DissociateProviderContactFromPatrimony"`
 
+### AssignActivityToProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+activityUidUid      | [SafeUUID](#safeuuid)                         | the uid of the `Activity` assigned to this `ProviderContact` 
+excludedIncidentTypes | Array[[SafeUUID](#safeuuid)]                | the list of incident type that is not managed for this Activity by this `ProviderContact` 
+commandType         | Constant                                      | `"AssignActivityToProviderContact"`
+
+### RemoveActivityFromProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+activityUidUid      | [SafeUUID](#safeuuid)                         | the uid of the `Activity` should be removed from this `ProviderContact` 
+commandType         | Constant                                      | `"RemoveActivityFromProviderContact"`
+
 ## OpenTicket
 
 Name                | Type                                          | Description
