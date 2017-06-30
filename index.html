@@ -7648,6 +7648,11 @@ the response because of the specific state of the request done to retrieve this 
 <td>an optional reference to a <code class="prettyprint">ProviderCompany</code>. <br/> Means this <code class="prettyprint">ProviderContact</code> is a part of this <code class="prettyprint">ProviderCompany</code>.</td>
 </tr>
 <tr>
+<td>activities</td>
+<td>Array[<a href="#providercontactactivity">ProviderContactActivity</a>]</td>
+<td></td>
+</tr>
+<tr>
 <td>phones</td>
 <td>Array[String]</td>
 <td></td>
@@ -7697,6 +7702,27 @@ the response because of the specific state of the request done to retrieve this 
 <td>siretNumber</td>
 <td><a href="#siret">SIRET</a></td>
 <td>siretNumber of the <code class="prettyprint">ProviderCompany</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactactivity">ProviderContactActivity</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Activity</code></td>
+</tr>
+<tr>
+<td>excludedIncidentTypes</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10367,6 +10393,63 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<h3 id="assignactivitytoprovidercontact">AssignActivityToProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>activityUidUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Activity</code> assigned to this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>excludedIncidentTypes</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the list of incident type that is not managed for this Activity by this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssignActivityToProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="removeactivityfromprovidercontact">RemoveActivityFromProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>activityUidUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Activity</code> should be removed from this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;RemoveActivityFromProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="openticket">OpenTicket</h2>
 
 <table><thead>
@@ -12354,7 +12437,7 @@ The following commands are made to close the Ticket.
 <tr>
 <td>aggregateUid</td>
 <td><a href="#safeuuid">SafeUUID</a></td>
-<td>the uid of the <code class="prettyprint">ProviderCompany</code> referenced.</td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
 </tr>
 <tr>
 <td>sentDate</td>
@@ -12395,7 +12478,7 @@ The following commands are made to close the Ticket.
 <tr>
 <td>aggregateUid</td>
 <td><a href="#safeuuid">SafeUUID</a></td>
-<td>the uid of the <code class="prettyprint">ProviderCompany</code> referenced.</td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
 </tr>
 <tr>
 <td>sentDate</td>
@@ -12411,6 +12494,73 @@ The following commands are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;ProviderContactDissociatedFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="activityassignedtoprovidercontact">ActivityAssignedToProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
+</tr>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Activity</code> assigned to this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>excludedIncidentTypes</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the list of incident type that is not managed for this Activity by this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ActivityAssignedToProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="activityremovedfromprovidercontact">ActivityRemovedFromProviderContact</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
+</tr>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Activity</code> removed from this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ActivityRemovedFromProviderContact&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -15001,6 +15151,8 @@ Received the following events means the Ticket was closed.
 <h3 id="impossibletoremovenonexistingcontact">ImpossibleToRemoveNonExistingContact</h3>
 
 <h3 id="impossibletoremovebecauseshouldhaveatleastoneremainingcontact">ImpossibleToRemoveBecauseShouldHaveAtLeastOneRemainingContact</h3>
+
+<h3 id="impossibletoremovenonexistingactivity">ImpossibleToRemoveNonExistingActivity</h3>
 
           <h1 id="errors">Errors</h1>
 
