@@ -2848,11 +2848,11 @@ https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74
     </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atti nord"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"06.71.01.83.65"</span><span class="w">
+        </span><span class="s2">"0671018362"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
     </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"relation.client@itac-itservices.eu"</span><span class="w">
+        </span><span class="s2">"relation.client@perfimmo.com"</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -3052,6 +3052,109 @@ https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74/st
 <tr>
 <td>200</td>
 <td><a href="#providercontactstats">ProviderContactStats</a></td>
+<td>All resources&rsquo;s elements are returned.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-suggestions-for-assign-providercontact">Get suggestions for assign ProviderContact</h2>
+
+<p>Given a <code class="prettyprint">Patrimony</code> &amp; referenced incident type, this API provide a restricted list of <code class="prettyprint">ProviderContact</code> 
+able to intervene on this incident for this <code class="prettyprint">Patrimony</code>.
+This list will be sorted like that : <br/>
+- first the <code class="prettyprint">ProviderContact</code>s directly linked with the selected <code class="prettyprint">Patrimony</code> <br/> 
+- after the <code class="prettyprint">ProviderContact</code>s linked with <code class="prettyprint">Patrimony</code> by means of its direct link with <code class="prettyprint">Agency</code> itself linked with this <code class="prettyprint">Patrimony</code>.                                             </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/providercontacts/suggest?patrimonyuid<span class="o">=</span>8c12f096-20e6-11ab-8ff7-2c39b4397040&amp;incidenttypeuid<span class="o">=</span>7634c414-8822-e29d-fe2b-0a18b3174369&amp;responsesize<span class="o">=</span>1
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"atti nord"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"activities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nt">"activityUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w"> 
+                    </span><span class="nt">"includedIncidentTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"isDirectlyLinkedWithPatrimony"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"06.71.01.83.65"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"relation.client@perfimmo.com"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">    
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p><strong><code class="prettyprint">GET</code></strong> <code class="prettyprint">/api/v1/providercontacts/suggest</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimonyuid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>mandatory</td>
+<td>uid of a <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>incidenttypeuid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>mandatory</td>
+<td>uid of an incident type</td>
+</tr>
+<tr>
+<td>responsesize</td>
+<td>query</td>
+<td><a href="#option">Option</a>[Int]</td>
+<td>5</td>
+<td>an optional parameter to precise response size (max 100)</td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#providercontactsuggestresultview">ProviderContactSuggestResultView</a></td>
 <td>All resources&rsquo;s elements are returned.</td>
 </tr>
 <tr>
@@ -9281,6 +9384,100 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <p><code class="prettyprint">&quot;Member&quot;</code> or <code class="prettyprint">&quot;President&quot;</code></p>
 <pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">HomeOwnerAssociationPosition</span> <span class="o">=</span> <span class="kt">Member</span> <span class="o">|</span> <span class="kt">President</span> 
 </code></pre>
+<h2 id="providercontactsuggestresultview">ProviderContactSuggestResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#providercontactsuggestview">ProviderContactSuggestView</a>]</td>
+<td>Array of suggested <code class="prettyprint">ProviderContact</code>s</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactsuggestview">ProviderContactSuggestView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>uid of the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>the <code class="prettyprint">ProviderContact</code>&rsquo;s label</td>
+</tr>
+<tr>
+<td>activities</td>
+<td>Array[<a href="#providercontactactivityview">ProviderContactActivityView</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>isDirectlyLinkedWithPatrimony</td>
+<td>Boolean</td>
+<td>is this <code class="prettyprint">ProviderContact</code> directly related to the <code class="prettyprint">Patrimony</code></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>fax</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>Boolean</td>
+<td><code class="prettyprint">true</code> if the <code class="prettyprint">ProviderContact</code> is active</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactactivityview">ProviderContactActivityView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>includedIncidentTypes</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+
           <h1 id="commands">Commands</h1>
 
 <h2 id="createcompany">CreateCompany</h2>
