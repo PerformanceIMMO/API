@@ -528,7 +528,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 activityUidUid      | [SafeUUID](#safeuuid)                         | the uid of the `Activity` assigned to this `ProviderContact` 
-excludedIncidentTypes | Array[[SafeUUID](#safeuuid)]                | the list of incident type that is not managed for this Activity by this `ProviderContact` 
+includedIncidentTypes | Array[[SafeUUID](#safeuuid)]                | the list of incident type that is managed for this Activity by this `ProviderContact` 
 commandType         | Constant                                      | `"AssignActivityToProviderContact"`
 
 ### RemoveActivityFromProviderContact

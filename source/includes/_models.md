@@ -1200,7 +1200,7 @@ siretNumber     | [SIRET](#siret)                                       | siretN
 Name            | Type                                                  | Description
 ----------------| ------------------------------------------------------| --------------------------------------------------
 activityUid     | [SafeUUID](#safeuuid)                                 | the uid of the `Activity`
-excludedIncidentTypes | Array[[SafeUUID](#safeuuid)]                    | 
+includedIncidentTypes | Array[[SafeUUID](#safeuuid)]                    | 
 
 ## ProviderCompanyResultView
 
