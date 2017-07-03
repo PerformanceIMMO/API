@@ -2095,3 +2095,35 @@ linkType     | Constant                                          | `"LinkToLotAs
 ```haskell
 data HomeOwnerAssociationPosition = Member | President 
 ```
+
+## ProviderContactSuggestResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[ProviderContactSuggestView](#providercontactsuggestview)] | Array of suggested `ProviderContact`s
+
+## ProviderContactSuggestView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+uid         | [SafeUUID](#safeuuid)                             | uid of the `ProviderContact`
+label       | String                                            | the `ProviderContact`'s label
+activities  | Array[[ProviderContactActivityView](#providercontactactivityview)] |
+isDirectlyLinkedWithPatrimony | Boolean                         | is this `ProviderContact` directly related to the `Patrimony`
+phones      | Array[String]                                     |
+fax         | Array[String]                                     |
+emails      | Array[String]                                     |
+active      | Boolean                                           | `true` if the `ProviderContact` is active
+
+## ProviderContactActivityView
+
+### Fields
+
+Name                    | Type                                              | Description
+------------------------| --------------------------------------------------| --------------------------
+activityUid             | [SafeUUID](#safeuuid)                             | 
+includedIncidentTypes   | Array[[SafeUUID](#safeuuid)]                      | 

@@ -101,11 +101,11 @@ Content-Type: application/json
     "uid": "16fc6e5e-163d-799c-89ef-a764f2090d74",
     "label": "atti nord",
     "phones": [
-        "06.71.01.83.65"
+        "0671018362"
     ],
     "fax": [ ],
     "emails": [
-        "relation.client@itac-itservices.eu"
+        "relation.client@perfimmo.com"
     ],
     "active": false,
     "_links": [
@@ -223,6 +223,73 @@ to              | query | [Option](#option)[[LocalDate](#localdate)]| None      
 Http code | Type                                                      | Description
 ----------| ----------------------------------------------------------| ----------------------------
 200       | [ProviderContactStats](#providercontactstats)             | All resources's elements are returned.
+400       | Error                                                     | Bad request, occurs most often when parameters passed are invalid.
+
+## Get suggestions for assign ProviderContact
+
+Given a `Patrimony` & referenced incident type, this API provide a restricted list of `ProviderContact` 
+able to intervene on this incident for this `Patrimony`.
+This list will be sorted like that : <br/>
+- first the `ProviderContact`s directly linked with the selected `Patrimony` <br/> 
+- after the `ProviderContact`s linked with `Patrimony` by means of its direct link with `Agency` itself linked with this `Patrimony`.                                             
+
+### HTTP Request
+
+> HTTP query example :
+
+```shell
+curl -XGET \
+-H "Cookie: PI_SESSION=..." \
+https://base_url/api/v1/providercontacts/suggest?patrimonyuid=8c12f096-20e6-11ab-8ff7-2c39b4397040&incidenttypeuid=7634c414-8822-e29d-fe2b-0a18b3174369&responsesize=1
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+```
+```json
+{
+    "result": [
+        {
+            "uid": "16fc6e5e-163d-799c-89ef-a764f2090d74",
+            "label": "atti nord",
+            "activities": [
+            	{
+            		"activityUid": "16fc6e5e-163d-799c-89ef-a764f2090d74", 
+            		"includedIncidentTypes": ["7634c414-8822-e29d-fe2b-0a18b3174369"]
+            	}
+            ],
+            "isDirectlyLinkedWithPatrimony": true,
+            "phones": [
+                "06.71.01.83.65"
+            ],
+            "fax": [ ],
+            "emails": [
+                "relation.client@perfimmo.com"
+            ],
+            "active": false
+        }    
+    ]
+}	
+```
+
+**`GET`** `/api/v1/providercontacts/suggest`
+
+### Parameters
+
+Name            | In    | Type                                      | Default   | Description
+--------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
+patrimonyuid    | query | [SafeUUID](#safeuuid)                     | mandatory | uid of a `Patrimony` 
+incidenttypeuid | query | [SafeUUID](#safeuuid)                     | mandatory | uid of an incident type
+responsesize    | query | [Option](#option)[Int]                    | 5         | an optional parameter to precise response size (max 100)
+
+### Responses
+
+Http code | Type                                                      | Description
+----------| ----------------------------------------------------------| ----------------------------
+200       | [ProviderContactSuggestResultView](#providercontactsuggestresultview) | All resources's elements are returned.
 400       | Error                                                     | Bad request, occurs most often when parameters passed are invalid.
 
 ## Create ProviderContact
