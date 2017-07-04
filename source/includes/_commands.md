@@ -1057,7 +1057,6 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
 name                | [Name](#name)                                 |
-company             | [Option](#option)[String]                     |  
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`
 contacts            | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
 commandType         | Constant                                      | `"ReferencePatrimonyContact"`
@@ -1102,6 +1101,5 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 name                | [Option](#option)[[Name](#name)]              | if None, field not updated
-company             | [Option](#option)[String]                     | if None, field not updated 
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
 commandType         | Constant                                      | `"UpdatePatrimonyContactIdentity"`

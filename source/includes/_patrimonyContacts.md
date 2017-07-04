@@ -242,7 +242,6 @@ Name               | In    | Type                                             | 
 processUid         | body  | [SafeUUID](#safeuuid)                            | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid       | body  | [Option](#option)[[SafeUUID](#safeuuid)]         | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
 name               | body  | [Name](#name)                                    | the name of the `PatrimonyContact`
-company            | body  | [Option](#option)[String]                        | an optional company's name of the `PatrimonyContact`
 address            | body  | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`  
 contacts           | body  | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
 linkedWithEntities | body  | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 

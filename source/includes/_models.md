@@ -122,6 +122,7 @@ nameType    | Constant                                          | `"PoorName"`
 
 ```json
 {
+	"company":"My Compnay & sons",
 	"gender":"female",
 	"firstName":"John",
 	"lastName":"Doe",
@@ -133,7 +134,8 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------------------------------
 gender      | [Option](#option)[String]                         | only value accepted are `"Male"` or `"Female"`
 firstName   | String                                            | 
-lastName    | String                                            | 
+lastName    | String                                            |
+company     | [Option](#option)[String]                         | an optional company's name
 nameType    | Constant                                          | `"CivilName"`
 
 ## CompanyQueryView

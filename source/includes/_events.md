@@ -815,7 +815,6 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 name                | [Name](#name)                                 |
-company             | [Option](#option)[String]                     |  
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`
 contacts            | [NonEmptyList](#nonemptylist)[[ContactInfo](#contactinfo)] | a non empty list of contact like phone number or email 
 eventType           | Constant                                      | `"PatrimonyContactReferenced"`
@@ -870,6 +869,5 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 name                | [Option](#option)[[Name](#name)]              | if None, field not updated
-company             | [Option](#option)[String]                     | if None, field not updated 
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
 eventType           | Constant                                      | `"PatrimonyContactIdentityUpdated"`
