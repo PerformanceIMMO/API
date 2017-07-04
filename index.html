@@ -1831,12 +1831,6 @@ https://base_url/api/vEvent/patrimonycontacts
 <td>the name of the <code class="prettyprint">PatrimonyContact</code></td>
 </tr>
 <tr>
-<td>company</td>
-<td>body</td>
-<td><a href="#option">Option</a>[String]</td>
-<td>an optional company&rsquo;s name of the <code class="prettyprint">PatrimonyContact</code></td>
-</tr>
-<tr>
 <td>address</td>
 <td>body</td>
 <td><a href="#option">Option</a>[<a href="#patrimonyaddressreference">PatrimonyContactAddressReference</a>]</td>
@@ -4902,6 +4896,7 @@ the response because of the specific state of the request done to retrieve this 
 <p>CivilName example :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"company"</span><span class="p">:</span><span class="s2">"My Compnay &amp; sons"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"female"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
@@ -4929,6 +4924,11 @@ the response because of the specific state of the request done to retrieve this 
 <td>lastName</td>
 <td>String</td>
 <td></td>
+</tr>
+<tr>
+<td>company</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>an optional company&rsquo;s name</td>
 </tr>
 <tr>
 <td>nameType</td>
@@ -12264,11 +12264,6 @@ The following commands are made to close the Ticket.
 <td></td>
 </tr>
 <tr>
-<td>company</td>
-<td><a href="#option">Option</a>[String]</td>
-<td></td>
-</tr>
-<tr>
 <td>address</td>
 <td><a href="#option">Option</a>[<a href="#patrimonyaddressreference">PatrimonyContactAddressReference</a>]</td>
 <td>an optional address for this <code class="prettyprint">PatrimonyContact</code></td>
@@ -12406,11 +12401,6 @@ The following commands are made to close the Ticket.
 <tr>
 <td>name</td>
 <td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
-<td>if None, field not updated</td>
-</tr>
-<tr>
-<td>company</td>
-<td><a href="#option">Option</a>[String]</td>
 <td>if None, field not updated</td>
 </tr>
 <tr>
@@ -14831,11 +14821,6 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>company</td>
-<td><a href="#option">Option</a>[String]</td>
-<td></td>
-</tr>
-<tr>
 <td>address</td>
 <td><a href="#option">Option</a>[<a href="#patrimonyaddressreference">PatrimonyContactAddressReference</a>]</td>
 <td>an optional address for this <code class="prettyprint">PatrimonyContact</code></td>
@@ -15023,11 +15008,6 @@ Received the following events means the Ticket was closed.
 <tr>
 <td>name</td>
 <td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
-<td>if None, field not updated</td>
-</tr>
-<tr>
-<td>company</td>
-<td><a href="#option">Option</a>[String]</td>
 <td>if None, field not updated</td>
 </tr>
 <tr>
