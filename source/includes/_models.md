@@ -92,6 +92,16 @@ Name        | Type                                              | Description
 uid         | [SafeUUID](#safeuuid)                             | the uid of the item
 label       | String                                            | the label of the item
 
+## ItemAbstractWithRef
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | the uid of the item
+ref         | String                                            | the reference of the item
+label       | [Option](#option)[String]                         | the label of the item
+
 ## Name
 
 `Name` is an Enum, i.e type can take different values : 
@@ -1183,6 +1193,24 @@ uid             | [SafeUUID](#safeuuid)                                 | the ui
 label           | String                                                | label of the `ProviderContact`
 providerCompany | [Option[[ProviderCompanyInContact](#providercompanyincontact)]](#option) | an optional reference to a `ProviderCompany`. <br/> Means this `ProviderContact` is a part of this `ProviderCompany`.
 activities      | Array[[ProviderContactActivity](#providercontactactivity)]
+phones          | Array[String]                                         | 
+fax             | Array[String]                                         | 
+emails          | Array[String]                                         | 
+active          | Boolean                                               | 
+_links          | Array[[RestNavigationLink](#restnavigationlink)]      | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
+
+## ProviderContactDetailedQueryView
+
+### Fields
+
+Name            | Type                                                  | Description
+----------------| ------------------------------------------------------| --------------------------------------------------
+uid             | [SafeUUID](#safeuuid)                                 | the uid of the `ProviderContact`
+label           | String                                                | label of the `ProviderContact`
+providerCompany | [Option[[ProviderCompanyInContact](#providercompanyincontact)]](#option) | an optional reference to a `ProviderCompany`. <br/> Means this `ProviderContact` is a part of this `ProviderCompany`.
+activities      | Array[[ProviderContactActivity](#providercontactactivity)] | a `ProviderContact` can perform several activities. e.g some job like plumbing.
+patrimonies     | Array[[ItemAbstractWithRef](#itemabstractwithref)]    | a `ProviderContact` is able to intervene on several `Patrimony`.
+company         | [ItemAbstract](#itemabstract)                         | a `ProviderContact` is private for a given `ClientCompany`. 
 phones          | Array[String]                                         | 
 fax             | Array[String]                                         | 
 emails          | Array[String]                                         | 

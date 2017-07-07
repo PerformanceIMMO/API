@@ -131,7 +131,7 @@ contact_uid     | path  | [SafeUUID](#safeuuid)                     |           
 
 Http code | Type                                                      | Description
 ----------| ----------------------------------------------------------| ----------------------------
-200       | [ProviderContactQueryView](#providercontactqueryview)     | the requested `ProviderContact`
+200       | [ProviderContactDetailedQueryView](#providercontactdetailedqueryview)     | the requested `ProviderContact`
 400       | Error                                                     | Bad request, occurs most often when parameters passed are invalid.
 
 ### NavigationLinks
@@ -310,6 +310,7 @@ curl -XPOST \
     "lastName":"Doe",
     "nameType":"CivilName"
  },
+ "companyUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
  "phones":[ "0145123456" ],
  "fax":[],
  "emails":[],
@@ -349,6 +350,14 @@ HTTP/1.1 201 Created
             "callCenterUid":"16fc6e5e-163d-799c-89ef-a764f2090d74",
             "sentDate":"2016-02-29T12:05:32+02:00",
             "eventType":"ProviderContactAssociatedToCallCenter"
+        },
+        {
+            "processUid": "8c12f096-20e6-11ab-8ff7-2c39b4397040",
+            "aggregateUid": "7634c414-8822-e29d-fe2b-0a18b3174369",
+            "date": "2016-02-29",
+            "companyUid": "6ed010a1-7481-4b38-87da-c219fc31ba64",
+            "sentDate": "2016-02-29T12:05:32+02:00",
+            "eventType": "ProviderContactAssociatedToCompany"
         }
     ]
 }
@@ -363,6 +372,7 @@ Name               | In    | Type                                             | 
 processUid         | body  | [SafeUUID](#safeuuid)                            | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid       | body  | [Option](#option)[[SafeUUID](#safeuuid)]         | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
 providerCompanyUid | body  | [Option](#option)[[SafeUUID](#safeuuid)]         | if this field is set, this produce an association between `ProviderContact` created & that `ProviderCompany`. 
+companyUid         | body  | [SafeUUID](#safeuuid)                            | a `ProviderContact` is a private entity for a given `Company`. 
 date               | body  | [DateTime](#datetime)                            | the creation date of this resource
 name               | body  | [Name](#name)                                    | the name of the `ProviderContact`
 phones             | body  | Array[String]                                    | 
@@ -412,6 +422,7 @@ HTTP/1.1 200 Ok
             "eventType":"ProviderContactAssociatedToAgency"
         }    
     ]
+}    
 ```
 
 **`PATCH`** `/api/vEvent/providercontacts/aggregate_uid`
