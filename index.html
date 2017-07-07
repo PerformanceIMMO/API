@@ -2892,7 +2892,7 @@ https://base_url/api/v1/providercontacts/16fc6e5e-163d-799c-89ef-a764f2090d74
 </thead><tbody>
 <tr>
 <td>200</td>
-<td><a href="#providercontactqueryview">ProviderContactQueryView</a></td>
+<td><a href="#providercontactdetailedqueryview">ProviderContactDetailedQueryView</a></td>
 <td>the requested <code class="prettyprint">ProviderContact</code></td>
 </tr>
 <tr>
@@ -3176,6 +3176,7 @@ https://base_url/api/v1/providercontacts/suggest?patrimonyuid<span class="o">=</
     <span class="s2">"lastName"</span>:<span class="s2">"Doe"</span>,
     <span class="s2">"nameType"</span>:<span class="s2">"CivilName"</span>
  <span class="o">}</span>,
+ <span class="s2">"companyUid"</span>:<span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span>,
  <span class="s2">"phones"</span>:[ <span class="s2">"0145123456"</span> <span class="o">]</span>,
  <span class="s2">"fax"</span>:[],
  <span class="s2">"emails"</span>:[],
@@ -3212,6 +3213,14 @@ https://base_url/api/vEvent/providercontacts
             </span><span class="nt">"callCenterUid"</span><span class="p">:</span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactAssociatedToCallCenter"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-29"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"companyUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProviderContactAssociatedToCompany"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3245,6 +3254,12 @@ https://base_url/api/vEvent/providercontacts
 <td>body</td>
 <td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
 <td>if this field is set, this produce an association between <code class="prettyprint">ProviderContact</code> created &amp; that <code class="prettyprint">ProviderCompany</code>.</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td>body</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>a <code class="prettyprint">ProviderContact</code> is a private entity for a given <code class="prettyprint">Company</code>.</td>
 </tr>
 <tr>
 <td>date</td>
@@ -3336,6 +3351,7 @@ https://base_url/api/vEvent/providercontacts/7634c414-8822-e29d-fe2b-0a18b317436
             </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ProviderContactAssociatedToAgency"</span><span class="w">
         </span><span class="p">}</span><span class="w">    
     </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">    
 </span></code></pre>
 <p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/providercontacts/aggregate_uid</code></p>
 
@@ -4852,6 +4868,34 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>label</td>
 <td>String</td>
+<td>the label of the item</td>
+</tr>
+</tbody></table>
+
+<h2 id="itemabstractwithref">ItemAbstractWithRef</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the item</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td>the reference of the item</td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>the label of the item</td>
 </tr>
 </tbody></table>
@@ -7754,6 +7798,74 @@ the response because of the specific state of the request done to retrieve this 
 <td>activities</td>
 <td>Array[<a href="#providercontactactivity">ProviderContactActivity</a>]</td>
 <td></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>fax</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>Boolean</td>
+<td></td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td>Array of <code class="prettyprint">RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
+</tr>
+</tbody></table>
+
+<h2 id="providercontactdetailedqueryview">ProviderContactDetailedQueryView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>label</td>
+<td>String</td>
+<td>label of the <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>providerCompany</td>
+<td><a href="#option">Option[<a href="#providercompanyincontact">ProviderCompanyInContact</a>]</a></td>
+<td>an optional reference to a <code class="prettyprint">ProviderCompany</code>. <br/> Means this <code class="prettyprint">ProviderContact</code> is a part of this <code class="prettyprint">ProviderCompany</code>.</td>
+</tr>
+<tr>
+<td>activities</td>
+<td>Array[<a href="#providercontactactivity">ProviderContactActivity</a>]</td>
+<td>a <code class="prettyprint">ProviderContact</code> can perform several activities. e.g some job like plumbing.</td>
+</tr>
+<tr>
+<td>patrimonies</td>
+<td>Array[<a href="#itemabstractwithref">ItemAbstractWithRef</a>]</td>
+<td>a <code class="prettyprint">ProviderContact</code> is able to intervene on several <code class="prettyprint">Patrimony</code>.</td>
+</tr>
+<tr>
+<td>company</td>
+<td><a href="#itemabstract">ItemAbstract</a></td>
+<td>a <code class="prettyprint">ProviderContact</code> is private for a given <code class="prettyprint">ClientCompany</code>.</td>
 </tr>
 <tr>
 <td>phones</td>
