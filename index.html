@@ -6264,6 +6264,11 @@ the response because of the specific state of the request done to retrieve this 
 <td>the <code class="prettyprint">Patrimony</code> linked to this <code class="prettyprint">Ticket</code>. optional.</td>
 </tr>
 <tr>
+<td>clientCompany</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the <code class="prettyprint">ClientCompany</code> linked to this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+<tr>
 <td>status</td>
 <td>ENUM</td>
 <td><code class="prettyprint">OPENED</code> or <code class="prettyprint">CLOSED</code>.</td>
@@ -6284,19 +6289,9 @@ the response because of the specific state of the request done to retrieve this 
 <td>insctructions about the intervention.</td>
 </tr>
 <tr>
-<td>created</td>
-<td><a href="#datetime">DateTime</a></td>
-<td>the date when this <code class="prettyprint">Ticket</code> was opened.</td>
-</tr>
-<tr>
-<td>updated</td>
-<td><a href="#datetime">DateTime</a></td>
-<td>the date when last update of this <code class="prettyprint">Ticket</code> occured.</td>
-</tr>
-<tr>
-<td>closed</td>
-<td><a href="#datetime">DateTime</a></td>
-<td>the date when this <code class="prettyprint">Ticket</code> was closed.</td>
+<td>dates</td>
+<td><a href="#ticketdates">TicketDates</a></td>
+<td></td>
 </tr>
 <tr>
 <td>openingTicketPurpose</td>
@@ -6337,6 +6332,32 @@ the response because of the specific state of the request done to retrieve this 
 <td>stats</td>
 <td>DetailedTicketStats</td>
 <td>a set of several stats on this <code class="prettyprint">Ticket</code>.</td>
+</tr>
+</tbody></table>
+
+<h2 id="ticketdates">TicketDates</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>created</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when this <code class="prettyprint">Ticket</code> was opened.</td>
+</tr>
+<tr>
+<td>updated</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when last update of this <code class="prettyprint">Ticket</code> occured.</td>
+</tr>
+<tr>
+<td>closed</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the date when this <code class="prettyprint">Ticket</code> was closed.</td>
 </tr>
 </tbody></table>
 
