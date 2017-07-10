@@ -641,13 +641,12 @@ uid         | [SafeUUID](#safeuuid)                             | the `Ticket`'s
 ref         | String                                            | the `Ticket`'s client reference.<br/> Could be `clientClaimNumber`or `callCenterClaimNumber` or `ticket_uid`.
 agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
 patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
+clientCompany | [SafeUUID](#safeuuid)                           | the `ClientCompany` linked to this `Ticket`.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
 state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
 request     | String                                            | description of the issue.
 instructions| String                                            | insctructions about the intervention.
-created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
-updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
-closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
+dates       | [TicketDates](#ticketdates)                       |
 openingTicketPurpose | [OpeningTicketPurpose](#openingticketpurpose) | The reason the `Ticket` was opened.
 caller      | [CallerTicketDetailedQueryView](#callerticketdetailedqueryview) | informations on person who ask for open this `Ticket`.
 report      | [Option](#option)[String]                         | intervention report, when intervention took place. 
@@ -657,6 +656,13 @@ journal     | Array[[DayEvent](#dayevent)]                      | the `Ticket`'s
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
 stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
 
+## TicketDates
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
+updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
+closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
 
 ## OpeningTicketPurpose
 
