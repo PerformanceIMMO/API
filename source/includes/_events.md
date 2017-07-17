@@ -24,6 +24,28 @@ siretNumber         | [SIRET](#siret)                               | the siret 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 eventType           | Constant                                      | `"CallReceived"`
 
+### CompanyUpgradedToStandardAccount
+   
+> CompanyUpgradedToStandardAccount example :    
+    
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "aggregateUid":"7634c414-8822-e29d-fe2b-0a18b3174369",
+    "upgradedDate":"2016-06-28",
+    "sentDate":"2016-06-28T12:03:32+02:00",
+    "eventType":"CompanyUpgradedToStandardAccount"
+} 
+``` 
+    
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+upgradedDate       | [LocalDate](#localdate)                       | the upgraded's date of this `Company`
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CompanyUpgradedToStandardAccount"`
+
 ## ProviderContactEvent
 
 ### ProviderContactAdded

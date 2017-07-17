@@ -158,7 +158,26 @@ uid         | [SafeUUID](#safeuuid)                             | id of the `Com
 label       | String                                            | the `Company`'s label
 isActive    | Boolean                                           | `true` if the `Company` is active
 holding     | [Option](#option)[[HoldingQueryView](#holdingqueryview)] | a reference to `Company`'s holding if has it
+siretNumber | [Option](#option)[[SIRET](#siret)]                |
+billingType | [Option](#option)[[CompanyBillingType](#companybillingtype)] |
 companyType | Enum                                              | enum : `"CallCenter"` or `"ClientAccountHolding"` or `"ClientAccount"`
+
+## CompanyBillingType
+
+`CompanyBillingType` is an Enum, i.e type can take different values :
+ 
+```haskell
+data CompanyBillingType = SponsoredAccount | PremiumAccount | StandardAccount
+```
+
+A simple String value that only can be :
+
+- SponsoredAccount (Account sponsored by a CallCenter) 
+
+- PremiumAccount   (Account sponsored by a CallCenter but with more rights)
+
+- StandardAccount  (Account that is directly billing with Perfimmo)
+
 
 ## AgencyQueryView
 

@@ -107,6 +107,12 @@ The `Command` have been already sent & computed, i.e an existing `Event` already
 
 ### ImpossibleToDissociateFromPatrimonyThatIsNotAlreadyAssociated
 
+### ImpossibleToRemoveNonExistingActivity
+
+### ImpossibleToAssociateProviderContactWithAgencyIfNotAlreadyAssociatedWithCompany
+
+### ImpossibleToAssociateProviderContactWithPatrimonyIfNotAlreadyAssociatedWithCompany
+
 ## TicketEventError
 
 Name               | Type   | Description

@@ -14,6 +14,7 @@ cf. le détails sur la [ressource](#company) `Company`.
     "aggregateUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
     "holdingReference":"9fe2e437-b237-8c9d-8b36-440d37fc8959",
     "callCenterUid":"f13ede3b-12d9-70ab-4874-e25ab23e33c0",
+    "billingType":"StandardAccount",
     "createdDate":"2016-06-27",
     "name":"My Client Account",
     "siretNumber":"80242504100018",
@@ -27,6 +28,7 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 aggregateUid       | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
 holdingReference   | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the `ClientAccount`'s holding if exist 
 callCenterReference| [SafeUUID](#safeuuid)                         | the uid of the `CallCenter` which send this Command  
+billingType        | [Option](#option)[[CompanyBillingType](#companybillingtype)]     | the billing type of the company. Optional. Sponsored by default.
 createdDate        | [LocalDate](#localdate)                       | the creation's date of this `ClientAccount`  
 name               | String                                        | the name of this `ClientAccount`.
 siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `ClientAccount`.
@@ -39,6 +41,7 @@ commandType        | Constant                                      | `"CreateCli
     "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
     "aggregateUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
     "callCenterUid":"f13ede3b-12d9-70ab-4874-e25ab23e33c0",
+    "billingType":"PremiumAccount",
     "createdDate":"2016-06-27",
     "name":"My Holding",
     "siretNumber":"80242504100018",
@@ -51,6 +54,7 @@ Name               | Type                                          | Description
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid       | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
 callCenterReference| [SafeUUID](#safeuuid)                         | the uid of the `CallCenter` which send this Command
+billingType        | [Option](#option)[[CompanyBillingType](#companybillingtype)]     | the billing type of the company. Optional. Sponsored by default.
 createdDate        | [LocalDate](#localdate)                       | the creation's date of this `ClientAccountHolding`  
 name               | String                                        | the name of this `ClientAccountHolding`.  
 siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `ClientAccountHolding`.
@@ -225,6 +229,22 @@ Name               | Type                                          | Description
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 downgradedDate     | [LocalDate](#localdate)                       | the updated's date of this `Company`  
 commandType        | Constant                                      | `"DowngradePremiumAccount"`
+
+### UpgradeCompanyToStandardAccount
+
+```json
+{
+    "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
+    "upgradedDate":"2016-06-28",
+    "commandType":"UpgradeCompanyToStandardAccount"
+} 
+``` 
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+downgradedDate     | [LocalDate](#localdate)                       | the upgraded's date of this `Company`  
+commandType        | Constant                                      | `"UpgradeCompanyToStandardAccount"`
 
 ## CreateAgency
 
