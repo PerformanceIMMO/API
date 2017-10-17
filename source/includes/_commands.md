@@ -471,8 +471,8 @@ commandType         | Constant                                      | `"Associat
 
 ### AssociateProviderContactToCompany
 
-Associate this `ProviderContact` to a specific `Company` and by inheritance to all of its `Agencies`. 
-Works only if the `Company` is a `ClientAccount`(i.e have agencies itself)
+Associate this `ProviderContact` to a specific `Company`. 
+Works only if the `Company` is a `ClientAccount`
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
