@@ -3765,11 +3765,13 @@ https://base_url/api/v1/tickets?range<span class="o">=</span>0-0
             </span><span class="nt">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-26T08:18:52.000Z"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-26T08:18:52.000Z"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"callPurpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chauffage  / Chauffage HS"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mr Provider"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"0146304312"</span><span class="p">],</span><span class="w">
-                </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-                </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="nt">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b93e3e9e-0acd-0e61-3b98-63818150167c"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"astreinte"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"phones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"fax"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w">
+                </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProviderContact"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"caller"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
@@ -5529,7 +5531,7 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>state</td>
 <td><a href="#option">Option</a>[<a href="#ticketstateview">TicketStateView</a>]</td>
-<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">MissionAccepted</code></td>
+<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">InterventionAccepted</code></td>
 </tr>
 <tr>
 <td>created</td>
@@ -5557,9 +5559,9 @@ the response because of the specific state of the request done to retrieve this 
 <td>informations on person who ask for open this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#option">Option</a>[<a href="#providerqueryview">ProviderQueryView</a>]</td>
-<td>informations on the possible last <code class="prettyprint">Provider</code> acting on this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#option">Option</a>[<a href="#ticketassigneequeryview">TicketAssigneeQueryView</a>]</td>
+<td>informations on the possible last <code class="prettyprint">TicketAssignee</code> acting on this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>address</td>
@@ -5607,7 +5609,7 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>state</td>
 <td><a href="#option">Option</a>[<a href="#ticketstateview">TicketStateView</a>]</td>
-<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">MissionAccepted</code></td>
+<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">InterventionAccepted</code></td>
 </tr>
 <tr>
 <td>created</td>
@@ -5640,9 +5642,9 @@ the response because of the specific state of the request done to retrieve this 
 <td>informations on person who ask for open this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#option">Option</a>[<a href="#providerqueryview">ProviderQueryView</a>]</td>
-<td>informations on the possible last <code class="prettyprint">Provider</code> acting on this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#option">Option</a>[<a href="#ticketassigneequeryview">TicketAssigneeQueryView</a>]</td>
+<td>informations on the possible last <code class="prettyprint">TicketAssignee</code> acting on this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>address</td>
@@ -6009,7 +6011,7 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </tbody></table>
 
-<h2 id="providerqueryview">ProviderQueryView</h2>
+<h2 id="ticketassigneequeryview">TicketAssigneeQueryView</h2>
 
 <h3 id="fields">Fields</h3>
 
@@ -6023,29 +6025,38 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>uid</td>
 <td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
-<td>the uid of the <code class="prettyprint">Provider</code>. (optional)</td>
+<td>the uid of the <code class="prettyprint">TicketAssignee</code>. (optional)</td>
 </tr>
 <tr>
 <td>name</td>
-<td><a href="#option">Option</a>[String]</td>
-<td>the name of the <code class="prettyprint">Provider</code>. (optional)</td>
+<td>String</td>
+<td>the name of the <code class="prettyprint">TicketAssignee</code>.</td>
 </tr>
 <tr>
 <td>phones</td>
 <td>Array[String]</td>
-<td>the phones&rsquo;s list of the <code class="prettyprint">Provider</code>.</td>
+<td>the phones&rsquo;s list of the <code class="prettyprint">TicketAssignee</code>.</td>
 </tr>
 <tr>
 <td>fax</td>
 <td>Array[String]</td>
-<td>the fax&rsquo;s list of the <code class="prettyprint">Provider</code>.</td>
+<td>the fax&rsquo;s list of the <code class="prettyprint">TicketAssignee</code>.</td>
 </tr>
 <tr>
 <td>emails</td>
 <td>Array[String]</td>
-<td>the emails&rsquo;s list of the <code class="prettyprint">Provider</code>.</td>
+<td>the emails&rsquo;s list of the <code class="prettyprint">TicketAssignee</code>.</td>
+</tr>
+<tr>
+<td>assigneeType</td>
+<td><a href="#assigneetype">AssigneeType</a></td>
+<td>the type of the assignee.</td>
 </tr>
 </tbody></table>
+
+<h2 id="assigneetype">AssigneeType</h2>
+
+<p>Simple enum value that can have these values : <code class="prettyprint">ProviderContact | ProviderCompany | Anonymous</code></p>
 
 <h2 id="basicaddress">BasicAddress</h2>
 
@@ -6299,7 +6310,7 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>state</td>
 <td><a href="#option">Option</a>[<a href="#ticketstateview">TicketStateView</a>]</td>
-<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">MissionAccepted</code></td>
+<td>the actual <code class="prettyprint">state</code> of this <code class="prettyprint">Ticket</code>.<br/> ex: <code class="prettyprint">InterventionAccepted</code></td>
 </tr>
 <tr>
 <td>request</td>
@@ -6332,9 +6343,9 @@ the response because of the specific state of the request done to retrieve this 
 <td>intervention report, when intervention took place.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#option">Option</a>[<a href="#providerqueryview">ProviderQueryView</a>]</td>
-<td>informations on the possible last <code class="prettyprint">Provider</code> acting on this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#option">Option</a>[<a href="#ticketassigneequeryview">TicketAssigneeQueryView</a>]</td>
+<td>informations on the possible last <code class="prettyprint">TicketAssignee</code> acting on this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
 <td>address</td>
@@ -6437,7 +6448,7 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>transmissionTime</td>
 <td><a href="#option">Option[<a href="#duration">Duration</a>]</a></td>
-<td>Calcul du temps de transmission vers un intervenant. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du <code class="prettyprint">Ticket</code> et l&#39;acceptation d&#39;une mission par un intervenant. <br/> i.e l&#39;évènement <code class="prettyprint">MissionAccepted</code></td>
+<td>Calcul du temps de transmission vers un intervenant. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du <code class="prettyprint">Ticket</code> et l&#39;acceptation d&#39;une mission par un intervenant. <br/> i.e l&#39;évènement <code class="prettyprint">InterventionAccepted</code></td>
 </tr>
 <tr>
 <td>interventionResponseTime</td>
@@ -6646,7 +6657,7 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </tbody></table>
 
-<h3 id="missionaccepted">MissionAccepted</h3>
+<h3 id="interventionaccepted">InterventionAccepted</h3>
 
 <table><thead>
 <tr>
@@ -8055,22 +8066,22 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>interventionDelay</td>
 <td>Array[<a href="#delaystat">DelayStat</a>]</td>
-<td>Time between <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a> &amp; <a href="#interventionstarted"><code class="prettyprint">InterventionStarted</code></a></td>
+<td>Time between <a href="#interventionaccepted"><code class="prettyprint">InterventionAccepted</code></a> &amp; <a href="#interventionstarted"><code class="prettyprint">InterventionStarted</code></a></td>
 </tr>
 <tr>
 <td>missionAcceptedDelay</td>
 <td>Array[<a href="#delaystat">DelayStat</a>]</td>
-<td>Time between <a href="#callemittedto"><code class="prettyprint">CallEmittedTo</code></a> &amp; <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a></td>
+<td>Time between <a href="#callemittedto"><code class="prettyprint">CallEmittedTo</code></a> &amp; <a href="#interventionaccepted"><code class="prettyprint">InterventionAccepted</code></a></td>
 </tr>
 <tr>
 <td>repairDelay</td>
 <td>Array[<a href="#delaystat">DelayStat</a>]</td>
-<td>Time between <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a> &amp; <a href="#interventionfinished"><code class="prettyprint">InterventionFinished</code></a> or <code class="prettyprint">ClosingTicketEvent</code></td>
+<td>Time between <a href="#interventionaccepted"><code class="prettyprint">InterventionAccepted</code></a> &amp; <a href="#interventionfinished"><code class="prettyprint">InterventionFinished</code></a> or <code class="prettyprint">ClosingTicketEvent</code></td>
 </tr>
 <tr>
 <td>callBeforeMissionAccepted</td>
 <td>Array[<a href="#countstat">CountStat</a>]</td>
-<td>Count the number of <a href="#callemittedto"><code class="prettyprint">CallEmittedTo</code></a> before <a href="#missionaccepted"><code class="prettyprint">MissionAccepted</code></a></td>
+<td>Count the number of <a href="#callemittedto"><code class="prettyprint">CallEmittedTo</code></a> before <a href="#interventionaccepted"><code class="prettyprint">InterventionAccepted</code></a></td>
 </tr>
 <tr>
 <td>interventionNumber</td>
@@ -9105,19 +9116,23 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
-<h2 id="providerassignationpurpose">ProviderAssignationPurpose</h2>
+<h2 id="ticketassignee">TicketAssignee</h2>
 
-<p><code class="prettyprint">ProviderAssignationPurpose</code> is an Enum, i.e type can take different values : </p>
-<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">ProviderAssignationPurpose</span> <span class="o">=</span> <span class="kt">RecourseChanged</span> <span class="o">|</span> <span class="kt">Purpose</span>
+<p>A <code class="prettyprint">TicketAssignee</code> is targeted to resolve issue referenced on the Ticket.</p>
+
+<p><code class="prettyprint">TicketAssignee</code> is an Enum, i.e type can take different values : </p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">TicketAssignee</span> <span class="o">=</span> <span class="kt">AnonymousAssignee</span> <span class="o">|</span> <span class="kt">ReferencedProviderContact</span> <span class="o">|</span> <span class="kt">ReferencedProviderCompany</span>
 </code></pre>
-<h3 id="purpose">Purpose</h3>
+<h3 id="referencedprovidercontact">ReferencedProviderContact</h3>
+
+<p>A <code class="prettyprint">ReferencedProviderContact</code> is a <code class="prettyprint">ProviderContact</code> that can be identified by its uid on Performance-immo app. </p>
 
 <blockquote>
-<p>Purpose example :</p>
+<p>ReferencedProviderContact example :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"purpose"</span><span class="p">:</span><span class="s2">"pre assignation"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerAssignationPurposeType"</span><span class="p">:</span><span class="s2">"Purpose"</span><span class="w">
+    </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="s2">"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="s2">"ReferencedProviderContact"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -9128,25 +9143,27 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </thead><tbody>
 <tr>
-<td>purpose</td>
-<td>String</td>
+<td>providerUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
 <td></td>
 </tr>
 <tr>
-<td>providerAssignationPurposeType</td>
+<td>assigneeType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;Purpose&quot;</code></td>
+<td><code class="prettyprint">&quot;ReferencedProviderContact&quot;</code></td>
 </tr>
 </tbody></table>
 
-<h3 id="recoursechanged">RecourseChanged</h3>
+<h3 id="referencedprovidercompany">ReferencedProviderCompany</h3>
+
+<p>A <code class="prettyprint">ReferencedProviderCompany</code> is a <code class="prettyprint">ProviderCompany</code> that can be identified by its uid on Performance-immo app.</p>
 
 <blockquote>
-<p>RecourseChanged example :</p>
+<p>ReferencedProviderCompany example :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"not for plumbing"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerAssignationPurposeType"</span><span class="p">:</span><span class="s2">"RecourseChanged"</span><span class="w">
+    </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="s2">"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="s2">"ReferencedProviderCompany"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -9157,14 +9174,70 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </thead><tbody>
 <tr>
-<td>comment</td>
-<td><a href="#option">Option</a>[String]</td>
+<td>providerUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
 <td></td>
 </tr>
 <tr>
-<td>providerAssignationPurposeType</td>
+<td>assigneeType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;RecourseChanged&quot;</code></td>
+<td><code class="prettyprint">&quot;ReferencedProviderCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="anonymousassignee">AnonymousAssignee</h3>
+
+<p>An <code class="prettyprint">AnonymousAssignee</code> is a <code class="prettyprint">TicketAssignee</code> that is not referenced on Performance-immo app.</p>
+
+<p>You should not use this value if you want benefit some of PerfImmo killer features. cf. <a href="#providercontact">ProviderContact</a>.</p>
+
+<blockquote>
+<p>AnonymousProvider example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"nameType"</span><span class="p">:</span><span class="s2">"CivilName"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"phones"</span><span class="p">:[</span><span class="s2">"0146374567"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0645342378"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"fax"</span><span class="p">:[],</span><span class="w">
+    </span><span class="nt">"emails"</span><span class="p">:[</span><span class="s2">"john.doe@performance-immo.com"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="s2">"AnonymousAssignee"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td><a href="#name">Name</a></td>
+<td></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>fax</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>assigneeType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AnonymousAssignee&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -10986,10 +11059,10 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
-<h3 id="assignprovider">AssignProvider</h3>
+<h3 id="identifyassignee">IdentifyAssignee</h3>
 
 <blockquote>
-<p>AssignProvider example : </p>
+<p>IdentifyAssignee example : </p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f5391199-e544-60f3-037c-16f3229fd59d"</span><span class="p">,</span><span class="w">
@@ -10997,18 +11070,17 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
     </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7943797a-93c4-73f9-48f8-6baea5e94d13"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProvider"</span><span class="w">
+    </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProviderContact"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choix du contact par l'opérateur"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerAssignationPurposeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RecourseChanged"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:53.000+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"commandType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AssignProvider"</span><span class="w">
+  </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"an optionnal commentary"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-28T16:33:00:000+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"commandType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IdentifyAssignee"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>Report this <code class="prettyprint">TicketAssignee</code> is identified to resolve the issue brought by the <code class="prettyprint">Ticket</code>.</p>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11024,17 +11096,17 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <tr>
 <td>operator</td>
 <td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
-<td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>. (if doesn&rsquo;t set, setted by the server)</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> assigned to this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> identified on this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
-<td>purpose</td>
-<td><a href="#providerassignationpurpose">ProviderAssignationPurpose</a></td>
-<td>the purpose of this assignation. (can be RecourseChanged).</td>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
 </tr>
 <tr>
 <td>date</td>
@@ -11044,7 +11116,77 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <tr>
 <td>commandType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;AssignProvider&quot;</code></td>
+<td><code class="prettyprint">&quot;IdentifyAssignee&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="requestintervention">RequestIntervention</h3>
+
+<blockquote>
+<p>RequestIntervention example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"127621-1298217-1298721"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="s2">"127621-1298217-1298721"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="s2">"ReferencedOperator"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="s2">"1234-987798_865765"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="s2">"ReferencedProviderCompany"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"phone"</span><span class="p">:</span><span class="s2">"0123456783"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"an optionnal commentary"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2018-08-28T16:33:00:000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"RequestIntervention"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Report the identified <code class="prettyprint">TicketAssignee</code> was contacted to request intervention to resolve <code class="prettyprint">Ticket</code> issue.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code class="prettyprint">Command</code>. (if doesn&rsquo;t set, setted by the server)</td>
+</tr>
+<tr>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> requested (Must be the same as identified one).</td>
+</tr>
+<tr>
+<td>medium</td>
+<td><a href="#contactmedium">ContactMedium</a></td>
+<td>the medium used to perform this request.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;RequestIntervention&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -11087,9 +11229,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> assigned to this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who sending service order is reported (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>ref</td>
@@ -11104,7 +11246,7 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <tr>
 <td>sendingDate</td>
 <td><a href="#datetime">DateTime</a></td>
-<td>date when the service order was sending.</td>
+<td>date when the service order was sent.</td>
 </tr>
 <tr>
 <td>commandType</td>
@@ -11195,7 +11337,7 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
-<h3 id="schedulemission">ScheduleMission</h3>
+<h3 id="scheduleintervention">ScheduleIntervention</h3>
 
 <table><thead>
 <tr>
@@ -11215,9 +11357,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who intervention is scheduled (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>comment</td>
@@ -11232,17 +11374,17 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <tr>
 <td>startDate</td>
 <td><a href="#datetime">DateTime</a></td>
-<td>the start date of this scheduled mission.</td>
+<td>the start date of this scheduled intervention.</td>
 </tr>
 <tr>
 <td>endDate</td>
 <td><a href="#datetime">DateTime</a></td>
-<td>the end date of this scheduled mission.</td>
+<td>the end date of this scheduled intervention.</td>
 </tr>
 <tr>
 <td>commandType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;ScheduleMission&quot;</code></td>
+<td><code class="prettyprint">&quot;ScheduleIntervention&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -11266,9 +11408,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who intervention deadline is defined (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>date</td>
@@ -11312,9 +11454,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who formal notice is reported (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>reportDate</td>
@@ -11333,7 +11475,7 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
-<h3 id="acceptmission">AcceptMission</h3>
+<h3 id="acceptintervention">AcceptIntervention</h3>
 
 <table><thead>
 <tr>
@@ -11353,13 +11495,13 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who accept the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who accept the intervention (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>comment</td>
-<td>String</td>
+<td><a href="#option">Option</a>[String]</td>
 <td></td>
 </tr>
 <tr>
@@ -11370,11 +11512,11 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <tr>
 <td>commandType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;AcceptMission&quot;</code></td>
+<td><code class="prettyprint">&quot;AcceptIntervention&quot;</code></td>
 </tr>
 </tbody></table>
 
-<h3 id="refusemission">RefuseMission</h3>
+<h3 id="refuseintervention">RefuseIntervention</h3>
 
 <table><thead>
 <tr>
@@ -11394,13 +11536,13 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who refuse the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who refuse the intervention (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>comment</td>
-<td>String</td>
+<td><a href="#option">Option</a>[String]</td>
 <td></td>
 </tr>
 <tr>
@@ -11411,7 +11553,7 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <tr>
 <td>commandType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;RefuseMission&quot;</code></td>
+<td><code class="prettyprint">&quot;RefuseIntervention&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -11584,9 +11726,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who arrive on site.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who arrive on site (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>date</td>
@@ -11620,9 +11762,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who gone from site.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who gone from site (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>date</td>
@@ -11656,9 +11798,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who start the intervention.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who start the intervention (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>startedDate</td>
@@ -11692,9 +11834,9 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>an optional reference to who perform for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who finish the intervention.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who finish the intervention (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>finishedDate</td>
@@ -13491,10 +13633,10 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
-<h3 id="providerassigned">ProviderAssigned</h3>
+<h3 id="assigneeidentified">AssigneeIdentified</h3>
 
 <blockquote>
-<p>ProviderAssigned example : </p>
+<p>AssigneeIdentified example :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f5391199-e544-60f3-037c-16f3229fd59d"</span><span class="p">,</span><span class="w">
@@ -13503,17 +13645,14 @@ The following commands are made to close the Ticket.
     </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7943797a-93c4-73f9-48f8-6baea5e94d13"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProvider"</span><span class="w">
+    </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProviderContact"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Choix du contact par l'opérateur"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerAssignationPurposeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RecourseChanged"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"a commentary"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:53.000+02:00"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:50.000+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProviderAssigned"</span><span class="w">
+  </span><span class="nt">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AssigneeIdentified"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -13539,14 +13678,14 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> assigned to this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> identified on this <code class="prettyprint">Ticket</code>.</td>
 </tr>
 <tr>
-<td>purpose</td>
-<td><a href="#providerassignationpurpose">ProviderAssignationPurpose</a></td>
-<td>the purpose of this assignation. (can be RecourseChanged)</td>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
 </tr>
 <tr>
 <td>sentDate</td>
@@ -13561,7 +13700,83 @@ The following commands are made to close the Ticket.
 <tr>
 <td>eventType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;ProviderAssigned&quot;</code></td>
+<td><code class="prettyprint">&quot;AssigneeIdentified&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="interventionrequested">InterventionRequested</h3>
+
+<blockquote>
+<p>InterventionRequested example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f5391199-e544-60f3-037c-16f3229fd59d"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9c5c9d2-ab38-a010-46cd-97013fbfbeb2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7943797a-93c4-73f9-48f8-6baea5e94d13"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProviderContact"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"comment"</span><span class="p">:</span><span class="s2">"a commentary"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:53.000+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:50.000+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InterventionRequested"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
+</tr>
+<tr>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> requested (Must be the same as identified one)</td>
+</tr>
+<tr>
+<td>medium</td>
+<td><a href="#contactmedium">ContactMedium</a></td>
+<td>the medium used to perform this request.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>when <code class="prettyprint">Event</code> was sending to Perfimmo.</td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>date on which the <code class="prettyprint">Event</code> took place.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;InterventionRequested&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -13577,9 +13792,9 @@ The following commands are made to close the Ticket.
     </span><span class="nt">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"provider"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7943797a-93c4-73f9-48f8-6baea5e94d13"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"providerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProvider"</span><span class="w">
+  </span><span class="nt">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"providerUid"</span><span class="p">:</span><span class="s2">"f5391199-e544-60f3-037c-16f3229fd59d"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"assigneeType"</span><span class="p">:</span><span class="s2">"ReferencedProviderCompany"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234FRX"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"reportDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:53.000+02:00"</span><span class="p">,</span><span class="w">
@@ -13611,9 +13826,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> assigned to this <code class="prettyprint">Ticket</code>.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who sending service order is reported.</td>
 </tr>
 <tr>
 <td>ref</td>
@@ -13744,7 +13959,7 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
-<h3 id="missionscheduled">MissionScheduled</h3>
+<h3 id="interventionscheduled">InterventionScheduled</h3>
 
 <table><thead>
 <tr>
@@ -13769,13 +13984,13 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who intervention is scheduled.</td>
 </tr>
 <tr>
 <td>comment</td>
-<td><a href="#option">Option</a>[[String]]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td></td>
 </tr>
 <tr>
@@ -13791,17 +14006,17 @@ The following commands are made to close the Ticket.
 <tr>
 <td>startDate</td>
 <td><a href="#datetime">DateTime</a></td>
-<td>the start date of this scheduled mission.</td>
+<td>the start date of this scheduled intervention.</td>
 </tr>
 <tr>
 <td>endDate</td>
 <td><a href="#datetime">DateTime</a></td>
-<td>the end date of this scheduled mission.</td>
+<td>the end date of this scheduled intervention.</td>
 </tr>
 <tr>
 <td>eventType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;MissionScheduled&quot;</code></td>
+<td><code class="prettyprint">&quot;InterventionScheduled&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -13830,9 +14045,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who intervention deadline is defined.</td>
 </tr>
 <tr>
 <td>date</td>
@@ -13881,9 +14096,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who will perform the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who formal notice is reported (Must be the same as identified one).</td>
 </tr>
 <tr>
 <td>reportDate</td>
@@ -13902,7 +14117,7 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
-<h3 id="missionaccepted">MissionAccepted</h3>
+<h3 id="interventionaccepted">InterventionAccepted</h3>
 
 <table><thead>
 <tr>
@@ -13927,13 +14142,13 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who accept the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who accept the intervention.</td>
 </tr>
 <tr>
 <td>comment</td>
-<td>String</td>
+<td><a href="#option">Option</a>[String]</td>
 <td></td>
 </tr>
 <tr>
@@ -13949,11 +14164,11 @@ The following commands are made to close the Ticket.
 <tr>
 <td>eventType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;MissionAccepted&quot;</code></td>
+<td><code class="prettyprint">&quot;InterventionAccepted&quot;</code></td>
 </tr>
 </tbody></table>
 
-<h3 id="missionrefused">MissionRefused</h3>
+<h3 id="interventionrefused">InterventionRefused</h3>
 
 <table><thead>
 <tr>
@@ -13978,13 +14193,13 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who refuse the mission.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who accept the intervention.</td>
 </tr>
 <tr>
 <td>comment</td>
-<td>String</td>
+<td><a href="#option">Option</a>[String]</td>
 <td></td>
 </tr>
 <tr>
@@ -14000,7 +14215,7 @@ The following commands are made to close the Ticket.
 <tr>
 <td>eventType</td>
 <td>Constant</td>
-<td><code class="prettyprint">&quot;MissionRefused&quot;</code></td>
+<td><code class="prettyprint">&quot;InterventionRefused&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -14218,9 +14433,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who arrive on site.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> for who arrive on site.</td>
 </tr>
 <tr>
 <td>sentDate</td>
@@ -14264,9 +14479,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who gone from site.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who gone from site.</td>
 </tr>
 <tr>
 <td>sentDate</td>
@@ -14310,9 +14525,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who start the intervention.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who start the intervention.</td>
 </tr>
 <tr>
 <td>sentDate</td>
@@ -14356,9 +14571,9 @@ The following commands are made to close the Ticket.
 <td>a reference to who ask for this <code class="prettyprint">Command</code>.</td>
 </tr>
 <tr>
-<td>provider</td>
-<td><a href="#provider">Provider</a></td>
-<td>a reference to the <code class="prettyprint">Provider</code> who finish the intervention.</td>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code class="prettyprint">TicketAssignee</code> who finish the intervention.</td>
 </tr>
 <tr>
 <td>sentDate</td>
