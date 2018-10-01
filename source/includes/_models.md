@@ -385,13 +385,13 @@ ref         | String                                            | the `Ticket`'s
 agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
 patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
-state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
+state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `InterventionAccepted`
 created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
 updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
 closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
 callPurpose | String                                            | the `callPurpose` of this `Ticket`.
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
-provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
+assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
 
 ## ExportedTicket
@@ -405,14 +405,14 @@ ref         | String                                            | the `Ticket`'s
 agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
 patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
-state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
+state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `InterventionAccepted`
 created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
 updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
 closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
 callPurpose | String                                            | the `callPurpose` of this `Ticket`.
 request     | String                                            | the details of the demand.
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
-provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
+assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
 journalAdditionalInfos | [JournalExportAdditionalInfos](#journalexportadditionalinfos) | a set of several infos extract from the `Ticket`'s journal.
 freeCommentaries    | Array[[FreeCommentary](#freecommentary)]  | the list of free commentaries added in this ticket
@@ -564,17 +564,22 @@ Name        | Type                                              | Description
 mediumType  | String                                            | the type of the medium.<br/> ex: `PHONE | FAX | MAIL | SMS`
 identifier  | String                                            | the identifier for this medium. <br/> ex: `0604030201`
 
-## ProviderQueryView
+## TicketAssigneeQueryView
 
 ### Fields
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-uid         | [Option](#option)[[SafeUUID](#safeuuid)]          | the uid of the `Provider`. (optional)
-name        | [Option](#option)[String]                         | the name of the `Provider`. (optional)
-phones      | Array[String]                                     | the phones's list of the `Provider`.
-fax         | Array[String]                                     | the fax's list of the `Provider`.
-emails      | Array[String]                                     | the emails's list of the `Provider`.
+uid         | [Option](#option)[[SafeUUID](#safeuuid)]          | the uid of the `TicketAssignee`. (optional)
+name        | String                                            | the name of the `TicketAssignee`.
+phones      | Array[String]                                     | the phones's list of the `TicketAssignee`.
+fax         | Array[String]                                     | the fax's list of the `TicketAssignee`.
+emails      | Array[String]                                     | the emails's list of the `TicketAssignee`.
+assigneeType | [AssigneeType](#assigneetype)                    | the type of the assignee.
+
+## AssigneeType
+
+Simple enum value that can have these values : `ProviderContact | ProviderCompany | Anonymous`
 
 ## BasicAddress
 
@@ -662,14 +667,14 @@ agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` l
 patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
 clientCompany | [SafeUUID](#safeuuid)                           | the `ClientCompany` linked to this `Ticket`.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
-state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `MissionAccepted`
+state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `InterventionAccepted`
 request     | String                                            | description of the issue.
 instructions| String                                            | insctructions about the intervention.
 dates       | [TicketDates](#ticketdates)                       |
 openingTicketPurpose | [OpeningTicketPurpose](#openingticketpurpose) | The reason the `Ticket` was opened.
 caller      | [CallerTicketDetailedQueryView](#callerticketdetailedqueryview) | informations on person who ask for open this `Ticket`.
 report      | [Option](#option)[String]                         | intervention report, when intervention took place. 
-provider    | [Option](#option)[[ProviderQueryView](#providerqueryview)] | informations on the possible last `Provider` acting on this `Ticket`.
+assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
 journal     | Array[[DayEvent](#dayevent)]                      | the `Ticket`'s event log.
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
@@ -711,7 +716,7 @@ callPurposeUid: | [Option](#option)[[SafeUUID](#safeuuid)]          | if a refer
 Name                    | Type                                     | Description
 ------------------------| -----------------------------------------| -----------------
 callCenterReactionTime  | [Option[[Duration](#duration)]](#option) | Calcul du temps de réaction du centre d'appel. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et la première action signficative du centre d'appel
-transmissionTime        | [Option[[Duration](#duration)]](#option) | Calcul du temps de transmission vers un intervenant. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et l'acceptation d'une mission par un intervenant. <br/> i.e l'évènement `MissionAccepted` 
+transmissionTime        | [Option[[Duration](#duration)]](#option) | Calcul du temps de transmission vers un intervenant. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et l'acceptation d'une mission par un intervenant. <br/> i.e l'évènement `InterventionAccepted`
 interventionResponseTime| [Option[[Duration](#duration)]](#option) | Calcul du temps de réponse pour intervenir sur un problème. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du `Ticket` et une action significative de l'intervenant. <br/> i.e `InterventionStarted`, `InterventionFinished`, `ArrivedOnSite`, `GoneFromSite` 
 interventionDuration    | [Option[[Duration](#duration)]](#option) | Calcul de la durée d'intervention. <br/> i.e le temps entre `InterventionStarted` et `InterventionFinished`
 repairTime              | [Option[[Duration](#duration)]](#option) | Calcul le délai de réparation. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du ticket et la date de fin d'intervention
@@ -787,7 +792,7 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 provider    | [Option](#option)[String]                                    | the `Provider`s name who did not answer.
 
-### MissionAccepted		
+### InterventionAccepted
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
@@ -1283,10 +1288,10 @@ _links      | Array[[RestNavigationLink](#restnavigationlink)]  | Array of `Rest
 
 Name                        | Type                                              | Description
 ----------------------------| --------------------------------| --------------------------------------------------
-interventionDelay           | Array[[DelayStat](#delaystat)]  | Time between [`MissionAccepted`](#missionaccepted) & [`InterventionStarted`](#interventionstarted) 
-missionAcceptedDelay        | Array[[DelayStat](#delaystat)]  | Time between [`CallEmittedTo`](#callemittedto) & [`MissionAccepted`](#missionaccepted)
-repairDelay                 | Array[[DelayStat](#delaystat)]  | Time between [`MissionAccepted`](#missionaccepted) & [`InterventionFinished`](#interventionfinished) or `ClosingTicketEvent` 
-callBeforeMissionAccepted   | Array[[CountStat](#countstat)]  | Count the number of [`CallEmittedTo`](#callemittedto) before [`MissionAccepted`](#missionaccepted) 
+interventionDelay           | Array[[DelayStat](#delaystat)]  | Time between [`InterventionAccepted`](#interventionaccepted) & [`InterventionStarted`](#interventionstarted)
+missionAcceptedDelay        | Array[[DelayStat](#delaystat)]  | Time between [`CallEmittedTo`](#callemittedto) & [`InterventionAccepted`](#interventionaccepted)
+repairDelay                 | Array[[DelayStat](#delaystat)]  | Time between [`InterventionAccepted`](#interventionaccepted) & [`InterventionFinished`](#interventionfinished) or `ClosingTicketEvent`
+callBeforeMissionAccepted   | Array[[CountStat](#countstat)]  | Count the number of [`CallEmittedTo`](#callemittedto) before [`InterventionAccepted`](#interventionaccepted)
 interventionNumber          | Array[[CountStat](#countstat)]  | Count the number of intervention of this `ProviderContact`
 
 ## DelayStat

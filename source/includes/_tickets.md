@@ -46,11 +46,13 @@ Content-Range: 0-0/256
             "updated": "2016-05-26T08:18:52.000Z",
             "closed": "2016-05-26T08:18:52.000Z",
             "callPurpose": "Chauffage  / Chauffage HS",
-            "provider": {
-                "name": "Mr Provider",
-                "phones": ["0146304312"],
-                "fax": [],
-                "emails": []
+            "assignee": {
+                "uid": "b93e3e9e-0acd-0e61-3b98-63818150167c",
+                "name": "astreinte",
+                "phones": [ ],
+                "fax": [ ],
+                "emails": [ ],
+                "assigneeType": "ProviderContact"
             },
             "caller": {
                 "name": "John Doe",
