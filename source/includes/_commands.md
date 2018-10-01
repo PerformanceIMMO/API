@@ -720,18 +720,18 @@ comment             | String                                        |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ProviderNotAnswerCall"`
 
-### ScheduleMission
+### ScheduleIntervention
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who intervention is scheduled (Must be the same as identified one).
 comment             | [Option](#option)[String]                     | 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
-startDate           | [DateTime](#datetime)                         | the start date of this scheduled mission.
-endDate             | [DateTime](#datetime)                         | the end date of this scheduled mission.
-commandType         | Constant                                      | `"ScheduleMission"`
+startDate           | [DateTime](#datetime)                         | the start date of this scheduled intervention.
+endDate             | [DateTime](#datetime)                         | the end date of this scheduled intervention.
+commandType         | Constant                                      | `"ScheduleIntervention"`
 
 ### DefineInterventionDeadline
 

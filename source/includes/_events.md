@@ -518,20 +518,20 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"CallNotAnsweredByProvider"`
 
-### MissionScheduled
+### InterventionScheduled
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who intervention is scheduled.
 comment             | [Option](#option)[[String]]                   | 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
-startDate           | [DateTime](#datetime)                         | the start date of this scheduled mission.
-endDate             | [DateTime](#datetime)                         | the end date of this scheduled mission.
-eventType           | Constant                                      | `"MissionScheduled"`
+startDate           | [DateTime](#datetime)                         | the start date of this scheduled intervention.
+endDate             | [DateTime](#datetime)                         | the end date of this scheduled intervention.
+eventType           | Constant                                      | `"InterventionScheduled"`
 
 ### InterventionDeadlineDefined
 
