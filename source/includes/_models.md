@@ -1946,7 +1946,7 @@ Name              | Type                                              | Descript
 providerUid       | [SafeUUID](#safeuuid)                             |
 assigneeType      | Constant                                          | `"ReferencedProviderCompany"`
 
-### AnonymousProvider 
+### AnonymousAssignee
 
 An `AnonymousAssignee` is a `TicketAssignee` that is not referenced on Performance-immo app.
 
@@ -1976,47 +1976,6 @@ phones            | Array[String]                                     |
 fax               | Array[String]                                     |  
 emails            | Array[String]                                     |  
 assigneeType      | Constant                                          | `"AnonymousAssignee"`
-
-## ProviderAssignationPurpose
-
-`ProviderAssignationPurpose` is an Enum, i.e type can take different values : 
-
-```haskell
-data ProviderAssignationPurpose = RecourseChanged | Purpose
-```
-
-### Purpose 
-
-> Purpose example :
-
-```json
-{
-    "purpose":"pre assignation",
-    "providerAssignationPurposeType":"Purpose"
-}
-```
-
-Name              | Type                                              | Description
-------------------| --------------------------------------------------| --------------------------
-purpose           | String                                            | 
-providerAssignationPurposeType | Constant                             | `"Purpose"`
-
-
-### RecourseChanged 
-
-> RecourseChanged example :
-
-```json
-{
-    "comment":"not for plumbing",
-    "providerAssignationPurposeType":"RecourseChanged"
-}
-```
-
-Name              | Type                                              | Description
-------------------| --------------------------------------------------| --------------------------
-comment           | [Option](#option)[String]                                            | 
-providerAssignationPurposeType | Constant                             | `"RecourseChanged"`
 
 ## LogTrial
 

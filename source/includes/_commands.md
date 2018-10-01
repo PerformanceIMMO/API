@@ -756,27 +756,27 @@ reportDate          | [DateTime](#datetime)                         | date on wh
 deadline            | [DateTime](#datetime)                         | a new deadline defined.
 commandType         | Constant                                      | `"ReportFormalNoticeForProvider"`
 
-### AcceptMission
+### AcceptIntervention
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who accept the mission.
-comment             | String                                        | 
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who accept the intervention (Must be the same as identified one).
+comment             | [Option](#option)[String]                     |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
-commandType         | Constant                                      | `"AcceptMission"`
+commandType         | Constant                                      | `"AcceptIntervention"`
 
-### RefuseMission
+### RefuseIntervention
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who refuse the mission.
-comment             | String                                        | 
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who refuse the intervention (Must be the same as identified one).
+comment             | [Option](#option)[String]                     |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
-commandType         | Constant                                      | `"RefuseMission"`
+commandType         | Constant                                      | `"RefuseIntervention"`
 
 ### ReopenTicket
 
