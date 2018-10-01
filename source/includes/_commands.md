@@ -597,9 +597,9 @@ medium              | [ContactMedium](#contactmedium)               | the medium
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ReceiveCall"`
 
-### AssignProvider
+### IdentifyAssignee
 
-> AssignProvider example : 
+> IdentifyAssignee example : 
 
 ```json
 {
@@ -608,27 +608,26 @@ commandType         | Constant                                      | `"ReceiveC
     "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
     "operatorType": "ReferencedOperator"
   },
-  "provider": {
+  "assignee": {
     "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
-    "providerType": "ReferencedProvider"
+    "assigneeType": "ReferencedProviderContact"
   },
-  "purpose": {
-    "comment": "Choix du contact par l'opérateur",
-    "providerAssignationPurposeType": "RecourseChanged"
-  },
+  "comment":"a commentary",
   "date": "2016-08-25T15:31:53.000+02:00",
-  "commandType": "AssignProvider"
+  "commandType": "IdentifyAssignee"
 }
 ```
+
+Report that this `TicketAssignee` is identified to resolve the issue brought by the `Ticket`.
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
-purpose             | [ProviderAssignationPurpose](#providerassignationpurpose) | the purpose of this assignation. (can be RecourseChanged).
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. (if doesn't set, setted by the server)
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` identified on this `Ticket`.
+comment             | [Option](#option)[String]                     |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
-commandType         | Constant                                      | `"AssignProvider"`
+commandType         | Constant                                      | `"IdentifyAssignee"`
 
 ### ReportSendingServiceOrder
 

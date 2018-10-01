@@ -1900,6 +1900,83 @@ fax               | Array[String]                                     |
 emails            | Array[String]                                     |  
 providerType      | Constant                                          | `"AnonymousProvider"`
 
+## TicketAssignee
+
+A `TicketAssignee` is targeted to resolve issue referenced on the Ticket.
+
+`TicketAssignee` is an Enum, i.e type can take different values : 
+
+```haskell
+data TicketAssignee = AnonymousAssignee | ReferencedProviderContact | ReferencedProviderCompany
+```
+
+### ReferencedProviderContact
+
+A `ReferencedProviderContact` is a `ProviderContact` that can be identified by its uid on Performance-immo app. 
+
+> ReferencedProviderContact example :
+
+```json
+{
+    "providerUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "assigneeType":"ReferencedProviderContact"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+providerUid       | [SafeUUID](#safeuuid)                             | 
+assigneeType      | Constant                                          | `"ReferencedProviderContact"`
+
+### ReferencedProviderCompany
+
+A `ReferencedProviderCompany` is a `ProviderCompany` that can be identified by its uid on Performance-immo app.
+
+> ReferencedProviderCompany example :
+
+```json
+{
+    "providerUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+    "assigneeType":"ReferencedProviderCompany"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+providerUid       | [SafeUUID](#safeuuid)                             |
+assigneeType      | Constant                                          | `"ReferencedProviderCompany"`
+
+### AnonymousProvider 
+
+An `AnonymousAssignee` is a `TicketAssignee` that is not referenced on Performance-immo app.
+
+You should not use this value if you want benefit some of PerfImmo killer features. cf. [ProviderContact](#providercontact).
+
+> AnonymousProvider example :
+
+```json
+{
+    "name":{
+        "firstName":"John",
+        "lastName":"Doe",
+        "gender":"Male",
+        "nameType":"CivilName"
+    },
+    "phones":["0146374567", "0645342378"],
+    "fax":[],
+    "emails":["john.doe@performance-immo.com"],
+    "assigneeType":"AnonymousAssignee"
+}
+```
+
+Name              | Type                                              | Description
+------------------| --------------------------------------------------| --------------------------
+name              | [Name](#name)                                     |  
+phones            | Array[String]                                     |  
+fax               | Array[String]                                     |  
+emails            | Array[String]                                     |  
+assigneeType      | Constant                                          | `"AnonymousAssignee"`
+
 ## ProviderAssignationPurpose
 
 `ProviderAssignationPurpose` is an Enum, i.e type can take different values : 
