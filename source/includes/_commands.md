@@ -692,10 +692,10 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who sending service order is reported (Must be the same as identified one).
 ref                 | String                                        | the reference of the service order sent.
 reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
-sendingDate         | [DateTime](#datetime)                         | date when the service order was sending.
+sendingDate         | [DateTime](#datetime)                         | date when the service order was sent.
 commandType         | Constant                                      | `"ReportSendingServiceOrder"`
 
 ### ProviderAnswerCall
@@ -739,7 +739,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who intervention deadline is defined (Must be the same as identified one).
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 deadline            | [DateTime](#datetime)                         | the deadline defined.
 commandType         | Constant                                      | `"DefineInterventionDeadline"`
@@ -751,7 +751,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 ref                 | [Option](#option)[String]                     | an optional reference to this formal notice.
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who formal notice is reported (Must be the same as identified one).
 reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
 deadline            | [DateTime](#datetime)                         | a new deadline defined.
 commandType         | Constant                                      | `"ReportFormalNoticeForProvider"`
@@ -825,7 +825,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who arrive on site.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who arrive on site (Must be the same as identified one).
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"ArriveOnSite"`
 
@@ -835,7 +835,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who gone from site.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who gone from site (Must be the same as identified one).
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"GoFromSite"`
 
@@ -845,7 +845,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who start the intervention.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who start the intervention (Must be the same as identified one).
 startedDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"StartIntervention"`
 
@@ -855,7 +855,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who finish the intervention.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who finish the intervention (Must be the same as identified one).
 finishedDate        | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"FinishIntervention"`
 

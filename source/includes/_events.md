@@ -468,9 +468,9 @@ eventType           | Constant                                      | `"Interven
     "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
     "operatorType": "ReferencedOperator"
   },
-  "provider": {
-    "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
-    "providerType": "ReferencedProvider"
+  "assignee": {
+      "providerUid":"f5391199-e544-60f3-037c-16f3229fd59d",
+      "assigneeType":"ReferencedProviderCompany"
   },
   "ref": "1234FRX",
   "reportDate": "2016-08-25T15:31:53.000+02:00",
@@ -485,7 +485,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` assigned to this `Ticket`.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who sending service order is reported.
 ref                 | String                                        | the reference of the service order sent.
 reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
 sendingDate         | [DateTime](#datetime)                         | date when the service order was sending.
@@ -526,7 +526,7 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
 assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who intervention is scheduled.
-comment             | [Option](#option)[[String]]                   | 
+comment             | [Option](#option)[String]                     |
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 startDate           | [DateTime](#datetime)                         | the start date of this scheduled intervention.
@@ -540,7 +540,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who intervention deadline is defined.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 deadline            | [DateTime](#datetime)                         | the deadline defined.
 eventType           | Constant                                      | `"InterventionDeadlineDefined"`
@@ -553,7 +553,7 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 ref                 | [Option](#option)[String]                     | an optional reference to this formal notice.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who will perform the mission.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who formal notice is reported (Must be the same as identified one).
 reportDate          | [DateTime](#datetime)                         | date on which the `Event` took place.
 deadline            | [DateTime](#datetime)                         | a new deadline defined.
 eventType           | Constant                                      | `"FormalNoticeForProviderReported"`
@@ -640,7 +640,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who arrive on site.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` for who arrive on site.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"ArrivedOnSite"`
@@ -652,7 +652,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who gone from site.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who gone from site.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"GoneFromSite"`
@@ -664,7 +664,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who start the intervention.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who start the intervention.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 startedDate         | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"InterventionStarted"`
@@ -676,7 +676,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
-provider            | [Provider](#provider)                         | a reference to the `Provider` who finish the intervention.
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who finish the intervention.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 finishedDate        | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"InterventionFinished"`
