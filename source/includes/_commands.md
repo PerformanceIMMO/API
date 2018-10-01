@@ -612,13 +612,13 @@ commandType         | Constant                                      | `"ReceiveC
     "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
     "assigneeType": "ReferencedProviderContact"
   },
-  "comment":"a commentary",
-  "date": "2016-08-25T15:31:53.000+02:00",
+  "comment":"an optionnal commentary",
+  "date": "2018-08-28T16:33:00:000+02:00",
   "commandType": "IdentifyAssignee"
 }
 ```
 
-Report that this `TicketAssignee` is identified to resolve the issue brought by the `Ticket`.
+Report this `TicketAssignee` is identified to resolve the issue brought by the `Ticket`.
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
@@ -628,6 +628,43 @@ assignee            | [TicketAssignee](#ticketassignee)             | a referenc
 comment             | [Option](#option)[String]                     |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"IdentifyAssignee"`
+
+### RequestIntervention
+
+> RequestIntervention example :
+
+```json
+{
+    "processUid":"127621-1298217-1298721",
+    "operator": {
+        "operatorUid":"127621-1298217-1298721",
+        "operatorType":"ReferencedOperator"
+    },
+    "assignee": {
+        "providerUid":"1234-987798_865765",
+        "assigneeType":"ReferencedProviderCompany"
+    },
+    "medium": {
+        "phone":"0123456783",
+        "contactMediumType":"Phone"
+    },
+    "comment": "an optionnal commentary",
+    "date":"2018-08-28T16:33:00:000+02:00",
+    "commandType":"RequestIntervention"
+}
+```
+
+Report the identified `TicketAssignee` was contacted to request intervention to resolve `Ticket` issue.
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. (if doesn't set, setted by the server)
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` requested (Must be the same as identified one).
+medium              | [ContactMedium](#contactmedium)               | the medium used to perform this request.
+comment             | [Option](#option)[String]                     |
+date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+commandType         | Constant                                      | `"RequestIntervention"`
 
 ### ReportSendingServiceOrder
 
