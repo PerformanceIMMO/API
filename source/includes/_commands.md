@@ -34,6 +34,13 @@ name               | String                                        | the name of
 siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `ClientAccount`.
 commandType        | Constant                                      | `"CreateClientAccount"`  
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ClientAccountCreated                      | mandatory                         |
+CompanyIdentified                         | optional                          | if `siretNumber` is set
+CompanyUpgradedToPremiumAccount           | optional                          | if `billingType` is set with `PremiumAccount`
+CompanyUpgradedToStandardAccount          | optional                          | if `billingType` is set with `StandardAccount`
+
 ### CreateClientAccountHolding 
 
 ```json
@@ -60,6 +67,13 @@ name               | String                                        | the name of
 siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `ClientAccountHolding`.
 commandType        | Constant                                      | `"CreateClientAccountHolding"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ClientAccountHoldingCreated               | mandatory                         |
+CompanyIdentified                         | optional                          | if `siretNumber` is set
+CompanyUpgradedToPremiumAccount           | optional                          | if `billingType` is set with `PremiumAccount`
+CompanyUpgradedToStandardAccount          | optional                          | if `billingType` is set with `StandardAccount`
+
 ### CreateCallCenter
 
 <aside class="notice">
@@ -85,6 +99,13 @@ createdDate        | [LocalDate](#localdate)                       | the creatio
 name               | String                                        | the name of this `CallCenter`.  
 siretNumber        | [Option](#option)[[SIRET](#siret)]            | an optional siret number for this `CallCenter`.
 commandType        | Constant                                      | `"CreateCallCenter"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+CallCenterCreated                         | mandatory                         |
+CompanyIdentified                         | optional                          | if `siretNumber` is set
+CompanyUpgradedToPremiumAccount           | optional                          | if `billingType` is set with `PremiumAccount`
+CompanyUpgradedToStandardAccount          | optional                          | if `billingType` is set with `StandardAccount`
 
 ## IncrementCompany
 
@@ -277,6 +298,10 @@ createdDate        | [LocalDate](#localdate)                       | the created
 agency             | [RawAgency](#rawagency)                       |   
 commandType        | Constant                                      | `"CreateAgency"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+AgencyCreated                             | mandatory                         |
+
 ## IncrementAgency
 
 ### DeleteAgency
@@ -293,10 +318,14 @@ commandType        | Constant                                      | `"CreateAge
 Name               | Type                                          | Description
 -------------------| ----------------------------------------------| --------------------------------------------------
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
-deletedDate        | [LocalDate](#localdate)                       |   
-agencyUid          | [SafeUUID](#safeuuid)                         |   
-commandType        | Constant                                      | `"DeleteAgency"` 
- 
+deletedDate        | [LocalDate](#localdate)                       |
+agencyUid          | [SafeUUID](#safeuuid)                         |
+commandType        | Constant                                      | `"DeleteAgency"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+AgencyDeleted                             | mandatory                         |
+
 ### UpdateAgency
 
 ```json
@@ -327,6 +356,10 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 updatedDate        | [LocalDate](#localdate)                       | the updated's date of this `Agency`  
 agency             | [RawAgency](#rawagency)                       | the agency updated  
 commandType        | Constant                                      | `"UpdateAgency"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+AgencyUpdated                             | mandatory                         |
 
 ## IncrementPatrimony
 

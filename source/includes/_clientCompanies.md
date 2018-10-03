@@ -389,7 +389,7 @@ agencyCommand   | body  | [CreateAgency](#createagency)                    |    
 
 Http code | Type                                        | Description
 ----------| --------------------------------------------| ----------------------------
-200       | String                                      | The `Command` is a success
+201       | [CompanyEventResultView](#companyeventresultview) | The `Agency` is created.
 400       | [CompanyEventError](#companyeventerror)     | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 
 ## Increment Agency

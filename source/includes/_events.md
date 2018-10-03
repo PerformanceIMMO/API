@@ -2,9 +2,45 @@
 
 ## CompanyEvent
 
+### ClientAccountCreated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+createdDate         | [LocalDate](#localdate)                       |
+holdingReference    | [Option](#option)[SafeUUID]                   |
+callCenterReference | [SafeUUID](#safeuuid)                         |
+name                | String                                        |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"ClientAccountCreated"`
+
+### CallCenterCreated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+createdDate         | [LocalDate](#localdate)                       |
+name                | String                                        |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"CallCenterCreated"`
+
+### ClientAccountHoldingCreated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+createdDate         | [LocalDate](#localdate)                       |
+callCenterReference | [SafeUUID](#safeuuid)                         |
+name                | String                                        |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"ClientAccountHoldingCreated"`
+
 ### CompanyIdentified
 
-> CompanyIdentified example : 
+> CompanyIdentified example :
 
 ```json
 {
@@ -24,10 +60,83 @@ siretNumber         | [SIRET](#siret)                               | the siret 
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
 eventType           | Constant                                      | `"CallReceived"`
 
+### CompanyCanceled
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+canceledDate       | [LocalDate](#localdate)                       |
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CompanyCanceled"`
+
+### CompanyReactivated
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+reactivatedDate    | [LocalDate](#localdate)                       |
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CompanyReactivated"`
+
+### ClientAccountUpdated
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+updatedDate        | [LocalDate](#localdate)                       |
+name               | String
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"ClientAccountUpdated"`
+
+### ClientAccountHoldingUpdated
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+updatedDate        | [LocalDate](#localdate)                       |
+name               | String
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"ClientAccountHoldingUpdated"`
+
+### CallCenterUpdated
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+updatedDate        | [LocalDate](#localdate)                       |
+name               | String
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CallCenterUpdated"`
+
+### CompanyUpgradedToPremiumAccount
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+upgradedDate       | [LocalDate](#localdate)                       |
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CompanyUpgradedToPremiumAccount"`
+
+### PremiumAccountDowngraded
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+downgradedDate     | [LocalDate](#localdate)                       |
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"PremiumAccountDowngraded"`
+
 ### CompanyUpgradedToStandardAccount
-   
-> CompanyUpgradedToStandardAccount example :    
-    
+
+> CompanyUpgradedToStandardAccount example :
+
 ```json
 {
     "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
@@ -35,9 +144,9 @@ eventType           | Constant                                      | `"CallRece
     "upgradedDate":"2016-06-28",
     "sentDate":"2016-06-28T12:03:32+02:00",
     "eventType":"CompanyUpgradedToStandardAccount"
-} 
-``` 
-    
+}
+```
+
 Name               | Type                                          | Description
 -------------------| ----------------------------------------------| --------------------------------------------------
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
@@ -45,6 +154,60 @@ aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of 
 upgradedDate       | [LocalDate](#localdate)                       | the upgraded's date of this `Company`
 sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
 eventType          | Constant                                      | `"CompanyUpgradedToStandardAccount"`
+
+### CompanySubscribedToAnotherCallCenter
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+newCallCenter      | [SafeUUID](#safeuuid)                         |
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CompanySubscribedToAnotherCallCenter"`
+
+### CompanyDowngradedToPremiumAccount
+
+Name               | Type                                          | Description
+-------------------| ----------------------------------------------| --------------------------------------------------
+processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid       | [SafeUUID](#safeuuid)                         | the uid of the resource.
+downgradedDate     | [LocalDate](#localdate)                       |
+sentDate           | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType          | Constant                                      | `"CompanyDowngradedToPremiumAccount"`
+
+### AgencyCreated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the Company.
+createdDate         | [LocalDate](#localdate)                       |
+agency              | [Agency](#rawagency)                             |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"AgencyCreated"`
+
+### AgencyDeleted
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the Company.
+deletedDate         | [LocalDate](#localdate)                       |
+agencyUid           | [SafeUUID](#safeuuid)                         |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"AgencyDeleted"`
+
+### AgencyUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the Company.
+updatedDate         | [LocalDate](#localdate)                       |
+agency              | [Agency](#rawagency)                             |
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+eventType           | Constant                                      | `"AgencyUpdated"`
+
 
 ## ProviderContactEvent
 
