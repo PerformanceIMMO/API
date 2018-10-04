@@ -1155,6 +1155,40 @@ country       | [Option](#option)[String]           |
 geoLocation   | [GeoLocation](#geolocation)         |  
 checker       | [AddressChecker](#addresschecker)   |  
 
+## ValidAddress
+
+`ValidAddress` is an Enum, i.e type can take different values :
+
+```haskell
+data ValidAddress = RationalAddress | AddressReference
+```
+
+### RationalAddress
+
+Name          | Type                        | Description
+--------------| ----------------------------| --------------------------------------------------------
+uid           | [SafeUUID](#safeuuid)       |
+quality       | [Option](#option)[String]   |
+number        | [Option](#option)[String]   |
+street        | String                      |
+complement    | [Option](#option)[String]   |
+recipientSupplement | [Option](#option)[[RecipientIdentificationSupplement](#recipientidentificationsupplement)] |
+geographicalSupplement | [Option](#option)[[GeographicalIdentificationSupplement](#geographicalidentificationsupplement)] |
+zipCode       | String                      |
+city          | String                      |
+state         | [Option](#option)[String]   |
+country       | [Option](#option)[String]   |
+
+
+### AddressReference
+
+Name          | Type                                | Description
+--------------| ------------------------------------| --------------------------------------------------------
+uid           | [SafeUUID](#safeuuid)               |
+address       | RationalAddress                     | cf. valeur précédente de l'enum
+checker       | [AddressChecker](#addresschecker)   |
+geoLocation   | [GeoLocation](#geolocation)
+
 ## PatrimonyAddressReference
 
 > json body example : 

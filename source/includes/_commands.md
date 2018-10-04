@@ -147,6 +147,10 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 canceledDate       | [LocalDate](#localdate)                       | the cancelation's date of this `Company`  
 commandType        | Constant                                      | `"CancelCompany"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+CompanyCanceled                           | mandatory                         |
+
 ### ReactiveCompany
 
 ```json
@@ -162,6 +166,10 @@ Name               | Type                                          | Description
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 reactivatedDate    | [LocalDate](#localdate)                       | the reactivated's date of this `Company`  
 commandType        | Constant                                      | `"ReactiveCompany"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+CompanyReactived                          | mandatory                         |
 
 ### UpdateClientAccount
 
@@ -183,6 +191,10 @@ updatedDate        | [LocalDate](#localdate)                       | the updated
 name               | String                                        | the updated name of this `Company`  
 commandType        | Constant                                      | `"UpdateClientAccount"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ClientAccountUpdated                      | mandatory                         |
+
 ### UpdateClientAccountHolding
 
 ```json
@@ -200,6 +212,10 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 updatedDate        | [LocalDate](#localdate)                       | the updated's date of this `Company`  
 name               | String                                        | the updated name of this `Company`  
 commandType        | Constant                                      | `"UpdateClientAccountHolding"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ClientAccountHoldingUpdated               | mandatory                         |
 
 ### UpdateCallCenter
 
@@ -219,6 +235,10 @@ updatedDate        | [LocalDate](#localdate)                       | the updated
 name               | String                                        | the updated name of this `Company`  
 commandType        | Constant                                      | `"UpdateCallCenter"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+CallCenterUpdated                         | mandatory                         |
+
 ### UpgradeCompanyToPremiumAccount
 
 ```json
@@ -234,6 +254,10 @@ Name               | Type                                          | Description
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 upgradedDate       | [LocalDate](#localdate)                       | the updated's date of this `Company`  
 commandType        | Constant                                      | `"UpgradeCompanyToPremiumAccount"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+CompanyUpgradedToPremiumAccount           | mandatory                         |
 
 ### DowngradePremiumAccount
 
@@ -251,6 +275,10 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 downgradedDate     | [LocalDate](#localdate)                       | the updated's date of this `Company`  
 commandType        | Constant                                      | `"DowngradePremiumAccount"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PremiumAccountDowngraded                  | mandatory                         |
+
 ### UpgradeCompanyToStandardAccount
 
 ```json
@@ -266,6 +294,10 @@ Name               | Type                                          | Description
 processUid         | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 downgradedDate     | [LocalDate](#localdate)                       | the upgraded's date of this `Company`  
 commandType        | Constant                                      | `"UpgradeCompanyToStandardAccount"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+CompanyUpgradedToStandardAccount          | mandatory                         |
 
 ## CreateAgency
 
@@ -381,6 +413,10 @@ processUid         | [SafeUUID](#safeuuid)                         | the uid of 
 label              | String                                        | the label of this `Building`  
 commandType        | Constant                                      | `"ReferenceBuilding"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+BuildingReferenced                        | mandatory                         |
+
 ### AddComplementaryAddressToPatrimony
 
 > json body example :
@@ -415,6 +451,10 @@ processUid          | [SafeUUID](#safeuuid)                                   | 
 complementaryAddress| [PatrimonyAddressReference](#patrimonyaddressreference) | a complementary address is an `Address` that is not referenced by a `Lot` but can be use for this `Patrimony`  
 commandType         | Constant                                                | `"AddComplementaryAddressToPatrimony"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ComplementaryAddressAddedToPatrimony      | mandatory                         |
+
 ### RemoveComplementaryAddressFromPatrimony
 
 > json body example :
@@ -432,6 +472,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 addressUid          | [SafeUUID](#safeuuid)                         | the uid of the `Address` will be removed  
 commandType         | Constant                                      | `"RemoveComplementaryAddressFromPatrimony"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ComplementaryAddressRemovedFromPatrimony  | mandatory                         |
 
 ### UpdatePatrimony
 
@@ -455,6 +499,10 @@ label               | [Option](#option)[String]                     |
 comment             | String                                        |   
 commandType         | Constant                                      | `"UpdatePatrimony"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PatrimonyUpdated                          | mandatory                         |
+
 ### AssociatePatrimonyInAgency
 
 > json body example :
@@ -473,6 +521,10 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency associated   
 commandType         | Constant                                      | `"AssociatePatrimonyInAgency"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PatrimonyAssociatedInAgency               | mandatory                         |
+
 ### DissociatePatrimonyFromAgency
 
 > json body example :
@@ -490,6 +542,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 agencyUid           | [SafeUUID](#safeuuid)                         | the uid of the agency dissociated
 commandType         | Constant                                      | `"DissociatePatrimonyFromAgency"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PatrimonyDissociatedFromAgency            | mandatory                         |
 
 ## IncrementProviderContact
 

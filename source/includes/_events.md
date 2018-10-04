@@ -1,4 +1,4 @@
-# Events
+f# Events
 
 ## CompanyEvent
 
@@ -1089,3 +1089,79 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 name                | [Option](#option)[[Name](#name)]              | if None, field not updated
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
 eventType           | Constant                                      | `"PatrimonyContactIdentityUpdated"`
+
+## PatrimonyEvent
+
+### PatrimonyReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+ref                 | String                                        |
+label               | [Option](#option)[String]                     |
+agencies            | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
+eventType           | Constant                                      | `"PatrimonyReferenced"`
+
+### ComplementaryAddressAddedToPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+complementaryAddress | [ValidAddress](#validaddress)                |
+eventType           | Constant                                      | `"ComplementaryAddressAddedToPatrimony"`
+
+### ComplementaryAddressRemovedFromPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+addressUid          | [SafeUUID](#safeuuid)
+eventType           | Constant                                      | `"ComplementaryAddressRemovedFromPatrimony"`
+
+### BuildingReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+buildingUid         | [SafeUUID](#safeuuid)
+eventType           | Constant                                      | `"BuildingReferenced"`
+
+### PatrimonyAssociatedInAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+agencyUid           | [SafeUUID](#safeuuid)
+eventType           | Constant                                      | `"PatrimonyAssociatedInAgency"`
+
+### PatrimonyDissociatedFromAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+agencyUid           | [SafeUUID](#safeuuid)
+eventType           | Constant                                      | `"PatrimonyDissociatedFromAgency"`
+
+### PatrimonyUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+ref                 | String
+label               | [Option](#option)[String]                     |
+comment             | String                                        |
+eventType           | Constant                                      | `"PatrimonyUpdated"`

@@ -328,10 +328,14 @@ commandType     | body  | Constant                                     | `"Refer
 
 Http code | Type                                        | Description
 ----------| --------------------------------------------| ----------------------------
-201       | String                                      | The `Patrimony` is created
+201       | [PatrimonyEvent](#patrimonyevent)           | The `Patrimony` is created
 400       | [PatrimonyEventError](#patrimonyeventerror) | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 401       |                                             | Not authenticated user
 403       |                                             | `User` doesn't have right to perform this `Command`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PatrimonyReferenced                       | mandatory                         |
 
 ## Increment Patrimony State
 
@@ -368,7 +372,7 @@ patrimonyCommand | body | [IncrementPatrimony](#incrementpatrimony)        | the
 
 Http code | Type                                        | Description
 ----------| --------------------------------------------| ----------------------------
-200       | String                                      | The `Command` is a success
+200       | [PatrimonyEvent](#patrimonyevent)           | The `Command` is a success
 400       | [PatrimonyEventError](#patrimonyeventerror) | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 401       |                                             | Not authenticated user
 403       |                                             | `User` doesn't have right to perform this `Command`
