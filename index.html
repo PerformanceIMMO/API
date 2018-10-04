@@ -961,7 +961,7 @@ https://base_url/api/vEvent/patrimonies
 </thead><tbody>
 <tr>
 <td>201</td>
-<td>String</td>
+<td><a href="#patrimonyevent">PatrimonyEvent</a></td>
 <td>The <code class="prettyprint">Patrimony</code> is created</td>
 </tr>
 <tr>
@@ -978,6 +978,20 @@ https://base_url/api/vEvent/patrimonies
 <td>403</td>
 <td></td>
 <td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PatrimonyReferenced</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -1038,7 +1052,7 @@ https://base_url/api/vEvent/patrimonies/1d178826-76dc-cd04-e174-346ba60eedad
 </thead><tbody>
 <tr>
 <td>200</td>
-<td>String</td>
+<td><a href="#patrimonyevent">PatrimonyEvent</a></td>
 <td>The <code class="prettyprint">Command</code> is a success</td>
 </tr>
 <tr>
@@ -7682,6 +7696,108 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </tbody></table>
 
+<h2 id="validaddress">ValidAddress</h2>
+
+<p><code class="prettyprint">ValidAddress</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">ValidAddress</span> <span class="o">=</span> <span class="kt">RationalAddress</span> <span class="o">|</span> <span class="kt">AddressReference</span>
+</code></pre>
+<h3 id="rationaladdress">RationalAddress</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>recipientSupplement</td>
+<td><a href="#option">Option</a>[<a href="#recipientidentificationsupplement">RecipientIdentificationSupplement</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>geographicalSupplement</td>
+<td><a href="#option">Option</a>[<a href="#geographicalidentificationsupplement">GeographicalIdentificationSupplement</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="addressreference">AddressReference</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>RationalAddress</td>
+<td>cf. valeur précédente de l&#39;enum</td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td></td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h2 id="patrimonyaddressreference">PatrimonyAddressReference</h2>
 
 <blockquote>
@@ -10055,6 +10171,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CompanyCanceled</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="reactivecompany">ReactiveCompany</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
@@ -10083,6 +10213,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;ReactiveCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CompanyReactived</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10129,6 +10273,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ClientAccountUpdated</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="updateclientaccountholding">UpdateClientAccountHolding</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
@@ -10163,6 +10321,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;UpdateClientAccountHolding&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ClientAccountHoldingUpdated</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10203,6 +10375,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CallCenterUpdated</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="upgradecompanytopremiumaccount">UpgradeCompanyToPremiumAccount</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
@@ -10231,6 +10417,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;UpgradeCompanyToPremiumAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CompanyUpgradedToPremiumAccount</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10265,6 +10465,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PremiumAccountDowngraded</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="upgradecompanytostandardaccount">UpgradeCompanyToStandardAccount</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
@@ -10293,6 +10507,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;UpgradeCompanyToStandardAccount&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CompanyUpgradedToStandardAccount</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10514,6 +10742,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BuildingReferenced</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="addcomplementaryaddresstopatrimony">AddComplementaryAddressToPatrimony</h3>
 
 <blockquote>
@@ -10565,6 +10807,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ComplementaryAddressAddedToPatrimony</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="removecomplementaryaddressfrompatrimony">RemoveComplementaryAddressFromPatrimony</h3>
 
 <blockquote>
@@ -10597,6 +10853,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;RemoveComplementaryAddressFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ComplementaryAddressRemovedFromPatrimony</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -10647,6 +10917,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PatrimonyUpdated</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="associatepatrimonyinagency">AssociatePatrimonyInAgency</h3>
 
 <blockquote>
@@ -10682,6 +10966,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PatrimonyAssociatedInAgency</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="dissociatepatrimonyfromagency">DissociatePatrimonyFromAgency</h3>
 
 <blockquote>
@@ -10714,6 +11012,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;DissociatePatrimonyFromAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PatrimonyDissociatedFromAgency</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -12885,7 +13197,7 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
-          <h1 id="events">Events</h1>
+          <p>f# Events</p>
 
 <h2 id="companyevent">CompanyEvent</h2>
 
@@ -16209,6 +16521,280 @@ Received the following events means the Ticket was closed.
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;PatrimonyContactIdentityUpdated&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="patrimonyevent">PatrimonyEvent</h2>
+
+<h3 id="patrimonyreferenced">PatrimonyReferenced</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>agencies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;PatrimonyReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="complementaryaddressaddedtopatrimony">ComplementaryAddressAddedToPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>complementaryAddress</td>
+<td><a href="#validaddress">ValidAddress</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ComplementaryAddressAddedToPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="complementaryaddressremovedfrompatrimony">ComplementaryAddressRemovedFromPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>addressUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ComplementaryAddressRemovedFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="buildingreferenced">BuildingReferenced</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>buildingUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;BuildingReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="patrimonyassociatedinagency">PatrimonyAssociatedInAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;PatrimonyAssociatedInAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="patrimonydissociatedfromagency">PatrimonyDissociatedFromAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;PatrimonyDissociatedFromAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="patrimonyupdated">PatrimonyUpdated</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;PatrimonyUpdated&quot;</code></td>
 </tr>
 </tbody></table>
 
