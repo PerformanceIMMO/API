@@ -558,6 +558,10 @@ agencyUid           | [SafeUUID](#safeuuid)                         | the uid of
 date                | [LocalDate](#localdate)                       | 
 commandType         | Constant                                      | `"AssociateProviderContactToAgency"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactAssociatedToAgency         | mandatory                         |
+
 ### AssociateProviderContactToCompany
 
 Associate this `ProviderContact` to a specific `Company`. 
@@ -569,6 +573,10 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 companyUid          | [SafeUUID](#safeuuid)                         | the uid of the agency associated
 date                | [LocalDate](#localdate)                       | 
 commandType         | Constant                                      | `"AssociateProviderContactToCompany"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactAssociatedToCompany        | mandatory                         |
 
 ### DissociateProviderContactFromAgency
 
@@ -590,7 +598,11 @@ fax                 | Array[String]                                 |
 emails              | Array[String]                                 | 
 date                | [DateTime](#datetime)                         | 
 commandType         | Constant                                      | `"UpdateProviderContact"`
-            
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactUpdated                    | mandatory                         |
+
 ### DisableProviderContact
 
 Name                | Type                                          | Description
@@ -598,7 +610,11 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 date                | [DateTime](#datetime)                         | 
 commandType         | Constant                                      | `"DisableProviderContact"`
-            
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactDisabled                   | mandatory                         |
+
 ### EnableProviderContact
 
 Name                | Type                                          | Description
@@ -606,7 +622,11 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 date                | [DateTime](#datetime)                         | 
 commandType         | Constant                                      | `"EnableProviderContact"`
-            
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactEnabled                    | mandatory                         |
+
 ### AssociateProviderContactWithProviderCompany
 
 Name                | Type                                          | Description
@@ -614,6 +634,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 providerCompanyUid  | [SafeUUID](#safeuuid)                         | the uid of the `ProviderCompany` with which this `ProviderContact` should be associated. 
 commandType         | Constant                                      | `"AssociateProviderContactWithProviderCompany"`            
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactAssociatedWithProviderCompany | mandatory                         |
 
 ### AssociateProviderContactWithPatrimony
 
@@ -623,6 +647,10 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` with which this `ProviderContact` should be associated. 
 commandType         | Constant                                      | `"AssociateProviderContactWithPatrimony"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactAssociatedWithPatrimony    | mandatory                         |
+
 ### DissociateProviderContactFromPatrimony
 
 Name                | Type                                          | Description
@@ -630,6 +658,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` with which this `ProviderContact` should be associated. 
 commandType         | Constant                                      | `"DissociateProviderContactFromPatrimony"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactDissociatedFromPatrimony   | mandatory                         |
 
 ### AssignActivityToProviderContact
 
@@ -640,6 +672,10 @@ activityUidUid      | [SafeUUID](#safeuuid)                         | the uid of
 includedIncidentTypes | Array[[SafeUUID](#safeuuid)]                | the list of incident type that is managed for this Activity by this `ProviderContact` 
 commandType         | Constant                                      | `"AssignActivityToProviderContact"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ActivityAssignedToProviderContact         | mandatory                         |
+
 ### RemoveActivityFromProviderContact
 
 Name                | Type                                          | Description
@@ -647,6 +683,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 activityUidUid      | [SafeUUID](#safeuuid)                         | the uid of the `Activity` should be removed from this `ProviderContact` 
 commandType         | Constant                                      | `"RemoveActivityFromProviderContact"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ActivityRemovedFromProviderContact         | mandatory                         |
 
 ## OpenTicket
 

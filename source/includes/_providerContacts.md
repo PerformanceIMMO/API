@@ -387,6 +387,12 @@ Http code | Type                                                              | 
 201       | [ProviderContactEventResultView](#providercontacteventresultview) | The `Event`s resulting of this `Command`
 400       | [ProviderContactEventError](#providercontacteventerror)           | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactAdded                      | mandatory                         |
+ProviderContactAssociatedToCompany        | mandatory                         |
+ProviderContactAssociatedWithProviderCompany | optional                       | if field `providerCompanyUid` is setted
+
 
 ## Increment ProviderContact State
 
@@ -440,4 +446,3 @@ Http code | Type                                                              | 
 ----------| ------------------------------------------------------------------| ----------------------------
 200       | [ProviderContactEventResultView](#providercontacteventresultview) | The `Event`s resulting of this `Command`
 400       | [ProviderContactEventError](#providercontacteventerror)           | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
-
