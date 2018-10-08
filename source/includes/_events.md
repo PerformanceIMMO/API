@@ -1,4 +1,4 @@
-f# Events
+# Events
 
 ## CompanyEvent
 

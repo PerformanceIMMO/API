@@ -1152,7 +1152,11 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 address             | [LotAddressReference](#lotaddressreference)   |
 commandType         | Constant                                      | `"AddAddressToLot"`
- 
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+AddressAddedToLot                         | mandatory                         |
+
 ### RemoveAddressFromLot
 
 Name                | Type                                          | Description
@@ -1160,6 +1164,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 addressUid          | [SafeUUID](#safeuuid)                         |
 commandType         | Constant                                      | `"RemoveAddressFromLot"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+AddressRemovedFromLot                         | mandatory                         |
 
 ### UpdateLotReference
 
@@ -1169,6 +1177,10 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 ref                 | [NonEmptyString](#nonemptystring)             |
 commandType         | Constant                                      | `"UpdateLotReference"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+LotReferenceUpdated                       | mandatory                         |
+
 ### UpdateLotNumber
 
 Name                | Type                                          | Description
@@ -1176,6 +1188,10 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 lotNumber           | [NonEmptyString](#nonemptystring)             |
 commandType         | Constant                                      | `"UpdateLotNumber"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+LotNumberUpdated                          | mandatory                         |
 
 ### UpdateLotUsage(processUid: SafeUUID, usage: LotUsage) extends IncrementLotJsonCommand
 
@@ -1185,6 +1201,10 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 usage               | [LotUsage](#lotusage)                         |
 commandType         | Constant                                      | `"UpdateLotUsage"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+LotUsageUpdated                           | mandatory                         |
+
 ### DeleteLot
 
 Name                | Type                                          | Description
@@ -1192,6 +1212,9 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 commandType         | Constant                                      | `"DeleteLot"`
 
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+LotDeleted                                | mandatory                         |
 
 ## IncrementPatrimonyContact
 
