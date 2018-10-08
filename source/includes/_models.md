@@ -1238,6 +1238,24 @@ entrance      | [Option](#option)[String]           |
 elevator      | [Option](#option)[String]           |
 staircase     | [Option](#option)[String]           |
 
+## LotAddressCommand
+
+Name          | Type                                | Description
+--------------| ------------------------------------| --------------------------------------------------------
+quality       | [Option](#option)[String]           |
+number        | String                              | the number of the street. ex: 12
+street        | String                              | ex: avenue de Paris
+complement    | [Option](#option)[String]           |
+zipCode       | String                              | zipCode of this `Address`
+city          | String                              | ex: Paris
+state         | [Option](#option)[String]           |
+country       | [Option](#option)[String]           | ex: France
+recipientSupplement | [Option](#option)[[RecipientIdentificationSupplement](#recipientidentificationsupplement)] |
+geographicalSupplement | [Option](#option)[[GeographicalIdentificationSupplement](#geographicalidentificationsupplement)] |
+geoLocation   | [GeoLocation](#geolocation)         | geolocation of the `Address` (with latitude & longitude value)
+checker       | [AddressChecker](#addresschecker)   | used to identify `Address` across external tools (ex: google place ID)
+building      | [Option](#option)[[SafeUUID](#safeuuid)] |
+
 ## ProviderContactResultView
 
 ### Fields

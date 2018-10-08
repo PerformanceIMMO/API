@@ -196,7 +196,7 @@ aggregateUid    | body  | [Option](#option)[[SafeUUID](#safeuuid)]     | the opt
 ref             | body  | String                                       | a public reference to distinguish the `Lot` in a `Agency` context 
 lotNumber       | body  | String                                       | a public number to distinguish the `Lot` in its `Patrimony`   
 patrimonyUid    | body  | [SafeUUID](#safeuuid)                        |   
-addresses       | body  |                                              |
+addresses       | body  | [NonEmptyList](#nonemptylist)[[LotAddressCommand](#lotaddresscommand)] |
 usage           | body  | [LotUsage](#lotusage)                        | what kind of `Lot` it is. 
 commandType     | body  | Constant                                     | `"ReferenceLot"` 
 
@@ -208,6 +208,11 @@ Http code | Type                                        | Description
 400       | [LotEventError](#loteventerror)             | Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.
 401       |                                             | Not authenticated user .
 403       |                                             | `User` doesn't have right to perform this `Command`.
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+LotReferenced                             | mandatory                         |
+LotNumberUpdated                          | mandatory                         |
 
 ## Increment Lot State
                     
