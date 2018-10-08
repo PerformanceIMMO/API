@@ -7229,6 +7229,14 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </tbody></table>
 
+<h2 id="lotusage">LotUsage</h2>
+
+<p><code class="prettyprint">LotUsage</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">LotUsage</span> <span class="o">=</span> <span class="kt">Apartment</span> <span class="o">|</span> <span class="kt">IndividualHouse</span> <span class="o">|</span> <span class="kt">ResidentialParking</span> <span class="o">|</span> <span class="kt">ResidentialCellar</span> <span class="o">|</span> <span class="kt">ResidentialAnnex</span> <span class="o">|</span>           <span class="c1">-- ResidentialUsage</span>
+                   <span class="kt">Restaurant</span> <span class="o">|</span> <span class="kt">MeetingRoom</span> <span class="o">|</span> <span class="kt">Fitness</span> <span class="o">|</span> <span class="kt">SPA</span> <span class="o">|</span> <span class="kt">SportFacility</span> <span class="o">|</span> <span class="kt">Pool</span> <span class="o">|</span> <span class="kt">PoolHouse</span> <span class="o">|</span> <span class="kt">Playground</span> <span class="o">|</span> <span class="kt">Laundry</span> <span class="o">|</span> <span class="kt">OtherService</span> <span class="o">|</span>      <span class="c1">-- ServiceUsage</span>
+                   <span class="kt">TertiaryParking</span> <span class="o">|</span> <span class="kt">Workspace</span> <span class="o">|</span> <span class="kt">Workstation</span> <span class="o">|</span> <span class="kt">Office</span> <span class="o">|</span> <span class="kt">RetailShop</span> <span class="o">|</span> <span class="kt">Warehouse</span> <span class="o">|</span> <span class="kt">GasStation</span> <span class="o">|</span>                               <span class="c1">-- TertiaryUsage</span>
+                   <span class="kt">BoilerRoom</span> <span class="o">|</span> <span class="kt">Elevator</span> <span class="o">|</span> <span class="kt">VentilationSystem</span> <span class="o">|</span> <span class="kt">Gate</span> <span class="o">|</span> <span class="kt">Intercom</span> <span class="o">|</span> <span class="kt">BinStorageArea</span> <span class="o">|</span> <span class="kt">MachineRoom</span> <span class="o">|</span> <span class="kt">GardeningShed</span> <span class="o">|</span> <span class="kt">OtherTechnical</span> <span class="o">|</span>  <span class="c1">-- TechnicalUsage</span>
+</code></pre>
 <h2 id="lotresultview">LotResultView</h2>
 
 <h3 id="fields">Fields</h3>
