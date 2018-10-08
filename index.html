@@ -3353,6 +3353,30 @@ https://base_url/api/vEvent/providercontacts
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactAdded</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+<tr>
+<td>ProviderContactAssociatedToCompany</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+<tr>
+<td>ProviderContactAssociatedWithProviderCompany</td>
+<td>optional</td>
+<td>if field <code class="prettyprint">providerCompanyUid</code> is setted</td>
+</tr>
+</tbody></table>
+
 <h2 id="increment-providercontact-state">Increment ProviderContact State</h2>
 
 <blockquote>
@@ -11165,6 +11189,20 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactAssociatedToAgency</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="associateprovidercontacttocompany">AssociateProviderContactToCompany</h3>
 
 <p>Associate this <code class="prettyprint">ProviderContact</code> to a specific <code class="prettyprint">Company</code>. 
@@ -11196,6 +11234,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;AssociateProviderContactToCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactAssociatedToCompany</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -11276,6 +11328,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactUpdated</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="disableprovidercontact">DisableProviderContact</h3>
 
 <table><thead>
@@ -11299,6 +11365,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;DisableProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactDisabled</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -11328,6 +11408,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactEnabled</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="associateprovidercontactwithprovidercompany">AssociateProviderContactWithProviderCompany</h3>
 
 <table><thead>
@@ -11351,6 +11445,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;AssociateProviderContactWithProviderCompany&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactAssociatedWithProviderCompany</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -11380,6 +11488,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactAssociatedWithPatrimony</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="dissociateprovidercontactfrompatrimony">DissociateProviderContactFromPatrimony</h3>
 
 <table><thead>
@@ -11403,6 +11525,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;DissociateProviderContactFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactDissociatedFromPatrimony</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -11437,6 +11573,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ActivityAssignedToProviderContact</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="removeactivityfromprovidercontact">RemoveActivityFromProviderContact</h3>
 
 <table><thead>
@@ -11460,6 +11610,20 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td>commandType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;RemoveActivityFromProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ActivityRemovedFromProviderContact</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
