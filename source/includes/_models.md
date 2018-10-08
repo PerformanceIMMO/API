@@ -973,6 +973,17 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------------------------------
 uid         | [SafeUUID](#safeuuid)                             | the uid of the `Patrimony`
 
+## LotUsage
+
+`LotUsage` is an Enum, i.e type can take different values :
+
+```haskell
+data LotUsage = Apartment | IndividualHouse | ResidentialParking | ResidentialCellar | ResidentialAnnex |           -- ResidentialUsage
+                   Restaurant | MeetingRoom | Fitness | SPA | SportFacility | Pool | PoolHouse | Playground | Laundry | OtherService |      -- ServiceUsage
+                   TertiaryParking | Workspace | Workstation | Office | RetailShop | Warehouse | GasStation |                               -- TertiaryUsage
+                   BoilerRoom | Elevator | VentilationSystem | Gate | Intercom | BinStorageArea | MachineRoom | GardeningShed | OtherTechnical |  -- TechnicalUsage
+```
+
 ## LotResultView
 
 ### Fields
