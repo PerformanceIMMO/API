@@ -1365,7 +1365,7 @@ https://base_url/api/vEvent/patrimonies
 <tr>
 <td>addresses</td>
 <td>body</td>
-<td></td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#lotaddresscommand">LotAddressCommand</a>]</td>
 <td></td>
 </tr>
 <tr>
@@ -1410,6 +1410,25 @@ https://base_url/api/vEvent/patrimonies
 <td>403</td>
 <td></td>
 <td><code class="prettyprint">User</code> doesn&rsquo;t have right to perform this <code class="prettyprint">Command</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LotReferenced</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+<tr>
+<td>LotNumberUpdated</td>
+<td>mandatory</td>
+<td></td>
 </tr>
 </tbody></table>
 
@@ -7912,6 +7931,82 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>staircase</td>
 <td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="lotaddresscommand">LotAddressCommand</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quality</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>number</td>
+<td>String</td>
+<td>the number of the street. ex: 12</td>
+</tr>
+<tr>
+<td>street</td>
+<td>String</td>
+<td>ex: avenue de Paris</td>
+</tr>
+<tr>
+<td>complement</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td>zipCode of this <code class="prettyprint">Address</code></td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>ex: Paris</td>
+</tr>
+<tr>
+<td>state</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>ex: France</td>
+</tr>
+<tr>
+<td>recipientSupplement</td>
+<td><a href="#option">Option</a>[<a href="#recipientidentificationsupplement">RecipientIdentificationSupplement</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>geographicalSupplement</td>
+<td><a href="#option">Option</a>[<a href="#geographicalidentificationsupplement">GeographicalIdentificationSupplement</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>geoLocation</td>
+<td><a href="#geolocation">GeoLocation</a></td>
+<td>geolocation of the <code class="prettyprint">Address</code> (with latitude &amp; longitude value)</td>
+</tr>
+<tr>
+<td>checker</td>
+<td><a href="#addresschecker">AddressChecker</a></td>
+<td>used to identify <code class="prettyprint">Address</code> across external tools (ex: google place ID)</td>
+</tr>
+<tr>
+<td>building</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
 <td></td>
 </tr>
 </tbody></table>
