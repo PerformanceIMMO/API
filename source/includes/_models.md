@@ -1377,6 +1377,14 @@ Name                        | Type                            | Description
 day                         | [LocalDate](#localdate)         | a day when tickets are created
 value                       | Float                           | a count with 2 significant figures
 
+## UserEventResultView
+
+### Fields
+
+Name                        | Type                            | Description
+----------------------------| --------------------------------| --------------------------------------------------
+events                      | Array[[UserEvent](#userevent)]  | The `Event`s resulting of this `Command`
+
 ## CompanyEventResultView
 
 ### Fields

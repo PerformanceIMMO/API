@@ -1165,3 +1165,103 @@ ref                 | String
 label               | [Option](#option)[String]                     |
 comment             | String                                        |
 eventType           | Constant                                      | `"PatrimonyUpdated"`
+
+
+## UserEvent
+
+### ClientAccountManagerReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     | just a label to explain the role of the user.
+phone               | [Option](#option)[String]                     |
+eventType           | Constant                                      | `"ClientAccountManagerReferenced"`
+
+### ExecutiveReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
+managedAgencies     | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the executive's agencies.
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
+phone               | [Option](#option)[String]                     |
+commandType         | Constant                                      | `"ExecutiveReferenced"`
+
+### PatrimonyManagerReferenced
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
+managedPatrimonies  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the patrimonyManager's patrimonies.
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
+phone               | [Option](#option)[String]                     |
+commandType         | Constant                                      | `"PatrimonyManagerReferenced"`
+
+### UserAssociatedWithAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+agencyUid           | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"UserAssociatedWithAgency"`
+
+### UserDissociatedFromAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+agencyUid           | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"UserDissociatedFromAgency"`
+
+### UserAssociatedWithPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+patrimonyUid        | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"UserAssociatedWithPatrimony"`
+
+### UserDissociatedFromPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+patrimonyUid        | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"UserDissociatedFromPatrimony"`
+
+### UserDisabled
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+commandType         | Constant                                      | `"UserDisabled"`
+
+### ExecutiveDowngradedToPatrimonyManager
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+managedPatrimonies  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
+commandType         | Constant                                      | `"ExecutiveDowngradedToPatrimonyManager"`

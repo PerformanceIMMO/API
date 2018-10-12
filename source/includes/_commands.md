@@ -1311,3 +1311,140 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 name                | [Option](#option)[[Name](#name)]              | if None, field not updated
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
 commandType         | Constant                                      | `"UpdatePatrimonyContactIdentity"`
+
+## ReferenceUserCommand
+
+### ReferenceClientAccountManager
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     | just a label to explain the role of the user.
+phone               | [Option](#option)[String]                     |
+commandType         | Constant                                      | `"ReferenceClientAccountManager"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ClientAccountManagerReferenced            | mandatory                         |
+
+### ReferenceExecutive
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
+managedAgencies     | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the executive's agencies.
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
+phone               | [Option](#option)[String]                     |
+commandType         | Constant                                      | `"ReferenceExecutive"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ExecutiveReferenced                       | mandatory                         |
+
+### ReferencePatrimonyManager
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
+managedPatrimonies  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the patrimonyManager's patrimonies.
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
+phone               | [Option](#option)[String]                     |
+commandType         | Constant                                      | `"ReferenceExecutive"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PatrimonyManagerReferenced                | mandatory                         |
+
+## IncrementUserCommand
+
+### AssociateUserWithAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+agencyUid           | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"AssociateUserWithAgency"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+UserAssociatedWithAgency                  | mandatory                         |
+
+### DissociateUserFromAgency
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+agencyUid           | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"DissociateUserFromAgency"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+UserDissociatedFromAgency                 | mandatory                         |
+
+### AssociateUserWithPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+patrimonyUid        | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"AssociateUserWithPatrimony"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+UserAssociatedWithPatrimony               | mandatory                         |
+
+### DissociateUserFromPatrimony
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+patrimonyUid        | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"DissociateUserFromPatrimony"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+UserDissociatedFromPatrimony              | mandatory                         |
+
+### DisableUser
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+commandType         | Constant                                      | `"DisableUser"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+UserDisabled                              | mandatory                         |
+
+### DowngradeExecutiveToPatrimonyManager
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+managedPatrimonies  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
+commandType         | Constant                                      | `"DowngradeExecutiveToPatrimonyManager"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ExecutiveDowngradedToPatrimonyManager     | mandatory                         |
