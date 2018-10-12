@@ -452,6 +452,154 @@ un succès et que l&#39;information est enregistrée dans l&#39;application.</p>
 
           <h1 id="users">Users</h1>
 
+<p>There are different type of Users in the PerfImmo application.
+These different type is made to answer to different situation compared to Client entities</p>
+
+<ul>
+<li>ClientAccountManager</li>
+</ul>
+
+<p>An admin user account to manage all the stuff of a <code class="prettyprint">ClientCompany</code>.</p>
+
+<ul>
+<li>Executive</li>
+</ul>
+
+<p>An user in charge of manage one or several <code class="prettyprint">Agencies</code>.</p>
+
+<ul>
+<li>PatrimonyManager</li>
+</ul>
+
+<p>An user in charge of manage several <code class="prettyprint">Patrimonies</code></p>
+
+<h2 id="reference-user">Reference User</h2>
+
+<blockquote>
+<p>HTTP command example :</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -XPOST <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"processUid"</span>:<span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span>,
+ <span class="s2">"login"</span>:<span class="s2">"monlogin@perfimmo.com"</span>
+ <span class="s2">"firstName"</span>:<span class="s2">"John"</span>,
+ <span class="s2">"lastName"</span>:<span class="s2">"Doe"</span>,
+ <span class="s2">"companyUid"</span>:<span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span>,
+ <span class="s2">"managedAgencies"</span>: <span class="o">[</span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="o">]</span>,
+ <span class="s2">"commandType"</span>:<span class="s2">"ReferenceExecutive"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/users
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"events"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"aggregateUid"</span><span class="p">:</span><span class="s2">"7634c414-8822-e29d-fe2b-0a18b3174369"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"monlogin@perfimmo.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"firstName"</span><span class="p">:</span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"lastName"</span><span class="p">:</span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"companyUid"</span><span class="p">:</span><span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"managedAgencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"16fc6e5e-163d-799c-89ef-a764f2090d74"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ExecutiveReferenced"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><code class="prettyprint">POST</code></strong> <code class="prettyprint">/api/vEvent/users</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>body</td>
+<td><a href="#referenceusercommand">ReferenceUserCommand</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="#usereventresultview">UserEventResultView</a></td>
+<td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#usereventerror">UserEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
+
+<h2 id="increment-user-state">Increment User state</h2>
+
+<p><strong><code class="prettyprint">PATCH</code></strong> <code class="prettyprint">/api/vEvent/users/user_uid</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td></td>
+<td>body</td>
+<td><a href="#incrementusercommand">IncrementUserCommand</a></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#usereventresultview">UserEventResultView</a></td>
+<td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#usereventerror">UserEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
+
           <h1 id="patrimonies">Patrimonies</h1>
 
 <aside class="warning">
@@ -8381,6 +8529,24 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 </tbody></table>
 
+<h2 id="usereventresultview">UserEventResultView</h2>
+
+<h3 id="fields">Fields</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>events</td>
+<td>Array[<a href="#userevent">UserEvent</a>]</td>
+<td>The <code class="prettyprint">Event</code>s resulting of this <code class="prettyprint">Command</code></td>
+</tr>
+</tbody></table>
+
 <h2 id="companyeventresultview">CompanyEventResultView</h2>
 
 <h3 id="fields">Fields</h3>
@@ -13548,6 +13714,495 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
+<h2 id="referenceusercommand">ReferenceUserCommand</h2>
+
+<h3 id="referenceclientaccountmanager">ReferenceClientAccountManager</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the user&rsquo;s <code class="prettyprint">ClientCompany</code></td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>just a label to explain the role of the user.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferenceClientAccountManager&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ClientAccountManagerReferenced</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="referenceexecutive">ReferenceExecutive</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the user&rsquo;s <code class="prettyprint">ClientCompany</code></td>
+</tr>
+<tr>
+<td>managedAgencies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the non empty list of the executive&rsquo;s agencies.</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>just a label to explain the role of the user. Useful to calcul the user&rsquo;s rights on the data.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferenceExecutive&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ExecutiveReferenced</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="referencepatrimonymanager">ReferencePatrimonyManager</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the user&rsquo;s <code class="prettyprint">ClientCompany</code></td>
+</tr>
+<tr>
+<td>managedPatrimonies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the non empty list of the patrimonyManager&rsquo;s patrimonies.</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>just a label to explain the role of the user. Useful to calcul the user&rsquo;s rights on the data.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ReferenceExecutive&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PatrimonyManagerReferenced</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="incrementusercommand">IncrementUserCommand</h2>
+
+<h3 id="associateuserwithagency">AssociateUserWithAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociateUserWithAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserAssociatedWithAgency</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="dissociateuserfromagency">DissociateUserFromAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DissociateUserFromAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserDissociatedFromAgency</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="associateuserwithpatrimony">AssociateUserWithPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AssociateUserWithPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserAssociatedWithPatrimony</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="dissociateuserfrompatrimony">DissociateUserFromPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DissociateUserFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserDissociatedFromPatrimony</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="disableuser">DisableUser</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DisableUser&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserDisabled</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="downgradeexecutivetopatrimonymanager">DowngradeExecutiveToPatrimonyManager</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>managedPatrimonies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DowngradeExecutiveToPatrimonyManager&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ExecutiveDowngradedToPatrimonyManager</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
           <h1 id="events">Events</h1>
 
 <h2 id="companyevent">CompanyEvent</h2>
@@ -17146,6 +17801,367 @@ Received the following events means the Ticket was closed.
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;PatrimonyUpdated&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="userevent">UserEvent</h2>
+
+<h3 id="clientaccountmanagerreferenced">ClientAccountManagerReferenced</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the user&rsquo;s <code class="prettyprint">ClientCompany</code></td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>just a label to explain the role of the user.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ClientAccountManagerReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="executivereferenced">ExecutiveReferenced</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the user&rsquo;s <code class="prettyprint">ClientCompany</code></td>
+</tr>
+<tr>
+<td>managedAgencies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the non empty list of the executive&rsquo;s agencies.</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>just a label to explain the role of the user. Useful to calcul the user&rsquo;s rights on the data.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ExecutiveReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="patrimonymanagerreferenced">PatrimonyManagerReferenced</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#option">Option</a>[<a href="#name">Name</a>]</td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the user&rsquo;s <code class="prettyprint">ClientCompany</code></td>
+</tr>
+<tr>
+<td>managedPatrimonies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the non empty list of the patrimonyManager&rsquo;s patrimonies.</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>just a label to explain the role of the user. Useful to calcul the user&rsquo;s rights on the data.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;PatrimonyManagerReferenced&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="userassociatedwithagency">UserAssociatedWithAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UserAssociatedWithAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="userdissociatedfromagency">UserDissociatedFromAgency</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>agencyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UserDissociatedFromAgency&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="userassociatedwithpatrimony">UserAssociatedWithPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UserAssociatedWithPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="userdissociatedfrompatrimony">UserDissociatedFromPatrimony</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UserDissociatedFromPatrimony&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="userdisabled">UserDisabled</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UserDisabled&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="executivedowngradedtopatrimonymanager">ExecutiveDowngradedToPatrimonyManager</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>managedPatrimonies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;ExecutiveDowngradedToPatrimonyManager&quot;</code></td>
 </tr>
 </tbody></table>
 
