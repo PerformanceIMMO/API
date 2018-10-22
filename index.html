@@ -1697,7 +1697,7 @@ https://base_url/api/v1/patrimonycontacts?range<span class="o">=</span>0-0
             </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"phone"</span><span class="p">:</span><span class="s2">"0781780746"</span><span class="p">,</span><span class="w">
-                    </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
+                    </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nt">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1821,11 +1821,11 @@ https://base_url/api/v1/patrimonycontacts/16fc6e5e-163d-799c-89ef-a764f2090d74
     </span><span class="nt">"contacts"</span><span class="p">:[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"phone"</span><span class="p">:</span><span class="s2">"0781780746"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
+            </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"mail"</span><span class="p">:</span><span class="s2">"nicolas.marx@performance-immo.com"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="s2">"Mail"</span><span class="w">
+            </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Mail"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"_links"</span><span class="p">:[</span><span class="w">
@@ -1935,7 +1935,7 @@ the response because of the specific state of the request done to retrieve this 
 <span class="o">}</span>,
 <span class="s2">"contacts"</span>: <span class="o">[{</span>
     <span class="s2">"phone"</span>:<span class="s2">"0345673546"</span>,
-    <span class="s2">"contactMediumType"</span>:<span class="s2">"Phone"</span>
+    <span class="s2">"contactInfoType"</span>:<span class="s2">"Phone"</span>
 <span class="o">}]</span>,
 <span class="s2">"linkedWithEntities"</span>: <span class="o">[{</span>
     <span class="s2">"patrimonyUid"</span>:<span class="s2">"ea29ef55-df08-5a8a-f05a-1fe5e2b42dd4"</span>,
@@ -1962,7 +1962,7 @@ https://base_url/api/vEvent/patrimonycontacts
           </span><span class="nt">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
               </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0345673546"</span><span class="p">,</span><span class="w">
-              </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone"</span><span class="w">
+              </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">],</span><span class="w">
           </span><span class="nt">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PatrimonyContactReferenced"</span><span class="w">
@@ -2020,7 +2020,7 @@ https://base_url/api/vEvent/patrimonycontacts
 <tr>
 <td>contacts</td>
 <td>body</td>
-<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#contactmedium">ContactMedium</a>]</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#contactinfo">ContactInfo</a>]</td>
 <td>a non empty list of contact like phone number or email</td>
 </tr>
 <tr>
@@ -2070,7 +2070,7 @@ https://base_url/api/vEvent/patrimonycontacts
     <span class="s2">"processUid"</span>:<span class="s2">"6ed010a1-7481-4b38-87da-c219fc31ba64"</span>,
     <span class="s2">"contact"</span>: <span class="o">{</span>
         <span class="s2">"phone"</span>:<span class="s2">"0456734563"</span>,
-        <span class="s2">"contactMediumType"</span>:<span class="s2">"Phone"</span>
+        <span class="s2">"contactInfoType"</span>:<span class="s2">"Phone"</span>
     <span class="o">}</span>,
     <span class="s2">"commandType"</span>:<span class="s2">"AddContact"</span>
  <span class="o">}</span> <span class="se">\</span>
@@ -2088,7 +2088,7 @@ https://base_url/api/vEvent/patrimonycontacts/7634c414-8822-e29d-fe2b-0a18b31743
             </span><span class="nt">"sentDate"</span><span class="p">:</span><span class="s2">"2016-02-29T12:05:32+02:00"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nt">"phone"</span><span class="p">:</span><span class="s2">"0456734563"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"contactMediumType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
+                </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Phone"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nt">"eventType"</span><span class="p">:</span><span class="s2">"ContactAdded"</span><span class="w">
         </span><span class="p">}</span><span class="w">    
@@ -9331,7 +9331,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <p>Mail example :</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"fax"</span><span class="p">:</span><span class="s2">"0146305674"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mail"</span><span class="p">:</span><span class="s2">"0146305674"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"contactInfoType"</span><span class="p">:</span><span class="s2">"Mail"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -9844,7 +9844,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 <tr>
 <td>contacts</td>
-<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#contactmedium">ContactMedium</a>]</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#contactinfo">ContactInfo</a>]</td>
 <td>a non empty list of contact like phone number or email</td>
 </tr>
 <tr>
