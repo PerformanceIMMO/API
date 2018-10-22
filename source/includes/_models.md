@@ -1861,7 +1861,7 @@ contactInfoType   | Constant                                          | `"Fax"`
 
 ```json
 {
-    "fax":"0146305674",
+    "mail":"0146305674",
     "contactInfoType":"Mail"
 }
 ```
@@ -2159,7 +2159,7 @@ uid             | [SafeUUID](#safeuuid)                                 | the ui
 name            | [Name](#name)                                         | the name of the `PatrimonyContact`
 company         | [Option](#option)[String]                             | an optional company's name of the `PatrimonyContact`
 address         | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`  
-contacts        | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
+contacts        | [NonEmptyList](#nonemptylist)[[ContactInfo](#contactinfo)] | a non empty list of contact like phone number or email
 linkedWith      | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
 _links          | Array[[RestNavigationLink](#restnavigationlink)]      | Array of `RestNavigationLink`. Allow building decoupled navigation workflow.
 

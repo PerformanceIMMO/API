@@ -41,7 +41,7 @@ Content-Range: 0-0/19234
             "contacts": [
                 {
                 	"phone":"0781780746",
-                	"contactMediumType":"Phone"
+                	"contactInfoType":"Phone"
                 }
             ],
             "_links": [
@@ -119,11 +119,11 @@ Content-Type: application/json
 	"contacts":[
 		{
 			"phone":"0781780746",
-			"contactMediumType":"Phone"
+			"contactInfoType":"Phone"
 		},
 		{
 			"mail":"nicolas.marx@performance-immo.com",
-			"contactMediumType":"Mail"
+			"contactInfoType":"Mail"
 		}
 	],
 	"_links":[
@@ -183,7 +183,7 @@ curl -XPOST \
 },
 "contacts": [{
     "phone":"0345673546",
-    "contactMediumType":"Phone"
+    "contactInfoType":"Phone"
 }],
 "linkedWithEntities": [{
     "patrimonyUid":"ea29ef55-df08-5a8a-f05a-1fe5e2b42dd4",
@@ -213,7 +213,7 @@ HTTP/1.1 201 Created
           "contacts": [
             {
               "phone": "0345673546",
-              "contactMediumType": "Phone"
+              "contactInfoType": "Phone"
             }
           ],
           "eventType": "PatrimonyContactReferenced"
@@ -243,7 +243,7 @@ processUid         | body  | [SafeUUID](#safeuuid)                            | 
 aggregateUid       | body  | [Option](#option)[[SafeUUID](#safeuuid)]         | the optional uid of the resource created. You can set yourself this uid or let Perfimmo do it for you.
 name               | body  | [Name](#name)                                    | the name of the `PatrimonyContact`
 address            | body  | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | an optional address for this `PatrimonyContact`  
-contacts           | body  | [NonEmptyList](#nonemptylist)[[ContactMedium](#contactmedium)] | a non empty list of contact like phone number or email 
+contacts           | body  | [NonEmptyList](#nonemptylist)[[ContactInfo](#contactinfo)] | a non empty list of contact like phone number or email
 linkedWithEntities | body  | [NonEmptyList](#nonemptylist)[[PatrimonyContactEntityLink](#patrimonycontactentitylink)] | a non empty list of link to several `Patrimony` or `Lot`entity. 
 commandType        | body  | Constant                                         | `"ReferencePatrimonyContact"`
 
@@ -267,7 +267,7 @@ curl -XPATCH \
     "processUid":"6ed010a1-7481-4b38-87da-c219fc31ba64",
     "contact": {
         "phone":"0456734563",
-        "contactMediumType":"Phone"
+        "contactInfoType":"Phone"
     },
     "commandType":"AddContact"
  } \
@@ -288,7 +288,7 @@ HTTP/1.1 200 Ok
             "sentDate":"2016-02-29T12:05:32+02:00",
             "contact": {
                 "phone":"0456734563",
-                "contactMediumType":"Phone"
+                "contactInfoType":"Phone"
             },
             "eventType":"ContactAdded"
         }    
