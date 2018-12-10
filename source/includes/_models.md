@@ -2294,3 +2294,248 @@ Name                    | Type                                              | De
 ------------------------| --------------------------------------------------| --------------------------
 activityUid             | [SafeUUID](#safeuuid)                             | 
 includedIncidentTypes   | Array[[SafeUUID](#safeuuid)]                      | 
+
+## InterventionPeriodForCommand
+
+`InterventionPeriodForCommand` is an Enum, i.e type can take different values :
+
+```haskell
+data InterventionPeriodForCommand = DateTimePeriod | WeekDaysPeriod | SpecificDaysPeriod
+```
+
+### DateTimePeriod
+
+> DateTimePeriod example :
+
+```json
+{
+    "label":"Ma période",
+    "startDate": "2018-02-01T08:00:00.000+01:00",
+    "endDate": "2018-11-30T018:00:00.000+02:00",
+    "periodType": "DateTimePeriod"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+label        | [NonEmptyString](#nonemptystring)                 |
+startDate    | [DateTime](#datetime)                             |
+endDate      | [DateTime](#datetime)                             |
+periodType   | Constant                                          | `"DateTimePeriod"`
+
+### WeekDaysPeriod
+
+> WeekDaysPeriod example :
+
+```json
+{
+    "label":"Ma période",
+    "periodRanges": [
+        {
+            "weekDays":["MONDAY", "TUESDAY", "FRIDAY"],
+            "timeSlot":{"timeSlotType":"AllDayLong"}
+        }
+    ],
+    "startDate":"2018-02-01",
+    "endDate":"2018-11-30",
+    "exclusions":[
+        {
+            "days":["2018-11-28"],
+            "timeSlot":{"timeSlotType":"AllDayLong"}
+        }
+    ],
+    "periodType": "WeekDaysPeriod"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+label        | [NonEmptyString](#nonemptystring)                 |
+startDate    | [Option](#option)[[DateTime](#datetime)]          | When the period validity start. If not start valid from always.
+endDate      | [Option](#option)[[DateTime](#datetime)]          | When the period validity end. If not never end, always valid.
+periodRanges | [NonEmptyList](#nonemptylist)[[PeriodRange](#periodrange)] | A non empty list of week days period when the ProviderContact is available to intervene.
+exclusions   | Array[[ExclusionPeriod](#exclusionperiod)]        | A list (can be empty) of exclusions period allowing to precisly define the ProviderContact availibility.
+periodType   | Constant                                          | `"WeekDaysPeriod"`
+
+### SpecificDaysPeriod
+
+> SpecificDaysPeriod example :
+
+```json
+{
+    "label":"Ma période",
+    "days":["2018-11-28", "2018-11-29"],
+    "timeSlot":{"timeSlotType":"AllDayLong"},
+    "periodType": "SpecificDaysPeriod"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+label        | [NonEmptyString](#nonemptystring)                 |
+days         | [NonEmptyList](#nonemptylist)[[LocalDate](#localdate)] | A non empty list of year days when the ProviderContact is available to intervene.
+timeSlot     | [TimeSlot](#timeslot)                             | Define the time slot when ProviderConatct is available. (Can be AllDayLong)
+periodType   | Constant                                          | `"SpecificDaysPeriod"`
+
+## TimeSlot
+
+`TimeSlot` is an Enum, i.e type can take different values :
+
+```haskell
+data TimeSlot = AllDayLong | HourPeriods
+```
+
+
+### AllDayLong
+
+> AllDayLong example :
+
+```json
+{
+  "timeSlotType" : "AllDayLong"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+timeSlotType | Constant                                          | `"AllDayLong"`
+
+### HourPeriods
+
+> HourPeriods example :
+
+```json
+{
+  "periods" : [
+      {
+          "start" : "00:00:00",
+          "end" : "00:01:00"
+      }
+  ],
+  "timeSlotType" : "HourPeriods"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+periods      | [NonEmptyList](#nonemptylist)[[HourPeriod](#hourperiod)] |
+timeSlotType | Constant                                          | `"HourPeriods"`
+
+## HourPeriod
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+start        | [LocalTime](#localtime)                           |
+end          | [LocalTime](#localtime)                           |
+
+## PeriodRange
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+weekDays     | [NonEmptyList](#nonemptylist)[[WeekDay](#weekday)]  | A non empty list of week day.
+timeSlot     | [TimeSlot](#timeslot)                             |
+
+case class PeriodRange(weekDays: NonEmptyList[WeekDay], timeSlot: TimeSlot)
+
+## WeekDay
+
+`TimeSlot` is an Enum, i.e type can take different values :
+
+```haskell
+data WeekDay = MONDAY | TUESDAY | WEDNESDAY | THURSDAY | FRIDAY | SATURDAY | SUNDAY
+```
+
+## ExclusionPeriod
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+days         | [NonEmptyList](#nonemptylist)[[LocalDate](#localdate)] |
+timeSlot     | [TimeSlot](#timeslot)                             |
+
+## InterventionPeriod
+
+`InterventionPeriod` is an Enum, i.e type can take different values :
+
+```haskell
+data InterventionPeriod = DateTimePeriod | WeekDaysPeriod | SpecificDaysPeriod
+```
+
+### DateTimePeriod
+
+> DateTimePeriod example :
+
+```json
+{
+    "uid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "label":"Ma période",
+    "startDate": "2018-02-01T08:00:00.000+01:00",
+    "endDate": "2018-11-30T018:00:00.000+02:00",
+    "periodType": "DateTimePeriod"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+uid          | [SafeUUID](#safeuuid)                             |
+label        | [NonEmptyString](#nonemptystring)                 |
+startDate    | [DateTime](#datetime)                             |
+endDate      | [DateTime](#datetime)                             |
+periodType   | Constant                                          | `"DateTimePeriod"`
+
+### WeekDaysPeriod
+
+> WeekDaysPeriod example :
+
+```json
+{
+    "uid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "label":"Ma période",
+    "periodRanges": [
+        {
+            "weekDays":["MONDAY", "TUESDAY", "FRIDAY"],
+            "timeSlot":{"timeSlotType":"AllDayLong"}
+        }
+    ],
+    "startDate":"2018-02-01",
+    "endDate":"2018-11-30",
+    "exclusions":[
+        {
+            "days":["2018-11-28"],
+            "timeSlot":{"timeSlotType":"AllDayLong"}
+        }
+    ],
+    "periodType": "WeekDaysPeriod"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+uid          | [SafeUUID](#safeuuid)                             |
+label        | [NonEmptyString](#nonemptystring)                 |
+startDate    | [Option](#option)[[DateTime](#datetime)]          | When the period validity start. If not start valid from always.
+endDate      | [Option](#option)[[DateTime](#datetime)]          | When the period validity end. If not never end, always valid.
+periodRanges | [NonEmptyList](#nonemptylist)[[PeriodRange](#periodrange)] | A non empty list of week days period when the ProviderContact is available to intervene.
+exclusions   | Array[[ExclusionPeriod](#exclusionperiod)]        | A list (can be empty) of exclusions period allowing to precisly define the ProviderContact availibility.
+periodType   | Constant                                          | `"WeekDaysPeriod"`
+
+### SpecificDaysPeriod
+
+> SpecificDaysPeriod example :
+
+```json
+{
+    "uid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "label":"Ma période",
+    "days":["2018-11-28", "2018-11-29"],
+    "timeSlot":{"timeSlotType":"AllDayLong"},
+    "periodType": "SpecificDaysPeriod"
+}
+```
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+uid          | [SafeUUID](#safeuuid)                             |
+label        | [NonEmptyString](#nonemptystring)                 |
+days         | [NonEmptyList](#nonemptylist)[[LocalDate](#localdate)] | A non empty list of year days when the ProviderContact is available to intervene.
+timeSlot     | [TimeSlot](#timeslot)                             | Define the time slot when ProviderConatct is available. (Can be AllDayLong)
+periodType   | Constant                                          | `"SpecificDaysPeriod"`

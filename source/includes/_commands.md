@@ -686,7 +686,91 @@ commandType         | Constant                                      | `"RemoveAc
 
 Events answered                           | Optional or Mandatory in answer   | Rule / Comment
 ------------------------------------------| ----------------------------------| -------------
-ActivityRemovedFromProviderContact         | mandatory                         |
+ActivityRemovedFromProviderContact        | mandatory                         |
+
+
+### DefineInterventionPeriod
+
+> Example :
+
+```json
+{
+    "processUid":"17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2",
+    "activityUid":"17d706c1-7844-00f5-a4a4-f1afa1975184",
+    "period": {
+        "label":"ma période",
+        "startDate": "2018-02-01T08:00:00.000+01:00",
+        "endDate": "2018-11-30T18:00:00.000+02:00",
+        "periodType": "DateTimePeriod"
+    },
+    "commandType":"DefineInterventionPeriod"
+}
+```
+
+Une période d'intervention est associée à une activité d'un `ProviderContact`.<br/>
+Elle définit des plages de dates (sous plusieurs format utiles) où le `ProviderContact` est disponible pour intervention (cf. [InterventionPeriod](#interventionperiod)).
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+activityUid         | [SafeUUID](#safeuuid)                         |
+period              | [InterventionPeriodForCommand](#interventionperiodforcommand)     |
+commandType         | Constant                                      | `"DefineInterventionPeriod"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[InterventionPeriodDefined](#interventionperioddefined) | mandatory           |
+[InterventionPeriodDefinedAsReferencePeriod](#interventionperioddefinedasreferenceperiod) | Optional | sent if it is the first period created for the activity
+
+### UpdateInterventionPeriod
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+interventionPeriodUid | [SafeUUID](#safeuuid)                         |
+period              | [InterventionPeriodForCommand](#interventionperiodforcommand)     |
+commandType         | Constant                                      | `"UpdateInterventionPeriod"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[InterventionPeriodUpdated](#interventionperiodupdated)                 | mandatory                         |
+
+### RemoveInterventionPeriod
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+interventionPeriodUid | [SafeUUID](#safeuuid)                         |
+commandType         | Constant                                      | `"RemoveInterventionPeriod"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[InterventionPeriodRemoved](#interventionperiodremoved)                 | mandatory                         |
+
+### DefineRepairTimelimitForInterventionPeriod
+
+### DefineInterventionTimelimitForInterventionPeriod
+
+### DefineInterventionZoneForInterventionPeriod
+
+### RemoveRepairTimelimitFromInterventionPeriod
+
+### RemoveInterventionTimelimitFromInterventionPeriod
+
+### RemoveInterventionZoneFromInterventionPeriod
+
+### ExcludeOpeningTicketPurposesFromInterventionPeriod
+
+
+
+
+
+
+
+
+
+
+
 
 ## OpenTicket
 

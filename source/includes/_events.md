@@ -368,11 +368,6 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 patrimonyUid        | [SafeUUID](#safeuuid)                         | the uid of the `Patrimony` resource associated with the `ProviderContact`
 eventType           | Constant                                      | `"ProviderContactAssociatedWithPatrimony"`
 
-(processUid: ProcessUid,
-                                                  aggregateUid: AggregateUid,
-                                                  sentDate: DateTime,
-                                                  patrimonyUid: SafeUUID) extends OtherProviderContactEvent
-
 ### ProviderContactDissociatedFromPatrimony
 
 Name                | Type                                          | Description
@@ -401,6 +396,47 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
 activityUid         | [SafeUUID](#safeuuid)                         | the uid of the `Activity` removed from this `ProviderContact` 
 eventType           | Constant                                      | `"ActivityRemovedFromProviderContact"`
+
+### InterventionPeriodDefined
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+activityUid         | [SafeUUID](#safeuuid)                         |
+period              | [InterventionPeriod](#interventionperiod)     |
+eventType           | Constant                                      | `"InterventionPeriodDefined"`
+
+### InterventionPeriodDefinedAsReferencePeriod
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+interventionPeriodUid | [SafeUUID](#safeuuid)                         |
+eventType           | Constant                                      | `"InterventionPeriodDefinedAsReferencePeriod"`
+
+### InterventionPeriodUpdated
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+period              | [InterventionPeriod](#interventionperiod)     |
+eventType           | Constant                                      | `"InterventionPeriodUpdated"`
+
+### InterventionPeriodRemoved
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `ProviderContact` referenced.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+interventionPeriodUid | [SafeUUID](#safeuuid)     |
+eventType           | Constant                                      | `"InterventionPeriodRemoved"`
 
 
 ## ProviderCompanyEvent
