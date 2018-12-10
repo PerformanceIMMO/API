@@ -10116,6 +10116,456 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<h2 id="interventionperiodforcommand">InterventionPeriodForCommand</h2>
+
+<p><code class="prettyprint">InterventionPeriodForCommand</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">InterventionPeriodForCommand</span> <span class="o">=</span> <span class="kt">DateTimePeriod</span> <span class="o">|</span> <span class="kt">WeekDaysPeriod</span> <span class="o">|</span> <span class="kt">SpecificDaysPeriod</span>
+</code></pre>
+<h3 id="datetimeperiod">DateTimePeriod</h3>
+
+<blockquote>
+<p>DateTimePeriod example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Ma période"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-01T08:00:00.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-30T018:00:00.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DateTimePeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>periodType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DateTimePeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="weekdaysperiod">WeekDaysPeriod</h3>
+
+<blockquote>
+<p>WeekDaysPeriod example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Ma période"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"periodRanges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"weekDays"</span><span class="p">:[</span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TUESDAY"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"timeSlot"</span><span class="p">:{</span><span class="nt">"timeSlotType"</span><span class="p">:</span><span class="s2">"AllDayLong"</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"startDate"</span><span class="p">:</span><span class="s2">"2018-02-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"endDate"</span><span class="p">:</span><span class="s2">"2018-11-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclusions"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"days"</span><span class="p">:[</span><span class="s2">"2018-11-28"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"timeSlot"</span><span class="p">:{</span><span class="nt">"timeSlotType"</span><span class="p">:</span><span class="s2">"AllDayLong"</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeekDaysPeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>When the period validity start. If not start valid from always.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>When the period validity end. If not never end, always valid.</td>
+</tr>
+<tr>
+<td>periodRanges</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#periodrange">PeriodRange</a>]</td>
+<td>A non empty list of week days period when the ProviderContact is available to intervene.</td>
+</tr>
+<tr>
+<td>exclusions</td>
+<td>Array[<a href="#exclusionperiod">ExclusionPeriod</a>]</td>
+<td>A list (can be empty) of exclusions period allowing to precisly define the ProviderContact availibility.</td>
+</tr>
+<tr>
+<td>periodType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;WeekDaysPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="specificdaysperiod">SpecificDaysPeriod</h3>
+
+<blockquote>
+<p>SpecificDaysPeriod example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Ma période"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"days"</span><span class="p">:[</span><span class="s2">"2018-11-28"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2018-11-29"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"timeSlot"</span><span class="p">:{</span><span class="nt">"timeSlotType"</span><span class="p">:</span><span class="s2">"AllDayLong"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SpecificDaysPeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>days</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#localdate">LocalDate</a>]</td>
+<td>A non empty list of year days when the ProviderContact is available to intervene.</td>
+</tr>
+<tr>
+<td>timeSlot</td>
+<td><a href="#timeslot">TimeSlot</a></td>
+<td>Define the time slot when ProviderConatct is available. (Can be AllDayLong)</td>
+</tr>
+<tr>
+<td>periodType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;SpecificDaysPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="timeslot">TimeSlot</h2>
+
+<p><code class="prettyprint">TimeSlot</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">TimeSlot</span> <span class="o">=</span> <span class="kt">AllDayLong</span> <span class="o">|</span> <span class="kt">HourPeriods</span>
+</code></pre>
+<h3 id="alldaylong">AllDayLong</h3>
+
+<blockquote>
+<p>AllDayLong example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"timeSlotType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AllDayLong"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>timeSlotType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;AllDayLong&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="hourperiods">HourPeriods</h3>
+
+<blockquote>
+<p>HourPeriods example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"periods"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00:00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"00:01:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"timeSlotType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"HourPeriods"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>periods</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#hourperiod">HourPeriod</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>timeSlotType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;HourPeriods&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="hourperiod">HourPeriod</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start</td>
+<td><a href="#localtime">LocalTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>end</td>
+<td><a href="#localtime">LocalTime</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="periodrange">PeriodRange</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>weekDays</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#weekday">WeekDay</a>]</td>
+<td>A non empty list of week day.</td>
+</tr>
+<tr>
+<td>timeSlot</td>
+<td><a href="#timeslot">TimeSlot</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>case class PeriodRange(weekDays: NonEmptyList[WeekDay], timeSlot: TimeSlot)</p>
+
+<h2 id="weekday">WeekDay</h2>
+
+<p><code class="prettyprint">TimeSlot</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">WeekDay</span> <span class="o">=</span> <span class="kt">MONDAY</span> <span class="o">|</span> <span class="kt">TUESDAY</span> <span class="o">|</span> <span class="kt">WEDNESDAY</span> <span class="o">|</span> <span class="kt">THURSDAY</span> <span class="o">|</span> <span class="kt">FRIDAY</span> <span class="o">|</span> <span class="kt">SATURDAY</span> <span class="o">|</span> <span class="kt">SUNDAY</span>
+</code></pre>
+<h2 id="exclusionperiod">ExclusionPeriod</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>days</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#localdate">LocalDate</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>timeSlot</td>
+<td><a href="#timeslot">TimeSlot</a></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="interventionperiod">InterventionPeriod</h2>
+
+<p><code class="prettyprint">InterventionPeriod</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">InterventionPeriod</span> <span class="o">=</span> <span class="kt">DateTimePeriod</span> <span class="o">|</span> <span class="kt">WeekDaysPeriod</span> <span class="o">|</span> <span class="kt">SpecificDaysPeriod</span>
+</code></pre>
+<h3 id="datetimeperiod">DateTimePeriod</h3>
+
+<blockquote>
+<p>DateTimePeriod example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Ma période"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-01T08:00:00.000+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-30T018:00:00.000+02:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DateTimePeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>periodType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DateTimePeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="weekdaysperiod">WeekDaysPeriod</h3>
+
+<blockquote>
+<p>WeekDaysPeriod example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Ma période"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"periodRanges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"weekDays"</span><span class="p">:[</span><span class="s2">"MONDAY"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TUESDAY"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FRIDAY"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"timeSlot"</span><span class="p">:{</span><span class="nt">"timeSlotType"</span><span class="p">:</span><span class="s2">"AllDayLong"</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"startDate"</span><span class="p">:</span><span class="s2">"2018-02-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"endDate"</span><span class="p">:</span><span class="s2">"2018-11-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exclusions"</span><span class="p">:[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"days"</span><span class="p">:[</span><span class="s2">"2018-11-28"</span><span class="p">],</span><span class="w">
+            </span><span class="nt">"timeSlot"</span><span class="p">:{</span><span class="nt">"timeSlotType"</span><span class="p">:</span><span class="s2">"AllDayLong"</span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeekDaysPeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>startDate</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>When the period validity start. If not start valid from always.</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>When the period validity end. If not never end, always valid.</td>
+</tr>
+<tr>
+<td>periodRanges</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#periodrange">PeriodRange</a>]</td>
+<td>A non empty list of week days period when the ProviderContact is available to intervene.</td>
+</tr>
+<tr>
+<td>exclusions</td>
+<td>Array[<a href="#exclusionperiod">ExclusionPeriod</a>]</td>
+<td>A list (can be empty) of exclusions period allowing to precisly define the ProviderContact availibility.</td>
+</tr>
+<tr>
+<td>periodType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;WeekDaysPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="specificdaysperiod">SpecificDaysPeriod</h3>
+
+<blockquote>
+<p>SpecificDaysPeriod example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"uid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"Ma période"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"days"</span><span class="p">:[</span><span class="s2">"2018-11-28"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2018-11-29"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"timeSlot"</span><span class="p">:{</span><span class="nt">"timeSlotType"</span><span class="p">:</span><span class="s2">"AllDayLong"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SpecificDaysPeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>days</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#localdate">LocalDate</a>]</td>
+<td>A non empty list of year days when the ProviderContact is available to intervene.</td>
+</tr>
+<tr>
+<td>timeSlot</td>
+<td><a href="#timeslot">TimeSlot</a></td>
+<td>Define the time slot when ProviderConatct is available. (Can be AllDayLong)</td>
+</tr>
+<tr>
+<td>periodType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;SpecificDaysPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="commands">Commands</h1>
 
 <h2 id="createcompany">CreateCompany</h2>
@@ -11792,6 +12242,173 @@ Works only if the <code class="prettyprint">Company</code> is a <code class="pre
 <td></td>
 </tr>
 </tbody></table>
+
+<h3 id="defineinterventionperiod">DefineInterventionPeriod</h3>
+
+<blockquote>
+<p>Example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"processUid"</span><span class="p">:</span><span class="s2">"17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"activityUid"</span><span class="p">:</span><span class="s2">"17d706c1-7844-00f5-a4a4-f1afa1975184"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"label"</span><span class="p">:</span><span class="s2">"ma période"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-01T08:00:00.000+01:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-30T18:00:00.000+02:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"periodType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DateTimePeriod"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"commandType"</span><span class="p">:</span><span class="s2">"DefineInterventionPeriod"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Une période d&#39;intervention est associée à une activité d&#39;un <code class="prettyprint">ProviderContact</code>.<br/>
+Elle définit des plages de dates (sous plusieurs format utiles) où le <code class="prettyprint">ProviderContact</code> est disponible pour intervention (cf. <a href="#interventionperiod">InterventionPeriod</a>).</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>period</td>
+<td><a href="#interventionperiodforcommand">InterventionPeriodForCommand</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DefineInterventionPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#interventionperioddefined">InterventionPeriodDefined</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#interventionperioddefinedasreferenceperiod">InterventionPeriodDefinedAsReferencePeriod</a></td>
+<td>Optional</td>
+<td>sent if it is the first period created for the activity</td>
+</tr>
+</tbody></table>
+
+<h3 id="updateinterventionperiod">UpdateInterventionPeriod</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>interventionPeriodUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>period</td>
+<td><a href="#interventionperiodforcommand">InterventionPeriodForCommand</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;UpdateInterventionPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#interventionperiodupdated">InterventionPeriodUpdated</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="removeinterventionperiod">RemoveInterventionPeriod</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>interventionPeriodUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;RemoveInterventionPeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#interventionperiodremoved">InterventionPeriodRemoved</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="definerepairtimelimitforinterventionperiod">DefineRepairTimelimitForInterventionPeriod</h3>
+
+<h3 id="defineinterventiontimelimitforinterventionperiod">DefineInterventionTimelimitForInterventionPeriod</h3>
+
+<h3 id="defineinterventionzoneforinterventionperiod">DefineInterventionZoneForInterventionPeriod</h3>
+
+<h3 id="removerepairtimelimitfrominterventionperiod">RemoveRepairTimelimitFromInterventionPeriod</h3>
+
+<h3 id="removeinterventiontimelimitfrominterventionperiod">RemoveInterventionTimelimitFromInterventionPeriod</h3>
+
+<h3 id="removeinterventionzonefrominterventionperiod">RemoveInterventionZoneFromInterventionPeriod</h3>
+
+<h3 id="excludeopeningticketpurposesfrominterventionperiod">ExcludeOpeningTicketPurposesFromInterventionPeriod</h3>
 
 <h2 id="openticket">OpenTicket</h2>
 
@@ -15078,11 +15695,6 @@ The following commands are made to close the Ticket.
 </tr>
 </tbody></table>
 
-<p>(processUid: ProcessUid,
-                                                  aggregateUid: AggregateUid,
-                                                  sentDate: DateTime,
-                                                  patrimonyUid: SafeUUID) extends OtherProviderContactEvent</p>
-
 <h3 id="providercontactdissociatedfrompatrimony">ProviderContactDissociatedFromPatrimony</h3>
 
 <table><thead>
@@ -15183,6 +15795,155 @@ The following commands are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code class="prettyprint">&quot;ActivityRemovedFromProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="interventionperioddefined">InterventionPeriodDefined</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>period</td>
+<td><a href="#interventionperiod">InterventionPeriod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;InterventionPeriodDefined&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="interventionperioddefinedasreferenceperiod">InterventionPeriodDefinedAsReferencePeriod</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>interventionPeriodUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;InterventionPeriodDefinedAsReferencePeriod&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="interventionperiodupdated">InterventionPeriodUpdated</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>period</td>
+<td><a href="#interventionperiod">InterventionPeriod</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;InterventionPeriodUpdated&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h3 id="interventionperiodremoved">InterventionPeriodRemoved</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">ProviderContact</code> referenced.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code class="prettyprint">Event</code>.</td>
+</tr>
+<tr>
+<td>interventionPeriodUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;InterventionPeriodRemoved&quot;</code></td>
 </tr>
 </tbody></table>
 
