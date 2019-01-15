@@ -7690,7 +7690,7 @@ the response because of the specific state of the request done to retrieve this 
 <h2 id="addresschecker">AddressChecker</h2>
 
 <p><code class="prettyprint">AddressChecker</code> is an Enum, i.e type can take different values : </p>
-<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">AddressChecker</span> <span class="o">=</span> <span class="kt">GooglePlaceIdChecker</span>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">AddressChecker</span> <span class="o">=</span> <span class="kt">GooglePlaceIdChecker</span> <span class="o">|</span> <span class="kt">DataGouvAPIIdChecker</span>
 </code></pre>
 <h3 id="googleplaceidchecker">GooglePlaceIdChecker</h3>
 
@@ -7714,6 +7714,31 @@ the response because of the specific state of the request done to retrieve this 
 <td>googlePlaceId</td>
 <td>String</td>
 <td>identifier to check the <code class="prettyprint">Address</code> with Google Maps API.</td>
+</tr>
+</tbody></table>
+
+<h3 id="datagouvapiidchecker">DataGouvAPIIdChecker</h3>
+
+<blockquote>
+<p>DataGouvAPIIdChecker example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"dataGouvAddressId"</span><span class="p">:</span><span class="s2">"123456hg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">DataGouvAPIIdChecker</code> allow to check <code class="prettyprint">Address</code>via data.gouv.fr API.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dataGouvAddressId</td>
+<td>String</td>
+<td>identifier to check the <code class="prettyprint">Address</code> with data.gouv.fr API.</td>
 </tr>
 </tbody></table>
 
