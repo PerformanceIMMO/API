@@ -1078,7 +1078,7 @@ lng         | Float                                             | longitude
 `AddressChecker` is an Enum, i.e type can take different values : 
 
 ```haskell
-data AddressChecker = GooglePlaceIdChecker
+data AddressChecker = GooglePlaceIdChecker | DataGouvAPIIdChecker
 ```
 
 ### GooglePlaceIdChecker 
@@ -1095,7 +1095,23 @@ data AddressChecker = GooglePlaceIdChecker
 
 Name          | Type   | Description
 --------------| -------| --------------------------------------------------------
-googlePlaceId | String | identifier to check the `Address` with Google Maps API. 
+googlePlaceId | String | identifier to check the `Address` with Google Maps API.
+
+### DataGouvAPIIdChecker
+
+> DataGouvAPIIdChecker example :
+
+```json
+{
+	"dataGouvAddressId":"123456hg"
+}
+```
+
+`DataGouvAPIIdChecker` allow to check `Address`via data.gouv.fr API.
+
+Name          | Type   | Description
+--------------| -------| --------------------------------------------------------
+dataGouvAddressId | String | identifier to check the `Address` with data.gouv.fr API.
 
 ## RawAgency
 
