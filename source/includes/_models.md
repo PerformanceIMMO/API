@@ -1249,14 +1249,14 @@ geoLocation   | [GeoLocation](#geolocation)
 
 Name          | Type                                | Description
 --------------| ------------------------------------| --------------------------------------------------------
-quality       | [Option](#option)[NonEmptyString](#nonemptystring)[[String]]           |
+quality       | [Option](#option)[[NonEmptyString](#nonemptystring)[String]]           |
 number        | String                              | the number of the street. ex: 12 
 street        | String                              | ex: avenue de Paris 
-complement    | [Option](#option)[NonEmptyString](#nonemptystring)[[String]]           |
+complement    | [Option](#option)[[NonEmptyString](#nonemptystring)[String]]           |
 zipCode       | String                              | zipCode of this `Address` 
 city          | String                              | ex: Paris 
-state         | [Option](#option)[NonEmptyString](#nonemptystring)[[String]]           |
-country       | [Option](#option)[NonEmptyString](#nonemptystring)[[String]]           | ex: France
+state         | [Option](#option)[[NonEmptyString](#nonemptystring)[String]]           |
+country       | [Option](#option)[[NonEmptyString](#nonemptystring)[String]]           | ex: France
 geoLocation   | [GeoLocation](#geolocation)         | geolocation of the `Address` (with latitude & longitude value) 
 checker       | [AddressChecker](#addresschecker)   | used to identify `Address` across external tools (ex: google place ID)
 floor         | [Option](#option)[String]           | 
@@ -1270,14 +1270,14 @@ staircase     | [Option](#option)[String]           |
 
 Name          | Type                                | Description
 --------------| ------------------------------------| --------------------------------------------------------
-quality       | [Option](#option)[NonEmptyString](#nonemptystring)[[String]]           |
+quality       | [Option](#option)[[NonEmptyString](#nonemptystring)[String]]           |
 number        | String                              | the number of the street. ex: 12
 street        | String                              | ex: "avenue de Paris"
-complement    | [Option](#option)[NonEmptyString](#nonemptystring)[[String]] |
+complement    | [Option](#option)[[NonEmptyString](#nonemptystring)[String]] |
 zipCode       | String                              | zipCode of this `Address`
 city          | String                              | ex: Paris
-state         | [Option](#option)[NonEmptyString](#nonemptystring)[[String]] |
-country       | [Option](#option)[NonEmptyString](#nonemptystring)[[String]] | ex: "France"
+state         | [Option](#option)[[NonEmptyString](#nonemptystring)[String]] |
+country       | [Option](#option)[[NonEmptyString](#nonemptystring)[String]] | ex: "France"
 recipientSupplement | [Option](#option)[[RecipientIdentificationSupplement](#recipientidentificationsupplement)] |
 geographicalSupplement | [Option](#option)[[GeographicalIdentificationSupplement](#geographicalidentificationsupplement)] |
 geoLocation   | [Option](#option)[[GeoLocation](#geolocation)]         | geolocation of the `Address` (with latitude & longitude value)
