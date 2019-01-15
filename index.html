@@ -7543,18 +7543,23 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>geoLocation</td>
-<td><a href="#geolocation">GeoLocation</a></td>
+<td><a href="#option">Option</a>[<a href="#geolocation">GeoLocation</a>]</td>
 <td></td>
 </tr>
 <tr>
 <td>checker</td>
-<td><a href="#addresschecker">AddressChecker</a></td>
+<td><a href="#option">Option</a>[<a href="#addresschecker">AddressChecker</a>]</td>
 <td></td>
 </tr>
 <tr>
 <td>building</td>
 <td><a href="#option">Option</a>[<a href="#buildinginfoview">BuildingInfoView</a>]</td>
 <td></td>
+</tr>
+<tr>
+<td>status</td>
+<td>&ldquo;AddressIsVerified&rdquo; / &ldquo;AddressIsNotVerified&rdquo; / &ldquo;AddressToCheck&rdquo;</td>
+<td>l&#39;adresses est-elle vérifiée (les champs <code class="prettyprint">geoLocation</code> et <code class="prettyprint">checker</code> sont valué) ou non.</td>
 </tr>
 </tbody></table>
 
@@ -8035,7 +8040,7 @@ the response because of the specific state of the request done to retrieve this 
 </thead><tbody>
 <tr>
 <td>quality</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td></td>
 </tr>
 <tr>
@@ -8050,7 +8055,7 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>complement</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td></td>
 </tr>
 <tr>
@@ -8065,12 +8070,12 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>state</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td></td>
 </tr>
 <tr>
 <td>country</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td>ex: France</td>
 </tr>
 <tr>
@@ -8126,7 +8131,7 @@ the response because of the specific state of the request done to retrieve this 
 </thead><tbody>
 <tr>
 <td>quality</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td></td>
 </tr>
 <tr>
@@ -8137,11 +8142,11 @@ the response because of the specific state of the request done to retrieve this 
 <tr>
 <td>street</td>
 <td>String</td>
-<td>ex: avenue de Paris</td>
+<td>ex: &ldquo;avenue de Paris&rdquo;</td>
 </tr>
 <tr>
 <td>complement</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td></td>
 </tr>
 <tr>
@@ -8156,13 +8161,13 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>state</td>
-<td><a href="#option">Option</a>[String]</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
 <td></td>
 </tr>
 <tr>
 <td>country</td>
-<td><a href="#option">Option</a>[String]</td>
-<td>ex: France</td>
+<td><a href="#option">Option</a><a href="#nonemptystring">NonEmptyString</a>[[String]]</td>
+<td>ex: &ldquo;France&rdquo;</td>
 </tr>
 <tr>
 <td>recipientSupplement</td>
@@ -8176,12 +8181,12 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>geoLocation</td>
-<td><a href="#geolocation">GeoLocation</a></td>
+<td><a href="#option">Option</a>[<a href="#geolocation">GeoLocation</a>]</td>
 <td>geolocation of the <code class="prettyprint">Address</code> (with latitude &amp; longitude value)</td>
 </tr>
 <tr>
 <td>checker</td>
-<td><a href="#addresschecker">AddressChecker</a></td>
+<td><a href="#option">Option</a>[<a href="#addresschecker">AddressChecker</a>]</td>
 <td>used to identify <code class="prettyprint">Address</code> across external tools (ex: google place ID)</td>
 </tr>
 <tr>
