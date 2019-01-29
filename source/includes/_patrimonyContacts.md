@@ -71,7 +71,7 @@ Content-Range: 0-0/19234
 Name               | In    | Type                                      | Default   | Description
 ------------------ | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
 range              | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
-patrimonyuid       | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with one `Patrimony` uid.<br/> ex: `patrimonyuid=patrimony_uid`
+patrimonyuids      | query | [List](#list)[[SafeUUID](#safeuuid)]      | None      | query matching with several `Patrimony` uid.<br/> ex: `patrimonyuids=patrimony_uid&patrimonyuids=other_uid`
 lotuid             | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | query matching with one `Lot` uid. <br/> `lotuid=lot_uid`
 fulltext           | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
 
