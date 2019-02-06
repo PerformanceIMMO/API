@@ -5012,6 +5012,12 @@ https://base_url/api/vEvent/tickets?range<span class="o">=</span>0-0&amp;from<sp
 <p>a <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements">SIRET</a> 
 is an unique identifier for <code class="prettyprint">Company</code>. ex: <code class="prettyprint">&quot;80242504100018&quot;</code></p>
 
+<h2 id="phonenumber">PhoneNumber</h2>
+
+<p>a String formatted as a valid PhoneNumber</p>
+
+<p>ex: &ldquo;0123344556&rdquo; or &ldquo;+33123344556&rdquo;</p>
+
 <h2 id="restnavigationlink">RestNavigationLink</h2>
 
 <blockquote>
@@ -10596,6 +10602,27 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<h2 id="providercontactactivitycmd">ProviderContactActivityCmd</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>activityUidUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code class="prettyprint">Activity</code> assigned to this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+<tr>
+<td>includedIncidentTypes</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the list of incident type that is managed for this Activity by this <code class="prettyprint">ProviderContact</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="commands">Commands</h1>
 
 <h2 id="createcompany">CreateCompany</h2>
@@ -12439,6 +12466,93 @@ Elle définit des plages de dates (sous plusieurs format utiles) où le <code cl
 <h3 id="removeinterventionzonefrominterventionperiod">RemoveInterventionZoneFromInterventionPeriod</h3>
 
 <h3 id="excludeopeningticketpurposesfrominterventionperiod">ExcludeOpeningTicketPurposesFromInterventionPeriod</h3>
+
+<h3 id="crushupdateinterventionperiod">CrushUpdateInterventionPeriod</h3>
+
+<p>Mise à jour non différentielle du <code class="prettyprint">ProviderContact</code>. Préférez utilisez les commandes d&#39;incrémentation.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#name">Name</a></td>
+<td></td>
+</tr>
+<tr>
+<td>phones</td>
+<td>Array[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>fax</td>
+<td>Array[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>emails</td>
+<td>Array[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>patrimonies</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>list of the patrimonies with which <code class="prettyprint">ProviderContact</code> is associated</td>
+</tr>
+<tr>
+<td>activities</td>
+<td>Array[<a href="#providercontactactivitycmd">ProviderContactActivity</a>]</td>
+<td>list of the activities with which <code class="prettyprint">ProviderContact</code> is associated</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CrushUpdateProviderContact&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ProviderContactUpdated</td>
+<td>optionnal</td>
+<td></td>
+</tr>
+<tr>
+<td>ActivityAssignedToProviderContact</td>
+<td>optionnal</td>
+<td></td>
+</tr>
+<tr>
+<td>ActivityRemovedFromProviderContact</td>
+<td>optionnal</td>
+<td></td>
+</tr>
+<tr>
+<td>ProviderContactAssociatedWithPatrimony</td>
+<td>optionnal</td>
+<td></td>
+</tr>
+<tr>
+<td>ProviderContactDissociatedFromPatrimony</td>
+<td>optionnal</td>
+<td></td>
+</tr>
+</tbody></table>
 
 <h2 id="openticket">OpenTicket</h2>
 
