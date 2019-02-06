@@ -761,7 +761,7 @@ Events answered                           | Optional or Mandatory in answer   | 
 
 ### ExcludeOpeningTicketPurposesFromInterventionPeriod
 
-### CrushUpdateInterventionPeriod
+### CrushUpdateProviderContact
 
 Mise à jour non différentielle du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
 
