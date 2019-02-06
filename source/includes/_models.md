@@ -56,6 +56,12 @@ a duration represented in milliseconds. ex: `"300000"`
 a [SIRET](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d'identification_du_r%C3%A9pertoire_des_%C3%A9tablissements) 
 is an unique identifier for `Company`. ex: `"80242504100018"`
 
+## PhoneNumber
+
+a String formatted as a valid PhoneNumber
+
+ex: "0123344556" or "+33123344556"
+
 ## RestNavigationLink
 
 > RestNavigationLink example : 
@@ -2556,3 +2562,10 @@ label        | [NonEmptyString](#nonemptystring)                 |
 days         | [NonEmptyList](#nonemptylist)[[LocalDate](#localdate)] | A non empty list of year days when the ProviderContact is available to intervene.
 timeSlot     | [TimeSlot](#timeslot)                             | Define the time slot when ProviderConatct is available. (Can be AllDayLong)
 periodType   | Constant                                          | `"SpecificDaysPeriod"`
+
+## ProviderContactActivityCmd
+
+Name                  | Type                                              | Description
+----------------------| --------------------------------------------------| --------------------------------------------------
+activityUidUid        | [SafeUUID](#safeuuid)                             | the uid of the `Activity` assigned to this `ProviderContact`
+includedIncidentTypes | Array[[SafeUUID](#safeuuid)]                      | the list of incident type that is managed for this Activity by this `ProviderContact`

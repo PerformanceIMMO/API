@@ -761,7 +761,28 @@ Events answered                           | Optional or Mandatory in answer   | 
 
 ### ExcludeOpeningTicketPurposesFromInterventionPeriod
 
+### CrushUpdateInterventionPeriod
 
+Mise à jour non différentielle du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+name                | [Name](#name)                                 |
+phones              | Array[[PhoneNumber](#phonenumber)]            |
+fax                 | Array[[PhoneNumber](#phonenumber)]            |
+emails              | Array[String]                                 |
+patrimonies         | Array[[SafeUUID](#safeuuid)]                  | list of the patrimonies with which `ProviderContact` is associated
+activities          | Array[[ProviderContactActivity](#providercontactactivitycmd)] | list of the activities with which `ProviderContact` is associated
+commandType         | Constant                                      | `"CrushUpdateProviderContact"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+ProviderContactUpdated                    | optionnal                         |
+ActivityAssignedToProviderContact         | optionnal                         |
+ActivityRemovedFromProviderContact        | optionnal                         |
+ProviderContactAssociatedWithPatrimony    | optionnal                         |
+ProviderContactDissociatedFromPatrimony   | optionnal                         |
 
 
 
