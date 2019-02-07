@@ -2569,3 +2569,41 @@ Name                  | Type                                              | Desc
 ----------------------| --------------------------------------------------| --------------------------------------------------
 activityUidUid        | [SafeUUID](#safeuuid)                             | the uid of the `Activity` assigned to this `ProviderContact`
 includedIncidentTypes | Array[[SafeUUID](#safeuuid)]                      | the list of incident type that is managed for this Activity by this `ProviderContact`
+
+## ProviderContractContractor
+
+`ProviderContractContractor` is an Enum, i.e type can take different values :
+
+```haskell
+data ProviderContractContractor = PatrimonyContractor
+```
+
+### PatrimonyContractor
+
+> PatrimonyContractor example :
+
+```json
+{
+    "patrimonyUid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "contractorType": "PatrimonyContractor"
+}
+```
+
+Name             | Type                                              | Description
+-----------------| --------------------------------------------------| --------------------------------------------------
+patrimonyUid     | [SafeUUID](#safeuuid)                             |
+contractorType   | Constant                                          | `"PatrimonyContractor"`
+
+## ContractForProviderContact
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+contractUid         | [SafeUUID](#safeuuid)                                |
+label               | [NonEmptyString](#nonemptystring)                    |
+contractNumber      | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+validityPeriod      | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+phoneNumbers        | Array[[PhoneNumber](#phonenumber)]                   |
+instructions        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+commentaries        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+activities          | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
+contractor          | [ProviderContractContractor](#providercontractcontractor) | with which entity the `ProviderContact` sign a Contract (ex: with a `Patrimony`)

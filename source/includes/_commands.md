@@ -761,9 +761,77 @@ Events answered                           | Optional or Mandatory in answer   | 
 
 ### ExcludeOpeningTicketPurposesFromInterventionPeriod
 
+### DefineContract
+
+Name                | Type                                                 | Description
+------------------- | -----------------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                                | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+label               | [NonEmptyString](#nonemptystring)                    |
+contractNumber      | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+validityPeriod      | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+phoneNumbers        | Array[[PhoneNumber](#phonenumber)]                   |
+instructions        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+commentaries        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+activities          | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
+contractor          | [ProviderContractContractor](#providercontractcontractor) | with which entity the `ProviderContact` sign a Contract (ex: with a `Patrimony`)
+commandType         | Constant                                             | `"DefineContract"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[ContractDefined](#contractdefined)       | mandatory                         |
+
+
+### CancelContract
+
+Name                | Type                                                 | Description
+------------------- | -----------------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                                | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+contractUid         | [SafeUUID](#safeuuid)                    |
+commandType         | Constant                                             | `"CancelContract"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[ContractCanceled](#contractcanceled)     | mandatory                         |
+
+### FixContract
+
+Name                | Type                                                 | Description
+------------------- | -----------------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                                | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+contractUid         | [SafeUUID](#safeuuid)                                |
+label               | [NonEmptyString](#nonemptystring)                    |
+contractNumber      | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+validityPeriod      | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+phoneNumbers        | Array[[PhoneNumber](#phonenumber)]                   |
+instructions        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+commentaries        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+activities          | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
+contractor          | [ProviderContractContractor](#providercontractcontractor) | with which entity the `ProviderContact` sign a Contract (ex: with a `Patrimony`)
+commandType         | Constant                                             | `"FixContract"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[ContractFixed](#contractfixed)           | mandatory                         |
+
+### DefineInterventionPeriodForContract
+
+Name                | Type                                                 | Description
+------------------- | -----------------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                                | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+contractUid         | [SafeUUID](#safeuuid)                                |
+activityUid         | [SafeUUID](#safeuuid)                                |
+period              | [InterventionPeriodForCommand](#interventionperiodforcommand)     |
+commandType         | Constant                                             | `"DefineInterventionPeriodForContract"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[InterventionPeriodForContractDefined](#interventionperiodforcontractdefined) | mandatory                         |
+
 ### CrushUpdateProviderContact
 
-Mise à jour non différentielle du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
+<aside class="warning">
+	Mise à jour non différentielle du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
+</aside>
 
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
@@ -785,12 +853,23 @@ ProviderContactAssociatedWithPatrimony    | optionnal                         |
 ProviderContactDissociatedFromPatrimony   | optionnal                         |
 
 
+### CrushUpdateContracts
 
+<aside class="warning">
+	Mise à jour non différentielle des Contrats du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
+</aside>
 
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+contracts           | Array[[ContractForProviderContact](#contractforprovidercontact)] | list of all contracts of a `ProviderContract`.
+commandType         | Constant                                      | `"CrushUpdateContracts"`
 
-
-
-
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+[ContractDefined](#contractdefined)       | optionnal                         |
+[ContractCanceled](#contractcanceled)     | optionnal                         |
+[ContractFixed](#contractfixed)           | optionnal                         |
 
 
 ## OpenTicket
