@@ -10623,6 +10623,96 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 </tr>
 </tbody></table>
 
+<h2 id="providercontractcontractor">ProviderContractContractor</h2>
+
+<p><code class="prettyprint">ProviderContractContractor</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell"><code><span class="kr">data</span> <span class="kt">ProviderContractContractor</span> <span class="o">=</span> <span class="kt">PatrimonyContractor</span>
+</code></pre>
+<h3 id="patrimonycontractor">PatrimonyContractor</h3>
+
+<blockquote>
+<p>PatrimonyContractor example :</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"patrimonyUid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contractorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PatrimonyContractor"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>contractorType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;PatrimonyContractor&quot;</code></td>
+</tr>
+</tbody></table>
+
+<h2 id="contractforprovidercontact">ContractForProviderContact</h2>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>contractUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>contractNumber</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>validityPeriod</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>phoneNumbers</td>
+<td>Array[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>commentaries</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>activities</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>contractor</td>
+<td><a href="#providercontractcontractor">ProviderContractContractor</a></td>
+<td>with which entity the <code class="prettyprint">ProviderContact</code> sign a Contract (ex: with a <code class="prettyprint">Patrimony</code>)</td>
+</tr>
+</tbody></table>
+
           <h1 id="commands">Commands</h1>
 
 <h2 id="createcompany">CreateCompany</h2>
@@ -12467,9 +12557,256 @@ Elle définit des plages de dates (sous plusieurs format utiles) où le <code cl
 
 <h3 id="excludeopeningticketpurposesfrominterventionperiod">ExcludeOpeningTicketPurposesFromInterventionPeriod</h3>
 
+<h3 id="definecontract">DefineContract</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>contractNumber</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>validityPeriod</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>phoneNumbers</td>
+<td>Array[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>commentaries</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>activities</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>contractor</td>
+<td><a href="#providercontractcontractor">ProviderContractContractor</a></td>
+<td>with which entity the <code class="prettyprint">ProviderContact</code> sign a Contract (ex: with a <code class="prettyprint">Patrimony</code>)</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DefineContract&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contractdefined">ContractDefined</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="cancelcontract">CancelContract</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>contractUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CancelContract&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contractcanceled">ContractCanceled</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="fixcontract">FixContract</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>contractUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>contractNumber</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>validityPeriod</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>phoneNumbers</td>
+<td>Array[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>instructions</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>commentaries</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>activities</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>contractor</td>
+<td><a href="#providercontractcontractor">ProviderContractContractor</a></td>
+<td>with which entity the <code class="prettyprint">ProviderContact</code> sign a Contract (ex: with a <code class="prettyprint">Patrimony</code>)</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;FixContract&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contractfixed">ContractFixed</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="defineinterventionperiodforcontract">DefineInterventionPeriodForContract</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>contractUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>activityUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>period</td>
+<td><a href="#interventionperiodforcommand">InterventionPeriodForCommand</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;DefineInterventionPeriodForContract&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#interventionperiodforcontractdefined">InterventionPeriodForContractDefined</a></td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <h3 id="crushupdateprovidercontact">CrushUpdateProviderContact</h3>
 
-<p>Mise à jour non différentielle du <code class="prettyprint">ProviderContact</code>. Préférez utilisez les commandes d&#39;incrémentation.</p>
+<aside class="warning">
+    Mise à jour non différentielle du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
+</aside>
 
 <table><thead>
 <tr>
@@ -12549,6 +12886,60 @@ Elle définit des plages de dates (sous plusieurs format utiles) où le <code cl
 </tr>
 <tr>
 <td>ProviderContactDissociatedFromPatrimony</td>
+<td>optionnal</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="crushupdatecontracts">CrushUpdateContracts</h3>
+
+<aside class="warning">
+    Mise à jour non différentielle des Contrats du `ProviderContact`. Préférez utilisez les commandes d'incrémentation.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>contracts</td>
+<td>Array[<a href="#contractforprovidercontact">ContractForProviderContact</a>]</td>
+<td>list of all contracts of a <code class="prettyprint">ProviderContract</code>.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code class="prettyprint">&quot;CrushUpdateContracts&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#contractdefined">ContractDefined</a></td>
+<td>optionnal</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#contractcanceled">ContractCanceled</a></td>
+<td>optionnal</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#contractfixed">ContractFixed</a></td>
 <td>optionnal</td>
 <td></td>
 </tr>
