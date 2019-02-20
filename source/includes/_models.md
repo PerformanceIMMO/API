@@ -395,7 +395,7 @@ state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actua
 created     | [DateTime](#datetime)                             | the date when this `Ticket` was opened.
 updated     | [DateTime](#datetime)                             | the date when last update of this `Ticket` occured.
 closed      | [DateTime](#datetime)                             | the date when this `Ticket` was closed.
-callPurpose | String                                            | the `callPurpose` of this `Ticket`.
+openingTicketPurpose | [OpeningTicketPurpose](#openingticketpurpose) | the `purpose` of this `Ticket`.
 caller      | [CallerQueryView](#callerqueryview)               | informations on person who ask for open this `Ticket`.
 assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
@@ -539,8 +539,9 @@ name        | String                                            | the `Agency`'s
 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
-uid         | [SafeUUID](#safeuuid)                             | the `Patrimony`'s uid
+uid         | [SafeUUID](#safeuuid)                             | the `Patrimony`'s perfimmo uid
 name        | String                                            | the `Patrimony`'s name
+ref         | String                                            | the `Patrimony`'s reference
 
 ## TicketStateView
 

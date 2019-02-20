@@ -45,7 +45,10 @@ Content-Range: 0-0/256
             "created": "2016-05-26T08:14:44.000Z",
             "updated": "2016-05-26T08:18:52.000Z",
             "closed": "2016-05-26T08:18:52.000Z",
-            "callPurpose": "Chauffage  / Chauffage HS",
+            "openingTicketPurpose": {
+                "callPurpose": "Chauffage  / Chauffage HS",
+                "callPurposeUid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2"
+            },
             "assignee": {
                 "uid": "b93e3e9e-0acd-0e61-3b98-63818150167c",
                 "name": "astreinte",
