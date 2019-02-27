@@ -683,7 +683,7 @@ caller      | [CallerTicketDetailedQueryView](#callerticketdetailedqueryview) | 
 report      | [Option](#option)[String]                         | intervention report, when intervention took place. 
 assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
-journal     | Array[[JournalEvent](#journalevent)]                      | the `Ticket`'s event log.
+journal     | Array[[JournalEvent](#journalevent)]              | the `Ticket`'s event log.
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
 stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
 
@@ -2608,3 +2608,31 @@ instructions        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
 commentaries        | [Option](#option)[[NonEmptyString](#nonemptystring)] |
 activities          | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
 contractor          | [ProviderContractContractor](#providercontractcontractor) | with which entity the `ProviderContact` sign a Contract (ex: with a `Patrimony`)
+
+## AdditionInfosEntityLink
+
+`AdditionInfosEntityLink` is an Enum, i.e type can take different values :
+
+```haskell
+data AdditionInfosEntityLink = ProviderContactContract
+```
+
+### ProviderContactContract
+
+Link infos with the contract of a `ProviderContact`.
+
+The uid needed is the one from the contract.
+
+> ProviderContactContract example :
+
+```json
+{
+    "uid":"8c12f096-20e6-11ab-8ff7-2c39b4397040",
+    "type": "ProviderContactContract"
+}
+```
+
+Name             | Type                                              | Description
+-----------------| --------------------------------------------------| --------------------------------------------------
+uid              | [SafeUUID](#safeuuid)                             | the uid of the contract where you link these additional infos.
+type             | Constant                                          | `"ProviderContactContract"`
