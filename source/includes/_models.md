@@ -683,7 +683,7 @@ caller      | [CallerTicketDetailedQueryView](#callerticketdetailedqueryview) | 
 report      | [Option](#option)[String]                         | intervention report, when intervention took place. 
 assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
 address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
-journal     | Array[[DayEvent](#dayevent)]                      | the `Ticket`'s event log.
+journal     | Array[[JournalEvent](#journalevent)]                      | the `Ticket`'s event log.
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
 stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
 
@@ -755,7 +755,7 @@ data        | [JournalEventData](#journaleventdata) | some data associated with 
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 name        | String                                            | the name of the caller
-medium      | [Option](#option)[[ContactMediumView](#contactmediumview)] | the medium use by the caller to open `Ticket`.
+medium      | Array[[ContactMediumView](#contactmediumview)]    | the medium use by the caller to open `Ticket`.
 comment     | [Option](#option)[String]                         | set to enter the place of intervention 
 
 ## JournalEventData
