@@ -450,6 +450,14 @@
               </ul>
           </li>
           <li>
+            <a href="#additionalinfos" class="toc-h1 toc-link" data-title="AdditionalInfos">AdditionalInfos</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ajouter-une-info-aditionnelle-a-une-entite" class="toc-h2 toc-link" data-title="Ajouter une info aditionnelle à une entité">Ajouter une info aditionnelle à une entité</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#models" class="toc-h1 toc-link" data-title="Models">Models</a>
               <ul class="toc-list-h2">
                   <li>
@@ -832,6 +840,9 @@
                   </li>
                   <li>
                     <a href="#contractforprovidercontact" class="toc-h2 toc-link" data-title="ContractForProviderContact">ContractForProviderContact</a>
+                  </li>
+                  <li>
+                    <a href="#additioninfosentitylink" class="toc-h2 toc-link" data-title="AdditionInfosEntityLink">AdditionInfosEntityLink</a>
                   </li>
               </ul>
           </li>
@@ -5416,6 +5427,91 @@ https://base_url/api/vEvent/tickets?range<span class="o">=</span>0-0&amp;from<sp
 <td>Bad request, occurs most often when parameters passed are invalid.</td>
 </tr>
 </tbody></table>
+<h1 id='additionalinfos'>AdditionalInfos</h1>
+<aside class="warning">
+    You must be authenticated to use these API.
+</aside>
+
+<p>Vous pouvez avoir besoin d&#39;afficher des informations propres sur chacune des entitées 
+chargées sur la plateforme Performance Immo.</p>
+
+<p>Pour ce faire nous mettons à disposition une API unique, permettant de lier un ensemble de clé-valeur
+à une entité donnée.</p>
+<h2 id='ajouter-une-info-aditionnelle-a-une-entite'>Ajouter une info aditionnelle à une entité</h2>
+<p>Pour mettre à jour la donnée il suffit de rejouer la requête d&#39;ajout d&#39;infos qui mettra à jour l&#39;ancienne.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -XPOST <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+ <span class="s2">"infos"</span>: <span class="o">{</span>
+   <span class="s2">"key_1"</span>:<span class="s2">"value_1"</span>,
+   <span class="s2">"key_2"</span>:<span class="s2">"value_2"</span>
+ <span class="o">}</span>,
+ <span class="s2">"linkToEntity"</span>: <span class="o">{</span>
+   <span class="s2">"uid"</span>:<span class="s2">"6e71965c-e1ea-37e9-fa45-770753dc5147"</span>,
+   <span class="s2">"type"</span>:<span class="s2">"ProviderContactContract"</span>
+ <span class="o">}</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/v1/additionalinfos
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6e71965c-e1ea-37e9-fa45-770753dc5147"</span><span class="w">   
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p><strong><code>POST</code></strong> <code>/api/v1/additionalinfos</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>infos</td>
+<td>body</td>
+<td>Map[String,String]</td>
+<td></td>
+<td>the collection of key-value to link with an entity</td>
+</tr>
+<tr>
+<td>linkToEntity</td>
+<td>body</td>
+<td><a href="#additioninfosentitylink">AdditionInfosEntityLink</a></td>
+<td></td>
+<td>with which entity to link this infos</td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td><a href="#companyeventresultview">CompanyEventResultView</a></td>
+<td>The <code>Company</code> is created. Return the <code>Event</code>s resulting of this successful <code>Command</code>.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#companyeventerror">CompanyEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+</tbody></table>
 <h1 id='models'>Models</h1><h2 id='option'>Option</h2>
 <p>Means that field is optional. If parameter has no value, it is not present in the json payload.</p>
 
@@ -6868,7 +6964,7 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>journal</td>
-<td>Array[<a href="#dayevent">DayEvent</a>]</td>
+<td>Array[<a href="#journalevent">JournalEvent</a>]</td>
 <td>the <code>Ticket</code>&#39;s event log.</td>
 </tr>
 <tr>
@@ -7028,7 +7124,7 @@ the response because of the specific state of the request done to retrieve this 
 </tr>
 <tr>
 <td>medium</td>
-<td><a href="#option">Option</a>[<a href="#contactmediumview">ContactMediumView</a>]</td>
+<td>Array[<a href="#contactmediumview">ContactMediumView</a>]</td>
 <td>the medium use by the caller to open <code>Ticket</code>.</td>
 </tr>
 <tr>
@@ -10647,6 +10743,40 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>contractor</td>
 <td><a href="#providercontractcontractor">ProviderContractContractor</a></td>
 <td>with which entity the <code>ProviderContact</code> sign a Contract (ex: with a <code>Patrimony</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='additioninfosentitylink'>AdditionInfosEntityLink</h2>
+<p><code>AdditionInfosEntityLink</code> is an Enum, i.e type can take different values :</p>
+<pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">AdditionInfosEntityLink</span> <span class="o">=</span> <span class="kt">ProviderContactContract</span>
+</code></pre><h3 id='providercontactcontract'>ProviderContactContract</h3>
+<p>Link infos with the contract of a <code>ProviderContact</code>.</p>
+
+<p>The uid needed is the one from the contract.</p>
+
+<blockquote>
+<p>ProviderContactContract example :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"uid"</span><span class="p">:</span><span class="s2">"8c12f096-20e6-11ab-8ff7-2c39b4397040"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProviderContactContract"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the contract where you link these additional infos.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Constant</td>
+<td><code>&quot;ProviderContactContract&quot;</code></td>
 </tr>
 </tbody></table>
 <h1 id='commands'>Commands</h1><h2 id='createcompany'>CreateCompany</h2>
