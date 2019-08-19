@@ -2281,10 +2281,10 @@ linkType     | Constant                                          | `"LinkToLotAs
 
 `HomeOwnerAssociationPosition` is an Enum, i.e type can take different values : 
 
-`"Member"` or `"President"`
+`"NonMember"` or `"Member"` or `"President"`
 
 ```haskell
-data HomeOwnerAssociationPosition = Member | President 
+data HomeOwnerAssociationPosition = NonMember | Member | President 
 ```
 
 ## ProviderContactSuggestResultView
