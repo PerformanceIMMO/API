@@ -2279,11 +2279,23 @@ linkType     | Constant                                          | `"LinkToLotAs
 
 ### LinkToNonReferencedLot
 
+> LinkToNonReferencedLot example :
+
+```json
+{
+	"patrimonyUid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",
+  "linkType":"LinkToNonReferencedLot",
+  "linkedAs":"Owner"
+}
+```
+
 Name         | Type                                              | Description
 -------------| --------------------------------------------------| --------------------------------------------------
-patrimonyUid | [SafeUUID](#safeuuid)                             | 
-linkedAs     | ENUM                                              | `Tenant` ou `Owner` ou `Landlord`
+lotUid       | [SafeUUID](#safeuuid)                             | 
+linkedAs     | [LinkedToNonReferencedLotAs](#linkedtononreferencedlotas) | 
 linkType     | Constant                                          | `"LinkToNonReferencedLot"`
+
+You should specify a LinkToNonReferencedLot with a [LinkToPatrimonyAsHomeOwnerAssociation.NonMember](#linktopatrimonyashomeownerassociation).
 
 ## HomeOwnerAssociationPosition
 
@@ -2293,6 +2305,16 @@ linkType     | Constant                                          | `"LinkToNonRe
 
 ```haskell
 data HomeOwnerAssociationPosition = NonMember | Member | President 
+```
+
+## LinkedToNonReferencedLotAs
+
+`LinkedToNonReferencedLotAs` is an Enum, i.e type can take different values : 
+
+`"Tenant"` or `"Owner"` or `"Landlord"`
+
+```haskell
+data LinkedToNonReferencedLotAs = Tenant | Owner | Landlord 
 ```
 
 ## ProviderContactSuggestResultView
