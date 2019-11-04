@@ -1252,11 +1252,52 @@ operator            | [Option](#option)[[Operator](#operator)]      | an optiona
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"CorrectTicketEventInformations"`
 
+### CorrectOpeningTicketPurpose
+
+<aside class="notice">
+The following commands are only available if Ticket is not already linked with an assignee.
+</aside>
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
+otpLabel            | String                                        | the new opening ticket purpose label to correct.
+otpUid              | [Option](#option)[[SafeUUID](#safeuuid)]      | the new opening ticket purpose uid to correct.
+commandType         | Constant                                      | `"CorrectOpeningTicketPurpose"`
+
+### CorrectLocationReference
+
+<aside class="notice">
+The following command are only available if Ticket is not already linked with an assignee.
+</aside>
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
+address             | [BasicAddress](#basicaddress)                 | the new address to correct.
+locationReference   | [LocationReference](#locationreference)       | the new locationReference to correct.
+commandType         | Constant                                      | `"CorrectLocationReference"`
+
+### CorrectCaller
+
+<aside class="notice">
+The following command are only available if Ticket is not already linked with an assignee.
+</aside>
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. 
+caller              | [CallerType](#callertype)                     |
+commandType         | Constant                                      | `"CorrectCaller"`
+
 <br/>
 <br/>
 
 <aside class="notice">
-The following commands are made to close the Ticket.
+The following command are made to close the Ticket.
 </aside>
 
 ### CloseTicket

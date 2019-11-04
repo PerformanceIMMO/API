@@ -933,6 +933,41 @@ commandType         | Constant                                      | `"CorrectT
 Received the following events means the Ticket was closed.
 </aside>
 
+### OpeningTicketPurposeCorrected
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+otpLabel            | String                                        | the new opening ticket purpose label corrected.
+otpUid              | [Option](#option)[[SafeUUID](#safeuuid)]      | the new opening ticket purpose uid corrected.
+eventType           | Constant                                      | `"OpeningTicketPurposeCorrected"`
+
+### LocationReferenceCorrected
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+address             | [BasicAddress](#basicaddress)                 | the new address corrected.
+locationReference   | [LocationReference](#locationreference)       | the new locationReference corrected.
+eventType           | Constant                                      | `"LocationReferenceCorrected"`
+
+### CallerCorrected
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+caller              | [CallerType](#callertype)                     | 
+eventType           | Constant                                      | `"CallerCorrected"`
+
 ### TicketClosed
 
 Name                | Type                                          | Description

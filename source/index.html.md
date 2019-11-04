@@ -129,9 +129,9 @@ d'une catégorie d'API à l'autre.
 Dans cette partie, nous définissons la signification métier de chaque ressource. Pour une description concrète de 
 ces ressources, reportez-vous aux API spécifiques les concerant. 
 
-## Company
+## ClientCompany
 
-Une `Company` représente une entreprise présente sur la plateforme Performance Immo.
+Une `ClientCompany` représente une entreprise présente sur la plateforme Performance Immo.
 
 Elle peut prendre 3 formes :
 
@@ -141,7 +141,7 @@ Elle peut prendre 3 formes :
 
 ### CallCenter
 
-Un `CallCenter` représente un centre d'appel, qui ouvre des tickets. Chaque entité `Company` autre que `CallCenter` 
+Un `CallCenter` représente un centre d'appel, qui ouvre des tickets. Chaque entité `ClientCompany` autre que `CallCenter` 
 doit posséder une référence vers un `CallCenter`.
 
 ### ClientAccountHolding
@@ -191,7 +191,7 @@ représenté notament par un journal d'évènement.
 
 ## Lot
 
-`Lot` représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, ...)
+`Lot` représente un lot immobilier physique (un appartement, une maison individuelle, un parking, ...)
 
 `Lot` est relié à un `Patrimony`.
 
