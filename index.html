@@ -239,7 +239,7 @@
             <a href="#ressources-metier" class="toc-h1 toc-link" data-title="Ressources métier">Ressources métier</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#company" class="toc-h2 toc-link" data-title="Company">Company</a>
+                    <a href="#clientcompany" class="toc-h2 toc-link" data-title="ClientCompany">ClientCompany</a>
                   </li>
                   <li>
                     <a href="#providercontact" class="toc-h2 toc-link" data-title="ProviderContact">ProviderContact</a>
@@ -803,9 +803,6 @@
                     <a href="#homeownerassociationposition" class="toc-h2 toc-link" data-title="HomeOwnerAssociationPosition">HomeOwnerAssociationPosition</a>
                   </li>
                   <li>
-                    <a href="#linkedtononreferencedlotas" class="toc-h2 toc-link" data-title="LinkedToNonReferencedLotAs">LinkedToNonReferencedLotAs</a>
-                  </li>
-                  <li>
                     <a href="#providercontactsuggestresultview" class="toc-h2 toc-link" data-title="ProviderContactSuggestResultView">ProviderContactSuggestResultView</a>
                   </li>
                   <li>
@@ -1053,8 +1050,8 @@ d&#39;une catégorie d&#39;API à l&#39;autre.</p>
 
 <p>Dans cette partie, nous définissons la signification métier de chaque ressource. Pour une description concrète de 
 ces ressources, reportez-vous aux API spécifiques les concerant. </p>
-<h2 id='company'>Company</h2>
-<p>Une <code>Company</code> représente une entreprise présente sur la plateforme Performance Immo.</p>
+<h2 id='clientcompany'>ClientCompany</h2>
+<p>Une <code>ClientCompany</code> représente une entreprise présente sur la plateforme Performance Immo.</p>
 
 <p>Elle peut prendre 3 formes :</p>
 
@@ -1064,7 +1061,7 @@ ces ressources, reportez-vous aux API spécifiques les concerant. </p>
 <li>ClientAccount</li>
 </ul>
 <h3 id='callcenter'>CallCenter</h3>
-<p>Un <code>CallCenter</code> représente un centre d&#39;appel, qui ouvre des tickets. Chaque entité <code>Company</code> autre que <code>CallCenter</code> 
+<p>Un <code>CallCenter</code> représente un centre d&#39;appel, qui ouvre des tickets. Chaque entité <code>ClientCompany</code> autre que <code>CallCenter</code> 
 doit posséder une référence vers un <code>CallCenter</code>.</p>
 <h3 id='clientaccountholding'>ClientAccountHolding</h3>
 <p>Un <code>ClientAccountHolding</code>représente une entreprise qui possède des filiales, représentées par des <code>ClientAccount</code>.</p>
@@ -1100,7 +1097,7 @@ représenté notament par un journal d&#39;évènement. </p>
 
 <p><code>Patrimony</code> est relié à une ou plusieurs <code>Agency</code> d&#39;un <code>ClientAccount</code></p>
 <h2 id='lot'>Lot</h2>
-<p><code>Lot</code> représente un lot immobiliier physique (un appartement, une maison individuelle, un parking, ...)</p>
+<p><code>Lot</code> représente un lot immobilier physique (un appartement, une maison individuelle, un parking, ...)</p>
 
 <p><code>Lot</code> est relié à un <code>Patrimony</code>.</p>
 
@@ -10138,51 +10135,11 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td><code>&quot;LinkToLotAsLandlord&quot;</code></td>
 </tr>
 </tbody></table>
-<h3 id='linktononreferencedlot'>LinkToNonReferencedLot</h3>
-<blockquote>
-<p>LinkToNonReferencedLot example :</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"patrimonyUid"</span><span class="p">:</span><span class="s2">"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"linkType"</span><span class="p">:</span><span class="s2">"LinkToNonReferencedLot"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"linkedAs"</span><span class="p">:</span><span class="s2">"Owner"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>lotUid</td>
-<td><a href="#safeuuid">SafeUUID</a></td>
-<td></td>
-</tr>
-<tr>
-<td>linkedAs</td>
-<td><a href="#linkedtononreferencedlotas">LinkedToNonReferencedLotAs</a></td>
-<td></td>
-</tr>
-<tr>
-<td>linkType</td>
-<td>Constant</td>
-<td><code>&quot;LinkToNonReferencedLot&quot;</code></td>
-</tr>
-</tbody></table>
-
-<p>You should specify a LinkToNonReferencedLot with a <a href="#linktopatrimonyashomeownerassociation">LinkToPatrimonyAsHomeOwnerAssociation.NonMember</a>.</p>
 <h2 id='homeownerassociationposition'>HomeOwnerAssociationPosition</h2>
 <p><code>HomeOwnerAssociationPosition</code> is an Enum, i.e type can take different values : </p>
 
 <p><code>&quot;NonMember&quot;</code> or <code>&quot;Member&quot;</code> or <code>&quot;President&quot;</code></p>
 <pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">HomeOwnerAssociationPosition</span> <span class="o">=</span> <span class="kt">NonMember</span> <span class="o">|</span> <span class="kt">Member</span> <span class="o">|</span> <span class="kt">President</span> 
-</code></pre><h2 id='linkedtononreferencedlotas'>LinkedToNonReferencedLotAs</h2>
-<p><code>LinkedToNonReferencedLotAs</code> is an Enum, i.e type can take different values : </p>
-
-<p><code>&quot;Tenant&quot;</code> or <code>&quot;Owner&quot;</code> or <code>&quot;Landlord&quot;</code></p>
-<pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">LinkedToNonReferencedLotAs</span> <span class="o">=</span> <span class="kt">Tenant</span> <span class="o">|</span> <span class="kt">Owner</span> <span class="o">|</span> <span class="kt">Landlord</span> 
 </code></pre><h2 id='providercontactsuggestresultview'>ProviderContactSuggestResultView</h2><h3 id='fields-68'>Fields</h3>
 <table><thead>
 <tr>
@@ -13989,12 +13946,121 @@ Only few <code>Event</code> can see their text updated :<br/>
 <td><code>&quot;CorrectTicketEventInformations&quot;</code></td>
 </tr>
 </tbody></table>
+<h3 id='correctopeningticketpurpose'>CorrectOpeningTicketPurpose</h3>
+<aside class="notice">
+The following commands are only available if Ticket is not already linked with an assignee.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>otpLabel</td>
+<td>String</td>
+<td>the new opening ticket purpose label to correct.</td>
+</tr>
+<tr>
+<td>otpUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the new opening ticket purpose uid to correct.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;CorrectOpeningTicketPurpose&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='correctlocationreference'>CorrectLocationReference</h3>
+<aside class="notice">
+The following command are only available if Ticket is not already linked with an assignee.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#basicaddress">BasicAddress</a></td>
+<td>the new address to correct.</td>
+</tr>
+<tr>
+<td>locationReference</td>
+<td><a href="#locationreference">LocationReference</a></td>
+<td>the new locationReference to correct.</td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;CorrectLocationReference&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='correctcaller'>CorrectCaller</h3>
+<aside class="notice">
+The following command are only available if Ticket is not already linked with an assignee.
+</aside>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#option">Option</a>[<a href="#operator">Operator</a>]</td>
+<td>an optional reference to who perform for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>caller</td>
+<td><a href="#callertype">CallerType</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;CorrectCaller&quot;</code></td>
+</tr>
+</tbody></table>
 
 <p><br/>
 <br/></p>
 
 <aside class="notice">
-The following commands are made to close the Ticket.
+The following command are made to close the Ticket.
 </aside>
 <h3 id='closeticket'>CloseTicket</h3>
 <table><thead>
@@ -17836,6 +17902,133 @@ Don&#39;t use it for increment the <code>Ticket</code> state. Use other <code>Co
 <aside class="notice">
 Received the following events means the Ticket was closed.
 </aside>
+<h3 id='openingticketpurposecorrected'>OpeningTicketPurposeCorrected</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>otpLabel</td>
+<td>String</td>
+<td>the new opening ticket purpose label corrected.</td>
+</tr>
+<tr>
+<td>otpUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the new opening ticket purpose uid corrected.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;OpeningTicketPurposeCorrected&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='locationreferencecorrected'>LocationReferenceCorrected</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#basicaddress">BasicAddress</a></td>
+<td>the new address corrected.</td>
+</tr>
+<tr>
+<td>locationReference</td>
+<td><a href="#locationreference">LocationReference</a></td>
+<td>the new locationReference corrected.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;LocationReferenceCorrected&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='callercorrected'>CallerCorrected</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>caller</td>
+<td><a href="#callertype">CallerType</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;CallerCorrected&quot;</code></td>
+</tr>
+</tbody></table>
 <h3 id='ticketclosed'>TicketClosed</h3>
 <table><thead>
 <tr>
