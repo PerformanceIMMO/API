@@ -1545,7 +1545,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
-login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+login               | String                                        | the login of the user (must be a valid email).
 companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
 firstName           | String                                        |
 lastName            | String                                        |
@@ -1563,7 +1563,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
-login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+login               | String                                        | the login of the user (must be a valid email).
 companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
 managedAgencies     | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the executive's agencies.
 firstName           | String                                        |
@@ -1582,7 +1582,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
-login               | [Option](#option)[[Name](#name)]              | the login of the user (must be a valid email).
+login               | String                                        | the login of the user (must be a valid email).
 companyUid          | [SafeUUID](#safeuuid)                         | the uid of the user's `ClientCompany`
 managedPatrimonies  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the patrimonyManager's patrimonies.
 firstName           | String                                        |
