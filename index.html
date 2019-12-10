@@ -15034,7 +15034,7 @@ The following command are made to close the Ticket.
 <tr>
 <td>commandType</td>
 <td>Constant</td>
-<td><code>&quot;ReferenceExecutive&quot;</code></td>
+<td><code>&quot;ReferencePatrimonyManager&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -15047,6 +15047,74 @@ The following command are made to close the Ticket.
 </thead><tbody>
 <tr>
 <td>PatrimonyManagerReferenced</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='referencepatrimonyuser'>ReferencePatrimonyUser</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td>the login of the user (must be a valid email).</td>
+</tr>
+<tr>
+<td>patrimonies</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the non empty list of the user&#39;s patrimonies.</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>externalLoginService</td>
+<td><a href="#option">Option</a>[String)]</td>
+<td>Name of the service sso. ex: <code>&quot;Lodaweb&quot;</code></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;ReferencePatrimonyUser&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PatrimonyUserReferenced</td>
 <td>mandatory</td>
 <td></td>
 </tr>
