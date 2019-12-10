@@ -1589,11 +1589,29 @@ firstName           | String                                        |
 lastName            | String                                        |
 job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
 phone               | [Option](#option)[String]                     |
-commandType         | Constant                                      | `"ReferenceExecutive"`
+commandType         | Constant                                      | `"ReferencePatrimonyManager"`
 
 Events answered                           | Optional or Mandatory in answer   | Rule / Comment
 ------------------------------------------| ----------------------------------| -------------
 PatrimonyManagerReferenced                | mandatory                         |
+
+### ReferencePatrimonyUser
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [Option](#option)[[SafeUUID](#safeuuid)]      | the uid of the resource. Allow you to decide which uid is set to resource you create. If not setted, PerfImmo generate this uid
+login               | [NonEmptyString](#nonemptystring)             | the login of the user (must be a valid email).
+patrimonies         | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the non empty list of the user's patrimonies.
+firstName           | [Option](#option)[[NonEmptyString](#nonemptystring)] |
+lastName            | [NonEmptyString](#nonemptystring)             |
+phone               | [Option](#option)[[PhoneNumber](#phonenumber)]|
+externalLoginService | [Option](#option)[String)]                   | Name of the service sso. ex: `"Lodaweb"`
+commandType         | Constant                                      | `"ReferencePatrimonyUser"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+PatrimonyUserReferenced                   | mandatory                         |
 
 ## IncrementUserCommand
 
