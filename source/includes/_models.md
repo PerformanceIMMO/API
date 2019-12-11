@@ -988,7 +988,7 @@ uid         | [SafeUUID](#safeuuid)                             | the uid of the
 data LotUsage = Apartment | IndividualHouse | ResidentialParking | ResidentialCellar | ResidentialAnnex |           -- ResidentialUsage
                    Restaurant | MeetingRoom | Fitness | SPA | SportFacility | Pool | PoolHouse | Playground | Laundry | OtherService |      -- ServiceUsage
                    TertiaryParking | Workspace | Workstation | Office | RetailShop | Warehouse | GasStation |                               -- TertiaryUsage
-                   BoilerRoom | Elevator | VentilationSystem | Gate | Intercom | BinStorageArea | MachineRoom | GardeningShed | OtherTechnical |  -- TechnicalUsage
+                   BoilerRoom | Elevator | VentilationSystem | Gate | Intercom | BinStorageArea | MachineRoom | GardeningShed | OtherTechnical  -- TechnicalUsage
 ```
 
 ## LotResultView
@@ -2636,3 +2636,193 @@ Name             | Type                                              | Descripti
 -----------------| --------------------------------------------------| --------------------------------------------------
 uid              | [SafeUUID](#safeuuid)                             | the uid of the contract where you link these additional infos.
 type             | Constant                                          | `"ProviderContactContract"`
+
+## SimplifiedRequestResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[SimplifiedRequestSearchView](#simplifiedrequestsearchview)] | Array of selected `SimplifiedRequest`s
+aggergations| [SRAggregations](#sraggregations)                 | Aggregations of several params.
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  |
+
+## SimplifiedRequestSearchView
+
+### Fields
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |
+state               | ENUM                                          | `Declared` | `Seen` | `Qualified`
+ticketUid           | [Option](#option)[[SafeUUID](#safeuuid)]      | if present, a `Ticket` was opened from this `SimplifiedRequest`
+category            | [OtpCategory](#otpcategory)                   |
+patrimony           | [PatrimonyAbstract](#patrimonyabstract)       |
+requestDate         | [DateTime](#datetime)                         |
+_links              | Array[[RestNavigationLink](#restnavigationlink)] |
+
+## SimplifiedRequestDetailedView
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |
+state               | ENUM                                          | `Declared` | `Seen` | `Qualified`
+category            | [OtpCategory](#otpcategory)                   |
+linkedEntities      | [LinkedEntities](#linkedentities)             |
+requestDate         | [DateTime](#datetime)                         |
+description         | [NonEmptyString](#nonemptystring)             |
+requester           | [CallerTicketQueryView](#callerticketqueryview) |
+seen                | [Option](#option)[[SimplifiedRequestSeenView](#simplifiedrequestseenview)]             |
+qualified           | [Option](#option)[[SimplifiedRequestQualifiedByExpertView](#simplifiedrequestqualifiedbyexpertview)] |
+_links              | Array[[RestNavigationLink](#restnavigationlink)] |
+
+## CallerTicketQueryView
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [Option](#option)[[SafeUUID](#safeuuid)]      |
+name                | String                                        |
+medium              | [Option](#option)[Array[[ContactMediumView](#contactmediumview)] |
+comment             | [Option](#option)[String]                     |
+category            | [OtpCategory](#otpcategory)                   |
+callerInfos         | [CallerInfos](#callerinfos)                   |
+status              | [Option](#option)[[NonEmptyString](#nonemptystring)] | description of the caller
+
+## CallerInfos 
+
+`CallerInfos` is an Enum, i.e type can take different values : 
+
+```haskell
+data CallerInfos = PatrimonyContactCallerInfos | ClientCompanyUserCallerInfos | NonReferencedCallerInfos
+```
+
+### PatrimonyContactCallerInfos
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+linkedWith  | Array[[PatrimonyContactEntityQueryLink](#patrimonycontactentityquerylink)]                                            | 
+
+### ClientCompanyUserCallerInfos
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+companyUid  | [SafeUUID](#safeuuid)                             | 
+userType    | [ClientCompanyUserType](#clientcompanyusertype)   | 
+
+### NonReferencedCallerInfos
+
+TODO
+
+## SimplifiedRequestSeenView
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+date        | [DateTime](#datetime)                             | 
+personInChargeOf | [UserWhoActOnSimplifiedRequestView](#userwhoactonsimplifiedrequestview)   |
+
+## SimplifiedRequestQualifiedByExpertView
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+ticketUid   | [SafeUUID](#safeuuid)                             | 
+qualifier | [UserWhoActOnSimplifiedRequestView](#userwhoactonsimplifiedrequestview)   |
+date        | [DateTime](#datetime)                             | 
+
+## PatrimonyContactEntityQueryLink
+
+`PatrimonyContactEntityQueryLink` is an Enum, i.e type can take different values : 
+
+```haskell
+data PatrimonyContactEntityQueryLink = LinkToPatrimonyAsCareTaker | LinkToPatrimonyAsHomeOwnerAssociation | LinkToLotAsTenant | LinkToLotAsOwner | LinkToLotAsLandlord | LinkToNonReferencedLot
+```
+
+### LinkToPatrimonyAsCareTaker
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+patrimony   | [AbstractEntityWithReference](#abstractentitywithreference) | 
+linkType    | Constant                                          | `"LinkToPatrimonyAsCareTaker"`
+
+### LinkToPatrimonyAsHomeOwnerAssociation
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+patrimony   | [AbstractEntityWithReference](#abstractentitywithreference) | 
+position    | [HomeOwnerAssociationPosition](#homeownerassociationposition) | 
+linkType    | Constant                                          | `"LinkToPatrimonyAsHomeOwnerAssociation"`
+
+### LinkToLotAsTenant
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+lot         | [AbstractEntityWithReference](#abstractentitywithreference) | 
+patrimony   | [AbstractEntityWithOnlyUid](#abstractentitywithonlyuid) | 
+linkType    | Constant                                          | `"LinkToLotAsTenant"`
+
+### LinkToLotAsOwner
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+lot         | [AbstractEntityWithReference](#abstractentitywithreference) | 
+patrimony   | [AbstractEntityWithOnlyUid](#abstractentitywithonlyuid) | 
+linkType    | Constant                                          | `"LinkToLotAsOwner"`
+
+### LinkToLotAsLandlord
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+lot         | [AbstractEntityWithReference](#abstractentitywithreference) | 
+patrimony   | [AbstractEntityWithOnlyUid](#abstractentitywithonlyuid) | 
+linkType    | Constant                                          | `"LinkToLotAsLandlord"`
+
+### LinkToNonReferencedLot
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+patrimony   | [AbstractEntityWithReference](#abstractentitywithreference) | 
+linkedAs    | [LinkedToNonReferencedLotAs](#linkedtononreferencedlotas) | 
+linkType    | Constant                                          | `"LinkToLotAsLandlord"`		
+		
+## AbstractEntityWithReference
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+ref         | String                                            | 
+label       | [Option](#option)[String]                         |
+
+## AbstractEntityWithOnlyUid
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             |
+
+## HomeOwnerAssociationPosition
+
+TODO
+
+## UserWhoActOnSimplifiedRequestView
+
+TODO
+
+## ClientCompanyUserType
+
+TODO
+
+## LinkedToNonReferencedLotAs
+ TODO
+
+## SRAggregations
+
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| -----------------
+patrimonies     | Array[[Aggreg ation](#aggregation)]                | 
+states          | Array[[Aggregation](#aggregation)]                |
+
+## OtpCategory
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |
+label               | [NonEmptyString](#nonemptystring)             |
+iconId              | [NonEmptyString](#nonemptystring)             |

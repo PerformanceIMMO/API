@@ -1606,7 +1606,7 @@ patrimonies         | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] | the
 firstName           | [Option](#option)[[NonEmptyString](#nonemptystring)] |
 lastName            | [NonEmptyString](#nonemptystring)             |
 phone               | [Option](#option)[[PhoneNumber](#phonenumber)]|
-externalLoginService | [Option](#option)[String)]                   | Name of the service sso. ex: `"Lodaweb"`
+externalLoginService | [Option](#option)[String]                    | Name of the service sso. ex: `"Lodaweb"`
 commandType         | Constant                                      | `"ReferencePatrimonyUser"`
 
 Events answered                           | Optional or Mandatory in answer   | Rule / Comment
@@ -1691,3 +1691,11 @@ commandType         | Constant                                      | `"Downgrad
 Events answered                           | Optional or Mandatory in answer   | Rule / Comment
 ------------------------------------------| ----------------------------------| -------------
 ExecutiveDowngradedToPatrimonyManager     | mandatory                         |
+
+## QualifySimplifiedRequest
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+ticketUid           | [SafeUUID](#safeuuid)                         | 
+commandType         | Constant                                      | `"QualifySimplifiedRequest"`

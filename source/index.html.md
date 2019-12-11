@@ -17,6 +17,7 @@ includes:
   - providerContacts
   - providerCompanies
   - tickets
+  - simplifiedRequests
   - additionalInfos
   - models
   - commands

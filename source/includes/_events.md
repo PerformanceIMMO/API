@@ -923,7 +923,7 @@ text                | String                                        | the new te
 operator            | [Operator](#operator)                         | a reference to who perform for this `Command`. We can say who update this `Ticket`. 
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
-commandType         | Constant                                      | `"CorrectTicketEventInformations"`
+eventType         | Constant                                      | `"TicketEventInformationsCorrected"`
                                             
 
 <br/>
@@ -994,7 +994,7 @@ operator            | [Operator](#operator)                         | a referenc
 comment             | [Option](#option)[String]                     |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
-commandType         | Constant                                      | `"TicketCancelled"`
+eventType         | Constant                                      | `"TicketCancelled"`
 
 ### TicketArchived
 
@@ -1267,7 +1267,7 @@ firstName           | String                                        |
 lastName            | String                                        |
 job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
 phone               | [Option](#option)[String]                     |
-commandType         | Constant                                      | `"ExecutiveReferenced"`
+eventType         | Constant                                      | `"ExecutiveReferenced"`
 
 ### PatrimonyManagerReferenced
 
@@ -1282,7 +1282,7 @@ firstName           | String                                        |
 lastName            | String                                        |
 job                 | [Option](#option)[String]                     | just a label to explain the role of the user. Useful to calcul the user's rights on the data.
 phone               | [Option](#option)[String]                     |
-commandType         | Constant                                      | `"PatrimonyManagerReferenced"`
+eventType         | Constant                                      | `"PatrimonyManagerReferenced"`
 
 ### UserAssociatedWithAgency
 
@@ -1291,7 +1291,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 agencyUid           | [SafeUUID](#safeuuid)                         |
-commandType         | Constant                                      | `"UserAssociatedWithAgency"`
+eventType         | Constant                                      | `"UserAssociatedWithAgency"`
 
 ### UserDissociatedFromAgency
 
@@ -1300,7 +1300,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 agencyUid           | [SafeUUID](#safeuuid)                         |
-commandType         | Constant                                      | `"UserDissociatedFromAgency"`
+eventType         | Constant                                      | `"UserDissociatedFromAgency"`
 
 ### UserAssociatedWithPatrimony
 
@@ -1309,7 +1309,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 patrimonyUid        | [SafeUUID](#safeuuid)                         |
-commandType         | Constant                                      | `"UserAssociatedWithPatrimony"`
+eventType         | Constant                                      | `"UserAssociatedWithPatrimony"`
 
 ### UserDissociatedFromPatrimony
 
@@ -1318,7 +1318,7 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 patrimonyUid        | [SafeUUID](#safeuuid)                         |
-commandType         | Constant                                      | `"UserDissociatedFromPatrimony"`
+eventType         | Constant                                      | `"UserDissociatedFromPatrimony"`
 
 ### UserDisabled
 
@@ -1326,7 +1326,7 @@ Name                | Type                                          | Descriptio
 ------------------- | ----------------------------------------------| --------------------------------------------------
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
-commandType         | Constant                                      | `"UserDisabled"`
+eventType         | Constant                                      | `"UserDisabled"`
 
 ### ExecutiveDowngradedToPatrimonyManager
 
@@ -1335,4 +1335,13 @@ Name                | Type                                          | Descriptio
 processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
 aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
 managedPatrimonies  | [NonEmptyList](#nonemptylist)[[SafeUUID](#safeuuid)] |
-commandType         | Constant                                      | `"ExecutiveDowngradedToPatrimonyManager"`
+eventType         | Constant                                      | `"ExecutiveDowngradedToPatrimonyManager"`
+
+## SimplifiedRequestQualified
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+ticketUid           | [SafeUUID](#safeuuid)                         |
+eventType           | Constant                                      | `"SimplifiedRequestQualified"`
