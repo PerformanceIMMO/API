@@ -988,7 +988,7 @@ uid         | [SafeUUID](#safeuuid)                             | the uid of the
 data LotUsage = Apartment | IndividualHouse | ResidentialParking | ResidentialCellar | ResidentialAnnex |           -- ResidentialUsage
                    Restaurant | MeetingRoom | Fitness | SPA | SportFacility | Pool | PoolHouse | Playground | Laundry | OtherService |      -- ServiceUsage
                    TertiaryParking | Workspace | Workstation | Office | RetailShop | Warehouse | GasStation |                               -- TertiaryUsage
-                   BoilerRoom | Elevator | VentilationSystem | Gate | Intercom | BinStorageArea | MachineRoom | GardeningShed | OtherTechnical |  -- TechnicalUsage
+                   BoilerRoom | Elevator | VentilationSystem | Gate | Intercom | BinStorageArea | MachineRoom | GardeningShed | OtherTechnical  -- TechnicalUsage
 ```
 
 ## LotResultView
@@ -2636,3 +2636,117 @@ Name             | Type                                              | Descripti
 -----------------| --------------------------------------------------| --------------------------------------------------
 uid              | [SafeUUID](#safeuuid)                             | the uid of the contract where you link these additional infos.
 type             | Constant                                          | `"ProviderContactContract"`
+
+## SimplifiedRequestResultView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[SimplifiedRequestSearchView](#simplifiedrequestsearchview)] | Array of selected `SimplifiedRequest`s
+aggergations| [SRAggregations](#sraggregations)                 | Aggregations of several params.
+_links      | Array[[RestNavigationLink](#restnavigationlink)]  |
+
+## SimplifiedRequestSearchView
+
+### Fields
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |
+state               | ENUM                                          | `Declared` | `Seen` | `Qualified`
+ticketUid           | [Option](#option)[[SafeUUID](#safeuuid)]      | if present, a `Ticket` was opened from this `SimplifiedRequest`
+category            | [OtpCategory](#otpcategory)                   |
+patrimony           | [PatrimonyAbstract](#patrimonyabstract)       |
+requestDate         | [DateTime](#datetime)                         |
+_links              | Array[[RestNavigationLink](#restnavigationlink)] |
+
+## SimplifiedRequestDetailedView
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |
+state               | ENUM                                          | `Declared` | `Seen` | `Qualified`
+category            | [OtpCategory](#otpcategory)                   |
+linkedEntities      | [LinkedEntities](#linkedentities)             |
+requestDate         | [DateTime](#datetime)                         |
+description         | [NonEmptyString](#nonemptystring)             |
+requester           | [CallerTicketQueryView](#callerticketqueryview) |
+seen                | [Option](#option)[[SimplifiedRequestSeenView](#simplifiedrequestseenview)]             |
+qualified           | [Option](#option)[[SimplifiedRequestQualifiedByExpertView](#simplifiedrequestqualifiedbyexpertview)] |
+_links              | Array[[RestNavigationLink](#restnavigationlink)] |
+
+## CallerTicketQueryView
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [Option](#option)[[SafeUUID](#safeuuid)]      |
+name                | String                                        |
+medium              | [Option](#option)[Array[[ContactMediumView](#contactmediumview)] |
+comment             | [Option](#option)[String]                     |
+category            | [OtpCategory](#otpcategory)                   |
+callerInfos         | [CallerInfos](#callerinfos)                   |
+status              | [Option](#option)[[NonEmptyString](#nonemptystring)] | description of the caller
+
+## CallerInfos 
+
+`CallerInfos` is an Enum, i.e type can take different values : 
+
+```haskell
+data CallerInfos = PatrimonyContactCallerInfos | ClientCompanyUserCallerInfos | NonReferencedCallerInfos
+```
+
+### PatrimonyContactCallerInfos
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+linkedWith  | Array[[PatrimonyContactEntityQueryLink](#patrimonycontactentityquerylink)]                                            | 
+
+### ClientCompanyUserCallerInfos
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+companyUid  | [SafeUUID](#safeuuid)                             | 
+userType    | [ClientCompanyUserType](#clientcompanyusertype)   | 
+
+### NonReferencedCallerInfos
+
+TODO
+
+## SimplifiedRequestSeenView
+
+case class SimplifiedRequestSeenView(date: DateTime,
+                                     personInChargeOf: UserWhoActOnSimplifiedRequestView)
+
+## SimplifiedRequestQualifiedByExpertView
+
+case class SimplifiedRequestQualifiedByExpertView(ticketUid: SafeUUID,
+                                                  qualifier: UserWhoActOnSimplifiedRequestView,
+                                                  date: DateTime)
+
+## PatrimonyContactEntityQueryLink
+
+TODO
+
+## UserWhoActOnSimplifiedRequestView
+
+TODO
+
+## ClientCompanyUserType
+
+TODO
+
+## SRAggregations
+
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| -----------------
+patrimonies     | Array[[Aggregation](#aggregation)]                | 
+states          | Array[[Aggregation](#aggregation)]                |
+
+## OtpCategory
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |
+label               | [NonEmptyString](#nonemptystring)             |
+iconId              | [NonEmptyString](#nonemptystring)             |
