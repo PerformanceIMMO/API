@@ -1692,6 +1692,34 @@ Events answered                           | Optional or Mandatory in answer   | 
 ------------------------------------------| ----------------------------------| -------------
 ExecutiveDowngradedToPatrimonyManager     | mandatory                         |
 
+### UpdateUser
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+firstName           | String                                        |
+lastName            | String                                        |
+job                 | [Option](#option)[String]                     |
+phone               | [Option](#option)[[PhoneNumber](#phonenumber)]|
+commandType         | Constant                                      | `"UpdateUser"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+UserUpdated                               | mandatory                         |
+
+### UpdateLogin
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+login               | [NonEmptyString](#nonemptystring)             |
+commandType         | Constant                                      | `"UpdateLogin"`
+
+Events answered                           | Optional or Mandatory in answer   | Rule / Comment
+------------------------------------------| ----------------------------------| -------------
+LoginUpdated                              | mandatory                         |
+
+
 ## QualifySimplifiedRequest
 
 Name                | Type                                          | Description
