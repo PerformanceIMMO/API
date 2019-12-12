@@ -2654,7 +2654,7 @@ _links      | Array[[RestNavigationLink](#restnavigationlink)]  |
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 uid                 | [SafeUUID](#safeuuid)                         |
-state               | ENUM                                          | `Declared | Seen | Qualified`
+state               | ENUM                                          | `Declared` ou `Seen` ou `Qualified`
 ticketUid           | [Option](#option)[[SafeUUID](#safeuuid)]      | if present, a `Ticket` was opened from this `SimplifiedRequest`
 category            | [OtpCategory](#otpcategory)                   |
 patrimony           | [PatrimonyAbstract](#patrimonyabstract)       |
@@ -2666,7 +2666,7 @@ _links              | Array[[RestNavigationLink](#restnavigationlink)] |
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 uid                 | [SafeUUID](#safeuuid)                         |
-state               | ENUM                                          | `Declared | Seen | Qualified`
+state               | ENUM                                          | `Declared` ou `Seen` ou `Qualified`
 category            | [OtpCategory](#otpcategory)                   |
 linkedEntities      | [LinkedEntities](#linkedentities)             |
 requestDate         | [DateTime](#datetime)                         |
