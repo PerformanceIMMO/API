@@ -450,6 +450,26 @@
               </ul>
           </li>
           <li>
+            <a href="#simplifiedrequests" class="toc-h1 toc-link" data-title="SimplifiedRequests">SimplifiedRequests</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-simplified-requests-and-filter-it" class="toc-h2 toc-link" data-title="Get simplified requests and filter it">Get simplified requests and filter it</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-simplified-request" class="toc-h2 toc-link" data-title="Get a simplified request">Get a simplified request</a>
+                  </li>
+                  <li>
+                    <a href="#open-a-simplifiedrequest" class="toc-h2 toc-link" data-title="Open a SimplifiedRequest">Open a SimplifiedRequest</a>
+                  </li>
+                  <li>
+                    <a href="#see-a-simplifiedrequest" class="toc-h2 toc-link" data-title="See a SimplifiedRequest">See a SimplifiedRequest</a>
+                  </li>
+                  <li>
+                    <a href="#qualify-a-simplifiedrequest" class="toc-h2 toc-link" data-title="Qualify a SimplifiedRequest">Qualify a SimplifiedRequest</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#additionalinfos" class="toc-h1 toc-link" data-title="AdditionalInfos">AdditionalInfos</a>
               <ul class="toc-list-h2">
                   <li>
@@ -844,6 +864,54 @@
                   <li>
                     <a href="#additioninfosentitylink" class="toc-h2 toc-link" data-title="AdditionInfosEntityLink">AdditionInfosEntityLink</a>
                   </li>
+                  <li>
+                    <a href="#simplifiedrequestresultview" class="toc-h2 toc-link" data-title="SimplifiedRequestResultView">SimplifiedRequestResultView</a>
+                  </li>
+                  <li>
+                    <a href="#simplifiedrequestsearchview" class="toc-h2 toc-link" data-title="SimplifiedRequestSearchView">SimplifiedRequestSearchView</a>
+                  </li>
+                  <li>
+                    <a href="#simplifiedrequestdetailedview" class="toc-h2 toc-link" data-title="SimplifiedRequestDetailedView">SimplifiedRequestDetailedView</a>
+                  </li>
+                  <li>
+                    <a href="#callerticketqueryview" class="toc-h2 toc-link" data-title="CallerTicketQueryView">CallerTicketQueryView</a>
+                  </li>
+                  <li>
+                    <a href="#callerinfos" class="toc-h2 toc-link" data-title="CallerInfos">CallerInfos</a>
+                  </li>
+                  <li>
+                    <a href="#simplifiedrequestseenview" class="toc-h2 toc-link" data-title="SimplifiedRequestSeenView">SimplifiedRequestSeenView</a>
+                  </li>
+                  <li>
+                    <a href="#simplifiedrequestqualifiedbyexpertview" class="toc-h2 toc-link" data-title="SimplifiedRequestQualifiedByExpertView">SimplifiedRequestQualifiedByExpertView</a>
+                  </li>
+                  <li>
+                    <a href="#patrimonycontactentityquerylink" class="toc-h2 toc-link" data-title="PatrimonyContactEntityQueryLink">PatrimonyContactEntityQueryLink</a>
+                  </li>
+                  <li>
+                    <a href="#abstractentitywithreference" class="toc-h2 toc-link" data-title="AbstractEntityWithReference">AbstractEntityWithReference</a>
+                  </li>
+                  <li>
+                    <a href="#abstractentitywithonlyuid" class="toc-h2 toc-link" data-title="AbstractEntityWithOnlyUid">AbstractEntityWithOnlyUid</a>
+                  </li>
+                  <li>
+                    <a href="#homeownerassociationposition-2" class="toc-h2 toc-link" data-title="HomeOwnerAssociationPosition">HomeOwnerAssociationPosition</a>
+                  </li>
+                  <li>
+                    <a href="#userwhoactonsimplifiedrequestview" class="toc-h2 toc-link" data-title="UserWhoActOnSimplifiedRequestView">UserWhoActOnSimplifiedRequestView</a>
+                  </li>
+                  <li>
+                    <a href="#clientcompanyusertype" class="toc-h2 toc-link" data-title="ClientCompanyUserType">ClientCompanyUserType</a>
+                  </li>
+                  <li>
+                    <a href="#linkedtononreferencedlotas" class="toc-h2 toc-link" data-title="LinkedToNonReferencedLotAs">LinkedToNonReferencedLotAs</a>
+                  </li>
+                  <li>
+                    <a href="#sraggregations" class="toc-h2 toc-link" data-title="SRAggregations">SRAggregations</a>
+                  </li>
+                  <li>
+                    <a href="#otpcategory" class="toc-h2 toc-link" data-title="OtpCategory">OtpCategory</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -885,6 +953,9 @@
                   <li>
                     <a href="#incrementusercommand" class="toc-h2 toc-link" data-title="IncrementUserCommand">IncrementUserCommand</a>
                   </li>
+                  <li>
+                    <a href="#qualifysimplifiedrequest" class="toc-h2 toc-link" data-title="QualifySimplifiedRequest">QualifySimplifiedRequest</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -913,6 +984,9 @@
                   </li>
                   <li>
                     <a href="#userevent" class="toc-h2 toc-link" data-title="UserEvent">UserEvent</a>
+                  </li>
+                  <li>
+                    <a href="#simplifiedrequestqualified" class="toc-h2 toc-link" data-title="SimplifiedRequestQualified">SimplifiedRequestQualified</a>
                   </li>
               </ul>
           </li>
@@ -5427,6 +5501,304 @@ https://base_url/api/vEvent/tickets?range<span class="o">=</span>0-0&amp;from<sp
 <td>Bad request, occurs most often when parameters passed are invalid.</td>
 </tr>
 </tbody></table>
+<h1 id='simplifiedrequests'>SimplifiedRequests</h1>
+<aside class="warning">
+    You must be authenticated to use these API.
+</aside>
+
+<p>Les demandes simplifiées (a.k.a <code>SimplifiedRequest</code>) sont à l&#39;usage d&#39;utilisateurs non professionnels (par exmeple les co-propriétaires)
+ pour leur permettre d&#39;effectuer une demande.</p>
+
+<p>Une demande simplifiée a pour objet la création d&#39;un <code>Ticket</code>. Ce qui équivaut à la qualification de cette demande simplifiée. </p>
+
+<p>Cette demande est qualifé de simplifiée, car elle ne considère que le patrimoine impacté et la catégorie de raison d&#39;ouverture de ticket.</p>
+<h2 id='get-simplified-requests-and-filter-it'>Get simplified requests and filter it</h2><h3 id='http-request'>HTTP Request</h3><pre class="highlight shell tab-shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/simplifiedrequests?range<span class="o">=</span>0-0
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">206</span> <span class="ne">Partial Content</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Range</span><span class="p">:</span> <span class="s">0-0/256</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f86dd27-ef9e-4659-8d61-c3e7cf5baae7"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Declared"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5d1462f-a3c8-4c87-a529-47ae53a45fa7"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fuite d'eau"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"iconId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waterdrop"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5be2f60-11a6-4769-96ec-76bc6cb367fc"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67 route de la Reine"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P-001"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"requestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-21T11:00:37.564Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">   
+</span><span class="p">}</span><span class="w">   
+</span></code></pre>
+<p><strong><code>GET</code></strong> <code>/api/v1/simplifiedrequests</code></p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>query</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>0-99</td>
+<td>range selector for result pagination.<br/> ex: <code>range=0-19</code> <br/> startRange should be &lt;= endRange</td>
+</tr>
+<tr>
+<td>ticketuid</td>
+<td>query</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>None</td>
+<td>query matching with <code>Ticket</code> uid.<br/> ex: <code>ticketuid=5f86dd27-ef9e-4659-8d61-c3e7cf5baae7</code></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td>query</td>
+<td>Array[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>None</td>
+<td>query matching with <code>Patrimony</code> uid.<br/> ex: <code>patrimony=5f86dd27-ef9e-4659-8d61-c3e7cf5baae7&amp;patrimony=5f86dd27-ef9e-4659-8d61-c3e7cf5baae6</code></td>
+</tr>
+<tr>
+<td>state</td>
+<td>query</td>
+<td>Array[ENUM]</td>
+<td>None</td>
+<td>query matching with <code>state</code> { Declared or Seen or Qualified }.<br/> ex: <code>state=Declared&amp;state=Seen</code></td>
+</tr>
+</tbody></table>
+<h3 id='responses'>Responses</h3>
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#simplifiedrequestresultview">SimplifiedRequestResultView</a></td>
+<td>All resources&#39;s elements are returned.</td>
+</tr>
+<tr>
+<td>206</td>
+<td><a href="#simplifiedrequestresultview">SimplifiedRequestResultView</a></td>
+<td>Partial Content. See <code>Content-Range</code> header for use pagination.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-simplified-request'>Get a simplified request</h2><h3 id='http-request-2'>HTTP Request</h3><pre class="highlight shell tab-shell"><code>curl -XGET <span class="se">\</span>
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+https://base_url/api/v1/simplifiedrequests/17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+    </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5f86dd27-ef9e-4659-8d61-c3e7cf5baae7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qualified"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5d1462f-a3c8-4c87-a529-47ae53a45fa7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fuite d'eau"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"iconId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waterdrop"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"linkedEntities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"patrimony"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b5be2f60-11a6-4769-96ec-76bc6cb367fc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"67 route de la Reine"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P-001"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500cb21-ba56-4d3b-b8cd-88c01d949e42"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loiselet &amp; Daigremont"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"agencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27caacc6-b98f-4860-b912-a6660ffd07f0"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Loiselet &amp; Daigremont Boulogne"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"callCenters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"8a8a2283-0ef1-4755-b398-8ae7880766e5"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"requestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-11-21T11:00:37.564Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thjvvhjjbgjkggjiiuuyh"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"requester"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9e96638e-be9f-4252-a87a-d1a0a2bf6644"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thierry  Godo Gestionnaire"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"mediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+33141225538"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"mediumType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MAIL"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"thierry.godo+gestionnaire@gmail.com"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"callerInfos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"companyUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3500cb21-ba56-4d3b-b8cd-88c01d949e42"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"userType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PatrimonyManager"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"callerType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ClientCompanyUserCaller"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"qualified"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ticketUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0a0c5ce7-3dcb-41f8-86e7-616f291b7c7f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"qualifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6dbe20d1-bc57-4cff-8317-adeffd9bc4c2"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nicolas Marx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"userType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedUser"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-11T15:51:15.716Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><code>GET</code></strong> <code>/api/v1/simplifiedrequests/:sr_uid</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sr_uid</td>
+<td>path</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>0-99</td>
+<td>the uid of the selected <code>SimplifiedRequest</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='responses-2'>Responses</h3>
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#simplifiedrequestdetailedview">SimplifiedRequestDetailedView</a></td>
+<td>The detailed <code>SimplifiedRequest</code></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Error</td>
+<td>Bad request, occurs most often when parameters passed are invalid.</td>
+</tr>
+</tbody></table>
+<h2 id='open-a-simplifiedrequest'>Open a SimplifiedRequest</h2><h2 id='see-a-simplifiedrequest'>See a SimplifiedRequest</h2><h2 id='qualify-a-simplifiedrequest'>Qualify a SimplifiedRequest</h2>
+<blockquote>
+<p>HTTP query example :</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -XPOST <span class="se">\ </span>                                                                                                       
+-H <span class="s2">"Cookie: PI_SESSION=..."</span> <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-d <span class="o">{</span>
+   <span class="s2">"processUid"</span>: <span class="s2">"5a7bd760-9487-cd87-860a-e043d0b3e99d"</span>,
+   <span class="s2">"ticketUid"</span>: <span class="s2">"4b7bd760-2432-ed35-830b-e043d0b3e12f"</span>,
+   <span class="s2">"commandType"</span>: <span class="s2">"QualifySimplifiedRequest"</span>
+<span class="o">}</span> <span class="se">\</span>
+https://base_url/api/vEvent/simplifiedrequests/c9c5c9d2-ab38-a010-46cd-97013fbfbeb2
+</code></pre>
+<blockquote>
+<p>HTTP response example :</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">Ok</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5a7bd760-9487-cd87-860a-e043d0b3e99d"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"aggregateUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9c5c9d2-ab38-a010-46cd-97013fbfbeb2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ticketUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4b7bd760-2432-ed35-830b-e043d0b3e12f"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SimplifiedRequestQualified"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">        
+</span></code></pre>
+<p><strong><code>PATCH</code></strong> <code>/api/vEvent/simplifiedrequests/:request_uid</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request_uid</td>
+<td>query</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code>SimplifiedRequest</code></td>
+</tr>
+<tr>
+<td></td>
+<td>body</td>
+<td><a href="#qualifysimplifiedrequest">QualifySimplifiedRequest</a></td>
+<td>the <code>Command</code> for increment a <code>SimplifiedRequest</code> state</td>
+</tr>
+</tbody></table>
+<h3 id='responses-3'>Responses</h3>
+<table><thead>
+<tr>
+<th>Http code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="#simplifiedrequestqualified">SimplifiedRequestQualified</a></td>
+<td>The <code>Event</code>s resulting of this successful <code>Command</code>.</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="#SimplifiedRequestEventError">SimplifiedRequestEventError</a></td>
+<td>Bad request, occurs most often when parameters passed are invalid, or if data in command is not coherent.</td>
+</tr>
+<tr>
+<td>401</td>
+<td></td>
+<td>Not authenticated user</td>
+</tr>
+<tr>
+<td>403</td>
+<td></td>
+<td><code>User</code> doesn&#39;t have right to perform this <code>Command</code></td>
+</tr>
+</tbody></table>
 <h1 id='additionalinfos'>AdditionalInfos</h1>
 <aside class="warning">
     You must be authenticated to use these API.
@@ -7716,7 +8088,7 @@ the response because of the specific state of the request done to retrieve this 
 <pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">LotUsage</span> <span class="o">=</span> <span class="kt">Apartment</span> <span class="o">|</span> <span class="kt">IndividualHouse</span> <span class="o">|</span> <span class="kt">ResidentialParking</span> <span class="o">|</span> <span class="kt">ResidentialCellar</span> <span class="o">|</span> <span class="kt">ResidentialAnnex</span> <span class="o">|</span>           <span class="c1">-- ResidentialUsage</span>
                    <span class="kt">Restaurant</span> <span class="o">|</span> <span class="kt">MeetingRoom</span> <span class="o">|</span> <span class="kt">Fitness</span> <span class="o">|</span> <span class="kt">SPA</span> <span class="o">|</span> <span class="kt">SportFacility</span> <span class="o">|</span> <span class="kt">Pool</span> <span class="o">|</span> <span class="kt">PoolHouse</span> <span class="o">|</span> <span class="kt">Playground</span> <span class="o">|</span> <span class="kt">Laundry</span> <span class="o">|</span> <span class="kt">OtherService</span> <span class="o">|</span>      <span class="c1">-- ServiceUsage</span>
                    <span class="kt">TertiaryParking</span> <span class="o">|</span> <span class="kt">Workspace</span> <span class="o">|</span> <span class="kt">Workstation</span> <span class="o">|</span> <span class="kt">Office</span> <span class="o">|</span> <span class="kt">RetailShop</span> <span class="o">|</span> <span class="kt">Warehouse</span> <span class="o">|</span> <span class="kt">GasStation</span> <span class="o">|</span>                               <span class="c1">-- TertiaryUsage</span>
-                   <span class="kt">BoilerRoom</span> <span class="o">|</span> <span class="kt">Elevator</span> <span class="o">|</span> <span class="kt">VentilationSystem</span> <span class="o">|</span> <span class="kt">Gate</span> <span class="o">|</span> <span class="kt">Intercom</span> <span class="o">|</span> <span class="kt">BinStorageArea</span> <span class="o">|</span> <span class="kt">MachineRoom</span> <span class="o">|</span> <span class="kt">GardeningShed</span> <span class="o">|</span> <span class="kt">OtherTechnical</span> <span class="o">|</span>  <span class="c1">-- TechnicalUsage</span>
+                   <span class="kt">BoilerRoom</span> <span class="o">|</span> <span class="kt">Elevator</span> <span class="o">|</span> <span class="kt">VentilationSystem</span> <span class="o">|</span> <span class="kt">Gate</span> <span class="o">|</span> <span class="kt">Intercom</span> <span class="o">|</span> <span class="kt">BinStorageArea</span> <span class="o">|</span> <span class="kt">MachineRoom</span> <span class="o">|</span> <span class="kt">GardeningShed</span> <span class="o">|</span> <span class="kt">OtherTechnical</span>  <span class="c1">-- TechnicalUsage</span>
 </code></pre><h2 id='lotresultview'>LotResultView</h2><h3 id='fields-42'>Fields</h3>
 <table><thead>
 <tr>
@@ -10777,6 +11149,489 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>type</td>
 <td>Constant</td>
 <td><code>&quot;ProviderContactContract&quot;</code></td>
+</tr>
+</tbody></table>
+<h2 id='simplifiedrequestresultview'>SimplifiedRequestResultView</h2><h3 id='fields-71'>Fields</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>result</td>
+<td>Array[<a href="#simplifiedrequestsearchview">SimplifiedRequestSearchView</a>]</td>
+<td>Array of selected <code>SimplifiedRequest</code>s</td>
+</tr>
+<tr>
+<td>aggergations</td>
+<td><a href="#sraggregations">SRAggregations</a></td>
+<td>Aggregations of several params.</td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='simplifiedrequestsearchview'>SimplifiedRequestSearchView</h2><h3 id='fields-72'>Fields</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>ENUM</td>
+<td><code>Declared</code></td>
+</tr>
+<tr>
+<td>ticketUid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>if present, a <code>Ticket</code> was opened from this <code>SimplifiedRequest</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#otpcategory">OtpCategory</a></td>
+<td></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#patrimonyabstract">PatrimonyAbstract</a></td>
+<td></td>
+</tr>
+<tr>
+<td>requestDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='simplifiedrequestdetailedview'>SimplifiedRequestDetailedView</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>ENUM</td>
+<td><code>Declared</code></td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#otpcategory">OtpCategory</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkedEntities</td>
+<td><a href="#linkedentities">LinkedEntities</a></td>
+<td></td>
+</tr>
+<tr>
+<td>requestDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>requester</td>
+<td><a href="#callerticketqueryview">CallerTicketQueryView</a></td>
+<td></td>
+</tr>
+<tr>
+<td>seen</td>
+<td><a href="#option">Option</a>[<a href="#simplifiedrequestseenview">SimplifiedRequestSeenView</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>qualified</td>
+<td><a href="#option">Option</a>[<a href="#simplifiedrequestqualifiedbyexpertview">SimplifiedRequestQualifiedByExpertView</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='callerticketqueryview'>CallerTicketQueryView</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>medium</td>
+<td><a href="#option">Option</a>[Array[<a href="#contactmediumview">ContactMediumView</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#otpcategory">OtpCategory</a></td>
+<td></td>
+</tr>
+<tr>
+<td>callerInfos</td>
+<td><a href="#callerinfos">CallerInfos</a></td>
+<td></td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#option">Option</a>[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td>description of the caller</td>
+</tr>
+</tbody></table>
+<h2 id='callerinfos'>CallerInfos</h2>
+<p><code>CallerInfos</code> is an Enum, i.e type can take different values : </p>
+<pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">CallerInfos</span> <span class="o">=</span> <span class="kt">PatrimonyContactCallerInfos</span> <span class="o">|</span> <span class="kt">ClientCompanyUserCallerInfos</span> <span class="o">|</span> <span class="kt">NonReferencedCallerInfos</span>
+</code></pre><h3 id='patrimonycontactcallerinfos'>PatrimonyContactCallerInfos</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>linkedWith</td>
+<td>Array[<a href="#patrimonycontactentityquerylink">PatrimonyContactEntityQueryLink</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='clientcompanyusercallerinfos'>ClientCompanyUserCallerInfos</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>companyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>userType</td>
+<td><a href="#clientcompanyusertype">ClientCompanyUserType</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='nonreferencedcallerinfos'>NonReferencedCallerInfos</h3>
+<p>TODO</p>
+<h2 id='simplifiedrequestseenview'>SimplifiedRequestSeenView</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+<tr>
+<td>personInChargeOf</td>
+<td><a href="#userwhoactonsimplifiedrequestview">UserWhoActOnSimplifiedRequestView</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='simplifiedrequestqualifiedbyexpertview'>SimplifiedRequestQualifiedByExpertView</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ticketUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>qualifier</td>
+<td><a href="#userwhoactonsimplifiedrequestview">UserWhoActOnSimplifiedRequestView</a></td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td><a href="#datetime">DateTime</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='patrimonycontactentityquerylink'>PatrimonyContactEntityQueryLink</h2>
+<p><code>PatrimonyContactEntityQueryLink</code> is an Enum, i.e type can take different values : </p>
+<pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">PatrimonyContactEntityQueryLink</span> <span class="o">=</span> <span class="kt">LinkToPatrimonyAsCareTaker</span> <span class="o">|</span> <span class="kt">LinkToPatrimonyAsHomeOwnerAssociation</span> <span class="o">|</span> <span class="kt">LinkToLotAsTenant</span> <span class="o">|</span> <span class="kt">LinkToLotAsOwner</span> <span class="o">|</span> <span class="kt">LinkToLotAsLandlord</span> <span class="o">|</span> <span class="kt">LinkToNonReferencedLot</span>
+</code></pre><h3 id='linktopatrimonyascaretaker-2'>LinkToPatrimonyAsCareTaker</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimony</td>
+<td><a href="#abstractentitywithreference">AbstractEntityWithReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToPatrimonyAsCareTaker&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='linktopatrimonyashomeownerassociation-2'>LinkToPatrimonyAsHomeOwnerAssociation</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimony</td>
+<td><a href="#abstractentitywithreference">AbstractEntityWithReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>position</td>
+<td><a href="#homeownerassociationposition">HomeOwnerAssociationPosition</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToPatrimonyAsHomeOwnerAssociation&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='linktolotastenant-2'>LinkToLotAsTenant</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lot</td>
+<td><a href="#abstractentitywithreference">AbstractEntityWithReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#abstractentitywithonlyuid">AbstractEntityWithOnlyUid</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToLotAsTenant&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='linktolotasowner-2'>LinkToLotAsOwner</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lot</td>
+<td><a href="#abstractentitywithreference">AbstractEntityWithReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#abstractentitywithonlyuid">AbstractEntityWithOnlyUid</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToLotAsOwner&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='linktolotaslandlord-2'>LinkToLotAsLandlord</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lot</td>
+<td><a href="#abstractentitywithreference">AbstractEntityWithReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#abstractentitywithonlyuid">AbstractEntityWithOnlyUid</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToLotAsLandlord&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='linktononreferencedlot'>LinkToNonReferencedLot</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimony</td>
+<td><a href="#abstractentitywithreference">AbstractEntityWithReference</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkedAs</td>
+<td><a href="#linkedtononreferencedlotas">LinkedToNonReferencedLotAs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToLotAsLandlord&quot;</code></td>
+</tr>
+</tbody></table>
+<h2 id='abstractentitywithreference'>AbstractEntityWithReference</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='abstractentitywithonlyuid'>AbstractEntityWithOnlyUid</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='homeownerassociationposition-2'>HomeOwnerAssociationPosition</h2>
+<p>TODO</p>
+<h2 id='userwhoactonsimplifiedrequestview'>UserWhoActOnSimplifiedRequestView</h2>
+<p>TODO</p>
+<h2 id='clientcompanyusertype'>ClientCompanyUserType</h2>
+<p>TODO</p>
+<h2 id='linkedtononreferencedlotas'>LinkedToNonReferencedLotAs</h2>
+<p>TODO</p>
+<h2 id='sraggregations'>SRAggregations</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimonies</td>
+<td>Array[<a href="#aggregation">Aggreg ation</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>states</td>
+<td>Array[<a href="#aggregation">Aggregation</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='otpcategory'>OtpCategory</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>label</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>iconId</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='commands'>Commands</h1><h2 id='createcompany'>CreateCompany</h2>
@@ -15096,7 +15951,7 @@ The following command are made to close the Ticket.
 </tr>
 <tr>
 <td>externalLoginService</td>
-<td><a href="#option">Option</a>[String)]</td>
+<td><a href="#option">Option</a>[String]</td>
 <td>Name of the service sso. ex: <code>&quot;Lodaweb&quot;</code></td>
 </tr>
 <tr>
@@ -15370,6 +16225,30 @@ The following command are made to close the Ticket.
 <td>ExecutiveDowngradedToPatrimonyManager</td>
 <td>mandatory</td>
 <td></td>
+</tr>
+</tbody></table>
+<h2 id='qualifysimplifiedrequest'>QualifySimplifiedRequest</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>ticketUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;QualifySimplifiedRequest&quot;</code></td>
 </tr>
 </tbody></table>
 <h1 id='events'>Events</h1><h2 id='companyevent'>CompanyEvent</h2><h3 id='clientaccountcreated'>ClientAccountCreated</h3>
@@ -17958,9 +18837,9 @@ Don&#39;t use it for increment the <code>Ticket</code> state. Use other <code>Co
 <td>the received date of this <code>Event</code>.</td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
-<td><code>&quot;CorrectTicketEventInformations&quot;</code></td>
+<td><code>&quot;TicketEventInformationsCorrected&quot;</code></td>
 </tr>
 </tbody></table>
 
@@ -18200,7 +19079,7 @@ Received the following events means the Ticket was closed.
 <td>the received date of this <code>Event</code>.</td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;TicketCancelled&quot;</code></td>
 </tr>
@@ -19160,7 +20039,7 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;ExecutiveReferenced&quot;</code></td>
 </tr>
@@ -19219,7 +20098,7 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;PatrimonyManagerReferenced&quot;</code></td>
 </tr>
@@ -19248,7 +20127,7 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;UserAssociatedWithAgency&quot;</code></td>
 </tr>
@@ -19277,7 +20156,7 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;UserDissociatedFromAgency&quot;</code></td>
 </tr>
@@ -19306,7 +20185,7 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;UserAssociatedWithPatrimony&quot;</code></td>
 </tr>
@@ -19335,7 +20214,7 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;UserDissociatedFromPatrimony&quot;</code></td>
 </tr>
@@ -19359,7 +20238,7 @@ Received the following events means the Ticket was closed.
 <td>the uid of the resource.</td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;UserDisabled&quot;</code></td>
 </tr>
@@ -19388,9 +20267,38 @@ Received the following events means the Ticket was closed.
 <td></td>
 </tr>
 <tr>
-<td>commandType</td>
+<td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;ExecutiveDowngradedToPatrimonyManager&quot;</code></td>
+</tr>
+</tbody></table>
+<h2 id='simplifiedrequestqualified'>SimplifiedRequestQualified</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>ticketUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;SimplifiedRequestQualified&quot;</code></td>
 </tr>
 </tbody></table>
 <h1 id='event-errors'>Event Errors</h1><h2 id='companyeventerror'>CompanyEventError</h2>
