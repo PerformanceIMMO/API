@@ -16227,6 +16227,97 @@ The following command are made to close the Ticket.
 <td></td>
 </tr>
 </tbody></table>
+<h3 id='updateuser'>UpdateUser</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>job</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+<tr>
+<td>phone</td>
+<td><a href="#option">Option</a>[<a href="#phonenumber">PhoneNumber</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;UpdateUser&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserUpdated</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='updatelogin'>UpdateLogin</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>login</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;UpdateLogin&quot;</code></td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Events answered</th>
+<th>Optional or Mandatory in answer</th>
+<th>Rule / Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LoginUpdated</td>
+<td>mandatory</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2 id='qualifysimplifiedrequest'>QualifySimplifiedRequest</h2>
 <table><thead>
 <tr>
