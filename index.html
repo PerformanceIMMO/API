@@ -895,9 +895,6 @@
                     <a href="#abstractentitywithonlyuid" class="toc-h2 toc-link" data-title="AbstractEntityWithOnlyUid">AbstractEntityWithOnlyUid</a>
                   </li>
                   <li>
-                    <a href="#homeownerassociationposition-2" class="toc-h2 toc-link" data-title="HomeOwnerAssociationPosition">HomeOwnerAssociationPosition</a>
-                  </li>
-                  <li>
                     <a href="#userwhoactonsimplifiedrequestview" class="toc-h2 toc-link" data-title="UserWhoActOnSimplifiedRequestView">UserWhoActOnSimplifiedRequestView</a>
                   </li>
                   <li>
@@ -10507,6 +10504,30 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td><code>&quot;LinkToLotAsLandlord&quot;</code></td>
 </tr>
 </tbody></table>
+<h3 id='linktononreferencedlot'>LinkToNonReferencedLot</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>patrimonyUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>linkedAs</td>
+<td>ENUM</td>
+<td><code>Tenant</code> ou <code>Owner</code> ou <code>Landlord</code></td>
+</tr>
+<tr>
+<td>linkType</td>
+<td>Constant</td>
+<td><code>&quot;LinkToNonReferencedLot&quot;</code></td>
+</tr>
+</tbody></table>
 <h2 id='homeownerassociationposition'>HomeOwnerAssociationPosition</h2>
 <p><code>HomeOwnerAssociationPosition</code> is an Enum, i.e type can take different values : </p>
 
@@ -11521,7 +11542,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td><code>&quot;LinkToLotAsLandlord&quot;</code></td>
 </tr>
 </tbody></table>
-<h3 id='linktononreferencedlot'>LinkToNonReferencedLot</h3>
+<h3 id='linktononreferencedlot-2'>LinkToNonReferencedLot</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11583,8 +11604,6 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='homeownerassociationposition-2'>HomeOwnerAssociationPosition</h2>
-<p>TODO</p>
 <h2 id='userwhoactonsimplifiedrequestview'>UserWhoActOnSimplifiedRequestView</h2>
 <p>TODO</p>
 <h2 id='clientcompanyusertype'>ClientCompanyUserType</h2>
@@ -15690,6 +15709,30 @@ The following command are made to close the Ticket.
 <td>commandType</td>
 <td>Constant</td>
 <td><code>&quot;UpdatePatrimonyContactIdentity&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='linkpatrimonycontactwithuser'>LinkPatrimonyContactWithUser</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>userUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>commandType</td>
+<td>Constant</td>
+<td><code>&quot;LinkPatrimonyContactWithUser&quot;</code></td>
 </tr>
 </tbody></table>
 <h2 id='referenceusercommand'>ReferenceUserCommand</h2><h3 id='referenceclientaccountmanager'>ReferenceClientAccountManager</h3>
