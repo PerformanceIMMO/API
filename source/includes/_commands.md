@@ -1537,6 +1537,14 @@ name                | [Option](#option)[[Name](#name)]              | if None, f
 address             | [Option](#option)[[PatrimonyContactAddressReference](#patrimonyaddressreference)] | if None, field not updated 
 commandType         | Constant                                      | `"UpdatePatrimonyContactIdentity"`
 
+### LinkPatrimonyContactWithUser
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+userUid             | [SafeUUID](#safeuuid)                         | 
+commandType         | Constant                                      | `"LinkPatrimonyContactWithUser"`
+
 ## ReferenceUserCommand
 
 ### ReferenceClientAccountManager

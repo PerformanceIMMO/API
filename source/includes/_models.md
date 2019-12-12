@@ -2277,6 +2277,14 @@ Name         | Type                                              | Description
 lotUid       | [SafeUUID](#safeuuid)                             | 
 linkType     | Constant                                          | `"LinkToLotAsLandlord"`
 
+### LinkToNonReferencedLot
+
+Name         | Type                                              | Description
+-------------| --------------------------------------------------| --------------------------------------------------
+patrimonyUid | [SafeUUID](#safeuuid)                             | 
+linkedAs     | ENUM                                              | `Tenant` ou `Owner` ou `Landlord`
+linkType     | Constant                                          | `"LinkToNonReferencedLot"`
+
 ## HomeOwnerAssociationPosition
 
 `HomeOwnerAssociationPosition` is an Enum, i.e type can take different values : 
@@ -2796,10 +2804,6 @@ label       | [Option](#option)[String]                         |
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------------------------------
 uid         | [SafeUUID](#safeuuid)                             |
-
-## HomeOwnerAssociationPosition
-
-TODO
 
 ## UserWhoActOnSimplifiedRequestView
 
