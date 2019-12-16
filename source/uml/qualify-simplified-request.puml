@@ -1,0 +1,14 @@
+@startuml
+PI <-- EOLE2: GET /api/v1/simplifiedrequests
+PI --> EOLE2: List[SimplifiedRequest(srUid, ...)]
+EOLE2 --> EOLE2: Créer ticket à partir demande
+EOLE2 --> PI: POST /api/vEvent/tickets
+PI --> EOLE2: TicketOpened(ticketId, ...)
+EOLE2 --> PI: PATCH /api/vEvent/simplifiedrequests/srUid
+note right
+    { commandType: QualifySimplifiedRequest
+    , ticketUid: ticketId
+    , processUid: ...
+    }
+end note
+@enduml
