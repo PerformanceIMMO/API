@@ -1,0 +1,16 @@
+@startuml
+Asfalia -> Declarimmo: POST /api/vEvent/users
+note right #dodgerblue: ReferencePatrimonyUser
+Declarimmo --> Asfalia: 201 {aggregateUid, ...}
+note right : aggregateUid = userUid
+
+Asfalia -> Declarimmo: POST /api/vEvent/patrimonycontacts
+note right #dodgerblue: ReferencePatrimonyContact
+Declarimmo --> Asfalia: 201 {aggregateUid, ...}
+note right : aggregateUid = patrimonyContactUid
+
+Asfalia -> Declarimmo: PATCH /api/vEvent/patrimonycontacts/patrimonyContactUid
+note right #dodgerblue: LinkPatrimonyContactWithUser(userUid, ...)
+Declarimmo --> Asfalia: 200
+
+@enduml

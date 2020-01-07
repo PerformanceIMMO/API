@@ -1,0 +1,40 @@
+@startuml
+ticket -- clientCompany
+clientCompany -- agency
+ticket -- patrimoine
+clientCompany -- patrimoine
+patrimoine -- lot
+@enduml
+
+@startuml
+ProviderContact : Fournisseur
+
+ticket o- user
+ticket o-- patrimoine
+ticket o-- assignee
+assignee --* ProviderContact
+assignee --* ProviderCompany
+ticket o-- Reclamation
+ProviderContact o-- ClientAccount
+ClientAccount o-- user
+ClientAccount o- Agencies
+Agencies o-- Patrimony
+Patrimony -- ProviderContact
+Patrimony o- PatrimonyContact
+Patrimony o-- Lot
+ProviderCompany o-- ProviderContact
+@enduml
+
+@startuml
+package model {
+}
+package command {
+}
+package event {
+}
+
+model o-- event
+model o-- command
+
+event o-- command
+@enduml
