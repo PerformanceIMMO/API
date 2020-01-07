@@ -524,6 +524,16 @@ value       | String                                            | the term count
 count       | Number                                            | the count.
 label       | String                                            | the label associated with this term.
 
+## ClientCompanyAbstract
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+uid         | [SafeUUID](#safeuuid)                             | the `ClientCompany`'s uid
+name        | String                                            | the `ClientCompany`'s name
+holding     | [Option](#option)[[SafeUUID](#safeuuid)]          | the `ClientCompany`'s holding uid if exist
+
 ## AgencyAbstract
 
 ### Fields
@@ -2861,4 +2871,4 @@ patrimony           | [PatrimonyAbstract](#patrimonyabstract)       |
 company             | [ClientCompanyAbstract](#clientcompanyabstract) |
 holdingUid          | [Option](#option)[[SafeUUID](#safeuuid)]      |
 agencies            | Array[[AgencyAbstract](#agencyabstract)]      |
-callCenters         | Array[[SafeUUID](#safeuuid)                   |
+callCenters         | Array[[SafeUUID](#safeuuid)]                  |
