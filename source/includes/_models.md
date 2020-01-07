@@ -2852,3 +2852,13 @@ Name                | Type                                          | Descriptio
 uid                 | [SafeUUID](#safeuuid)                         |
 label               | [NonEmptyString](#nonemptystring)             |
 iconId              | [NonEmptyString](#nonemptystring)             |
+
+## LinkedEntities
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+patrimony           | [PatrimonyAbstract](#patrimonyabstract)       |
+company             | [ClientCompanyAbstract](#clientcompanyabstract) |
+holdingUid          | [Option](#option)[[SafeUUID](#safeuuid)]      |
+agencies            | Array[[AgencyAbstract](#agencyabstract)]      |
+callCenters         | Array[[SafeUUID](#safeuuid)                   |
