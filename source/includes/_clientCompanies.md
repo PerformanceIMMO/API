@@ -195,6 +195,7 @@ Name            | In    | Type                          | Default   | Descriptio
 --------------- | ------| ------------------------------| ----------| -------------
 company_uid     | path  | [SafeUUID](#safeuuid)         |           | uid of the requested `Company`
 range           | query | [Option](#option)[String]     | 0-100     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
+active          | query | [Option](#option)[Boolean]    |           | get active user (true), inactive (false) or both if missing 
 
 ### Responses
 
