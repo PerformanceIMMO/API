@@ -44,7 +44,7 @@ Content-Range: 0-0/1
 
 Name            | In    | Type                                      | Default   | Description
 --------------- | ------| ------------------------------------------| ----------| -------------
-range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
+range           | query | [Option](#option)[String]                 | 0-99     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
 holdinguid      | query | [Option](#option)[[SafeUUID](#safeuuid)]  | None      | uid of ClientAccountHolding. If this param is setted, return ClientAccountHolding's subsidiairies list. **This param is incompatible with `companytype`.**
 companytype     | query | [Option](#option)[String]                 | None      | If this param is setted to `CallCenter, return CallCenter's list. **This param is incompatible with `holdinguid`.**
 fulltext        | query | [Option](#option)[String]                 | None      | `fulltext` query matching with several terms.<br/> ex: `fulltext=word,other+word`.
@@ -136,7 +136,7 @@ Content-Range: 0-0/2
 Name            | In    | Type                          | Default   | Description
 --------------- | ------| ------------------------------| ----------| -------------
 company_uid     | path  | [SafeUUID](#safeuuid)         |           | uid of the requested `Company`
-range           | query | [Option](#option)[String]     | 0-100     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
+range           | query | [Option](#option)[String]     | 0-99     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
 active          | query | [Option](#option)[Boolean]    | None      | parameter to select **all**, only **active** or only **inactive** agencies
 
 ### Responses
@@ -194,8 +194,8 @@ Content-Range: 0-0/1
 Name            | In    | Type                          | Default   | Description
 --------------- | ------| ------------------------------| ----------| -------------
 company_uid     | path  | [SafeUUID](#safeuuid)         |           | uid of the requested `Company`
-range           | query | [Option](#option)[String]     | 0-100     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
-active          | query | [Option](#option)[Boolean]    |           | get active user (true), inactive (false) or both if missing 
+range           | query | [Option](#option)[String]     | 0-99     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
+active          | query | [Option](#option)[Boolean]    | None      | get active user (true), inactive (false) or both if missing 
 
 ### Responses
 
@@ -250,7 +250,7 @@ Content-Range: 0-0/1
 Name            | In    | Type                          | Default   | Description
 --------------- | ------| ------------------------------| ----------| -------------
 company_uid     | path  | [SafeUUID](#safeuuid)         |           | uid of the requested `Company`
-range           | query | [Option](#option)[String]     | 0-100     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
+range           | query | [Option](#option)[String]     | 0-99     | range selector for result pagination ex: `range=0-19` (startRange should be > endRange)
 
 ### Responses
 
