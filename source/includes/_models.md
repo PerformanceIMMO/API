@@ -935,6 +935,24 @@ label       | String                                            | the name of th
 patrimony   | PatrimonyBuildingView                             | reference to the `Patrimony` of this `Building`
 addresses   | Array[[PatrimonyQueryAddressReference](#patrimonyqueryaddressreference)] | the `Addresses` of the requested `Building`
 
+## PatrimonyManagersResultView
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+result      | Array[[PatrimonyManagerForPatrimony](#patrimonymanagerforpatrimony)]    | Array of selected `PatrimonyManager`s
+
+## PatrimonyManagerForPatrimony
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------------------------------
+uid         | [SafeUUID](#safeuuid)                             | 
+name        | String                                            | 
+email       | String                                            | 
+phoneNumber | [Option](#option)[String]                         | 
+job         | [Option](#option)[String]                         | 
+
 ## PatrimonyQueryAddressReference
 
 ### Fields

@@ -175,6 +175,69 @@ Http code | Type                                          | Description
 200       | [PatrimonyDetailQueryView](#patrimonydetailqueryview) | the `Patrimony` requested.
 400       | Error                                         | Bad request, occurs most often when parameters passed are invalid.
 
+## Get the PatrimonyManagers of a Patrimony
+
+### HTTP Request
+
+> HTTP query example :
+
+```shell
+curl -XGET \
+-H "Cookie: PI_SESSION=..." \
+https://base_url/api/v1/patrimonies/6ed010a1-.../patrimonymanagers
+```
+
+> HTTP response example :
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Range: 0-0/1
+```
+```json
+{
+    "result": [
+        {
+            "uid": "456f4a1d-5287-494c-93d6-6535aaf1bc68",
+            "name": "My patrimony Managers",
+            "email": "My patrimony Managers",
+            "phoneNumber": "0134523452",
+            "job": "chief"
+        }
+    ]
+}	
+```   
+
+**`GET`** `/api/v1/patrimonies/:patrimony_uid/patrimonymanagers`
+
+### Parameters
+
+Name            | In    | Type                                      | Default   | Description
+--------------- | ------| ------------------------------------------| ----------| -----------------------------------------------------------------------------------------
+range           | query | [Option](#option)[String]                 | 0-100     | range selector for result pagination.<br/> ex: `range=0-19` <br/> startRange should be > endRange
+active          | query | [Option](#option)[Boolean]                | None      | filter result by state of the user (his account is active or not). None means return all of them.
+
+
+### Responses
+
+Http code | Type                                          | Description
+----------| ----------------------------------------------| ----------------------------
+200       | [PatrimonyManagersResultView](#patrimonymanagersresultview) | All resources's elements are returned.
+206       | [PatrimonyManagersResultView](#patrimonymanagersresultview) | Partial Content. See `Content-Range` header for use pagination.
+400       | Error                                         | Bad request, occurs most often when parameters passed are invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Get all Buildings of a Patrimony
 
 ### HTTP Request
