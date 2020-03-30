@@ -592,6 +592,8 @@ name        | String                                            | the name of th
 phones      | Array[String]                                     | the phones's list of the `TicketAssignee`.
 fax         | Array[String]                                     | the fax's list of the `TicketAssignee`.
 emails      | Array[String]                                     | the emails's list of the `TicketAssignee`.
+instructionsForAssignee | [Option](#option)[String]             | some instructions for the assignee to perform his mission.
+comment     | [Option](#option)[String]                         | some comments to report discussion with assignee.
 assigneeType | [AssigneeType](#assigneetype)                    | the type of the assignee.
 
 ## AssigneeType

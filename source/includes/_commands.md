@@ -939,6 +939,7 @@ processUid          | [SafeUUID](#safeuuid)                         | the uid of
 operator            | [Option](#option)[[Operator](#operator)]      | an optional reference to who perform for this `Command`. (if doesn't set, setted by the server)
 assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` identified on this `Ticket`.
 comment             | [Option](#option)[String]                     |
+instructions        | [Option](#option)[String]                     | some instructions for the assignee to perform his mission. If valued, produce `InstructionsForAssigneeDefined` event.
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 commandType         | Constant                                      | `"IdentifyAssignee"`
 

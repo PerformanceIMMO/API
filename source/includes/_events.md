@@ -619,6 +619,39 @@ sentDate            | [DateTime](#datetime)                         | when `Even
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"AssigneeIdentified"`
 
+### InstructionsForAssigneeDefined
+
+> InstructionsForAssigneeDefined example :
+
+```json
+{
+  "processUid": "f5391199-e544-60f3-037c-16f3229fd59d",
+  "aggregateUid": "c9c5c9d2-ab38-a010-46cd-97013fbfbeb2",
+  "operator": {
+    "operatorUid": "98bfb3a8-ae4a-7486-1ee3-96131d994801",
+    "operatorType": "ReferencedOperator"
+  },
+  "assignee": {
+    "providerUid": "7943797a-93c4-73f9-48f8-6baea5e94d13",
+    "assigneeType": "ReferencedProviderContact"
+  },
+  "instructions":"Do this. Do That ! Bro!",
+  "sentDate": "2016-08-25T15:31:50.000+02:00",
+  "eventType": "InstructionsForAssigneeDefined"
+}
+```
+
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` identified on this `Ticket`.
+instructions        | String                                        | some instructions for the assignee to perform his mission.
+sentDate            | [DateTime](#datetime)                         | when `Event` was sending to Perfimmo.
+eventType           | Constant                                      | `"InstructionsForAssigneeDefined"`
+
 ### InterventionRequested
 
 > InterventionRequested example :
