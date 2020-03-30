@@ -7182,6 +7182,16 @@ the response because of the specific state of the request done to retrieve this 
 <td>the emails&#39;s list of the <code>TicketAssignee</code>.</td>
 </tr>
 <tr>
+<td>instructionsForAssignee</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>some instructions for the assignee to perform his mission.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>some comments to report discussion with assignee.</td>
+</tr>
+<tr>
 <td>assigneeType</td>
 <td><a href="#assigneetype">AssigneeType</a></td>
 <td>the type of the assignee.</td>
@@ -14181,6 +14191,11 @@ Elle définit des plages de dates (sous plusieurs format utiles) où le <code>Pr
 <td></td>
 </tr>
 <tr>
+<td>instructions</td>
+<td><a href="#option">Option</a>[String]</td>
+<td>some instructions for the assignee to perform his mission. If valued, produce <code>InstructionsForAssigneeDefined</code> event.</td>
+</tr>
+<tr>
 <td>date</td>
 <td><a href="#datetime">DateTime</a></td>
 <td>date on which the <code>Event</code> took place.</td>
@@ -18194,6 +18209,69 @@ The following command are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;AssigneeIdentified&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='instructionsforassigneedefined'>InstructionsForAssigneeDefined</h3>
+<blockquote>
+<p>InstructionsForAssigneeDefined example :</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"processUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f5391199-e544-60f3-037c-16f3229fd59d"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"aggregateUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c9c5c9d2-ab38-a010-46cd-97013fbfbeb2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"operatorUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"98bfb3a8-ae4a-7486-1ee3-96131d994801"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"operatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedOperator"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"assignee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"providerUid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7943797a-93c4-73f9-48f8-6baea5e94d13"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"assigneeType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ReferencedProviderContact"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"instructions"</span><span class="p">:</span><span class="s2">"Do this. Do That ! Bro!"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-08-25T15:31:50.000+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InstructionsForAssigneeDefined"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code>TicketAssignee</code> identified on this <code>Ticket</code>.</td>
+</tr>
+<tr>
+<td>instructions</td>
+<td>String</td>
+<td>some instructions for the assignee to perform his mission.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>when <code>Event</code> was sending to Perfimmo.</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;InstructionsForAssigneeDefined&quot;</code></td>
 </tr>
 </tbody></table>
 <h3 id='interventionrequested'>InterventionRequested</h3>
