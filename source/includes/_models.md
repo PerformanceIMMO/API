@@ -29,6 +29,12 @@ a json object with "free" field
 }
 ```
 
+## FormattedText
+
+Tag the field can be formatted in a certain way.
+
+ex: FormattedText[String] you can display `\n` in your client. 
+
 ## SafeUUID
 
 Identifiant garanti unique en utilisant la norme [GUUID](https://fr.wikipedia.org/wiki/Globally_Unique_Identifier)    
@@ -592,7 +598,7 @@ name        | String                                            | the name of th
 phones      | Array[String]                                     | the phones's list of the `TicketAssignee`.
 fax         | Array[String]                                     | the fax's list of the `TicketAssignee`.
 emails      | Array[String]                                     | the emails's list of the `TicketAssignee`.
-instructionsForAssignee | [Option](#option)[String]             | some instructions for the assignee to perform his mission.
+instructionsForAssignee | [Option](#option)[[FormattedText](#formattedtext)[String]] | some instructions for the assignee to perform his mission.
 comment     | [Option](#option)[String]                         | some comments to report discussion with assignee.
 assigneeType | [AssigneeType](#assigneetype)                    | the type of the assignee.
 
@@ -687,7 +693,7 @@ patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `
 clientCompany | [SafeUUID](#safeuuid)                           | the `ClientCompany` linked to this `Ticket`.
 status      | ENUM                                              | `OPENED` or `CLOSED`.
 state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `InterventionAccepted`
-request     | String                                            | description of the issue.
+request     | [FormattedText](#formattedtext)[String]           | description of the issue.
 instructions| String                                            | insctructions about the intervention.
 dates       | [TicketDates](#ticketdates)                       |
 openingTicketPurpose | [OpeningTicketPurpose](#openingticketpurpose) | The reason the `Ticket` was opened.
@@ -2730,7 +2736,7 @@ state               | ENUM                                          | `Declared`
 category            | [OtpCategory](#otpcategory)                   |
 linkedEntities      | [LinkedEntities](#linkedentities)             |
 requestDate         | [DateTime](#datetime)                         |
-description         | [NonEmptyString](#nonemptystring)             |
+description         | [FormattedText](#formattedtext)[[NonEmptyString](#nonemptystring)] |
 requester           | [CallerTicketQueryView](#callerticketqueryview) |
 seen                | [Option](#option)[[SimplifiedRequestSeenView](#simplifiedrequestseenview)]             |
 qualified           | [Option](#option)[[SimplifiedRequestQualifiedByExpertView](#simplifiedrequestqualifiedbyexpertview)] |

@@ -408,7 +408,8 @@ curl -XPOST \
 -H "Content-Type: application/json" \
 -d {
    "processUid": "5a7bd760-9487-cd87-860a-e043d0b3e99d",
-   "aggregateUid": "eb0ea007-67af-4bf5-a34a-43dfca55717c",
+   "aggregateUid": "eb0ea007-67af-4bf5-a34a-43dfca55717c",  
+   "fromSimplifiedRequest": "567b186a-5b43-482f-bdeb-91e12e5b6c74",
    "locationRef": {
      "patrimonyUid": "74aa4bf3-8fde-4985-b16e-e3ba2788868f",
      "locationReferenceType": "PatrimonyLocation"
@@ -477,6 +478,7 @@ locationRef     | body  | [LocationReference](#locationreference)      | a refer
 operator        | body  | [Option](#option)[[Operator](#operator)]     | an optional reference to who perform this `Command`. We can say who open this `Ticket`. 
 ticket          | body  | [TicketInfos](#ticketinfos)                  | infos specific to the `Ticket` opened. 
 openedDate      | body  | [DateTime](#datetime)                        | the opened date of this `Ticket`.
+fromSimplifiedRequest | body | [Option](#option)[[SafeUUID](#safeuuid)] | ref to the `SimplifiedRequest` from which the ticket will be open.
 commandType     | body  | Constant                                     | `"OpenTicket"` 
 
 ### Responses
