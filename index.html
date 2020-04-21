@@ -930,6 +930,9 @@
                   <li>
                     <a href="#linkedentities" class="toc-h2 toc-link" data-title="LinkedEntities">LinkedEntities</a>
                   </li>
+                  <li>
+                    <a href="#emailsfornotificationfor" class="toc-h2 toc-link" data-title="EmailsForNotificationFor">EmailsForNotificationFor</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -11900,6 +11903,25 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='emailsfornotificationfor'>EmailsForNotificationFor</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>assigneeEmail</td>
+<td><a href="#nonemptystring">NonEmptyString</a></td>
+<td>specified assignee&#39;s email used to send him the notification</td>
+</tr>
+<tr>
+<td>otherRecipients</td>
+<td>Array[<a href="#nonemptystring">NonEmptyString</a>]</td>
+<td>other recipient which can receive the notification</td>
+</tr>
+</tbody></table>
 <h1 id='commands'>Commands</h1><h2 id='createcompany'>CreateCompany</h2>
 <p>Il existe plusieurs types de <code>Company</code> et donc plusieurs commandes différentes pour créer une <code>Company</code>. </p>
 
@@ -14593,6 +14615,11 @@ Elle définit des plages de dates (sous plusieurs format utiles) où le <code>Pr
 <td>date</td>
 <td><a href="#datetime">DateTime</a></td>
 <td>date on which the <code>Event</code> took place.</td>
+</tr>
+<tr>
+<td>requestNotificationTo</td>
+<td><a href="#option">Option</a>[<a href="#emailsfornotificationfor">EmailsForNotificationFor</a>]</td>
+<td>set it if you want sent a notification to some actors. (produce <a href="#notificationforinterventionacceptedrequested">NotificationForInterventionAcceptedRequested</a> event)</td>
 </tr>
 <tr>
 <td>commandType</td>
@@ -18822,6 +18849,55 @@ The following command are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;InterventionRefused&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='notificationforinterventionacceptedrequested'>NotificationForInterventionAcceptedRequested</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the resource.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>.</td>
+</tr>
+<tr>
+<td>assignee</td>
+<td><a href="#ticketassignee">TicketAssignee</a></td>
+<td>a reference to the <code>TicketAssignee</code> who accept the intervention.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>the assignee&#39;s email which used to send the notification</td>
+</tr>
+<tr>
+<td>otherRecipients</td>
+<td>Array[String]</td>
+<td>other recipients added (&quot;with hands&quot;) for this notification</td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;NotificationForInterventionAcceptedRequested&quot;</code></td>
 </tr>
 </tbody></table>
 <h3 id='ticketreopened'>TicketReopened</h3>
