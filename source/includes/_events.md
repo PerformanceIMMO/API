@@ -827,6 +827,19 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
 eventType           | Constant                                      | `"InterventionRefused"`
 
+### NotificationForInterventionAcceptedRequested
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the resource.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. 
+assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who accept the intervention.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+email               | String                                        | the assignee's email which used to send the notification
+otherRecipients     | Array[String]                                 | other recipients added ("with hands") for this notification
+eventType           | Constant                                      | `"NotificationForInterventionAcceptedRequested"`
+
 ### TicketReopened
 
 Name                | Type                                          | Description

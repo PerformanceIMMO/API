@@ -1079,6 +1079,7 @@ operator            | [Option](#option)[[Operator](#operator)]      | an optiona
 assignee            | [TicketAssignee](#ticketassignee)             | a reference to the `TicketAssignee` who accept the intervention (Must be the same as identified one).
 comment             | [Option](#option)[String]                     |
 date                | [DateTime](#datetime)                         | date on which the `Event` took place.
+requestNotificationTo | [Option](#option)[[EmailsForNotificationFor](#emailsfornotificationfor)] | set it if you want sent a notification to some actors. (produce [NotificationForInterventionAcceptedRequested](#notificationforinterventionacceptedrequested) event)
 commandType         | Constant                                      | `"AcceptIntervention"`
 
 ### RefuseIntervention
