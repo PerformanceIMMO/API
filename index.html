@@ -628,6 +628,9 @@
                     <a href="#detailedticketview" class="toc-h2 toc-link" data-title="DetailedTicketView">DetailedTicketView</a>
                   </li>
                   <li>
+                    <a href="#ticketviewlinkdedentities" class="toc-h2 toc-link" data-title="TicketViewLinkdedEntities">TicketViewLinkdedEntities</a>
+                  </li>
+                  <li>
                     <a href="#ticketdates" class="toc-h2 toc-link" data-title="TicketDates">TicketDates</a>
                   </li>
                   <li>
@@ -7419,19 +7422,9 @@ the response because of the specific state of the request done to retrieve this 
 <td>the <code>Ticket</code>&#39;s client reference.<br/> Could be <code>clientClaimNumber</code>or <code>callCenterClaimNumber</code> or <code>ticket_uid</code>.</td>
 </tr>
 <tr>
-<td>agencies</td>
-<td>Array[<a href="#agencyabstract">AgencyAbstract</a>]</td>
-<td>the <code>Agency</code> linked to this <code>Ticket</code>.</td>
-</tr>
-<tr>
-<td>patrimony</td>
-<td><a href="#option">Option</a>[<a href="#patrimonyabstract">PatrimonyAbstract</a>]</td>
-<td>the <code>Patrimony</code> linked to this <code>Ticket</code>. optional.</td>
-</tr>
-<tr>
-<td>clientCompany</td>
-<td><a href="#safeuuid">SafeUUID</a></td>
-<td>the <code>ClientCompany</code> linked to this <code>Ticket</code>.</td>
+<td>linkedEntities</td>
+<td><a href="#ticketviewlinkdedentities">TicketViewLinkdedEntities</a></td>
+<td><code>ClientCompany</code>, Agencies, <code>Patrimony</code> and others entities linked to the ticket</td>
 </tr>
 <tr>
 <td>status</td>
@@ -7497,6 +7490,35 @@ the response because of the specific state of the request done to retrieve this 
 <td>stats</td>
 <td>DetailedTicketStats</td>
 <td>a set of several stats on this <code>Ticket</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='ticketviewlinkdedentities'>TicketViewLinkdedEntities</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>openedFromSimplifiedRequest</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>the uid of the <code>SimplifiedRequest</code> from which this <code>Ticket</code> was opened (if it was)</td>
+</tr>
+<tr>
+<td>agencies</td>
+<td>Array[<a href="#agencyabstract">AgencyAbstract</a>]</td>
+<td>the <code>Agency</code> linked to this <code>Ticket</code>.</td>
+</tr>
+<tr>
+<td>patrimony</td>
+<td><a href="#option">Option</a>[<a href="#patrimonyabstract">PatrimonyAbstract</a>]</td>
+<td>the <code>Patrimony</code> linked to this <code>Ticket</code>. optional.</td>
+</tr>
+<tr>
+<td>clientCompany</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the <code>ClientCompany</code> linked to this <code>Ticket</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='ticketdates'>TicketDates</h2>
