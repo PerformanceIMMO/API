@@ -688,9 +688,7 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 uid         | [SafeUUID](#safeuuid)                             | the `Ticket`'s uid
 ref         | String                                            | the `Ticket`'s client reference.<br/> Could be `clientClaimNumber`or `callCenterClaimNumber` or `ticket_uid`.
-agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
-patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
-clientCompany | [SafeUUID](#safeuuid)                           | the `ClientCompany` linked to this `Ticket`.
+linkedEntities | [TicketViewLinkdedEntities](#ticketviewlinkdedentities) | `ClientCompany`, Agencies, `Patrimony` and others entities linked to the ticket
 status      | ENUM                                              | `OPENED` or `CLOSED`.
 state       | [Option](#option)[[TicketStateView](#ticketstateview)] | the actual `state` of this `Ticket`.<br/> ex: `InterventionAccepted`
 request     | [FormattedText](#formattedtext)[String]           | description of the issue.
@@ -704,6 +702,15 @@ address     | [BasicAddress](#basicaddress)                     | the `Address` 
 journal     | Array[[JournalEvent](#journalevent)]              | the `Ticket`'s event log.
 additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
 stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
+
+## TicketViewLinkdedEntities
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+openedFromSimplifiedRequest | [Option](#option)[[SafeUUID](#safeuuid)] | the uid of the `SimplifiedRequest` from which this `Ticket` was opened (if it was)
+agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
+patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
+clientCompany | [SafeUUID](#safeuuid)                           | the `ClientCompany` linked to this `Ticket`.
 
 ## TicketDates
 
