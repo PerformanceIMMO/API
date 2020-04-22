@@ -710,7 +710,7 @@ Name        | Type                                              | Description
 openedFromSimplifiedRequest | [Option](#option)[[SafeUUID](#safeuuid)] | the uid of the `SimplifiedRequest` from which this `Ticket` was opened (if it was)
 agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
 patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
-clientCompany | [SafeUUID](#safeuuid)                           | the `ClientCompany` linked to this `Ticket`.
+clientCompany | [ClientCompanyAbstract](#clientcompanyabstract)                           | the `ClientCompany` linked to this `Ticket`.
 
 ## TicketDates
 
