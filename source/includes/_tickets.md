@@ -301,16 +301,25 @@ Content-Type: application/json
 {
     "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2",
     "ref": "REF20160526",
-    "agencies": [
-        {
-            "uid": "17d706c1-7844-00f5-a4a4-f1afa1975184",
-            "name": "My Agency"
-        }
-    ],    
-    "patrimony": {
-        "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2", 
-        "name": "My patrimony"
-    },
+    "linkedEntities": {
+        "agencies": [
+            {
+                "uid": "17d706c1-7844-00f5-a4a4-f1afa1975184",
+                "name": "My Agency"
+            }
+        ],    
+        "patrimony": {
+            "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a2", 
+            "name": "My patrimony",
+            "ref": "1234"
+        },
+        "clientCompany": {
+            "uid": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee1a3", 
+            "name": "My Company",
+            "holding": "17ab7b5b-b7ca-18f6-d5f3-3dfbcbaee134"
+        },
+        "openedFromSimplifiedRequest": "17d706c1-7844-00f5-a4a4-f1afa1975192" 
+    },    
     "status": "CLOSED",
     "state": {
         "value": "TicketClosed",
