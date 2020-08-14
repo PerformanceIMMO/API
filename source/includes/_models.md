@@ -698,19 +698,78 @@ openingTicketPurpose | [OpeningTicketPurpose](#openingticketpurpose) | The reaso
 caller      | [CallerTicketDetailedQueryView](#callerticketdetailedqueryview) | informations on person who ask for open this `Ticket`.
 report      | [Option](#option)[String]                         | intervention report, when intervention took place. 
 assignee    | [Option](#option)[[TicketAssigneeQueryView](#ticketassigneequeryview)] | informations on the possible last `TicketAssignee` acting on this `Ticket`.
-address     | [BasicAddress](#basicaddress)                     | the `Address` where the incident occurs.
-journal     | Array[[JournalEvent](#journalevent)]              | the `Ticket`'s event log.
-additionalDataz | Map[String,String]                            | a map of client's additional fields.<br/> ex: `{field1: value_1}`
-stats       | DetailedTicketStats                               | a set of several stats on this `Ticket`.
+address     | [BasicAddress](#basicaddress)                             | the `Address` where the incident occurs.
+journal     | Array[[JournalEvent](#journalevent)]                      | the `Ticket`'s event log.
+additionalDataz | Map[String,String]                                    | a map of client's additional fields.<br/> ex: `{field1: value_1}`
+stats       | DetailedTicketStats                                       | a set of several stats on this `Ticket`.
+contactToCallback | [Option](#option)[ContactToCallbackAPIView]         |
+serviceOrder      | [Option](#option)[ServiceOrder]                     |
+updatedFields     | Array[FieldUpdated]                                 | list all the fields updated in this ticket
+qualification     | [Option](#option)[QualificationByCriteria]          | qualification criteria of the ticket
+_links            | Array[[RestNavigationLink](#restnavigationlink)]    | navigation links for this ticket
+
+## ContactToCallbackAPIView
+
+### Fields
+ 
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+name        | String                                            | the name of the person to call back.
+medium      | [ObfuscatedField](#obfuscatedfield)[[ContactMedium](#contactmedium)]                   | the medium to use to call back.
+availability| [Option](#option)[[DateTime](#datetime)]          | the moment when the person must be call back. 
+comment     | [Option](#option)[String]                         |
+
+## ObfuscatedField
+
+Means the data contained in this filed can be optional due to user rights.
+
+It is equilavent to [Option](#option) bbut user rights reason. 
+
+## FieldUpdated
+
+Describe filed that was updated in the entity.
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| --------------------------
+field       | String                                            | the field's name that was uptated.
+updatedDates | Array[[DateTime](#datetime)]                     | the updated's dates
+
+## QualificationByCriteria
+
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| --------------------------
+choices         | Array[[CriterionStep](#criterionstep)]            | 
+workflowApplied | [Option](#option)[[SafeUUID](#safeuuid)]          | workflow's uuid applied in this ticket 
+comment         | [Option](#option)[[ContextualCommentToDisplay](#contextualcommenttodisplay)] | 
+
+## CriterionStep
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| --------------------------
+criterionUid    | [SafeUUID](#safeuuid)                             | 
+criterionLabel  | String                                            | 
+choice          | [CriterionValueChosen](#criterionvaluechosen)     |
+
+## CriterionValueChosen
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| --------------------------
+uid             | [SafeUUID](#safeuuid)                             | 
+value           | String                                            | 
+
+## ContextualCommentToDisplay
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| --------------------------
+uid             | [SafeUUID](#safeuuid)                             | 
+title           | String                                            | 
+comment         | String                                            | 
 
 ## TicketViewLinkdedEntities
 
-Name        | Type                                              | Description
-------------| --------------------------------------------------| -----------------
-openedFromSimplifiedRequest | [Option](#option)[[SafeUUID](#safeuuid)] | the uid of the `SimplifiedRequest` from which this `Ticket` was opened (if it was)
-agencies    | Array[[AgencyAbstract](#agencyabstract)]          | the `Agency` linked to this `Ticket`.
+Name        | Type                                                       | Description
+------------| -----------------------------------------------------------| -----------------
+openedFromSimplifiedRequest | [Option](#option)[[SafeUUID](#safeuuid)]   | the uid of the `SimplifiedRequest` from which this `Ticket` was opened (if it was)
+agencies    | Array[[AgencyAbstract](#agencyabstract)]                   | the `Agency` linked to this `Ticket`.
 patrimony   | [Option](#option)[[PatrimonyAbstract](#patrimonyabstract)] | the `Patrimony` linked to this `Ticket`. optional.
-clientCompany | [ClientCompanyAbstract](#clientcompanyabstract)                           | the `ClientCompany` linked to this `Ticket`.
+clientCompany | [ClientCompanyAbstract](#clientcompanyabstract)          | the `ClientCompany` linked to this `Ticket`.
 
 ## TicketDates
 
