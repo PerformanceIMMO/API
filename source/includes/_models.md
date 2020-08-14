@@ -2966,7 +2966,31 @@ agencies            | Array[[AgencyAbstract](#agencyabstract)]      |
 callCenters         | Array[[SafeUUID](#safeuuid)]                  |
 
 ## EmailsForNotificationFor
+
 Name                | Type                                          | Description
 ------------------- | ----------------------------------------------| --------------------------------------------------
 assigneeEmail       | [NonEmptyString](#nonemptystring)             | specified assignee's email used to send him the notification 
 otherRecipients     | Array[[NonEmptyString](#nonemptystring)]      | other recipient which can receive the notification
+
+## CriterionChoice
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+criterionUid        | [SafeUUID](#safeuuid)                         |  
+criterionLabel      | String                                        | 
+choice              | [CriterionValue](#criterionvalue)             | 
+
+## CriterionValue
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |  
+value               | String                                        | 
+
+## ContextualComment
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+uid                 | [SafeUUID](#safeuuid)                         |  
+title               | String                                        |
+comment             | String                                        |

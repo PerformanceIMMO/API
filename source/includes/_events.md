@@ -566,6 +566,39 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 fromSimplifiedRequest | [SafeUUID](#safeuuid)                       | the uid of the `SimplifiedRequest` from which the `Ticket` was opened.
 eventType           | Constant                                      | `"TicketOpenedFromSimplifiedRequest"`
 
+### TicketQualifiedByCriteria
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Ticket` opened.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+choices             | [NonEmptyList](#nonemptylist)[[CriterionChoice](#criterionchoice)] |
+eventType           | Constant                                      | `"TicketQualifiedByCriteria"`
+
+### WorkflowAppliedToTicket
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Ticket` opened.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+workflow            | [SafeUUID](#safeuuid)                         |
+eventType           | Constant                                      | `"WorkflowAppliedToTicket"`
+
+### ContextualCommentDisplayedOnTicket
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Ticket` opened.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`. 
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+comment             | [ContextualComment](#contextualcomment)       |
+eventType           | Constant                                      | `"ContextualCommentDisplayedOnTicket"`
+
 ### CallEmittedTo 
 
 Name                | Type                                          | Description
