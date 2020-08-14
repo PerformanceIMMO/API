@@ -957,6 +957,15 @@
                   <li>
                     <a href="#emailsfornotificationfor" class="toc-h2 toc-link" data-title="EmailsForNotificationFor">EmailsForNotificationFor</a>
                   </li>
+                  <li>
+                    <a href="#criterionchoice" class="toc-h2 toc-link" data-title="CriterionChoice">CriterionChoice</a>
+                  </li>
+                  <li>
+                    <a href="#criterionvalue" class="toc-h2 toc-link" data-title="CriterionValue">CriterionValue</a>
+                  </li>
+                  <li>
+                    <a href="#contextualcomment" class="toc-h2 toc-link" data-title="ContextualComment">ContextualComment</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -12144,6 +12153,73 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>other recipient which can receive the notification</td>
 </tr>
 </tbody></table>
+<h2 id='criterionchoice'>CriterionChoice</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>criterionUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>criterionLabel</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>choice</td>
+<td><a href="#criterionvalue">CriterionValue</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='criterionvalue'>CriterionValue</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='contextualcomment'>ContextualComment</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
 <h1 id='commands'>Commands</h1><h2 id='createcompany'>CreateCompany</h2>
 <p>Il existe plusieurs types de <code>Company</code> et donc plusieurs commandes différentes pour créer une <code>Company</code>. </p>
 
@@ -18329,6 +18405,123 @@ The following command are made to close the Ticket.
 <td>eventType</td>
 <td>Constant</td>
 <td><code>&quot;TicketOpenedFromSimplifiedRequest&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='ticketqualifiedbycriteria'>TicketQualifiedByCriteria</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code>Ticket</code> opened.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>. We can say who open this <code>Ticket</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>choices</td>
+<td><a href="#nonemptylist">NonEmptyList</a>[<a href="#criterionchoice">CriterionChoice</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;TicketQualifiedByCriteria&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='workflowappliedtoticket'>WorkflowAppliedToTicket</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code>Ticket</code> opened.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>. We can say who open this <code>Ticket</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>workflow</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;WorkflowAppliedToTicket&quot;</code></td>
+</tr>
+</tbody></table>
+<h3 id='contextualcommentdisplayedonticket'>ContextualCommentDisplayedOnTicket</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>processUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of this command. Allow PerfImmo to know if this Command is duplicated</td>
+</tr>
+<tr>
+<td>aggregateUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td>the uid of the <code>Ticket</code> opened.</td>
+</tr>
+<tr>
+<td>operator</td>
+<td><a href="#operator">Operator</a></td>
+<td>a reference to who ask for this <code>Command</code>. We can say who open this <code>Ticket</code>.</td>
+</tr>
+<tr>
+<td>sentDate</td>
+<td><a href="#datetime">DateTime</a></td>
+<td>the received date of this <code>Event</code>.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#contextualcomment">ContextualComment</a></td>
+<td></td>
+</tr>
+<tr>
+<td>eventType</td>
+<td>Constant</td>
+<td><code>&quot;ContextualCommentDisplayedOnTicket&quot;</code></td>
 </tr>
 </tbody></table>
 <h3 id='callemittedto'>CallEmittedTo</h3>
