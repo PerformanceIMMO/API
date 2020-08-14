@@ -628,6 +628,27 @@
                     <a href="#detailedticketview" class="toc-h2 toc-link" data-title="DetailedTicketView">DetailedTicketView</a>
                   </li>
                   <li>
+                    <a href="#contacttocallbackapiview" class="toc-h2 toc-link" data-title="ContactToCallbackAPIView">ContactToCallbackAPIView</a>
+                  </li>
+                  <li>
+                    <a href="#obfuscatedfield" class="toc-h2 toc-link" data-title="ObfuscatedField">ObfuscatedField</a>
+                  </li>
+                  <li>
+                    <a href="#fieldupdated" class="toc-h2 toc-link" data-title="FieldUpdated">FieldUpdated</a>
+                  </li>
+                  <li>
+                    <a href="#qualificationbycriteria" class="toc-h2 toc-link" data-title="QualificationByCriteria">QualificationByCriteria</a>
+                  </li>
+                  <li>
+                    <a href="#criterionstep" class="toc-h2 toc-link" data-title="CriterionStep">CriterionStep</a>
+                  </li>
+                  <li>
+                    <a href="#criterionvaluechosen" class="toc-h2 toc-link" data-title="CriterionValueChosen">CriterionValueChosen</a>
+                  </li>
+                  <li>
+                    <a href="#contextualcommenttodisplay" class="toc-h2 toc-link" data-title="ContextualCommentToDisplay">ContextualCommentToDisplay</a>
+                  </li>
+                  <li>
                     <a href="#ticketviewlinkdedentities" class="toc-h2 toc-link" data-title="TicketViewLinkdedEntities">TicketViewLinkdedEntities</a>
                   </li>
                   <li>
@@ -7500,6 +7521,176 @@ the response because of the specific state of the request done to retrieve this 
 <td>DetailedTicketStats</td>
 <td>a set of several stats on this <code>Ticket</code>.</td>
 </tr>
+<tr>
+<td>contactToCallback</td>
+<td><a href="#option">Option</a>[ContactToCallbackAPIView]</td>
+<td></td>
+</tr>
+<tr>
+<td>serviceOrder</td>
+<td><a href="#option">Option</a>[ServiceOrder]</td>
+<td></td>
+</tr>
+<tr>
+<td>updatedFields</td>
+<td>Array[FieldUpdated]</td>
+<td>list all the fields updated in this ticket</td>
+</tr>
+<tr>
+<td>qualification</td>
+<td><a href="#option">Option</a>[QualificationByCriteria]</td>
+<td>qualification criteria of the ticket</td>
+</tr>
+<tr>
+<td>_links</td>
+<td>Array[<a href="#restnavigationlink">RestNavigationLink</a>]</td>
+<td>navigation links for this ticket</td>
+</tr>
+</tbody></table>
+<h2 id='contacttocallbackapiview'>ContactToCallbackAPIView</h2><h3 id='fields-29'>Fields</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>the name of the person to call back.</td>
+</tr>
+<tr>
+<td>medium</td>
+<td><a href="#obfuscatedfield">ObfuscatedField</a>[<a href="#contactmedium">ContactMedium</a>]</td>
+<td>the medium to use to call back.</td>
+</tr>
+<tr>
+<td>availability</td>
+<td><a href="#option">Option</a>[<a href="#datetime">DateTime</a>]</td>
+<td>the moment when the person must be call back.</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[String]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='obfuscatedfield'>ObfuscatedField</h2>
+<p>Means the data contained in this filed can be optional due to user rights.</p>
+
+<p>It is equilavent to <a href="#option">Option</a> bbut user rights reason. </p>
+<h2 id='fieldupdated'>FieldUpdated</h2>
+<p>Describe filed that was updated in the entity.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>field</td>
+<td>String</td>
+<td>the field&#39;s name that was uptated.</td>
+</tr>
+<tr>
+<td>updatedDates</td>
+<td>Array[<a href="#datetime">DateTime</a>]</td>
+<td>the updated&#39;s dates</td>
+</tr>
+</tbody></table>
+<h2 id='qualificationbycriteria'>QualificationByCriteria</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>choices</td>
+<td>Array[<a href="#criterionstep">CriterionStep</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>workflowApplied</td>
+<td><a href="#option">Option</a>[<a href="#safeuuid">SafeUUID</a>]</td>
+<td>workflow&#39;s uuid applied in this ticket</td>
+</tr>
+<tr>
+<td>comment</td>
+<td><a href="#option">Option</a>[<a href="#contextualcommenttodisplay">ContextualCommentToDisplay</a>]</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='criterionstep'>CriterionStep</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>criterionUid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>criterionLabel</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>choice</td>
+<td><a href="#criterionvaluechosen">CriterionValueChosen</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='criterionvaluechosen'>CriterionValueChosen</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>value</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='contextualcommenttodisplay'>ContextualCommentToDisplay</h2>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uid</td>
+<td><a href="#safeuuid">SafeUUID</a></td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>comment</td>
+<td>String</td>
+<td></td>
+</tr>
 </tbody></table>
 <h2 id='ticketviewlinkdedentities'>TicketViewLinkdedEntities</h2>
 <table><thead>
@@ -7554,7 +7745,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>the date when this <code>Ticket</code> was closed.</td>
 </tr>
 </tbody></table>
-<h2 id='openingticketpurpose'>OpeningTicketPurpose</h2><h3 id='fields-29'>Fields</h3>
+<h2 id='openingticketpurpose'>OpeningTicketPurpose</h2><h3 id='fields-30'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7584,7 +7775,7 @@ the response because of the specific state of the request done to retrieve this 
     </span><span class="s2">"interventionDuration"</span><span class="p">:</span><span class="s2">"360000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"repairTime"</span><span class="p">:</span><span class="s2">"54000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='fields-30'>Fields</h3>
+</span></code></pre><h3 id='fields-31'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7618,7 +7809,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Calcul le délai de réparation. <br/> Cette valeur est obtenue en calculant le temps entre la date de création du ticket et la date de fin d&#39;intervention</td>
 </tr>
 </tbody></table>
-<h2 id='dayevent'>DayEvent</h2><h3 id='fields-31'>Fields</h3>
+<h2 id='dayevent'>DayEvent</h2><h3 id='fields-32'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7637,7 +7828,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>the list of <code>JournalEvent</code> for this day.</td>
 </tr>
 </tbody></table>
-<h2 id='journalevent'>JournalEvent</h2><h3 id='fields-32'>Fields</h3>
+<h2 id='journalevent'>JournalEvent</h2><h3 id='fields-33'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7661,7 +7852,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>some data associated with this event.</td>
 </tr>
 </tbody></table>
-<h2 id='callerticketdetailedqueryview'>CallerTicketDetailedQueryView</h2><h3 id='fields-33'>Fields</h3>
+<h2 id='callerticketdetailedqueryview'>CallerTicketDetailedQueryView</h2><h3 id='fields-34'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7938,7 +8129,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>description of the breakdown</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonyresultview'>PatrimonyResultView</h2><h3 id='fields-34'>Fields</h3>
+<h2 id='patrimonyresultview'>PatrimonyResultView</h2><h3 id='fields-35'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7952,7 +8143,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of selected <code>PatrimonyQueryView</code>s</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonyqueryview'>PatrimonyQueryView</h2><h3 id='fields-35'>Fields</h3>
+<h2 id='patrimonyqueryview'>PatrimonyQueryView</h2><h3 id='fields-36'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7991,7 +8182,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='patrimonydetailqueryview'>PatrimonyDetailQueryView</h2><h3 id='fields-36'>Fields</h3>
+<h2 id='patrimonydetailqueryview'>PatrimonyDetailQueryView</h2><h3 id='fields-37'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8030,7 +8221,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='patrimonyagencyqueryview'>PatrimonyAgencyQueryView</h2><h3 id='fields-37'>Fields</h3>
+<h2 id='patrimonyagencyqueryview'>PatrimonyAgencyQueryView</h2><h3 id='fields-38'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8063,7 +8254,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of selected <code>Building</code>s</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonydetailedbuildingqueryview'>PatrimonyDetailedBuildingQueryView</h2><h3 id='fields-38'>Fields</h3>
+<h2 id='patrimonydetailedbuildingqueryview'>PatrimonyDetailedBuildingQueryView</h2><h3 id='fields-39'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8106,7 +8297,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of selected <code>PatrimonyManager</code>s</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonymanagerforpatrimony'>PatrimonyManagerForPatrimony</h2><h3 id='fields-39'>Fields</h3>
+<h2 id='patrimonymanagerforpatrimony'>PatrimonyManagerForPatrimony</h2><h3 id='fields-40'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8140,7 +8331,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='patrimonyqueryaddressreference'>PatrimonyQueryAddressReference</h2><h3 id='fields-40'>Fields</h3>
+<h2 id='patrimonyqueryaddressreference'>PatrimonyQueryAddressReference</h2><h3 id='fields-41'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8204,7 +8395,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>a variable to allow to verify <code>Address</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonyqueryaddressreferencewithbuildinginfo'>PatrimonyQueryAddressReferenceWithBuildingInfo</h2><h3 id='fields-41'>Fields</h3>
+<h2 id='patrimonyqueryaddressreferencewithbuildinginfo'>PatrimonyQueryAddressReferenceWithBuildingInfo</h2><h3 id='fields-42'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8273,7 +8464,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>a <code>Building</code> reference for this <code>Address</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='buildingqueryview'>BuildingQueryView</h2><h3 id='fields-42'>Fields</h3>
+<h2 id='buildingqueryview'>BuildingQueryView</h2><h3 id='fields-43'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8297,7 +8488,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>reference to the <code>Patrimony</code> of this <code>Building</code></td>
 </tr>
 </tbody></table>
-<h2 id='patrimonybuildingview'>PatrimonyBuildingView</h2><h3 id='fields-43'>Fields</h3>
+<h2 id='patrimonybuildingview'>PatrimonyBuildingView</h2><h3 id='fields-44'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8317,7 +8508,7 @@ the response because of the specific state of the request done to retrieve this 
                    <span class="kt">Restaurant</span> <span class="o">|</span> <span class="kt">MeetingRoom</span> <span class="o">|</span> <span class="kt">Fitness</span> <span class="o">|</span> <span class="kt">SPA</span> <span class="o">|</span> <span class="kt">SportFacility</span> <span class="o">|</span> <span class="kt">Pool</span> <span class="o">|</span> <span class="kt">PoolHouse</span> <span class="o">|</span> <span class="kt">Playground</span> <span class="o">|</span> <span class="kt">Laundry</span> <span class="o">|</span> <span class="kt">OtherService</span> <span class="o">|</span>      <span class="c1">-- ServiceUsage</span>
                    <span class="kt">TertiaryParking</span> <span class="o">|</span> <span class="kt">Workspace</span> <span class="o">|</span> <span class="kt">Workstation</span> <span class="o">|</span> <span class="kt">Office</span> <span class="o">|</span> <span class="kt">RetailShop</span> <span class="o">|</span> <span class="kt">Warehouse</span> <span class="o">|</span> <span class="kt">GasStation</span> <span class="o">|</span>                               <span class="c1">-- TertiaryUsage</span>
                    <span class="kt">BoilerRoom</span> <span class="o">|</span> <span class="kt">Elevator</span> <span class="o">|</span> <span class="kt">VentilationSystem</span> <span class="o">|</span> <span class="kt">Gate</span> <span class="o">|</span> <span class="kt">Intercom</span> <span class="o">|</span> <span class="kt">BinStorageArea</span> <span class="o">|</span> <span class="kt">MachineRoom</span> <span class="o">|</span> <span class="kt">GardeningShed</span> <span class="o">|</span> <span class="kt">OtherTechnical</span>  <span class="c1">-- TechnicalUsage</span>
-</code></pre><h2 id='lotresultview'>LotResultView</h2><h3 id='fields-44'>Fields</h3>
+</code></pre><h2 id='lotresultview'>LotResultView</h2><h3 id='fields-45'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8331,7 +8522,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of selected <code>Lot</code>s</td>
 </tr>
 </tbody></table>
-<h2 id='lotqueryview'>LotQueryView</h2><h3 id='fields-45'>Fields</h3>
+<h2 id='lotqueryview'>LotQueryView</h2><h3 id='fields-46'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8375,7 +8566,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='lotqueryaddress'>LotQueryAddress</h2><h3 id='fields-46'>Fields</h3>
+<h2 id='lotqueryaddress'>LotQueryAddress</h2><h3 id='fields-47'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8459,7 +8650,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>l&#39;adresses est-elle vérifiée (les champs <code>geoLocation</code> et <code>checker</code> sont valué) ou non.</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonyinfoview'>PatrimonyInfoView</h2><h3 id='fields-47'>Fields</h3>
+<h2 id='patrimonyinfoview'>PatrimonyInfoView</h2><h3 id='fields-48'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8483,7 +8674,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='buildinginfoview'>BuildingInfoView</h2><h3 id='fields-48'>Fields</h3>
+<h2 id='buildinginfoview'>BuildingInfoView</h2><h3 id='fields-49'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8502,7 +8693,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='lotdetailqueryview'>LotDetailQueryView</h2><h3 id='fields-49'>Fields</h3>
+<h2 id='lotdetailqueryview'>LotDetailQueryView</h2><h3 id='fields-50'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8548,7 +8739,7 @@ the response because of the specific state of the request done to retrieve this 
 </tbody></table>
 <h2 id='geolocation'>GeoLocation</h2>
 <p>Geolocation of the <code>Address</code>.</p>
-<h3 id='fields-50'>Fields</h3>
+<h3 id='fields-51'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9077,7 +9268,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='providercontactresultview'>ProviderContactResultView</h2><h3 id='fields-51'>Fields</h3>
+<h2 id='providercontactresultview'>ProviderContactResultView</h2><h3 id='fields-52'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9096,7 +9287,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of <code>RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
 </tr>
 </tbody></table>
-<h2 id='providercontactqueryview'>ProviderContactQueryView</h2><h3 id='fields-52'>Fields</h3>
+<h2 id='providercontactqueryview'>ProviderContactQueryView</h2><h3 id='fields-53'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9150,7 +9341,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of <code>RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
 </tr>
 </tbody></table>
-<h2 id='providercontactdetailedqueryview'>ProviderContactDetailedQueryView</h2><h3 id='fields-53'>Fields</h3>
+<h2 id='providercontactdetailedqueryview'>ProviderContactDetailedQueryView</h2><h3 id='fields-54'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9257,7 +9448,7 @@ the response because of the specific state of the request done to retrieve this 
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='providercompanyresultview'>ProviderCompanyResultView</h2><h3 id='fields-54'>Fields</h3>
+<h2 id='providercompanyresultview'>ProviderCompanyResultView</h2><h3 id='fields-55'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9276,7 +9467,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of <code>RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
 </tr>
 </tbody></table>
-<h2 id='providercompanyqueryview'>ProviderCompanyQueryView</h2><h3 id='fields-55'>Fields</h3>
+<h2 id='providercompanyqueryview'>ProviderCompanyQueryView</h2><h3 id='fields-56'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9305,7 +9496,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Array of <code>RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
 </tr>
 </tbody></table>
-<h2 id='providercontactstats'>ProviderContactStats</h2><h3 id='fields-56'>Fields</h3>
+<h2 id='providercontactstats'>ProviderContactStats</h2><h3 id='fields-57'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9339,7 +9530,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>Count the number of intervention of this <code>ProviderContact</code></td>
 </tr>
 </tbody></table>
-<h2 id='delaystat'>DelayStat</h2><h3 id='fields-57'>Fields</h3>
+<h2 id='delaystat'>DelayStat</h2><h3 id='fields-58'>Fields</h3>
 <p>This statistic measure a time average in milliseconds grouped by day of ticket creation.</p>
 
 <table><thead>
@@ -9360,7 +9551,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>a time average in milliseconds</td>
 </tr>
 </tbody></table>
-<h2 id='countstat'>CountStat</h2><h3 id='fields-58'>Fields</h3>
+<h2 id='countstat'>CountStat</h2><h3 id='fields-59'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9379,7 +9570,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>a count with 2 significant figures</td>
 </tr>
 </tbody></table>
-<h2 id='usereventresultview'>UserEventResultView</h2><h3 id='fields-59'>Fields</h3>
+<h2 id='usereventresultview'>UserEventResultView</h2><h3 id='fields-60'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9393,7 +9584,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>The <code>Event</code>s resulting of this <code>Command</code></td>
 </tr>
 </tbody></table>
-<h2 id='companyeventresultview'>CompanyEventResultView</h2><h3 id='fields-60'>Fields</h3>
+<h2 id='companyeventresultview'>CompanyEventResultView</h2><h3 id='fields-61'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9407,7 +9598,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>The <code>Event</code>s resulting of this <code>Command</code></td>
 </tr>
 </tbody></table>
-<h2 id='providercontacteventresultview'>ProviderContactEventResultView</h2><h3 id='fields-61'>Fields</h3>
+<h2 id='providercontacteventresultview'>ProviderContactEventResultView</h2><h3 id='fields-62'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9421,7 +9612,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>The <code>Event</code>s resulting of this <code>Command</code></td>
 </tr>
 </tbody></table>
-<h2 id='providercompanyeventresultview'>ProviderCompanyEventResultView</h2><h3 id='fields-62'>Fields</h3>
+<h2 id='providercompanyeventresultview'>ProviderCompanyEventResultView</h2><h3 id='fields-63'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9435,7 +9626,7 @@ the response because of the specific state of the request done to retrieve this 
 <td>The <code>Event</code>s resulting of this <code>Command</code></td>
 </tr>
 </tbody></table>
-<h2 id='loteventresultview'>LotEventResultView</h2><h3 id='fields-63'>Fields</h3>
+<h2 id='loteventresultview'>LotEventResultView</h2><h3 id='fields-64'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9490,7 +9681,7 @@ the response because of the specific state of the request done to retrieve this 
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">        
-</span></code></pre><h3 id='fields-64'>Fields</h3>
+</span></code></pre><h3 id='fields-65'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9696,7 +9887,7 @@ the response because of the specific state of the request done to retrieve this 
          </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='fields-65'>Fields</h3>
+</span></code></pre><h3 id='fields-66'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9864,7 +10055,7 @@ the response because of the specific state of the request done to retrieve this 
     </span><span class="s2">"availability"</span><span class="p">:</span><span class="s2">"2016-02-29T12:03:32+02:00"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"comment"</span><span class="p">:</span><span class="s2">"this person is the real owner of the apartment"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='fields-66'>Fields</h3>
+</span></code></pre><h3 id='fields-67'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9912,7 +10103,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
     </span><span class="s2">"callCenterClaimNumber"</span><span class="p">:</span><span class="s2">"CC_234"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"clientClaimNumber"</span><span class="p">:</span><span class="s2">"CLIENT_1234"</span><span class="w">
 </span><span class="p">}</span><span class="w"> 
-</span></code></pre><h3 id='fields-67'>Fields</h3>
+</span></code></pre><h3 id='fields-68'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10528,7 +10719,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='patrimonycontactresultview'>PatrimonyContactResultView</h2><h3 id='fields-68'>Fields</h3>
+<h2 id='patrimonycontactresultview'>PatrimonyContactResultView</h2><h3 id='fields-69'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10547,7 +10738,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>Array of <code>RestNavigationLink</code>. Allow building decoupled navigation workflow.</td>
 </tr>
 </tbody></table>
-<h2 id='patrimonycontactqueryview'>PatrimonyContactQueryView</h2><h3 id='fields-69'>Fields</h3>
+<h2 id='patrimonycontactqueryview'>PatrimonyContactQueryView</h2><h3 id='fields-70'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10780,7 +10971,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 
 <p><code>&quot;Tenant&quot;</code> or <code>&quot;Owner&quot;</code> or <code>&quot;Landlord&quot;</code></p>
 <pre class="highlight haskell tab-haskell"><code><span class="kr">data</span> <span class="kt">LinkedToNonReferencedLotAs</span> <span class="o">=</span> <span class="kt">Tenant</span> <span class="o">|</span> <span class="kt">Owner</span> <span class="o">|</span> <span class="kt">Landlord</span> 
-</code></pre><h2 id='providercontactsuggestresultview'>ProviderContactSuggestResultView</h2><h3 id='fields-70'>Fields</h3>
+</code></pre><h2 id='providercontactsuggestresultview'>ProviderContactSuggestResultView</h2><h3 id='fields-71'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10794,7 +10985,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td>Array of suggested <code>ProviderContact</code>s</td>
 </tr>
 </tbody></table>
-<h2 id='providercontactsuggestview'>ProviderContactSuggestView</h2><h3 id='fields-71'>Fields</h3>
+<h2 id='providercontactsuggestview'>ProviderContactSuggestView</h2><h3 id='fields-72'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10843,7 +11034,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td><code>true</code> if the <code>ProviderContact</code> is active</td>
 </tr>
 </tbody></table>
-<h2 id='providercontactactivityview'>ProviderContactActivityView</h2><h3 id='fields-72'>Fields</h3>
+<h2 id='providercontactactivityview'>ProviderContactActivityView</h2><h3 id='fields-73'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11419,7 +11610,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td><code>&quot;ProviderContactContract&quot;</code></td>
 </tr>
 </tbody></table>
-<h2 id='simplifiedrequestresultview'>SimplifiedRequestResultView</h2><h3 id='fields-73'>Fields</h3>
+<h2 id='simplifiedrequestresultview'>SimplifiedRequestResultView</h2><h3 id='fields-74'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11443,7 +11634,7 @@ This allows to use identifier that have more sense than Perfimmo one for users.<
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='simplifiedrequestsearchview'>SimplifiedRequestSearchView</h2><h3 id='fields-74'>Fields</h3>
+<h2 id='simplifiedrequestsearchview'>SimplifiedRequestSearchView</h2><h3 id='fields-75'>Fields</h3>
 <table><thead>
 <tr>
 <th>Name</th>
