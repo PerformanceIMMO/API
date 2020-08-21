@@ -167,7 +167,7 @@ nameType    | Constant                                          | `"CivilName"`
 Name        | Type                                              | Description
 ------------| --------------------------------------------------| --------------------------
 uid         | [SafeUUID](#safeuuid)                             | id of the `Company`
-label       | String                                            | the `Company`'s label
+name        | String                                            | the `Company`'s label
 isActive    | Boolean                                           | `true` if the `Company` is active
 holding     | [Option](#option)[[HoldingQueryView](#holdingqueryview)] | a reference to `Company`'s holding if has it
 siretNumber | [Option](#option)[[SIRET](#siret)]                |
@@ -200,6 +200,7 @@ sda         | [Option](#option)[String]                         |
 label       | String                                            | the `Agency`'s label
 group       | [Option](#option)[String]                         | 
 ref         | String                                            | a client reference for the `Agency`
+company     | [ClientCompanyAbstract](#clientcompanyabstract)   | 
 address     | [Option](#option)[RationalAddress]                | 
 phones      | Array[String]                                     |
 fax         | [Option](#option)[String]                         |
@@ -210,7 +211,7 @@ emails      | Array[String]                                     |
 `UserQueryView` is an Enum, i.e type can take different values : 
 
 ```haskell
-data UserQueryView = SuperUser | CallCenterUser | ClientAccountManager | Executive
+data UserQueryView = SuperUser | CallCenterUser | ClientAccountManager | Executive | CallCenterOperator | PatrimonyUser | PatrimonyManager
 ```
 
 ### SuperUser 
@@ -239,11 +240,11 @@ firstName   | String                                            | `User`'s first
 lastName    | String                                            | `User`'s last name
 job         | [Option](#option)[String]                         | `User`'s job (optional)
 phone       | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType    | Constant                                          | `"superUser"
+userType    | Constant                                          | `"superUser"`
 
-### CallCenterUser 
+### CallCenterUser OR CallCenterOperator
 
-> CallCenterUser example :
+> CallCenterUser OR CallCenterOperator example :
 
 ```json
 {
@@ -272,7 +273,7 @@ firstName   | String                                            | `User`'s first
 lastName    | String                                            | `User`'s last name
 job         | [Option](#option)[String]                         | `User`'s job (optional)
 phone       | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType    | Constant                                          | `"callCenterUser"`
+userType    | Constant                                          | `"callCenterUser"` ou `"callCenterOperator"`
 
 ### ClientAccountManager 
 
@@ -305,11 +306,11 @@ firstName   | String                                            | `User`'s first
 lastName    | String                                            | `User`'s last name
 job         | [Option](#option)[String]                         | `User`'s job (optional)
 phone       | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType    | Constant                                          | `"clientAccountManager"
+userType    | Constant                                          | `"clientAccountManager"`
 
 ### Executive
 
-> ClientAccountManager example :
+> Executive example :
 
 ```json
 {
@@ -342,7 +343,82 @@ firstName       | String                                            | `User`'s f
 lastName        | String                                            | `User`'s last name
 job             | [Option](#option)[String]                         | `User`'s job (optional)
 phone           | [Option](#option)[String]                         | `User`'s phone number (optional)
-userType        | Constant                                          | `"executive"
+userType        | Constant                                          | `"executive"`
+
+### PatrimonyManager
+
+> PatrimonyManager example :
+
+```json
+{
+	"uid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",       
+    "login":"john.doe@performance-immo.com",       
+    "company": {
+        "uid": "1471965c-e1ea-37e9-fa45-770753dc5154",
+        "label": "My Company"
+    },
+    "managedAgencies": [
+        {"uid":"5671965c-e1ea-37e9-fa45-770753dc5e34", "label":"my agency"}
+    ],
+    "managedPatrimonies": [
+        {"uid":"5671965c-e1ea-37e9-fa45-770753dc5e34", "ref": "my ref"}
+    ],
+    "firstName":"John",   
+    "lastName":"Doe",    
+    "job": "manager of a ClientAccount", 
+    "phone":"0605040302",
+    "userType":"patrimonyManager"
+}
+```
+
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| --------------------------
+uid             | [SafeUUID](#safeuuid)                             | `User`'s uid
+login           | String                                            | `User`'s login
+company         | [CompanyUserQueryView](#companyuserqueryview)     | `User`'s `Company`
+managedAgencies | [NonEmptyList](#nonemptylist)[[AgencyUserQueryView](#agencyuserqueryview)] | A non empty list of `Agencies`managed by the executive
+managedPatrimonies | [NonEmptyList](#nonemptylist)[[PatrimonyUserQueryView](#patrimonyuserqueryview)] | 
+firstName       | String                                            | `User`'s first name
+lastName        | String                                            | `User`'s last name
+job             | [Option](#option)[String]                         | `User`'s job (optional)
+phone           | [Option](#option)[String]                         | `User`'s phone number (optional)
+userType        | Constant                                          | `"patrimonyManager"`
+
+### PatrimonyUser
+
+`User` directly linked to `patrimonies` without `company`. Created by `PatrimonyContact`.
+
+> PatrimonyUser example :
+
+```json
+{
+	"uid":"d5c48f2f-2bcc-40ff-9a5c-4ba5d33419df",       
+    "login":"john.doe@performance-immo.com",       
+    "company": {
+        "uid": "1471965c-e1ea-37e9-fa45-770753dc5154",
+        "label": "My Company"
+    },
+    "patrimonies": [
+        {"uid":"5671965c-e1ea-37e9-fa45-770753dc5e34", "ref": "my ref"}
+    ],
+    "firstName":"John",   
+    "lastName":"Doe",    
+    "job": "manager of a ClientAccount", 
+    "phone":"0605040302",
+    "userType":"patrimonyUser"
+}
+```
+Name            | Type                                              | Description
+----------------| --------------------------------------------------| --------------------------
+uid             | [SafeUUID](#safeuuid)                             | `User`'s uid
+login           | String                                            | `User`'s login
+company         | [CompanyUserQueryView](#companyuserqueryview)     | `User`'s `Company`
+patrimonies | [NonEmptyList](#nonemptylist)[[PatrimonyUserQueryView](#patrimonyuserqueryview)] |
+firstName       | String                                            | `User`'s first name
+lastName        | String                                            | `User`'s last name
+job             | [Option](#option)[String]                         | `User`'s job (optional)
+phone           | [Option](#option)[String]                         | `User`'s phone number (optional)
+userType        | Constant                                          | `"patrimonyUser"`
 
 ## TicketResultView
 
@@ -385,6 +461,16 @@ Name        | Type                                              | Description
 ------------| --------------------------------------------------| -----------------
 uid         | [SafeUUID](#safeuuid)                             | the `Agency`'s uid
 label       | String                                            | the `Agency`'s label
+
+## PatrimonyUserQueryView
+
+### Fields
+
+Name        | Type                                              | Description
+------------| --------------------------------------------------| -----------------
+uid         | [SafeUUID](#safeuuid)                             | 
+label       | [Option](#option)[String]                         | 
+ref         | String                                            | 
 
 ## TicketQueryView
 
