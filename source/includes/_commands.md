@@ -1058,6 +1058,15 @@ date                | [DateTime](#datetime)                         | date on wh
 deadline            | [DateTime](#datetime)                         | the deadline defined.
 commandType         | Constant                                      | `"DefineInterventionDeadline"`
 
+### RestrictAccessToTicket
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`.
+accessControlList   | [NonEmptyList](#nonemptylist)[[AccessControl](#accesscontrol)]  | the rules for accessing the ticket
+commandType         | Constant                                      | `"DefineInterventionDeadline"`
+
 ### ReportFormalNoticeForProvider
 
 Name                | Type                                          | Description

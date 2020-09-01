@@ -3080,3 +3080,30 @@ Name                | Type                                          | Descriptio
 uid                 | [SafeUUID](#safeuuid)                         |  
 title               | String                                        |
 comment             | String                                        |
+
+## AccessControl
+
+`AccessControl` is an Enum, i.e type can take different values :
+
+```haskell
+data AccessControl = PatrimonyUserAccessControl
+```
+
+### PatrimonyUserAccessControl
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+accessGrantTo       | [PatrimonyUserGrantCriteria](#patrimonyusergrantcriteria) |
+accessControlType   | Constant                                      | `"PatrimonyUser"`
+
+## PatrimonyUserGrantCriteria
+
+`PatrimonyUserGrantCriteria` is an Enum, i.e type can take different values :
+
+```haskell
+data PatrimonyUserGrantCriteria = TicketCaller
+```
+
+A simple String value that only can be :
+
+- TicketCaller

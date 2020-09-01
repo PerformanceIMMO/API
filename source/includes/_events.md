@@ -566,6 +566,17 @@ sentDate            | [DateTime](#datetime)                         | the receiv
 fromSimplifiedRequest | [SafeUUID](#safeuuid)                       | the uid of the `SimplifiedRequest` from which the `Ticket` was opened.
 eventType           | Constant                                      | `"TicketOpenedFromSimplifiedRequest"`
 
+### AccessRestrictedToTicket
+
+Name                | Type                                          | Description
+------------------- | ----------------------------------------------| --------------------------------------------------
+processUid          | [SafeUUID](#safeuuid)                         | the uid of this command. Allow PerfImmo to know if this Command is duplicated
+aggregateUid        | [SafeUUID](#safeuuid)                         | the uid of the `Ticket` opened.
+operator            | [Operator](#operator)                         | a reference to who ask for this `Command`. We can say who open this `Ticket`.
+sentDate            | [DateTime](#datetime)                         | the received date of this `Event`.
+accessControlList   | [NonEmptyList](#nonemptylist)[[AccessControl](#accesscontrol)]  | the rules for accessing the ticket
+eventType           | Constant                                      | `"AccessRestrictedToTicket"`
+
 ### TicketQualifiedByCriteria
 
 Name                | Type                                          | Description
